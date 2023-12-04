@@ -1,0 +1,21 @@
+.profileWrapper {
+  padding: 10px;
+  background-color: #edf6ff;
+  margin: 10px;
+  border-radius: 10px;
+
+  .firstSection {
+    display: flex;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #474747;
+
+    .txtSection {
+      margin-left: 10px;
+    }
+  }
+
+  .secondSection {
+    margin-top: 10px;
+    text-align: center;
+  }
+}

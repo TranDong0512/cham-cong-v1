@@ -1,0 +1,37 @@
+.txt {
+  padding: 10px;
+  color: #4c5bd4;
+}
+
+.input {
+  padding: 15px 10px;
+  text-align: center;
+
+  margin: auto;
+}
+
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #acacac !important;
+}
+.cusTr > td {
+  border: 1px solid #acacac !important;
+}
+
+.header > th {
+  border: 1px solid #acacac !important;
+}
+
+.tblHeader {
+  color: #4c5bd4;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 0px;
+}
+
+@media screen and (max-width: 768px) {
+  .tbl {
+    width: 1000px !important;
+  }
+}

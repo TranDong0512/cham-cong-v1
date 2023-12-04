@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 15px 20px;
+  background-color: #4c5bd4;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.font16 {
+  font-size: 16px;
+}
+.font18 {
+  font-size: 18px;
+}
+.button {
+  margin-top: 20px;
+  padding: 7px 30px 7px 30px;
+  height: auto;
+  background-color: #4c5bd4;
+  .txt {
+    color: #fff;
+  }
+}
+.body {
+  padding: 0 20px 20px 20px;
+}

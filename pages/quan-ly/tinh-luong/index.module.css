@@ -1,0 +1,143 @@
+.table {
+  width: 98%;
+  margin: auto;
+  padding-bottom: 20px;
+}
+.information {
+  width: 95%;
+  margin-left: 20px;
+}
+.content {
+  width: 100%;
+  float: left;
+  background: #ffffff;
+  box-shadow: 0px 0px 20px rgba(55, 63, 255, 0.1);
+  border-radius: 10px;
+  margin-bottom: 50px;
+  padding: 10px;
+}
+.container {
+  width: 100%;
+}
+.h3 {
+  width: 100%;
+  float: left;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  color: #2e3467;
+  padding-bottom: 5px;
+  padding-top: 15px;
+}
+.span {
+  font-size: 15px;
+  line-height: 18px;
+  color: #68798b;
+}
+.p {
+  padding-top: 5px;
+  width: 100%;
+  float: left;
+  font-size: 15px;
+  line-height: 18px;
+  color: #68798b;
+  margin-bottom: 10px;
+}
+.p_style {
+  color: #68798b;
+  width: 75%;
+}
+.p_red {
+  color: #f46a6a;
+}
+.p_money {
+  background: #edeffb;
+  text-align: left;
+  padding: 15px 30px;
+  font-weight: 500;
+  color: #68798b;
+}
+.select_time {
+  /* display: flex; */
+  width: 100%;
+  gap: 20px;
+  justify-content: flex-end;
+  padding-bottom: 40px;
+  flex-wrap: wrap;
+}
+.select_p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.button {
+  padding: 7px 20px;
+  background: #4c5bd4;
+  color: #fff;
+  height: 33px;
+  cursor: pointer;
+  border: 1px solid #ebebeb;
+  border-radius: 7px;
+  margin-top: 7px;
+}
+.current {
+  background: #edeffb;
+  text-align: left;
+  padding: 15px 30px;
+  font-weight: 500;
+  width: 100%;
+}
+.export {
+  float: left;
+  padding: 10px 32px;
+  background: #4c5bd4;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border: none;
+  margin-left: 30px;
+}
+.formItem {
+  margin-right: 10px;
+}
+.selection {
+  margin-right: 10px;
+}
+.formContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+}
+/* comment moi*/
+.customButton {
+  width: 15% !important ;
+}
+.nameColumn {
+  display: flex;
+}
+@media (max-width: 821px) {
+  .formContainer {
+    width: 100%;
+    justify-content: space-around;
+  }
+  .select_time {
+    width: 100%;
+    justify-content: space-around;
+  }
+}
+@media (max-width: 415px) {
+  .formContainer {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .select_time {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

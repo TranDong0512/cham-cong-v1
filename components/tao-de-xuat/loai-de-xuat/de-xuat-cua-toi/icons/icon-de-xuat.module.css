@@ -1,0 +1,39 @@
+.body{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+}
+.leftSide{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+.text{
+    padding-left: 20px;
+    font-size: 20px;
+}
+.rightSide{
+    padding: 10px 20px;
+    border-left: 2px dotted #C4C4C4;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 1024px) {
+    .leftSide {
+        padding: 10px;
+    }
+    .text {
+        white-space: nowrap;
+        font-size: 18px;
+    }
+    .rightSide {
+        padding: 10px;
+    }
+}   
+@media screen and (max-width: 768px) {
+    
+}  

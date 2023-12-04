@@ -1,0 +1,68 @@
+.body{
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+}
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title{
+    display: flex;
+    color: #474747;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.button{
+    display: flex;
+    width: 274px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.button1{
+    display: flex;
+    width: 99px;
+    padding: 5px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid #4C5BD4;
+    color: #4C5BD4;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 136%; /* 21.76px */
+    background: #FFF;
+}
+.button2{
+    display: flex;
+    width: 99px;
+    padding: 5px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #4C5BD4;
+    border: none;
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 136%; /* 21.76px */
+}

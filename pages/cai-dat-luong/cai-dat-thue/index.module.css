@@ -1,0 +1,60 @@
+.space1{
+    display: none;
+    border-radius: 10px;
+    background: #42D778;
+    padding: 10px 20px;
+    justify-content:flex-end;
+    align-items: center;
+    border: none;
+    
+}
+.space2{
+    display: flex;
+    border-radius: 10px;
+    background: #42D778;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    height: fit-content;
+    width: fit-content;
+}
+.chu1{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%;
+    padding: 0 5px 0 0;
+}
+.chu2{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%;
+    padding: 0 0 0 5px;
+}
+.the{
+    display: flex;
+    flex-wrap: wrap;
+}
+.khung{
+    margin-bottom: 50px;
+    color: #474747;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+@media screen and (max-width :768px){
+    .space2{
+        display: none !important;
+    }
+    .space1{
+        display: flex !important;
+    }
+}

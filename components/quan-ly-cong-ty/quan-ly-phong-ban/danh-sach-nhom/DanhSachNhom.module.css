@@ -1,0 +1,31 @@
+.actionGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .divider {
+    width: 2px;
+    height: 30px;
+    background-color: grey;
+    margin: 0px 10px;
+  }
+}
+
+.headerTxt {
+  color: #fff !important;
+  font-weight: 400 !important;
+  text-align: center;
+}
+.groupButton .secondButton{
+  margin-top: 10px;
+}
+@media screen and (max-width:768px) {
+  .groupButton{
+    display: flex;
+    justify-content: flex-end;
+  } 
+  .groupButton .secondButton{
+    margin-top: 0px;
+    margin-left: 20px;
+  }
+}

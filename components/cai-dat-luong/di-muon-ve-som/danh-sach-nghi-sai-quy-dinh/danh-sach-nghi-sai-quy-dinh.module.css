@@ -1,0 +1,88 @@
+.selects >div{
+    width: 100%;
+}
+.selects >button{
+    width: 100%;
+    background-color: #4C5BD4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.selects >button >span{
+    color: #fff;
+}
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.button >button{
+    display: flex;
+    align-items: center;
+    background-color: #4C5BD4;
+}
+.button >button >span{
+    color: #fff;
+}
+.text{
+    color: #474747;
+}
+.textTop{
+    font-size: 18px;
+    font-weight: bold;
+}
+.textBottom{
+    font-size: 16px;
+}
+.table{
+    margin-top: 30px;
+}
+.rowFirst{
+    margin-top: 20px;
+}
+.rowSecond{
+    margin-top: 20px;
+}
+.thongKe1{
+    display: none;
+}
+.button1{
+    display: none;
+}
+.name{
+    display: flex;
+}
+.nameRight{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10px;
+}
+@media screen and (max-width:768px) {
+    .thongKe1{
+        display: flex;
+    }
+    .thongKe2{
+        display: none;
+    }
+    .button1{
+        display: none;
+    }
+    .button2{
+        display: flex;
+    }
+}
+@media screen and (max-width:414px){
+    .button1{
+        display: flex;
+    }
+    .button2{
+        display: none;
+    }
+    .table{
+        margin-top: 20px;
+    }
+    .rowFirst{
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,9 @@
+.headerTxt {
+  color: #fff;
+}
+
+@media screen and (max-width: 414px) {
+  .table {
+    padding: 0px 10px;
+  }
+}

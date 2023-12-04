@@ -1,0 +1,48 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .input {
+    /* width: 50%; */
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
+
+.headertxt {
+  text-align: center;
+  color: #fff;
+}
+
+.actionGroup {
+  display: flex;
+
+  .searchBar {
+    margin-right: 20px;
+  }
+}
+
+.btn > button {
+  border-radius: 10px !important;
+}
+
+@media screen and (max-width: 414px) {
+  .actionGroup {
+    display: flex;
+    flex-direction: column-reverse;
+
+    .btn {
+      margin-top: 20px;
+      margin-left: auto;
+    }
+
+    .searchBar {
+      margin: 20px 0px;
+      width: 100%;
+    }
+  }
+}

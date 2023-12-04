@@ -1,0 +1,43 @@
+.alertTxt {
+  padding: 0px 20px;
+  margin-bottom: 20px;
+}
+
+.headerTxt {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.formHeader {
+  color: #4c5bd4;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
+  margin: 20px 0px;
+}
+
+.underHeaderTxt {
+  font-size: 18px;
+}
+
+.input {
+  width: 50%;
+}
+
+@media screen and (max-width: 414px) {
+  .headerTxt {
+    font-size: 20px;
+  }
+
+  .formHeader {
+    font-size: 18px;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .underHeaderTxt {
+    font-size: 16px;
+  }
+}

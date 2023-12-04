@@ -1,0 +1,199 @@
+.main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+}
+.back {
+  position: absolute;
+  top: 80px;
+  left: 40px;
+  z-index: 111;
+  cursor: pointer;
+}
+.back span {
+  color: #fff;
+  font-size: 18px;
+}
+.start {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #d6d6d8;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  /* background-image: url("/karma/ui1.webp"); */
+  /* background-repeat: no-repeat; */
+  min-height: 100vh;
+  background-size: cover;
+}
+
+.wrapper {
+  width: 100%;
+  min-width: 100vh;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  background-image: url("/bg-update-face.jpeg");
+  min-height: 100vh;
+}
+.webcam_container {
+  width: 440px;
+  height: 440px;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 20px solid rgba(0, 0, 0, 0.1); */
+  /* background-color: transparent; */
+  background-color: rgba(255, 255, 0, 0);
+  z-index: 1;
+}
+.webcam-container video {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+@media (max-width: 414px) {
+  .webcam_container {
+    width: 300px;
+    height: 300px;
+  }
+  .rightImg {
+    display: none;
+  }
+  .leftImg {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .webcam_container {
+    width: 300px;
+    height: 300px;
+  }
+  .rightImg {
+    display: none;
+  }
+  .leftImg {
+    display: none;
+  }
+}
+.btn {
+  position: absolute;
+  bottom: 40px;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 108px;
+}
+.leftImg {
+  z-index: 999;
+  color: #fff;
+}
+.img_position {
+  color: #fff;
+  text-align: center;
+  margin-top: 24px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.square {
+  width: 200px;
+  height: 200px;
+  background-color: #fff;
+  padding: 10px;
+  position: relative;
+}
+
+.square1 {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: -8px;
+  width: 30px;
+  height: 30px;
+  border-bottom-left-radius: 4px;
+  border: 4px solid white;
+  border-right: 0;
+  border-top: 0;
+}
+
+.square2 {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 30px;
+  height: 30px;
+  border: 4px solid white;
+  border-bottom-right-radius: 4px;
+  border-left: 0;
+  border-top: 0;
+}
+.square3 {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 30px;
+  height: 30px;
+  border: 4px solid white;
+  border-top-left-radius: 4px;
+
+  border-right: 0;
+  border-bottom: 0;
+}
+.square4 {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 30px;
+  height: 30px;
+  border: 4px solid white;
+  border-top-right-radius: 4px;
+
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.comment_box {
+  position: relative;
+  padding: 10px;
+  background-color: #fff;
+  max-width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #4c5bd4;
+  font-weight: bold;
+  font-family: roboto;
+  text-transform: uppercase;
+}
+
+.comment_box::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  margin-left: -10px;
+  border: 10px solid transparent;
+  border-top-color: #fff;
+}

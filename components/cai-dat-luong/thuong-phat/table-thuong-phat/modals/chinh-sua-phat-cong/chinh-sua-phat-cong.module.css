@@ -1,0 +1,105 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px 15px 20px;
+    background-color: #4c5bd4;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  .textHead {
+    font-size: 20px;
+    color: #fff;
+  }
+  .body {
+    padding: 30px 20px;
+    display: flex;
+  }
+  .bodyLeft {
+    padding: 0 20px;
+    border-right: 1px dotted #c4c4c4;
+  }
+  .bodyRight {
+    margin-left: 20px;
+    width: calc(100% * 8 / 12 - 20px);
+    padding: 0 20px;
+  }
+  .formItem {
+    width: 100%;
+  }
+  .formItem:not(:first-child) {
+    margin-top: 10px;
+  }
+  .radioGroup {
+    width: 100%;
+    display: flex;
+  }
+  .radio {
+    width: 50%;
+  }
+  .actionGroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    .divider {
+      width: 2px;
+      height: 30px;
+      background-color: grey;
+      margin: 0px 10px;
+    }
+  }
+  .tableBottom {
+    margin-top: 20px;
+    width: 100%;
+  }
+  .formButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .formButton button {
+    background-color: #4b5bd4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .formButton span {
+    color: #fff;
+  }
+  .select {
+    background-color: #e5e5e5;
+  }
+  .select:hover > td {
+    background-color: #e5e5e5 !important;
+  }
+  @media screen and (max-width: 768px) {
+    .bodyLeft {
+      width: 100%;
+      padding: 0;
+      border: none;
+    }
+    .bodyRight {
+      width: 100%;
+      padding: 0;
+      margin-left: 0;
+      padding-top: 20px;
+      border-top: 1px solid #c4c4c4;
+    }
+    .formButton {
+      margin-bottom: 20px;
+    }
+    .body {
+      flex-direction: column;
+      padding: 20px;
+    }
+  }
+  @media screen and (max-width: 414px) {
+    .textHead {
+      font-size: 18px;
+    }
+    .body {
+      padding: 20px 16px;
+    }
+  }
+  

@@ -1,0 +1,862 @@
+$rectangle-border-width: 240px;
+$highlight-width: 30px;
+$animation-duration: 1s;
+
+@keyframes highlight-animation {
+    from {
+        width: 0;
+    }
+    to {
+        width: $highlight-width;
+    }
+}
+.toast-message {
+    background: darkblue;
+    color: #fff;
+    font-size: 20px;
+    width: 34vw;
+    padding: 30px 20px;
+    margin-top: 60px;
+}
+.toast-message + .toast-message {
+    margin-top: 20px;
+}
+@for $i from 1 through 90 {
+    .rectangle_border-#{$i} {
+        position: absolute;
+        width: $rectangle-border-width;
+        height: 3px;
+        background-color: rgba(255, 255, 0, 0);
+        transform-origin: 0;
+        transform: rotate(#{$i * 4}deg);
+        top: 50%;
+        left: 50%;
+        z-index: 9999;
+    }
+    .rectangle_border-#{$i}::after {
+        content: "";
+        position: absolute;
+        width: $highlight-width;
+        height: 4px;
+        border-radius: 4px;
+        background-color: #4c5bd4;
+        animation: highlight-animation $animation-duration;
+        animation-fill-mode: forwards;
+        right: -3px;
+    }
+    .rectangle_init-#{$i} {
+        position: absolute;
+        width: $rectangle-border-width;
+        height: 0px;
+        background-color: rgba(255, 255, 0, 0);
+        transform-origin: 0;
+        transform: rotate(#{$i * 4}deg);
+        top: 50%;
+        left: 50%;
+        z-index: 9999;
+    }
+    .rectangle_init-#{$i}::after {
+        content: "";
+        position: absolute;
+        width: $highlight-width;
+        height: 4px;
+        border-radius: 4px;
+        background-color: #fff;
+        animation: highlight-animation $animation-duration;
+        animation-fill-mode: forwards;
+        right: -3px;
+    }
+}
+
+@media (max-width: 768px) {
+    @for $i from 1 through 90 {
+        .rectangle_border-#{$i} {
+            position: absolute;
+            width: 180px;
+            height: 3px;
+            background-color: rgba(255, 255, 0, 0);
+            transform-origin: 0;
+            transform: rotate(#{$i * 4}deg);
+            top: 50%;
+            left: 50%;
+            z-index: 9999;
+        }
+        .rectangle_border-#{$i}::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 3px;
+            background-color: yellow;
+            animation: highlight-animation $animation-duration;
+            animation-fill-mode: forwards;
+            right: -3px;
+        }
+        .rectangle_init-#{$i} {
+            position: absolute;
+            width: 180px;
+            height: 0px;
+            background-color: rgba(255, 255, 0, 0);
+            transform-origin: 0;
+            transform: rotate(#{$i * 4}deg);
+            top: 50%;
+            left: 50%;
+            z-index: 9999;
+        }
+        .rectangle_init-#{$i}::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 4px;
+            border-radius: 4px;
+            background-color: #fff;
+            animation: highlight-animation $animation-duration;
+            animation-fill-mode: forwards;
+            right: -3px;
+        }
+    }
+}
+
+@for $i from 1 through 90 {
+    .rectangle_border-#{$i}:nth-child(#{$i}) {
+        &.active {
+            display: block;
+        }
+    }
+}
+.sphere {
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 9999;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sphere_img {
+    position: absolute;
+}
+.line-face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+.sphere_vertical_0 {
+    position: absolute;
+    top: 198px;
+    bottom: 0;
+    width: 400px;
+    height: 400px;
+    transform: rotate(90deg);
+    background-image: url("/data/line0.svg");
+    background-repeat: no-repeat;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.sphere_horizontal_0 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 198px;
+    width: 400px;
+    height: 400px;
+    background-image: url("/data/line0.svg");
+    background-repeat: no-repeat;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.sphere_vertical_1 {
+    position: absolute;
+    top: 198px;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    transform: rotate(90deg);
+    // background-image: url("/data/line0.svg");
+    background-repeat: no-repeat;
+    // animation: fadeIn 1s ease-in-out;
+}
+
+// .sphere_vertical_1::before {
+//     content: "";
+//     background-image: url("/data/line2.svg");
+//     background-repeat: no-repeat;
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: -194px;
+//     width: 400px;
+//     height: 400px;
+//     transform: rotate(0deg);
+//     animation: fadeOut 0.5s ease-in-out;
+// }
+
+.sphere_vertical_1::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    transform: rotate(0deg);
+    background-image: url("/data/line0.svg");
+    background-repeat: no-repeat;
+    animation: fadeIn 0.5s ease-in-out 0.5s;
+}
+.sphere_horizontal_1 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 400px;
+    height: 400px;
+    left: 194px;
+    // background-image: url("/data/line1.svg");
+    background-repeat: no-repeat;
+    // animation: fadeIn 1s ease-in-out;
+}
+// .sphere_horizontal_1::before {
+//     content: "";
+//     background-image: url("/data/line2.svg");
+//     background-repeat: no-repeat;
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: -194px;
+//     width: 400px;
+//     height: 400px;
+//     transform: rotate(0deg);
+//     animation: fadeOut 0.5s ease-in-out;
+// }
+
+.sphere_horizontal_1::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    transform: rotate(0deg);
+    background-image: url("/data/line1.svg");
+    background-repeat: no-repeat;
+    animation: fadeIn 0.5s ease-in-out 0.5s;
+}
+
+.sphere_vertical_2 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    transform: rotate(270deg);
+    width: 400px;
+    height: 400px;
+    // background-image: url("/data/line2.svg");
+    background-repeat: no-repeat;
+    // animation: fadeIn 1s ease-in-out;
+}
+// .sphere_vertical_2::before {
+//     content: "";
+//     background-image: url("/data/line2.svg");
+//     background-repeat: no-repeat;
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: 0;
+//     width: 400px;
+//     height: 400px;
+//     transform: rotate(0deg);
+//     animation: fadeOut 0.5s ease-in-out;
+// }
+
+.sphere_vertical_2::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: -194px;
+    width: 400px;
+    height: 400px;
+    transform: rotate(0deg);
+    background-image: url("/data/line1.svg");
+    background-repeat: no-repeat;
+    animation: fadeIn 0.5s ease-in-out 0.5s;
+}
+.sphere_horizontal_2 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 194px;
+    width: 400px;
+    height: 400px;
+    // background-image: url("/data/line1.svg");
+    background-repeat: no-repeat;
+    // animation: fadeIn 1s ease-in-out;
+}
+// .sphere_horizontal_2::before {
+//     content: "";
+//     background-image: url("/data/line2.svg");
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: -194px;
+//     width: 400px;
+//     height: 400px;
+//     transform: rotate(0deg);
+//     background-repeat: no-repeat;
+//     animation: fadeOut 0.5s ease-in-out;
+// }
+
+.sphere_horizontal_2::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    transform: rotate(0deg);
+    background-repeat: no-repeat;
+    background-image: url("/data/line1.svg");
+    animation: fadeIn 0.5s ease-in-out 0.5s;
+}
+
+.sphere_vertical_3 {
+    position: absolute;
+    top: -194px;
+    bottom: 0;
+    transform: rotate(270deg);
+    width: 400px;
+    height: 400px;
+    background-image: url("/data/line1.svg");
+    background-repeat: no-repeat;
+    animation: fadeIn 1s ease-in-out;
+}
+
+// .sphere_vertical_3::before {
+//     content: "";
+//     background-image: url("/data/line2.svg");
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: -194px;
+//     width: 400px;
+//     height: 400px;
+//     transform: rotate(0deg);
+//     background-repeat: no-repeat;
+//     animation: fadeOut 0.5s ease-in-out;
+// }
+
+.sphere_vertical_3::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    transform: rotate(0deg);
+    background-repeat: no-repeat;
+    background-image: url("/data/line1.svg");
+    animation: fadeIn 0.5s ease-in-out 0.5s;
+}
+.sphere_horizontal_3 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 194px;
+    width: 400px;
+    height: 400px;
+    // background-image: url("/data/line0.svg");
+    background-repeat: no-repeat;
+    // animation: fadeIn 1s ease-in-out;
+}
+// .sphere_horizontal_3::before {
+//     content: "";
+//     background-image: url("/data/line2.svg");
+//     background-repeat: no-repeat;
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: -194px;
+//     width: 400px;
+//     height: 400px;
+//     transform: rotate(0deg);
+//     animation: fadeOut 0.5s ease-in-out;
+// }
+
+.sphere_horizontal_3::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    transform: rotate(0deg);
+    background-image: url("/data/line0.svg");
+    background-repeat: no-repeat;
+    animation: fadeIn 0.5s ease-in-out 0.5s;
+}
+
+.sphere_vertical_4 {
+    position: absolute;
+    top: -194px;
+    bottom: 0;
+    transform: rotate(270deg);
+    width: 400px;
+    height: 400px;
+    // background-image: url("/data/line1.svg");
+    background-repeat: no-repeat;
+    // animation: fadeIn 1s ease-in-out;
+}
+// .sphere_vertical_4::before {
+//     content: "";
+//     background-image: url("/data/line2.svg");
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: -194px;
+//     width: 400px;
+//     height: 400px;
+//     transform: rotate(0deg);
+//     background-repeat: no-repeat;
+//     animation: fadeOut 0.5s ease-in-out;
+// }
+
+.sphere_vertical_4::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    transform: rotate(0deg);
+    background-repeat: no-repeat;
+    background-image: url("/data/line1.svg");
+    animation: fadeIn 0.5s ease-in-out 0.5s;
+}
+.sphere_horizontal_4 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -194px;
+    width: 400px;
+    height: 400px;
+    transform: rotate(180deg);
+    // background-image: url("/data/line1.svg");
+    background-repeat: no-repeat;
+    // animation: fadeIn 1s ease-in-out;
+}
+// .sphere_horizontal_4::before {
+//     content: "";
+//     background-image: url("/data/line2.svg");
+//     background-repeat: no-repeat;
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: -194px;
+//     width: 400px;
+//     height: 400px;
+//     transform: rotate(0deg);
+//     animation: fadeOut 0.5s ease-in-out;
+// }
+
+.sphere_horizontal_4::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    transform: rotate(0deg);
+    background-image: url("/data/line1.svg");
+    background-repeat: no-repeat;
+    animation: fadeIn 0.5s ease-in-out 0.5s;
+}
+
+//--------------------------------------
+
+.sphere_vertical_5 {
+    position: absolute;
+    top: -194px;
+    bottom: 0;
+    transform: rotate(270deg);
+    width: 400px;
+    height: 400px;
+    // background-image: url("/data/line0.svg");
+    background-repeat: no-repeat;
+    // animation: fadeIn 1s ease-in-out;
+}
+// .sphere_vertical_5::before {
+//     content: "";
+//     background-image: url("/data/line2.svg");
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: -194px;
+//     width: 400px;
+//     height: 400px;
+//     transform: rotate(0deg);
+//     background-repeat: no-repeat;
+//     animation: fadeOut 0.5s ease-in-out;
+// }
+
+.sphere_vertical_5::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    transform: rotate(0deg);
+    background-repeat: no-repeat;
+    background-image: url("/data/line0.svg");
+    animation: fadeIn 0.5s ease-in-out 0.5s;
+}
+.sphere_horizontal_5 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -194px;
+    width: 400px;
+    height: 400px;
+    transform: rotate(180deg);
+    // background-image: url("/data/line1.svg");
+    background-repeat: no-repeat;
+    // animation: fadeIn 1s ease-in-out;
+}
+// .sphere_horizontal_5::before {
+//     content: "";
+//     background-image: url("/data/line2.svg");
+//     background-repeat: no-repeat;
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: -194px;
+//     width: 400px;
+//     height: 400px;
+//     transform: rotate(0deg);
+//     animation: fadeOut 0.5s ease-in-out;
+// }
+
+.sphere_horizontal_5::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    transform: rotate(0deg);
+    background-image: url("/data/line1.svg");
+    background-repeat: no-repeat;
+    animation: fadeIn 0.5s ease-in-out 0.5s;
+}
+
+//--------------------------------------
+
+.sphere_vertical_6 {
+    position: absolute;
+    top: 194px;
+    bottom: 0;
+    transform: rotate(90deg);
+    width: 400px;
+    height: 400px;
+    // background-image: url("/data/line1.svg");
+    background-repeat: no-repeat;
+    // animation: fadeIn 1s ease-in-out;
+}
+// .sphere_vertical_6::before {
+//     content: "";
+//     background-image: url("/data/line2.svg");
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: -194px;
+//     width: 400px;
+//     height: 400px;
+//     transform: rotate(0deg);
+//     background-repeat: no-repeat;
+//     animation: fadeOut 0.5s ease-in-out;
+// }
+
+.sphere_vertical_6::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    transform: rotate(0deg);
+    background-repeat: no-repeat;
+    background-image: url("/data/line1.svg");
+    animation: fadeIn 0.5s ease-in-out 0.5s;
+}
+.sphere_horizontal_6 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -194px;
+    width: 400px;
+    height: 400px;
+    transform: rotate(180deg);
+    // background-image: url("/data/line1.svg");
+    background-repeat: no-repeat;
+    // animation: fadeIn 1s ease-in-out;
+}
+// .sphere_horizontal_6::before {
+//     content: "";
+//     background-repeat: no-repeat;
+//     background-image: url("/data/line2.svg");
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: -194px;
+//     width: 400px;
+//     height: 400px;
+//     transform: rotate(0deg);
+//     animation: fadeOut 0.5s ease-in-out;
+// }
+
+.sphere_horizontal_6::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    background-repeat: no-repeat;
+    transform: rotate(0deg);
+    background-image: url("/data/line1.svg");
+    animation: fadeIn 0.5s ease-in-out 0.5s;
+}
+//--------------------------------------
+
+.sphere_vertical_7 {
+    position: absolute;
+    top: 194px;
+    bottom: 0;
+    transform: rotate(90deg);
+    width: 400px;
+    height: 400px;
+    // background-image: url("/data/line1.svg");
+    background-repeat: no-repeat;
+    // animation: fadeIn 1s ease-in-out;
+}
+// .sphere_vertical_7::before {
+//     content: "";
+//     background-image: url("/data/line2.svg");
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: -194px;
+//     width: 400px;
+//     height: 400px;
+//     transform: rotate(0deg);
+//     animation: fadeOut 0.5s ease-in-out;
+// }
+
+.sphere_vertical_7::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    transform: rotate(0deg);
+    background-image: url("/data/line1.svg");
+    animation: fadeIn 0.5s ease-in-out 0.5s;
+}
+.sphere_horizontal_7 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -194px;
+    width: 400px;
+    height: 400px;
+    transform: rotate(180deg);
+    // background-image: url("/data/line0.svg");
+    background-repeat: no-repeat;
+    // animation: fadeIn 1s ease-in-out;
+}
+// .sphere_horizontal_7::before {
+//     content: "";
+//     background-image: url("/data/line2.svg");
+//     background-repeat: no-repeat;
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: -194px;
+//     width: 400px;
+//     height: 400px;
+//     transform: rotate(0deg);
+//     animation: fadeOut 0.5s ease-in-out;
+// }
+
+.sphere_horizontal_7::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    transform: rotate(0deg);
+    background-image: url("/data/line0.svg");
+    background-repeat: no-repeat;
+    animation: fadeIn 0.5s ease-in-out 0.5s;
+}
+
+// --------------------8--------------------------
+
+.sphere_vertical_8 {
+    position: absolute;
+    top: 194px;
+    bottom: 0;
+    transform: rotate(90deg);
+    width: 400px;
+    height: 400px;
+    // background-image: url("/data/line2.svg");
+    background-repeat: no-repeat;
+    // animation: fadeIn 1s ease-in-out;
+}
+// .sphere_vertical_8::before {
+//     content: "";
+//     background-image: url("/data/line2.svg");
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: -194px;
+//     width: 400px;
+//     height: 400px;
+//     transform: rotate(0deg);
+//     background-repeat: no-repeat;
+//     animation: fadeOut 0.5s ease-in-out;
+// }
+
+.sphere_vertical_8::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    transform: rotate(0deg);
+    background-image: url("/data/line1.svg");
+    background-repeat: no-repeat;
+    animation: fadeIn 0.5s ease-in-out 0.5s;
+}
+
+.sphere_horizontal_8 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 194px;
+    width: 400px;
+    height: 400px;
+    transform: rotate(0deg);
+    // background-image: url("/data/line1.svg");
+    background-repeat: no-repeat;
+    // animation: fadeIn 1s ease-in-out;
+}
+// .sphere_horizontal_8::before {
+//     content: "";
+//     background-image: url("/data/line2.svg");
+//     background-repeat: no-repeat;
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: -194px;
+//     width: 400px;
+//     height: 400px;
+//     transform: rotate(0deg);
+//     animation: fadeOut 0.5s ease-in-out;
+// }
+
+.sphere_horizontal_8::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    transform: rotate(0deg);
+    background-image: url("/data/line0.svg");
+    background-repeat: no-repeat;
+    animation: fadeIn 0.5s ease-in-out 0.5s;
+}
+
+.button-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.audio-controls,
+.video-controls {
+    margin-bottom: 20px;
+}
+.audio-player,
+.video-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.audio-player,
+.video-player,
+.recorded-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.live-player {
+    height: 200px;
+    width: 400px;
+    border: 1px solid #646cff;
+    margin-bottom: 30px;
+}
+.recorded-player video {
+    height: 400px;
+    width: 800px;
+}

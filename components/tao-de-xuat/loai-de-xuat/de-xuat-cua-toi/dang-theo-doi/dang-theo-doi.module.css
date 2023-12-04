@@ -1,0 +1,24 @@
+.textCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 20px;
+}
+.button{
+    display: flex;
+    background-color: #4c5bd4;
+    align-items: center;
+    justify-content: center;
+}
+.button >span{
+    color: #fff;
+}
+.buttonTable{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.buttonTable >span{
+    color: #4c5bd4;
+}

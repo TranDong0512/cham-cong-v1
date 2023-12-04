@@ -1,0 +1,57 @@
+.modal_add {
+}
+.modal_add_body {
+  margin-left: 4.5%;
+  margin-right: 4.5%;
+  /* max-height: 450px; */
+}
+.modal_add_content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.table_add {
+}
+.time_element {
+  flex: 1;
+}
+.times_month {
+  width: 100%;
+}
+.p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  color: #666666;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+.btn_add_cancer {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 21px;
+  color: #4c5bd4 !important;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #659fe5;
+  cursor: pointer;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 4.5% !important;
+  width: 213px !important;
+}
+.btn_add {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 21px;
+  color: #ffffff !important;
+  background-color: #4c5bd4;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-right: 4.5%;
+  width: 213px !important;
+}

@@ -1,0 +1,47 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  .addBtn {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    border-radius: 15px;
+    background-color: #42d778;
+    padding: 10px 20px;
+  }
+}
+.wifiItem {
+  width: 100%;
+  border-bottom: 1px dashed #666666;
+  padding: 20px 0px;
+
+  .txtUpdate {
+    text-align: end;
+    margin-top: 10px;
+  }
+
+  .infoSection {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.topWarpper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .btnGroup {
+    display: flex;
+    align-items: center;
+
+    .divider {
+      width: 2px;
+      height: 20px;
+      background: #acacac;
+      margin: 0px 10px;
+    }
+  }
+}

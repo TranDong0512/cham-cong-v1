@@ -1,0 +1,38 @@
+.body > div.header {
+  margin-left: -15px !important;
+  margin-right: -15px !important;
+  row-gap: 30px !important;
+}
+
+.header {
+  margin-bottom: 60px;
+}
+@media screen and (max-width: 1024px) {
+  .header {
+    margin-bottom: 50px;
+  }
+  .body > div.header {
+    margin-left: -10px !important;
+    margin-right: -10px !important;
+    row-gap: 20px !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .body .header {
+    margin-bottom: 40px;
+    row-gap: 20px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+@media screen and (max-width: 414px) {
+  .body > div.header {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    row-gap: 20px !important;
+  }
+  .header {
+    margin-bottom: 30px;
+    row-gap: 20px !important;
+  }
+}

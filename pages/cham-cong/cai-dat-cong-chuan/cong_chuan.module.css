@@ -1,0 +1,37 @@
+.buttons {
+  width: 100%;
+  padding: 10px 30px 10px 30px;
+  height: auto;
+  background-color: #4c5bd4;
+  .txt {
+    color: #fff;
+  }
+}
+.buttons:hover {
+  background-color: #fff;
+  .txt {
+    color: #4c5bd4 !important;
+  }
+}
+.buttons:active {
+  background-color: #4c5bd4;
+  .txt {
+    color: rebeccapurple !important;
+  }
+}
+.body {
+  padding: 0 10px 10px 10px;
+}
+@media screen and (max-width: 768px) {
+  .body {
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 414px) {
+  .tieuDe {
+    font-size: 18px !important;
+  }
+  .body {
+    padding: 4px 0;
+  }
+}

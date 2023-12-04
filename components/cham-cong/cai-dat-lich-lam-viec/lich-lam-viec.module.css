@@ -1,0 +1,28 @@
+.ant-card-head {
+  background: #4c5bd4 !important;
+}
+
+.header {
+  padding-top: 29px;
+  padding-bottom: 29px;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.imagin {
+  margin-right: 10px;
+}
+.body {
+  font-size: 16px;
+}
+.bodyCell {
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 414px) {
+  .body {
+    padding: 4px;
+  }
+}

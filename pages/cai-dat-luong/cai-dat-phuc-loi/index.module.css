@@ -1,0 +1,135 @@
+.DropdownDel{
+    color: black;
+}
+.DropdownDel:hover{
+    color: red;
+}
+.Dropdown{
+    color: black;
+}
+.Dropdown:hover{
+    color: #4C5BD4;
+}
+
+@media (min-width: 1366px) {
+    .card{
+      width: 100%;
+    }
+    .tieuDe{
+        width: 100%;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .extraBTn{
+        width: 163px;
+        height: 43px;
+        display: flex;
+        padding: 10px 20px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-radius: 10px;
+        background: #42D778;
+    }
+    .plus{
+        color: #FFF;
+        font-family: Roboto;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        display:flex;
+    }
+    .buttonPlusText{
+        color: #FFF;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 136%;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1365px) {
+    .card{
+      width: 100%;
+    }
+    .tieuDe{
+        width: 100%;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .extraBTn{
+        width: 163px;
+        height: 43px;
+        display: flex;
+        padding: 10px 20px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-radius: 10px;
+        background: #42D778;
+    }
+    .plus{
+        color: #FFF;
+        font-family: Roboto;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        display:flex;
+    }
+    .buttonPlusText{
+        color: #FFF;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 136%;
+    }
+}
+
+@media (max-width: 1023px)  {
+    .card{
+      width: 100%;
+    }
+    .tieuDe{
+        width: 100%;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .extraBTn{
+        width: 163px;
+        height: 43px;
+        display: flex;
+        padding: 10px 20px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-radius: 10px;
+        background: #42D778;
+    }
+    .plus{
+        color: #FFF;
+        font-family: Roboto;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        display:flex;
+    }
+    .buttonPlusText{
+        color: #FFF;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 136%;
+    }
+}

@@ -1,0 +1,488 @@
+.header {
+  display: flex;
+  width: 100%;
+  padding: 15px 20px;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 10px 10px 0px 0px;
+  background: #4c5bd4;
+  .text {
+    color: #fff;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+.bodyItem16 {
+  grid-column: span 4;
+}
+.form {
+  display: flex;
+  padding-bottom: 0px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+
+  border-radius: 10px;
+  background: #fff;
+}
+.body {
+  padding: 0px 20px 25px;
+  grid-gap: 0 20px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(7, auto);
+}
+.ButtonWhite {
+  width: 150px;
+  height: 40px;
+  margin-right: 20px;
+  border: 1px solid #4c5bd4;
+  border-radius: 15px !important;
+}
+.Button {
+  width: 150px;
+  height: 40px;
+  margin-right: 20px;
+  background-color: #4c5bd4;
+  border: 1px solid #fff;
+}
+.footer {
+  margin-top: 30px;
+  gap: 0 !important;
+}
+@media (min-width: 1920px) {
+  .bodyItem1 {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+  .bodyItem2 {
+    grid-column: span 1;
+  }
+  .bodyItem3 {
+    grid-column: span 1;
+  }
+  .bodyItem4 {
+    grid-column: span 4;
+    display: flex;
+    justify-content: flex-start;
+    height: 40px;
+  }
+  .checkboxRow {
+    display: flex;
+    align-items: center;
+  }
+  .bodyItem5 {
+    grid-column: span 2;
+  }
+  .bodyItem6 {
+    grid-column: span 2;
+  }
+  .bodyItem7 {
+    grid-column: span 1;
+  }
+  .bodyItem8 {
+    grid-column: span 1;
+  }
+  .bodyItem9 {
+    grid-column: span 2;
+  }
+  .bodyItem10 {
+    grid-column: span 4;
+    .textArea {
+      min-height: 108px;
+      pad: 10px;
+    }
+  }
+  .bodyItem11 {
+    grid-column: span 2;
+  }
+  .bodyItem12 {
+    grid-column: span 2;
+  }
+  .bodyItem13 {
+    grid-column: span 2;
+  }
+  .bodyItem14 {
+    grid-column: span 2;
+  }
+
+  .bodyItem15 {
+    display: none;
+  }
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .Button {
+    .txt {
+      color: #fff;
+      font-size: 20px;
+    }
+  }
+  .ButtonWhite {
+    .txt {
+      color: #4c5bd4;
+      font-size: 20px;
+    }
+  }
+}
+@media (max-width: 1919px) and (min-width: 1366px) {
+  .bodyItem1 {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+  .bodyItem2 {
+    grid-column: span 1;
+  }
+  .bodyItem3 {
+    grid-column: span 1;
+  }
+  .bodyItem4 {
+    grid-column: span 4;
+    display: flex;
+    justify-content: flex-start;
+    height: 40px;
+  }
+  .checkboxRow {
+    display: flex;
+    align-items: center;
+  }
+  .bodyItem5 {
+    grid-column: span 2;
+  }
+  .bodyItem6 {
+    grid-column: span 2;
+  }
+  .bodyItem7 {
+    grid-column: span 1;
+  }
+  .bodyItem8 {
+    grid-column: span 1;
+  }
+  .bodyItem9 {
+    grid-column: span 2;
+  }
+  .bodyItem10 {
+    grid-column: span 4;
+    .textArea {
+      min-height: 108px;
+      pad: 10px;
+    }
+  }
+  .bodyItem11 {
+    grid-column: span 2;
+  }
+  .bodyItem12 {
+    grid-column: span 2;
+  }
+  .bodyItem13 {
+    grid-column: span 2;
+  }
+  .bodyItem14 {
+    grid-column: span 2;
+  }
+
+  .bodyItem15 {
+    display: none;
+  }
+  .footer {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .Button {
+    .txt {
+      color: #fff;
+      font-size: 20px;
+    }
+  }
+  .ButtonWhite {
+    .txt {
+      color: #4c5bd4;
+      font-size: 20px;
+    }
+  }
+}
+@media (max-width: 1365px) and (min-width: 1024px) {
+  .bodyItem1 {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+  .bodyItem2 {
+    grid-column: span 1;
+  }
+  .bodyItem3 {
+    grid-column: span 1;
+  }
+  .bodyItem4 {
+    grid-column: span 4;
+    display: flex;
+    justify-content: flex-start;
+    height: 40px;
+  }
+  .checkboxRow {
+    display: flex;
+    align-items: center;
+  }
+  .bodyItem5 {
+    grid-column: span 2;
+  }
+  .bodyItem6 {
+    grid-column: span 2;
+  }
+  .bodyItem7 {
+    grid-column: span 1;
+  }
+  .bodyItem8 {
+    grid-column: span 1;
+  }
+  .bodyItem9 {
+    grid-column: span 2;
+  }
+  .bodyItem10 {
+    grid-column: span 4;
+    .textArea {
+      min-height: 108px;
+      pad: 10px;
+    }
+  }
+  .bodyItem11 {
+    grid-column: span 2;
+  }
+  .bodyItem12 {
+    grid-column: span 2;
+  }
+  .bodyItem13 {
+    grid-column: span 2;
+  }
+  .bodyItem14 {
+    grid-column: span 2;
+  }
+
+  .bodyItem15 {
+    display: none;
+  }
+  .footer {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .Button {
+    .txt {
+      color: #fff;
+      font-size: 18px;
+    }
+  }
+  .ButtonWhite {
+    .txt {
+      color: #4c5bd4;
+      font-size: 18px;
+    }
+  }
+}
+@media (max-width: 1023px) and (min-width: 768px) {
+  .bodyItem1 {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+  .bodyItem2 {
+    grid-column: span 2;
+  }
+  .bodyItem3 {
+    grid-column: 1 / span 2;
+  }
+  .bodyItem4 {
+    grid-column: span 4;
+    display: flex;
+    justify-content: flex-start;
+    height: 40px;
+  }
+  .checkboxRow {
+    display: flex;
+    align-items: center;
+  }
+  .bodyItem5 {
+    grid-column: 3 / span 2;
+    grid-row: 2;
+  }
+  .bodyItem6 {
+    grid-column: span 2;
+  }
+  .bodyItem7 {
+    grid-column: span 2;
+  }
+  .bodyItem8 {
+    grid-column: span 2;
+  }
+  .bodyItem9 {
+    grid-column: span 2;
+  }
+  .bodyItem10 {
+    grid-column: span 4;
+    .textArea {
+      min-height: 108px;
+      pad: 10px;
+    }
+  }
+  .bodyItem11 {
+    grid-column: span 2;
+  }
+  .bodyItem12 {
+    grid-column: span 2;
+  }
+  .bodyItem13 {
+    grid-column: span 2;
+  }
+  .bodyItem14 {
+    grid-column: span 2;
+  }
+
+  .bodyItem15 {
+    display: none;
+  }
+  .footer {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .Button {
+    .txt {
+      color: #fff;
+      font-size: 16px;
+    }
+  }
+  .ButtonWhite {
+    .txt {
+      color: #4c5bd4;
+      font-size: 16px;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .header {
+    display: flex;
+    width: 100%;
+    padding: 15px 20px;
+    align-items: center;
+    gap: 10px;
+
+    border-radius: 10px 10px 0px 0px;
+    background: #4c5bd4;
+    .text {
+      color: #fff;
+      font-family: Roboto;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
+  .bodyItem1 {
+    grid-column: 1 / span 4;
+    grid-row: 1;
+  }
+  .bodyItem2 {
+    grid-column: span 4;
+  }
+  .bodyItem3 {
+    grid-column: span 4;
+  }
+  .bodyItem4 {
+    grid-column: span 4;
+    display: flex;
+    justify-content: flex-start;
+    height: 40px;
+  }
+  .checkboxRow {
+    display: flex;
+    align-items: center;
+  }
+  .bodyItem5 {
+    grid-column: span 4;
+  }
+  .bodyItem6 {
+    grid-column: span 4;
+  }
+  .bodyItem7 {
+    grid-column: span 4;
+  }
+  .bodyItem8 {
+    grid-column: span 4;
+  }
+  .bodyItem9 {
+    grid-column: span 4;
+  }
+  .bodyItem10 {
+    grid-column: span 4;
+    .textArea {
+      min-height: 108px;
+      pad: 10px;
+    }
+  }
+  .bodyItem11 {
+    grid-column: span 4;
+  }
+  .bodyItem12 {
+    grid-column: span 4;
+  }
+  .bodyItem13 {
+    grid-column: span 4;
+  }
+  .bodyItem14 {
+    grid-column: span 4;
+  }
+
+  .bodyItem15 {
+    display: none;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .Button {
+    .txt {
+      color: #fff;
+      font-size: 16px;
+    }
+  }
+  .ButtonWhite {
+    .txt {
+      color: #4c5bd4;
+      font-size: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .header {
+    border-radius: 0 !important;
+    padding: 16px;
+  }
+
+  .body {
+    padding: 0 16px 25px;
+    grid-gap: 0;
+  }
+}

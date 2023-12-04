@@ -1,0 +1,36 @@
+.textHeader{
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.textHeaderTop{
+    font-size: 20px;
+    font-weight: bold;
+}
+.buttonTop{
+    width: 100%;
+    background-color: #4C5BD4;
+}
+.buttonTop >span{
+    color: #fff;
+}
+.buttonBottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #34B171;
+}
+.buttonBottom >p{
+    color: #fff;
+}
+.select:hover .selectDrop{
+    transform: rotate(180deg);
+}
+.table{
+    margin-top: 30px;
+}
+@media screen and (max-width:414px) {
+    .textHeaderTop{
+        font-size: 18px;
+    }
+}

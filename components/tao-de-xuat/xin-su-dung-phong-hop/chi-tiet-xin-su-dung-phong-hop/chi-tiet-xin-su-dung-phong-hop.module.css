@@ -1,0 +1,366 @@
+.header1{
+    display: flex;
+    padding: 15px 20px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 10px 10px 0px 0px;
+    background: #4C5BD4;
+    justify-content: space-between;
+}
+.linkheader1{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.textheader1{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.header2{
+    display: flex;
+    padding: 15px 20px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px 10px 0px 0px;
+    background: #4C5BD4;
+}
+.iconheader2{
+    display: flex;
+    align-items: center;
+}
+.textheader2{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.body1{
+    padding: 15px 20px 30px 20px;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 0px 0px 10px 10px;
+    background: #FFF;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-between;
+}
+.title1{
+    display: flex;
+    padding: 10px 0px;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    margin-bottom: 20px;
+}
+.texttitle1{
+    color: #474747;
+    font-family: Roboto;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 136%; /* 29.92px */
+}
+.infodexuat{
+    margin-bottom: 20px;
+}
+.titleinfodexuat{
+    margin-bottom: 20px;
+}
+.texttitleinfodexuat{
+    color: #474747;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 136%; /* 24.48px */
+}
+.textinfo{
+    color: #666;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%; /* 21.76px */
+    margin-bottom: 10px;
+}
+.name{
+    color: #4C5BD4;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%;
+}
+.khungtextinfo{
+    display: flex;
+    gap: 4px;
+}
+.titleinfochung{
+    margin-bottom: 20px;
+}
+.body2{
+    background: #FFF;
+    padding: 15px 20px 20px 20px;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 0 0 10px 10px;
+}
+.the1{
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ACACAC;
+    align-items: center;
+}
+.textthe1{
+    color: #4C5BD4;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%; /* 21.76px */
+}
+.khung{
+    border-bottom: 1px solid #ACACAC;
+    margin-top: 15px;
+}
+.infox{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    padding-bottom: 15px;
+}
+.img{
+    width: 60px;
+    height: 60px;
+}
+.namex{
+    color: #4C5BD4;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 136%; /* 21.76px */
+    margin-bottom: 5px;
+}
+.trangthai{
+    padding: 15px 0;
+}
+.nguoitao{
+    display: flex;
+    gap: 10px;
+    align-items: center !important;
+    padding-top: 10px;
+}
+.iconnguoitao{
+    display: flex;
+    align-items: center;
+}
+.buttonxet{
+    align-items: start;
+    height: 100% !important;
+    margin-top: 20px;
+    justify-content: flex-end;
+}
+.buttonChapThuan{
+    display: flex;
+    height: 44px;
+    padding: 5px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 15px !important;
+    background: #70BE28;
+    border: none;
+    width: 100%;
+}
+.textChapThuan{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 136%; /* 24.48px */
+}
+.buttonTuChoi{
+    display: flex;
+    height: 44px;
+    padding: 5px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 15px !important;
+    background: var(--xoa, #DA302A);
+    margin-top: 20px;
+    width: 100%;
+    border: none;
+}
+.textTuChoi{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 136%; /* 24.48px */
+}
+.buttonXoaDeXuat{
+    display: flex;
+    height: 44px;
+    padding: 5px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 15px !important;
+    background: var(--xoa, #DA302A);
+    margin-top: 20px;
+    width: 100%;
+}
+.textXoaDeXuat{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 136%; /* 24.48px */
+}
+.phanquyen2{
+    display: none;
+}
+.buttonDaChapThuan{
+    display: flex;
+    height: 44px;
+    padding: 5px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 15px;
+    border: 1px solid var(--duyet, #70BE28);
+}
+.textDaChapThuan{
+    color: var(--duyet, #70BE28);
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 136%; /* 24.48px */
+}
+.buttonDaTuChoi{
+    display: flex;
+    height: 44px;
+    padding: 5px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 15px;
+    border: 1px solid var(--xoa, #DA302A);
+    margin-top: 20px;
+    width: 100%;
+}
+.textDaTuChoi{
+    color: var(--xoa, #DA302A);
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 136%; /* 24.48px */
+}
+.buttonXoaDeXuatHetHan{
+    display: flex;
+    height: 44px;
+    padding: 5px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 15px !important;
+    background: var(--xoa, #DA302A);
+    margin-top: 20px;
+    margin-left: auto;
+}
+.buttonDuocDuyet{
+    display: flex;
+    height: 44px;
+    padding: 5px 10px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 15px;
+    border: 1px solid var(--duyet, #70BE28);
+}
+.textDuocDuyet{
+    color: var(--duyet, #70BE28);
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 136%; /* 24.48px */
+}
+@media screen and (max-width: 800px) {
+    .col1{
+        margin-bottom: 40px;
+    }
+}
+@media screen and (max-width:500px) {
+    .textheader1{
+        font-size: 18px;
+    }
+    .textheader2{
+        font-size: 18px;
+    }
+    .texttitle1{
+        font-size: 18px;
+    }
+    .texttitleinfodexuat{
+        font-size: 16px;
+    }
+    .col1{
+        margin-bottom: 30px;
+    }
+    .body{
+        padding: 0 16px;
+    }
+    .phanquyen1{
+        display: none;
+    }
+    .body1{
+        justify-content: flex-start;
+        padding: 15px 16px 30px 16px;
+    }
+    .body2{
+        padding: 15px 16px 20px 16px;
+    }
+    .phanquyen2{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: -30px;
+        margin-right: -25px;
+        margin-bottom: 20px;
+    }
+    .textChapThuan{
+        font-size: 16px;
+    }
+    .textDaChapThuan{
+        font-size: 16px;
+    }
+    .textTuChoi{
+        font-size: 16px;
+    }
+    .textXoaDeXuat{
+        font-size: 16px;
+    }
+    .textDaTuChoi{
+        font-size: 16px;
+    }
+    .textDuocDuyet{
+        font-size: 16px;
+    }
+}

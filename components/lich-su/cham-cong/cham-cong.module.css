@@ -1,0 +1,320 @@
+.khung1 {
+  display: flex;
+  width: 100%;
+  margin-bottom: 30px;
+  align-items: start;
+  justify-content: space-between;
+}
+.nameNV {
+  color: #474747;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 136%; /* 27.2px */
+  margin-bottom: 20px;
+}
+.khungbutton {
+  display: flex;
+  gap: 20px;
+}
+.Button {
+  display: flex;
+  padding: 20px 20px;
+  align-items: center;
+  border-radius: 30px;
+  background: linear-gradient(94deg, #4c5bd4 0%, #4aa7ff 100%);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  border: none;
+  /* 27.2px */
+  height: 47px !important;
+}
+.namebutton {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 136%;
+}
+.khung2 {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+.divxnd {
+  padding: 10px 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  height: 100%;
+}
+.divxtext {
+  display: flex;
+  align-items: center;
+}
+.text1 {
+  color: #4c5bd4;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 136%; /* 21.76px */
+}
+.text2 {
+  color: #68ad23;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 136%; /* 21.76px */
+}
+.text3 {
+  color: #fe6755;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 136%; /* 21.76px */
+}
+.divx {
+  width: calc(100% / 3);
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
+}
+.divxnumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  border-left: 1px dotted #c4c4c4;
+}
+.textdate {
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%; /* 21.76px */
+  color: #474747;
+}
+.textnumber {
+  white-space: nowrap;
+  color: #474747;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 136%; /* 21.76px */
+}
+.icon {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media screen and (max-width: 950px) {
+  .divx {
+    width: 46%;
+  }
+  .khung2 {
+    flex-wrap: wrap;
+  }
+  .namebutton {
+    font-size: 16px;
+  }
+  .nameNV {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 710px) {
+  .divx {
+    width: 100%;
+  }
+  .khung1 {
+    display: block;
+  }
+  .khungbutton {
+    display: block;
+    gap: 10px;
+  }
+  .Button {
+    margin-bottom: 10px;
+  }
+}
+.khungchart::-webkit-scrollbar {
+  width: 13px;
+  height: auto;
+}
+.khungchart {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 0px 0px 10px 10px;
+  border-bottom: 1px solid #c4c4c4;
+  background: #fff;
+  overflow-x: hidden;
+  height: 394px;
+  scrollbar-width: thin;
+  scrollbar-color: #fff #4c5bd4;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
+}
+.khungchart::-webkit-scrollbar-track {
+  background: #fff;
+}
+.khungchart::-webkit-scrollbar-thumb {
+  background-color: #4c5bd4;
+}
+.iconk2 {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 780px) {
+  .khungchart {
+    margin-bottom: 22px;
+  }
+}
+.charts {
+  display: flex;
+  overflow-y: hidden;
+  height: 100%;
+  align-items: center;
+}
+.textchart {
+  flex-shrink: 0;
+  color: #474747;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%; /* 21.76px */
+}
+.khunglist {
+  display: flex;
+  height: 394px;
+  padding: 10px 15px;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  border-radius: 0px 0px 10px 10px;
+  border-bottom: 1px solid #c4c4c4;
+  background: #fff;
+  overflow-y: scroll;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
+}
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 20px 15px 20px;
+  background-color: #4c5bd4;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.2) 5px 5px 15px;
+  gap: 10px;
+}
+.textHead {
+  font-size: 18px;
+  color: #fff;
+}
+.lists {
+  display: block;
+}
+.textname {
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%; /* 21.76px */
+}
+.ca {
+  color: #474747;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%; /* 21.76px */
+}
+.time {
+  color: #474747;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%; /* 21.76px */
+}
+.bar {
+  display: flex;
+  z-index: 1;
+}
+.chartTitle {
+  color: #474747;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%; /* 21.76px */
+}
+@media screen and (max-width: 1100px) {
+  .iconk2 {
+    width: 50px;
+    height: 50px;
+  }
+  .divxnd {
+    gap: 15px;
+    padding: 10px;
+  }
+  .divxnumber {
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .khung2 {
+    gap: 14px;
+  }
+  .divxnd {
+    padding: 15px;
+  }
+  .size768 {
+    margin-right: 0px;
+  }
+  .divxnumber {
+    padding: 15px;
+  }
+  .divx {
+    width: 49%;
+  }
+  .Button {
+    height: 44px !important;
+  }
+}
+@media screen and (max-width: 500px) {
+  .divx {
+    width: 100%;
+  }
+  .size768 {
+    margin-right: 0px;
+    display: flex;
+    gap: 60px;
+  }
+  .divxnd {
+    padding: 0px;
+    margin-right: 60px;
+  }
+  .check414 {
+    padding: 0 16px;
+  }
+  .Button {
+    height: 39px !important;
+  }
+  .nameNV {
+    font-size: 18px;
+  }
+}

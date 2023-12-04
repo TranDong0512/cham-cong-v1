@@ -1,0 +1,135 @@
+.main {
+  border-radius: 10px 10px 0px 0px;
+
+  .title {
+    padding: 20px 0px 0px 20px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 136%;
+  }
+
+  .card {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+    .header {
+      width: 100%;
+      height: auto;
+      background: #4c5bd4;
+      border-radius: 10px 10px 0px 0px;
+
+      .printImg {
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      .contentWrapper {
+        display: flex;
+        padding: 15px 20px;
+
+        .headerTxt {
+          color: #fff;
+          font-size: 20px;
+          font-weight: 600 !important;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  .body {
+    padding: 15px 20px;
+
+    .itemTitle {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 136%;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.approveBtn {
+  display: flex;
+  border-radius: 5px;
+  border: 1px solid #97c25f;
+
+  .txt {
+    color: #97c25f;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 136%;
+    margin-left: 10px;
+  }
+}
+
+.abortBtn {
+  display: flex;
+  border-radius: 5px;
+  border: 1px solid red;
+
+  .txt {
+    color: red;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 136%;
+    margin-left: 10px;
+  }
+}
+
+.confirmBtn {
+  margin-top: 15px;
+  display: flex;
+  border-radius: 5px;
+  background: #97c25f;
+
+  .txt {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 136%;
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cardFirst {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .body {
+    flex-direction: column-reverse !important;
+  }
+
+  .card {
+    border-radius: 0px !important;
+
+    .header {
+      border-radius: 0px !important;
+    }
+  }
+
+  .headerTxt {
+    font-size: 18px !important;
+  }
+
+  .info {
+    margin-top: 20px;
+  }
+
+  .title {
+    font-size: 18px !important;
+  }
+
+  .itemTitle {
+    font-size: 16px !important;
+  }
+
+  .txt {
+    font-size: 16px !important;
+  }
+}

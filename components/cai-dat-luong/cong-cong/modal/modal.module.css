@@ -1,0 +1,170 @@
+.modal {
+  top: 70px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  width: 462px !important;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  padding: 0 !important;
+  border-radius: 10px !important;
+}
+
+.deleteTxt {
+  color: #474747;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%;
+  padding-bottom: 8px;
+  word-spacing: 1px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+  .cancelBtn {
+    height: 34px;
+    border: 1px solid #4c5bd4;
+    border-radius: 10px;
+    width: 130px !important;
+    .txt {
+      color: #4c5bd4;
+      font-family: Roboto;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 136%;
+    }
+  }
+
+  .okBtn {
+    height: 34px;
+    background-color: #4c5bd4;
+    border-radius: 10px !important;
+    margin-left: 20px;
+    margin-inline-start: 20px !important;
+    width: 130px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .txt {
+      color: #fff;
+      font-family: Roboto;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 136%;
+    }
+  }
+}
+
+.modalChecked {
+  top: 70px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  width: 420px !important;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  padding: 0 !important;
+  border-radius: 10px !important;
+}
+
+.footerChecked {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+  .cancelBtn {
+    height: 34px;
+    border: 1px solid #4c5bd4;
+    border-radius: 10px;
+    width: 130px !important;
+    .txt {
+      color: #4c5bd4;
+      font-family: Roboto;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 136%;
+    }
+  }
+
+  .okBtn {
+    height: 34px;
+    background-color: #4c5bd4;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-inline-start: 20px !important;
+    width: 130px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .txt {
+      color: #fff;
+      font-family: Roboto;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 136%;
+    }
+  }
+  .okBtnModalOk {
+    height: 34px;
+    background-color: #4c5bd4;
+    border-radius: 10px !important;
+    width: 64px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .txt {
+      color: #fff;
+      font-family: Roboto;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 136%;
+    }
+  }
+}
+
+.modalTxt {
+  color: #474747;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%;
+}
+
+.nameTxt {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+  .modal {
+    width: 360px !important;
+  }
+  .footer {
+    .cancelBtn {
+      width: 104px !important;
+    }
+    .okBtn {
+      width: 104px !important;
+    }
+  }
+
+  .modalChecked {
+    width: 360px !important;
+  }
+  .footerChecked {
+    .cancelBtn {
+      width: 85px !important;
+    }
+    .okBtn {
+      width: 85px !important;
+    }
+  }
+}

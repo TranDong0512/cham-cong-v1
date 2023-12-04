@@ -1,0 +1,86 @@
+.actionGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .divider {
+    width: 2px;
+    height: 30px;
+    background-color: grey;
+    margin: 0px 10px;
+  }
+}
+
+.headerTxt {
+  color: #fff !important;
+  font-weight: 400 !important;
+  text-align: center;
+}
+.buttonCenter1{
+  display: none;
+}
+.buttonRight2{
+  display: none;
+}
+
+@media screen and (min-width:800px){
+  .button >div >button{
+    width: 100%;
+  }
+} 
+
+@media screen and (max-width:768px) {
+  .buttonCenter1{
+    display: flex;
+  }
+  .buttonCenter2{
+    display: none;
+  }
+  .buttonRight{
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width:414px) {
+  .buttonRight{
+    display: none;
+  }
+  .buttonRight2{
+    display: flex;
+    margin-top: 10px;
+    justify-content: flex-end;
+  }
+  .buttonCenter1{
+    display: none;
+  }
+  .buttonCenter2{
+    padding-top: 10px;
+    display: flex;
+  }
+  .buttonRight{
+    margin-top: 10px;
+  }
+  .buttonLeft{
+    margin-top: 10px;
+    padding-right: 0 !important;
+  }
+  .buttonLeft > div {
+    width: 100%;
+    padding-right: 0 !important;
+  }
+  .buttonLeft >div >div{
+    width: 100%;
+    padding-right: 0 !important;
+  }
+  .buttonLeft >div >div >div{
+    width: 100%;
+  }
+  .buttonLeft >div >div >div >button{
+    width: 100%;
+  }
+  .buttonCenter2{
+    width: 100%;
+  }
+  .buttonCenter2 >button{
+    width: 100%;
+  }
+}

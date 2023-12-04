@@ -1,0 +1,105 @@
+.main {
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: #fff;
+  .header {
+    padding: 20px;
+    display: flex;
+    background-color: #4c5bd4;
+
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    .headerTxt {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: normal;
+
+      margin-left: 10px;
+    }
+  }
+
+  .wrapper {
+    padding: 20px 10px;
+  }
+}
+
+.btnGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+
+  .cancelBtn {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+    border: 1px solid #4c5bd4;
+    border-radius: 15px !important;
+
+    .txt {
+      color: #4c5bd4;
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+
+  .createBtn {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+    border: 1px solid #4c5bd4;
+    border-radius: 15px !important;
+    background: #4c5bd4;
+    .txt {
+      margin: auto;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+}
+
+.input:disabled {
+  background-color: #edf3ff;
+}
+
+@media screen and (max-width: 1024px) {
+  .btnGroup {
+    .cancelBtn {
+      .txt {
+        font-size: 18px;
+      }
+    }
+
+    .createBtn {
+      .txt {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .btnGroup {
+    .cancelBtn {
+      .txt {
+        font-size: 16px;
+      }
+    }
+
+    .createBtn {
+      .txt {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .header {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    padding: 16px !important;
+  }
+}

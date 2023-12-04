@@ -1,0 +1,250 @@
+.popup_edit {
+  display: none;
+  position: fixed;
+  z-index: 300;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  .popup_edit_main {
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    width: 700px;
+    max-height: 95%;
+    padding: 70px 30px 30px 30px;
+    flex-direction: column;
+    align-items: center;
+    // gap: 30px;
+    gap: 16px;
+    border-radius: 4px;
+    background: #fff;
+    .popup_top {
+      display: flex;
+      width: 100%;
+      height: 45px;
+      padding: 10px 10px 10px 30px;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 4px 4px 0px 0px;
+      background: var(--4C5DB4, #4c5bd4);
+
+      .text_top {
+        color: var(--FFFFFF, #fff);
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+      .btn_close {
+      }
+    }
+    .khoi_nhap_wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 8px;
+      align-self: stretch;
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+      overflow-y: scroll;
+    }
+    .khoi_nhap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 8px;
+      align-self: stretch;
+      width: 100%;
+      .label {
+        width: 158px;
+        color: #474747;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+      .khung_two {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        align-self: stretch;
+      }
+      .khung_input {
+        display: flex;
+        height: 46px;
+        padding: 10px 10px 10px 15px;
+        align-items: center;
+        gap: 10px;
+        align-self: stretch;
+        border-radius: 30px;
+        background: #fff;
+        box-shadow: 0px 1px 4px 0px rgba(76, 91, 212, 0.43) inset;
+        input {
+          outline: none;
+          border: none;
+          width: 100%;
+        }
+      }
+      .khung_select {
+        position: relative;
+
+        gap: 10px;
+        align-self: stretch;
+        border-radius: 30px;
+        background: #fff;
+        box-shadow: 0px 1px 4px 0px rgba(76, 91, 212, 0.43) inset;
+        min-height: 46px;
+        padding: 10px 10px 10px 15px;
+        align-items: center;
+        cursor: pointer;
+        .select_single {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          height: 100%;
+          color: #000;
+          font-size: 14px;
+          gap: 4px;
+          .khoi_the {
+            display: flex;
+            align-items: center;
+            align-content: center;
+            gap: 12px;
+            flex: 1 0 0;
+            align-self: stretch;
+            flex-wrap: wrap;
+            .the {
+              height: auto;
+              width: auto;
+              display: flex;
+              white-space: nowrap;
+              padding: 4px 8px;
+              justify-content: center;
+              align-items: center;
+              border-radius: 4px;
+              background: #8b93d2;
+              gap: 4px;
+              .text_input {
+                color: #fff;
+                font-family: Roboto;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+              }
+            }
+          }
+          .icon {
+            margin-left: auto;
+          }
+        }
+
+        .options {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          max-height: 200px;
+          overflow-y: auto;
+          background-color: #fff;
+          border: 1px solid #d9d9d9;
+          border-top: none;
+          border-bottom-left-radius: 2px;
+          border-bottom-right-radius: 2px;
+          z-index: 999;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+          .option {
+            display: flex;
+            align-items: center;
+            height: 32px;
+            padding: 0 8px;
+            color: #000;
+            font-size: 14px;
+            cursor: pointer;
+
+            &:hover {
+              background-color: #f5f5f5;
+            }
+
+            &.selected {
+              background-color: #e6f7ff;
+            }
+          }
+        }
+      }
+    }
+    .group_btn {
+      display: flex;
+      width: 344px;
+      padding-top: 20px;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 22px;
+      .btn_huy {
+        display: flex;
+        height: 44px;
+        padding: 12px 16px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        flex: 1 0 0;
+        border-radius: 30px;
+        background: #ececec;
+        cursor: pointer;
+        .text_huy {
+          color: #474747;
+          font-family: Roboto;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+      .btn_luu {
+        display: flex;
+        height: 44px;
+        padding: 12px 16px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        flex: 1 0 0;
+        border-radius: 30px;
+        background: #4c5bd4;
+        cursor: pointer;
+        .text_luu {
+          color: #fff;
+          font-family: Roboto;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+    }
+  }
+}
+
+.popup_edit_b {
+  display: flex;
+}
+
+@media (max-width: 415px) {
+  .popup_edit_main {
+    width: 382px !important;
+  }
+}

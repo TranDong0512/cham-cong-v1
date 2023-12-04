@@ -1,0 +1,28 @@
+/** @format */
+
+.QLC_item_wrap {
+  display: flex;
+  height: 104px;
+  background-color: #f8f9fe;
+  padding: 24px 0px 24px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  .QLC_item {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    .content {
+      gap: 10px;
+      display: flex;
+      flex-direction: column;
+      .title {
+        font-size: 18px;
+        color: #333;
+      }
+
+      .detail span {
+        margin-left: 5px;
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+.FirstLayout {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 30px;
+  padding-top: 25px;
+}
+.SecondLayout {
+  width: 100%;
+  /* height: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  background: #4c5bd4;
+}
+.SecondLayout > p {
+  color: #fff;
+  font-size: 16px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.FirstLayoutInputBox {
+  width: 100%;
+}
+.BigPlaceHolder {
+  width: 100%;
+  height: 100%;
+  padding-left: 15px;
+
+  border-radius: 6px;
+  border: 1px solid #1565d8;
+  background: #fff;
+  box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
+  display: flex;
+}
+.placeholderInputBox {
+  width: 90%;
+  height: 100%;
+  border: none;
+  outline: none;
+}
+.FirstLayoutInputBox > p {
+  color: #696f79;
+  font-size: 16px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 14px;
+}
+.eye {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

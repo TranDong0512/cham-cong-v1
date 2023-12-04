@@ -1,0 +1,45 @@
+.actionGroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    .divider {
+      width: 2px;
+      height: 30px;
+      background-color: grey;
+      margin: 0px 10px;
+    }
+  }
+.button >button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #42D778;
+    width: 100%;
+}
+.button >button >span{
+    color: #fff;
+}
+.text{
+    font-size: 18px;
+    color: #474747;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.table{
+    margin-top: 30px;
+}
+.button2{
+    display: none;
+}
+@media screen and (max-width:414px) {
+    .button{
+        margin-bottom: 10px;
+    }
+    .button2{
+        display: flex;
+    }
+    .button1{
+        display: none;
+    }
+}

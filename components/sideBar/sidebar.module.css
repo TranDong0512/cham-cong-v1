@@ -1,0 +1,85 @@
+.sidebar {
+  position: fixed;
+  width: 56px;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  background: linear-gradient(
+    89.96deg,
+    #0086da 0.03%,
+    #00a9e9 99.96%,
+    #00a9e9 99.96%
+  );
+}
+
+.ic_box1 {
+  margin-top: 40px;
+}
+.ic_box2 {
+  margin-top: 50px;
+}
+
+.button1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 10px;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(
+    89.96deg,
+    #0086da 0.03%,
+    #00a9e9 99.96%,
+    #00a9e9 99.96%
+  );
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  border: none;
+}
+
+.button1:hover {
+  background: rgba(255, 255, 255, 0.4) !important;
+}
+
+.button1 img {
+  z-index: 1;
+}
+
+.img_1 {
+  width: 20px;
+  height: 20px;
+}
+
+.clicked {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .sidebar {
+    height: 100vh; /* Chiếm toàn bộ chiều cao của màn hình */
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .ic_box1 {
+    margin-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start; /* Chỉnh sửa align-items thành flex-start để .ic_box1 và .ic_box2 sát nhau theo chiều cao */
+  }
+
+  .button1 {
+    margin: 10px;
+    width: 56px;
+    height: 56px;
+  }
+}

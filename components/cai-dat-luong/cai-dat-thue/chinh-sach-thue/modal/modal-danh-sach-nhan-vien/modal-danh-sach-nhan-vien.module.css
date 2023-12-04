@@ -1,0 +1,65 @@
+.modal{
+    padding: 20px;
+}
+.khungtitle1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.checkbutton2{
+    display: none;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 0;
+
+}
+
+.title{
+    color: #474747;
+    font-family: Roboto;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 136%; /* 29.92px */
+}
+.noidungtitle{
+    color: #B2B2B2;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 136%; /* 24.48px */
+}
+.button{
+    display: flex;
+    padding: 8px 20px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 15px;
+    background: #4C5BD4;
+    border: none;
+}
+.dau{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.namebutton{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+@media screen and (max-width: 570px){
+    .checkbutton2{
+        display: flex;
+    }
+    .checkbutton1{
+        display: none;
+    }
+}

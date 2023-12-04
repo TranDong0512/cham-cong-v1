@@ -1,0 +1,7 @@
+.status{
+    display: flex;
+    align-items: center;
+}
+.statusText{
+    margin-left: 10px;
+}

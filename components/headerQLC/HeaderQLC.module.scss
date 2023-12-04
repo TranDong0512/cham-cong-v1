@@ -1,0 +1,196 @@
+/** @format */
+
+.HeaderQLC {
+   display: flex;
+   padding: 0 20px;
+   justify-content: space-between;
+   align-items: center;
+   border-radius: 10px;
+   background: #fff;
+   box-shadow: 0px 0px 20px 0px rgba(55, 63, 255, 0.1);
+   .hambuger_close {
+      display: none;
+   }
+   .logo {
+      display: none;
+   }
+   .left {
+      padding: 16px 0;
+      .title {
+         span {
+            color: #25252a;
+            font-family: Roboto;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 20px; /* 133.333% */
+         }
+         .curent_page {
+            color: #4c5bd4;
+         }
+      }
+      .search_input {
+         display: none;
+      }
+   }
+   .right {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 21px;
+      .gioithieu,
+      .huongdan,
+      .tintuc {
+         cursor: pointer;
+         padding: 16px 0;
+
+         span {
+            color: #68798b;
+            text-align: center;
+            font-family: Roboto;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 20px; /* 133.333% */
+         }
+      }
+      .log {
+         padding: 16px 0;
+
+         .register {
+            cursor: pointer;
+            padding: 10px 16px;
+            border-radius: 6px;
+            background: #ff9052;
+            font-family: Roboto;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            color: #fff;
+            margin-right: 10px;
+         }
+         .login {
+            cursor: pointer;
+            padding: 10px 16px;
+            border-radius: 6px;
+            background: #4c5bd4;
+            font-family: Roboto;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            color: #fff;
+         }
+         .noty_user {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .notify {
+               position: relative;
+               cursor: pointer;
+               .img_noti_fill {
+                  display: none;
+               }
+               span {
+                  width: 17;
+                  height: 17px;
+                  position: absolute;
+                  background-color: #f46a6a;
+                  border-radius: 50%;
+                  padding: 5px;
+                  color: #fff;
+                  display: flex;
+                  align-items: center;
+                  font-size: 10px;
+                  right: -3px;
+                  top: -6px;
+               }
+            }
+            .user {
+               display: flex;
+               align-items: center;
+               gap: 10px;
+               cursor: pointer;
+               position: relative;
+               .img_user {
+                  display: flex;
+                  align-items: center;
+                  gap: 5px;
+                  .avt_img_tk {
+                     border-radius: 50%;
+                     width: 32px;
+                     height: 32px;
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+@media screen and (max-width: 1024px) {
+   .HeaderQLC {
+      position: fixed;
+      height: 74px;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #4d5cd4;
+      border-radius: 0;
+      z-index: 1000;
+      gap: 50px;
+      .left {
+         display: none;
+      }
+      .gioithieu,
+      .huongdan,
+      .tintuc {
+         display: none;
+      }
+
+      .hambuger_close {
+         display: block;
+         cursor: pointer;
+         img {
+            width: 32px;
+            height: 23px;
+         }
+      }
+      .logo {
+         display: block;
+      }
+      .noty_user {
+         .notify {
+            .img_noti {
+               display: none;
+            }
+            .img_noti_fill {
+               display: block !important;
+            }
+         }
+      }
+      .register_login {
+         display: none;
+      }
+      .user {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         cursor: pointer;
+         position: relative;
+         top: -2px;
+         .img_user {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            span {
+               display: none;
+            }
+         }
+         .arrow {
+            display: none;
+         }
+      }
+   }
+}

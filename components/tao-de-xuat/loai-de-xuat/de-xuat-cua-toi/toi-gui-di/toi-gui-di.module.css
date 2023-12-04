@@ -1,0 +1,40 @@
+.textCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 20px;
+}
+.button{
+    display: flex;
+    background-color: #4c5bd4;
+    align-items: center;
+    justify-content: center;
+}
+.button >span{
+    color: #fff;
+}
+.filter{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.table >p{
+    border-radius: 10px;
+}
+.table >div >div >div >div >div{
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+.table >div >div >div >div >div table >tbody >tr:last-child{
+    border-radius: 10px;
+    border-bottom:none ; 
+}
+@media screen and (max-width:414px) {
+    .textCenter{
+        font-size: 18px;
+    }
+    .searchFormToiGuiDi .filter {
+        row-gap: 20px !important;
+    }
+}

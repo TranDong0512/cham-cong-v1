@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 15px 20px;
+  background-color: #4c5bd4;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.textHead {
+  font-size: 18px;
+  color: #fff;
+}
+.body {
+  padding: 0 20px 20px 20px;
+}
+
+.bodyItem {
+  margin-top: 20px;
+}
+.hasButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  .button {
+    background-color: #4c5bd4;
+    padding: 10px 30px 10px 30px;
+    height: auto;
+    .txt {
+      color: white;
+    }
+  }
+}
+.scrollbar {
+  height: 500px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

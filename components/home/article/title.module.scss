@@ -1,0 +1,16 @@
+.title {
+    display: flex;
+    justify-content: center;
+    h2 {
+        margin-top: 16px;
+        margin-bottom: 16px;
+        color: #1f1f1f;
+        text-align: justify;
+        font-family: Roboto;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%; /* 27px */
+        text-transform: uppercase;
+    }
+}

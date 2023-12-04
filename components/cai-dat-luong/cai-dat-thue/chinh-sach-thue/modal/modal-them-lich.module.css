@@ -1,0 +1,86 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 15px 20px;
+  background-color: #4c5bd4;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.textHead {
+  font-size: 20px;
+  color: #fff;
+}
+.body {
+  font-size: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.bodyItem {
+  margin-bottom: 20px;
+}
+.inputMota {
+  border-radius: 5px;
+  border: 1px solid #9f9f9f;
+  background: #fff;
+}
+.Tlap {
+  display: flex;
+  padding: 10px 5px;
+  align-items: flex-start;
+  gap: 5px;
+  align-self: stretch;
+}
+.TLtext {
+  color: #4c5bd4;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 136%;
+}
+.Luu {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 136%;
+  padding: 5px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: #4c5bd4;
+  border: none;
+}
+.titlename {
+  color: #474747;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%; /* 21.76px */
+}
+.titledau {
+  color: #ff5b4d;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%;
+}
+@media screen and (max-width: 450px) {
+  .textHead {
+    font-size: 18px;
+  }
+  .TLtext {
+    font-size: 16px;
+  }
+  .iconTL {
+    width: 13px;
+    height: 8px;
+    padding: 0px;
+  }
+}

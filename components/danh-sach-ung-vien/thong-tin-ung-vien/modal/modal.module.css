@@ -1,0 +1,23 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px !important;
+  border: 1px solid #4c5bd4;
+}
+
+.datePicker {
+  width: 100%;
+
+  border: 1px solid #acacac;
+}
+
+.input {
+  width: 300px;
+}
+
+@media screen and (max-width: 414px) {
+  .input {
+    width: 100% !important;
+  }
+}

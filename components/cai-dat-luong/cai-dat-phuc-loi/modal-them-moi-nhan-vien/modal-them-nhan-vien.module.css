@@ -1,0 +1,143 @@
+.textCheckbox {
+  font-size: 18px;
+  color: #4c5bd4;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%;
+}
+
+.checkboxDiv {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.scrollList {
+  height: 200px;
+  overflow: auto;
+}
+
+@media (min-width: 767px) {
+  .modalClass {
+    width: 600px;
+  }
+  .header {
+    display: flex;
+    padding: 16px 20px 15px 16px;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    background-color: #4c5bd4;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  .textHead {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  .crossImage {
+    position: absolute;
+    right: 20px;
+  }
+
+  .body {
+    font-size: 16px;
+    padding: 20px;
+  }
+  .bodyItem {
+    margin-bottom: 20px;
+  }
+  .Button {
+    padding: 5px 50px 5px 50px;
+    border-radius: 10px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4c5bd4;
+    height: 35px;
+    width: 130px;
+    .txt {
+      color: #fff;
+      font-size: 18px;
+    }
+    border-radius: 10px;
+  }
+  .hasButton {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  .ButtonWhite {
+    padding: 5px 50px 5px 50px;
+    margin-top: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    height: 35px;
+    width: 130px;
+    border: 1px solid #4c5bd4;
+    border-radius: 10px;
+  }
+}
+@media (max-width: 767px) {
+  .modalClass {
+    width: 374px !important;
+  }
+  .header {
+    display: flex;
+    padding: 17px 0px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4c5bd4;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .crossImage {
+    position: absolute;
+    right: 20px;
+  }
+  .textHead {
+    font-size: 18px;
+    color: #fff;
+    flex: 1;
+    text-align: center;
+  }
+  .body {
+    font-size: 16px;
+    padding: 20px;
+  }
+  .bodyItem {
+    margin-bottom: 20px;
+  }
+  .Button {
+    padding: 5px 50px 5px 50px;
+    border-radius: 10px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4c5bd4;
+    height: 35px;
+    width: 130px;
+    .txt {
+      color: #fff;
+      font-size: 18px;
+    }
+  }
+  .hasButton {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  .ButtonWhite {
+    padding: 5px 50px 5px 50px;
+    margin-top: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    height: 35px;
+    width: 130px;
+    border: 1px solid #4c5bd4;
+    border-radius: 10px;
+  }
+}

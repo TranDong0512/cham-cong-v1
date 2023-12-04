@@ -1,0 +1,277 @@
+.dd_flex {
+  display: flex;
+}
+
+.content_c {
+  justify-content: center;
+}
+
+.display_none {
+  display: none;
+}
+
+.font_s15 {
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.font_w500 {
+  font-weight: 500px;
+}
+
+.btn_d {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.btn_dd {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  float: right;
+}
+
+.text_a_c {
+  text-align: center;
+}
+
+.m_r10 {
+  margin-right: 10px;
+}
+
+.m_r15 {
+  margin-right: 15px;
+}
+
+.btn_168 {
+  width: 168px;
+  height: 36px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.btn_140 {
+  width: 140px;
+  height: 36px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.btn_trang {
+  background: white;
+  border: 1px solid #4c5bd4;
+  color: #4c5bd4;
+}
+
+.btn_138 {
+  width: 138px;
+  height: 36px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.btn_xanh {
+  background: #4c5bd4;
+  border: none;
+  color: white;
+}
+
+.main_tt_taikhoan_bang .btn_168:first-child {
+  margin-right: 68px;
+}
+
+.btn_168:first-child {
+  margin-right: 25px;
+}
+
+.d_title {
+  font-weight: 500;
+  color: #474747;
+}
+
+.font_18 {
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.font_16 {
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.font_20 {
+  font-size: 20px;
+  line-height: 23px;
+}
+
+.color_gray {
+  color: #474747;
+}
+
+.font_15px {
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.edit_tt_matkhau .see_log::after {
+  top: 33px;
+}
+
+.position_r {
+  position: relative;
+}
+
+.position_a {
+  position: absolute;
+}
+
+.img_avt,
+.img_mayanh {
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+/* end dùng chung */
+
+.main_tt .container_taikhoan {
+  padding: 40px 0px 278px 40px;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.main_tt .avt_taikhoan {
+  margin-right: 68px;
+  width: 200px;
+}
+
+.main_tt .avt_taikhoan .img_avt {
+  width: 186px;
+  height: 186px;
+}
+
+.main_tt .avt_taikhoan .img_mayanh {
+  width: 32px;
+  height: 32px;
+  top: 150px;
+  left: 133px;
+}
+
+.main_tt .avt_taikhoan .id {
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #4c5bd4;
+  margin-top: 15px;
+}
+
+.main_tt .info_taikhoan {
+  width: 84%;
+}
+
+.main_tt .info_taikhoan .content {
+  margin-bottom: 10px;
+  color: #474747;
+  align-items: unset;
+}
+
+.main_tt .info_taikhoan .content span:first-child {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 15px;
+  width: 158px;
+}
+
+.main_tt .info_taikhoan .content span:last-child {
+  font-size: 16px;
+  line-height: 16px;
+  width: calc(100% - 158px);
+}
+
+#tt_khoan .main_tt .info_taikhoan .content span:first-child {
+  width: 108px;
+}
+
+#tt_khoan .main_tt .info_taikhoan .content span:last-child {
+  width: calc(100% - 108px);
+  padding-right: 17px;
+}
+
+.main_tt .info_taikhoan .container_btn {
+  margin-top: 21px;
+}
+
+.main_tt_taikhoan_ct .taikhoan {
+  width: 100%;
+  display: flex;
+}
+
+.main_tt .info_taikhoan .cont .d_title {
+  margin-bottom: 6px;
+}
+
+.main_tt_taikhoan_bang form {
+  background: #ffffff;
+  box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.d_form_item.content_c {
+  display: flex;
+}
+
+.main_tt_taikhoan_bang .form_container {
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.main_tt_taikhoan_bang .form_container .form-group {
+  width: 49%;
+}
+
+.taikhoan_search {
+  display: none;
+  width: 50%;
+  margin-bottom: 15px;
+}
+
+.input_search {
+  width: 100%;
+  padding: 10px 40px 10px 16px;
+  font-size: 16px;
+  line-height: 16px;
+  color: #666666;
+  background: #ffffff;
+  border: 1px solid #666666;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.see_search {
+  position: relative;
+}
+
+.see_search::before {
+  content: '';
+  position: absolute;
+  background: url(../img/see_search.png);
+  top: 1px;
+  right: 10px;
+}

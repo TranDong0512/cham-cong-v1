@@ -1,0 +1,53 @@
+.list{
+    display: flex;
+    height: 150px;
+    overflow-x: hidden;
+}
+.the{
+    display: flex;
+    gap: 10px;
+}
+.info{
+    padding: 0 10px;
+}
+.checkbox{
+    color: #4C5BD4;
+}
+.name{
+    color: #4C5BD4;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%; /* 24.48px */
+}
+.id{
+    color: #474747;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%; /* 21.76px */
+}
+.khungbutton{
+    display: flex;
+    justify-content: center;
+}
+.button{
+    display: flex;
+    padding: 5px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #4C5BD4;
+}
+.textbutton{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 136%; /* 24.48px */
+}

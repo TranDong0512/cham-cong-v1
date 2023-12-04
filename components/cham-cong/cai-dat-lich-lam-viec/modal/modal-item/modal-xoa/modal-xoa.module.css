@@ -1,0 +1,7 @@
+
+@media screen and (max-width:600px) {
+    .widthModal{
+        width: 320px !important;
+    }
+}
+

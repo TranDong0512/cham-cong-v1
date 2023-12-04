@@ -1,0 +1,72 @@
+    .DropdownDel{
+    color: black;
+    }
+    .DropdownDel:hover{
+    color: red;
+    }
+    .Dropdown{
+    color: black;
+    }
+    .Dropdown:hover{
+    color: #4C5BD4;
+    }
+    .bodyItem{
+    margin-bottom: 20px;
+    }
+  
+    @media (min-width: 1366px) {
+        .crossImage{
+            position: absolute;
+            right: -20px;
+        }
+        .body{
+            font-size: 16px;
+            padding: 30px 20px 20px 20px;
+        }
+        .titleList{
+            font-size: 22px;
+        }
+    }
+    @media (min-width: 1024px) and (max-width: 1365px) {
+        .crossImage{
+            position: absolute;
+            right: 0px;
+            top: -25px;
+        }
+        .body{
+            font-size: 16px;
+            padding: 30px 20px 0px 20px;
+        }
+        .titleList{
+            font-size: 22px;
+        }
+    }
+  
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .crossImage{
+            position: absolute;
+            right: 0px;
+            top: -25px;
+        }
+        .body{
+            font-size: 16px;
+            padding: 30px 20px 0px 20px;
+        }
+        .titleList{
+            font-size: 20px;
+        }
+    }
+    @media (max-width: 767px) {
+        .crossImage{
+            position: absolute;
+            right: 0px;
+            top: -25px;
+        }
+        .body{
+            font-size: 16px;
+            padding: 30px 20px 0px 20px;
+        }
+        .titleList{
+            font-size: 18px;
+        }
+    }

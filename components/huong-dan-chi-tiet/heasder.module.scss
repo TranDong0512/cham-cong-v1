@@ -1,0 +1,26 @@
+.linkHeader {
+    padding-bottom: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-bottom: 2px solid #fff;
+}
+.MenuHeader {
+    display: none;
+}
+.Logo {
+    display: flex;
+}
+.LogoHeader {
+    display: block;
+}
+@media (max-width: 1023px) {
+    .MenuHeader {
+        display: block;
+    }
+    .LogoHeader {
+        display: none;
+    }
+    .Logo {
+        display: none;
+    }
+}

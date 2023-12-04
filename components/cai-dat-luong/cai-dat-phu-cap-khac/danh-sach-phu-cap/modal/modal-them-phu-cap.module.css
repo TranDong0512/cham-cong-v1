@@ -1,0 +1,107 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 15px 20px;
+  background-color: #4c5bd4;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.textHead {
+  font-size: 20px;
+  color: #fff;
+}
+.body {
+  font-size: 16px;
+  padding: 20px;
+}
+.bodyItem {
+  margin-bottom: 20px;
+}
+.date {
+  margin-bottom: 20px;
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+.date1 {
+  margin-right: 10px;
+  flex: 1;
+}
+.date2 {
+  margin-left: 10px;
+  flex: 1;
+}
+.inputname {
+  display: flex;
+  padding: 10px;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+}
+.loai {
+  display: flex;
+  padding: 10px;
+  align-items: flex-start;
+  align-self: stretch;
+  border-radius: 5px;
+  border: 1px solid #9f9f9f;
+}
+.khungbutton {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.huyb {
+  display: flex;
+  width: 109px;
+  padding: 5px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px !important;
+  border: 1px solid #4c5bd4;
+  background: #fff;
+}
+.texthuyb {
+  color: #4c5bd4;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 136%; /* 24.48px */
+}
+.luu {
+  display: flex;
+  padding: 5px 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px !important;
+  background: #4c5bd4;
+  border: none;
+}
+.textluu {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+@media screen and (max-width: 510px) {
+  .date {
+    display: block;
+  }
+  .date1 {
+    width: 100%;
+    margin-right: 0;
+  }
+  .date2 {
+    width: 100%;
+    margin-left: 0;
+  }
+  .textHead {
+    font-size: 18px;
+  }
+}

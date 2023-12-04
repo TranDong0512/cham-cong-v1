@@ -1,0 +1,9 @@
+@media screen and (max-width: 768px) {
+  .extraBTn {
+    display: none;
+  }
+}
+
+.tabTxt {
+  font-size: 20px;
+}

@@ -1,0 +1,13 @@
+.headerTxt {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 414px) {
+  .headerTxt {
+    padding: 0px;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+}

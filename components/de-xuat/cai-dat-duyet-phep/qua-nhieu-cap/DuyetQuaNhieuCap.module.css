@@ -1,0 +1,15 @@
+.firstText {
+  font-size: 18px;
+}
+.row > td {
+  border: solid 1px lightgrey !important;
+  background-color: #fff !important;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.headerTxt {
+  color: #4c5bd4;
+}

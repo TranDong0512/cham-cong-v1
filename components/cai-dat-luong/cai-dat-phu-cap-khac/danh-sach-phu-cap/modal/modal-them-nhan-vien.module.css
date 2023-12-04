@@ -1,0 +1,119 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 15px 20px;
+  background-color: #4c5bd4;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.textHead {
+  font-size: 20px;
+  color: #fff;
+}
+.body {
+  padding: 20px;
+}
+.nameCT {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  margin-bottom: 20px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #9f9f9f;
+}
+@media screen and (max-width: 480px) {
+  .textHead {
+    font-size: 18px;
+  }
+}
+.tatca {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  padding: 5px 0;
+  border-bottom: 1px dotted #9f9f9f;
+}
+.texttatca {
+  color: #4c5bd4;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%; /* 24.48px */
+}
+.name {
+  color: #4c5bd4;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%; /* 24.48px */
+}
+.id {
+  color: #474747;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%; /* 21.76px */
+}
+.list {
+  height: 220px;
+  overflow-x: hidden;
+  border: 1px solid #9f9f9f;
+  margin-bottom: 20px;
+}
+.the {
+  margin-left: 10px;
+  display: flex;
+  gap: 10px;
+}
+.info {
+  padding: 0 10px;
+}
+.checkbox {
+  color: #4c5bd4;
+}
+.text {
+  color: #474747;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%; /* 21.76px */
+}
+.dau {
+  color: #ff5b4d;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%;
+}
+.khungbutton {
+  display: flex;
+  justify-content: center;
+}
+.button {
+  display: flex;
+  padding: 5px 20px !important;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px !important;
+  background: #4c5bd4;
+  border: none;
+}
+.textbutton {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 136%; /* 24.48px */
+}

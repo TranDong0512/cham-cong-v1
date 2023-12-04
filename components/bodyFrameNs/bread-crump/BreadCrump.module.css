@@ -1,0 +1,19 @@
+.backButton {
+  display: flex;
+  padding: 20px;
+  cursor: pointer;
+  width: 200px;
+  align-items: center;
+  .backTxt {
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .backButton {
+    padding: 16px;
+    .backTxt {
+      margin-left: 10px;
+    }
+  }
+}

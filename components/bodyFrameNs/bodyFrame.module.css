@@ -1,0 +1,139 @@
+.main,
+.noPaddingForm {
+  padding-right: 210px;
+  padding-left: 210px;
+
+  /* margin-top: 80px; */
+}
+.main > div.moreSection {
+  margin-left: -10px !important;
+  margin-right: -10px !important;
+  row-gap: 20px !important;
+}
+.breadcrumb {
+  padding-left: 145px;
+  margin-bottom: 30px;
+}
+
+.breadcrumbUpdateFace {
+  /* margin-bottom: 30px; */
+  display: none !important;
+}
+
+.btnWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .moreBtn {
+    border-radius: 20px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to right, #4c5bd4, #1184c0);
+
+    .text {
+      color: #fff;
+    }
+  }
+}
+
+/* responsive */
+@media screen and (max-width: 1920px) {
+  .moreSection {
+    margin-bottom: 60px;
+    margin-top: 60px;
+  }
+}
+@media screen and (max-width: 1669px) {
+  .main,
+  .noPaddingForm {
+    padding-right: 100px;
+    padding-left: 100px;
+  }
+}
+
+/* 1366px */
+@media screen and (max-width: 1367px) {
+  .main,
+  .noPaddingForm {
+    padding-right: 83px;
+    padding-left: 83px;
+  }
+
+  .breadcrumb {
+    padding-left: 83px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main,
+  .noPaddingForm {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  .moreSection {
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }
+  .breadcrumb {
+    padding-left: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main,
+  .noPaddingForm {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .idxSection {
+    max-height: 470px !important;
+    overflow-x: scroll;
+    /* margin: auto !important; */
+  }
+  .moreSection {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  .breadcrumb {
+    padding-left: 24px;
+  }
+  .btnWrapper {
+    .moreBtn {
+      margin-top: 20px;
+    }
+  }
+  .cardArticleSection > div {
+    padding: 10px !important;
+  }
+}
+
+@media screen and (max-width: 444px) {
+  .main {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+  .moreSection {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .breadcrumb {
+    padding-left: 16px;
+    margin-bottom: 20px;
+  }
+  .btnWrapper {
+    .moreBtn {
+      margin-top: 20px;
+    }
+  }
+  .cardArticleSection > div {
+    padding: 20px 16px 16px 16px !important;
+  }
+  .noPaddingForm {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}

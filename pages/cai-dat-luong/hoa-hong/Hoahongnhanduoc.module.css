@@ -1,0 +1,131 @@
+.name {
+   color: #4c5bd4;
+}
+.information {
+   width: 95%;
+   margin-left: 20px;
+}
+.content {
+   width: 100%;
+   float: left;
+   background: #ffffff;
+   box-shadow: 0px 0px 20px rgba(55, 63, 255, 0.1);
+   border-radius: 10px;
+   float: left;
+   margin-top: 20px;
+   margin-bottom: 15px;
+}
+.container {
+   width: 100%;
+}
+.h3 {
+   width: 100%;
+   float: left;
+   font-weight: bold;
+   font-size: 24px;
+   line-height: 28px;
+   color: #2e3467;
+   padding-bottom: 5px;
+   padding-top: 15px;
+}
+
+.select_time {
+   display: flex;
+   width: 97.5%;
+   gap: 20px;
+   justify-content: flex-end;
+   padding-bottom: 40px;
+   flex-wrap: wrap;
+}
+.select_p {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+.button {
+   padding: 7px 20px;
+   background: #4c5bd4;
+   color: #fff;
+   height: 40px;
+   cursor: pointer;
+   border: 1px solid #ebebeb;
+   border-radius: 10px;
+}
+.current {
+   background: #edeffb;
+   text-align: left;
+   padding: 15px 30px;
+   font-weight: 500;
+   width: 100%;
+}
+.export {
+   float: left;
+   font-weight: 500;
+   font-size: 15px;
+   line-height: 16px;
+   color: #ffffff;
+   padding: 10px 40px 10px 40px;
+   margin-bottom: 50px;
+   background: #4c5bd4;
+   border-radius: 5px;
+   border: none;
+   margin-top: 30px;
+}
+.pagination_style {
+   text-align: center;
+   margin: auto;
+}
+.search-icon {
+   position: absolute;
+   width: 10px;
+   height: 10px;
+}
+.tr_style:hover {
+   background: #edeffb;
+}
+.p_style {
+   color: #68798b;
+   font-size: 15px;
+   line-height: 18px;
+   padding-bottom: 10px;
+}
+.video {
+   text-align: center;
+}
+
+.content_bot {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   width: 100%;
+}
+.table_add {
+}
+.table_content {
+   width: 95%;
+   margin: auto;
+}
+@media (max-width: 650px) {
+   .select_time {
+      display: flex;
+      width: 97.5%;
+      gap: 20px;
+      justify-content: flex-end;
+      padding-bottom: 40px;
+      flex-wrap: wrap;
+   }
+}
+@media (max-width: 500px) {
+   .select_time {
+      display: flex;
+      width: 97.5%;
+      gap: 20px;
+      justify-content: space-around;
+      padding-bottom: 40px;
+      flex-wrap: wrap;
+   }
+   .h3,
+   .p_style {
+      text-align: center;
+   }
+}

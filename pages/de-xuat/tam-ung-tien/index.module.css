@@ -1,0 +1,37 @@
+.headerTxt {
+  color: #474747;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.table {
+  margin-top: 30px;
+}
+
+.row > td {
+  border: solid 1px lightgrey !important;
+  background-color: #fff !important;
+}
+
+.colHeader {
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .col1 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .col2 {
+    margin-bottom: 20px;
+  }
+
+  .table {
+    margin-top: 10px;
+  }
+}

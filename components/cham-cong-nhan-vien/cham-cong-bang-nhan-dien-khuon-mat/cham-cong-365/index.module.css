@@ -1,0 +1,1280 @@
+.main{
+    background: url("/vitri-bg-2.png") 0 60px no-repeat,url("/vitri-bg.png") no-repeat;
+    background-size: contain,cover;
+}
+.back >div{
+    align-items: center;
+}
+.back >div >p{
+    font-size: 20px;
+}
+.title{
+    display: flex;
+    justify-content: center;
+}
+.title >p{
+    font-size: 35px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.bodyRight{
+    width: 100%;
+    margin-left: 40px;
+    padding-right: 10px;
+}
+.bodyHeader{
+    display: flex;
+    align-items: center;
+}
+.textBodyHeaderLeft{
+    font-family: "Salsa";
+    font-size: 30px;
+    height: 44px;
+    width: 44px;
+    border-radius: 22px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.stepTick{
+    display: flex;
+    align-items: center;
+}
+
+
+@media( min-width: 1920px ) {
+    .body{
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+
+        padding-bottom: 85px;
+    }
+
+    .bodyItem1{
+        display: flex;
+        width: 420px;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+
+        .txt{
+            color: #FFF;
+            text-align: center;
+            font-family: Roboto;
+            font-size: 25px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 136%;
+            text-transform: uppercase;
+        }
+    }
+
+    .bodyItem2{
+        display: flex;
+        width: 363px;
+        height: 720px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .bodyItem3{
+        position: relative;
+        display: flex;
+        width: 605px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+
+    }
+
+    .textBodyHeaderRight{
+        color: #FFF;
+        font-family: Roboto;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 136%; /* 34px */
+        text-transform: uppercase;
+    }
+
+    .bodySteps{
+        margin-top: 10px;
+    }
+
+    .step{
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .stepFront{
+        margin-left: 18px;
+        font-family: Salsa;
+        font-size: 22px;
+        color: #fff;
+        white-space:nowrap;
+        display: flex;
+        align-items: center;
+    }
+
+    .stepAfter{
+        margin-left: 10px;
+
+        color: #FFF;
+        text-align: justify;
+        font-family: Roboto;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        display: flex;
+        align-items: center ;
+    }
+
+    .breadcrumb{
+        padding-top: 40px;
+        padding-left: 190px;
+        padding-bottom: 60px;
+        .txt{
+            font-size: 16px !important;
+        }
+    }
+    .img{
+        height: 720px;
+        width: 363px;
+    }
+
+    .buttonContinue{
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+
+        height: 25px;
+        width: 151px;
+        top: 100%;
+        left: 100%;
+
+        .txt{
+            color: #FFF;
+            font-family: Roboto;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .buttonGroup{
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        padding-bottom: 60px;
+    }
+
+    .activeButton{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 40px !important;
+        background: #FFC460;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+        width: 320px;
+        height: 58px;
+        padding: 5px 25px;
+        .txt{
+            color: #FFF;
+            font-family: Roboto;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .buttonTabs{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 40px !important;
+        background: #FFF;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+        width: 320px;
+        height: 58px;
+        padding: 5px 25px;
+        .txt{
+            color: #4C5BD4;
+            font-family: Roboto;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .buttonTabs2{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 40px !important;
+        background: #FFF;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+        width: 320px;
+        height: 58px;
+        padding: 5px 25px;
+        .txt{
+            color: #4C5BD4;
+            font-family: Roboto;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .buttonTabsGroup{
+        display: flex;
+        padding: 4px 0px;
+        align-items: center;
+        gap: 15px;
+
+        border-radius: 20px !important;
+    }
+
+    .buttonTabsGroup1{
+        display: flex;
+        padding: 4px 0px;
+        align-items: center;
+        gap: 15px;
+        flex: 1 0 0;
+
+        border-radius: 20px !important;
+    }
+
+    .buttonTabsGroup2{
+        display: flex;
+        padding: 4px 0px;
+        align-items: center;
+        gap: 10px;
+        flex: 1 0 0;
+
+        border-radius: 20px !important;
+    }
+    
+}
+
+@media ( min-width: 1366px ) and ( max-width: 1919px ) {
+    .body{
+        display: grid;
+        grid-template-columns: 363px 605px;
+        grid-template-rows: 194px auto;
+        gap: 40px;
+        justify-content: center;
+
+        padding-bottom: 52px;
+    }
+
+    .bodyItem1{
+        grid-column: 2;
+        grid-row: 1;
+
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 40px;
+
+        .txt{
+            color: #FFF;
+            font-family: Roboto;
+            font-size: 25px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 136%;
+            text-transform: uppercase;
+        }
+    }
+
+    .bodyItem2{
+        grid-column: 1;
+        grid-row: 1 / span 2;
+
+        display: flex;
+        width: 363px;
+        height: 720px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .bodyItem3{
+        grid-column: 2;
+        grid-row: 2;
+
+        position: relative;
+        display: flex;
+        width: 605px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .textBodyHeaderRight{
+        color: #FFF;
+        font-family: Roboto;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 136%; /* 34px */
+        text-transform: uppercase;
+    }
+
+    .bodySteps{
+        margin-top: 10px;
+    }
+
+    .step{
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .stepFront{
+        margin-left: 18px;
+        font-family: Salsa;
+        font-size: 22px;
+        color: #fff;
+        white-space:nowrap;
+        display: flex;
+        align-items: center;
+    }
+
+    .stepAfter{
+        margin-left: 10px;
+
+        color: #FFF;
+        text-align: justify;
+        font-family: Roboto;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        display: flex;
+        align-items: center ;
+    }
+
+    .buttonContinue{
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+
+        height: 25px;
+        width: 151px;
+        top: calc(100% - 10px);
+        left: calc(100% - 60px);
+
+        .txt{
+            color: #FFF;
+            font-family: Roboto;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .breadcrumb{
+        padding-top: 40px;
+        padding-left: 173px;
+        padding-bottom: 60px;
+        .txt{
+            font-size: 16px !important;
+        }
+    }
+    .img{
+        height: 720px;
+        width: 363px;
+    }
+    .buttonGroup{
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        padding-bottom: 60px;
+    }
+
+    .activeButton{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 40px !important;
+        background: #FFC460;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+        width: 320px;
+        height: 58px;
+        padding: 5px 25px;
+        .txt{
+            color: #FFF;
+            font-family: Roboto;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .buttonTabs{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 40px !important;
+        background: #FFF;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+        width: 320px;
+        height: 58px;
+        padding: 5px 25px;
+        .txt{
+            color: #4C5BD4;
+            font-family: Roboto;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .buttonTabs2{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 40px !important;
+        background: #FFF;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+        width: 320px;
+        height: 58px;
+        padding: 5px 25px;
+        .txt{
+            color: #4C5BD4;
+            font-family: Roboto;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .buttonTabsGroup{
+        display: flex;
+        padding: 4px 0px;
+        align-items: center;
+        gap: 15px;
+
+        border-radius: 20px !important;
+    }
+
+    .buttonTabsGroup1{
+        display: flex;
+        padding: 4px 0px;
+        align-items: center;
+        gap: 15px;
+        flex: 1 0 0;
+
+        border-radius: 20px !important;
+    }
+
+    .buttonTabsGroup2{
+        display: flex;
+        padding: 4px 0px;
+        align-items: center;
+        gap: 10px;
+        flex: 1 0 0;
+
+        border-radius: 20px !important;
+    }
+    
+}
+@media (min-width: 1024px) and (max-width: 1365px) {
+    .title >p{
+        font-size: 30px;
+        font-weight: 700;
+        color: #fff;
+    }
+    .body{
+        display: grid;
+        grid-template-columns: 363px 561px;
+        grid-template-rows: 190px auto;
+        gap: 40px;
+        justify-content: center;
+
+        padding-bottom: 94px;
+    }
+
+    .bodyItem1{
+        grid-column: 2;
+        grid-row: 1;
+
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 40px;
+
+        .txt{
+            color: #FFF;
+            font-family: Roboto;
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 136%;
+            text-transform: uppercase;
+        }
+    }
+
+    .bodyItem2{
+        grid-column: 1;
+        grid-row: 1 / span 2;
+
+        display: flex;
+        width: 363px;
+        height: 720px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .bodyItem3{
+        grid-column: 2;
+        grid-row: 2;
+
+        position: relative;
+        display: flex;
+        width: 561px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .textBodyHeaderRight{
+        color: #FFF;
+        font-family: Roboto;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 136%; /* 34px */
+        text-transform: uppercase;
+    }
+
+    .bodySteps{
+        margin-top: 10px;
+    }
+
+    .step{
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .stepFront{
+        margin-left: 18px;
+        font-family: Salsa;
+        font-size: 22px;
+        color: #fff;
+        white-space:nowrap;
+        display: flex;
+        align-items: center;
+    }
+
+    .stepAfter{
+        margin-left: 10px;
+
+        color: #FFF;
+        text-align: justify;
+        font-family: Roboto;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        display: flex;
+        align-items: center ;
+    }
+
+    .buttonContinue{
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+
+        height: 25px;
+        width: 151px;
+        top: calc(100% + 10px);
+        right: 0px;
+
+        .txt{
+            color: #FFF;
+            font-family: Roboto;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+        .ctn{
+            height: 17px;
+            width: 17px;
+        }
+    }
+
+    .breadcrumb{
+        padding-top: 20px;
+        padding-left: 30px;
+        padding-bottom: 40px;
+    }
+    .breadcrumb >span{
+        font-size: 16px;
+    }
+    .img{
+        height: 720px;
+        width: 363px;
+    }
+    .buttonGroup{
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        padding-bottom: 40px;
+    }
+
+    .activeButton{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 40px !important;
+        background: #FFC460;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+        width: 301px;
+        height: 58px;
+        padding: 5px 25px;
+        .txt{
+            color: #FFF;
+            font-family: Roboto;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .buttonTabs{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 40px !important;
+        background: #FFF;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+        width: 301px;
+        height: 58px;
+        padding: 5px 25px;
+        .txt{
+            color: #4C5BD4;
+            font-family: Roboto;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .buttonTabs2{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 40px !important;
+        background: #FFF;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+        width: 301px;
+        height: 58px;
+        padding: 5px 25px;
+        .txt{
+            color: #4C5BD4;
+            font-family: Roboto;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .buttonTabsGroup{
+        display: flex;
+        padding: 4px 0px;
+        align-items: center;
+        gap: 15px;
+
+        border-radius: 20px !important;
+    }
+
+    .buttonTabsGroup1{
+        display: flex;
+        padding: 4px 0px;
+        align-items: center;
+        gap: 15px;
+        flex: 1 0 0;
+
+        border-radius: 20px !important;
+    }
+
+    .buttonTabsGroup2{
+        display: flex;
+        padding: 4px 0px;
+        align-items: center;
+        gap: 10px;
+        flex: 1 0 0;
+
+        border-radius: 20px !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .title >p{
+        font-size: 25px;
+        font-weight: 700;
+        color: #fff;
+    }
+    .body{
+        display: grid;
+        grid-template-columns: 272px 418px;
+        grid-template-rows: 177px auto;
+        gap: 30px;
+        justify-content: center;
+
+        padding-bottom: 55px;
+    }
+
+    .bodyItem1{
+        grid-column: 2;
+        grid-row: 1;
+
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 30px;
+
+        .txt{
+            color: #FFF;
+            font-family: Roboto;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 136%;
+            text-transform: uppercase;
+        }
+    }
+
+    .bodyItem2{
+        grid-column: 1;
+        grid-row: 1 / span 2;
+
+        display: flex;
+        width: 272px;
+        height: 539px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .bodyItem3{
+        grid-column: 2;
+        grid-row: 2;
+
+        position: relative;
+        display: flex;
+        width: 418px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .textBodyHeaderRight{
+        color: #FFF;
+        font-family: Roboto;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 136%; /* 34px */
+        text-transform: uppercase;
+    }
+
+    .bodySteps{
+        margin-top: 10px;
+    }
+
+    .step{
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .stepFront{
+        margin-left: 18px;
+        font-family: Salsa;
+        font-size: 22px;
+        color: #fff;
+        white-space:nowrap;
+        display: flex;
+        align-items: center;
+    }
+
+    .stepAfter{
+        margin-left: 10px;
+
+        color: #FFF;
+        text-align: justify;
+        font-family: Roboto;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        display: flex;
+        align-items: center ;
+    }
+
+    .buttonContinue{
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+
+        height: 25px;
+        width: 151px;
+        top: calc(100% + 10px);
+        right: 0px;
+
+        .txt{
+            color: #FFF;
+            font-family: Roboto;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+        .ctn{
+            height: 17px;
+            width: 17px;
+        }
+    }
+
+    .breadcrumb{
+        padding-top: 10px;
+        padding-left: 24px;
+        padding-bottom: 30px;
+    }
+    .breadcrumb >span{
+        font-size: 16px;
+    }
+    .img{
+        height: 539px;
+        width: 272px;
+    }
+    .buttonGroup{
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding-bottom: 40px;
+    }
+
+    .activeButton{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 40px !important;
+        background: #FFC460;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+        width: 220px;
+        height: 48px;
+        padding: 5px 25px;
+        .txt{
+            color: #FFF;
+            font-family: Roboto;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .buttonTabs{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 40px !important;
+        background: #FFF;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+        width: 220px;
+        height: 48px;
+        padding: 5px 25px;
+        .txt{
+            color: #4C5BD4;
+            font-family: Roboto;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .buttonTabs2{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 40px !important;
+        background: #FFF;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+        width: 230px;
+        height: 48px;
+        padding: 5px 25px;
+        .txt{
+            color: #4C5BD4;
+            font-family: Roboto;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .buttonTabsGroup{
+        display: flex;
+        padding: 4px 0px;
+        align-items: center;
+        gap: 15px;
+
+        border-radius: 20px !important;
+        .imge{
+            height: 30px;
+            width: 30px
+        }
+    }
+
+    .buttonTabsGroup1{
+        display: flex;
+        padding: 4px 0px;
+        align-items: center;
+        gap: 15px;
+        flex: 1 0 0;
+
+        border-radius: 20px !important;
+        .imge{
+            height: 30px;
+            width: 30px
+        }
+    }
+
+    .buttonTabsGroup2{
+        display: flex;
+        padding: 4px 0px;
+        align-items: center;
+        gap: 10px;
+        flex: 1 0 0;
+
+        border-radius: 20px !important;
+        .imge{
+            height: 30px;
+            width: 30px
+        }
+    }
+
+}
+
+@media (max-width: 767px) {
+    .title >p{
+        font-size: 20px;
+        font-weight: 700;
+        color: #fff;
+    }
+    .body{
+        display: grid;
+        grid-template-columns: 382px;
+        grid-template-rows: 603px 177px 342px;
+        gap: 30px;
+        justify-content: center;
+
+        padding-bottom: 55px;
+    }
+
+    .bodyItem1{
+        grid-column: 1;
+        grid-row-start: 2;
+        grid-row-end: 3;
+
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 30px;
+
+        .txt{
+            color: #FFF;
+            font-family: Roboto;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 136%;
+            text-transform: uppercase;
+            left: 0px;
+        }
+        .img2{
+            margin-left: 131px;
+        }
+    }
+
+    .bodyItem2{
+        grid-column: 1;
+        grid-row-start: 1;
+        grid-row-end: 2;
+
+        display: flex;
+        width: 382px;
+        height: 603px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bodyItem3{
+        grid-column: 1;
+        grid-row-start: 3;
+        grid-row-end: 4;
+
+        position: relative;
+        display: flex;
+        width: 382px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .textBodyHeaderRight{
+        color: #FFF;
+        font-family: Roboto;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 136%; /* 34px */
+        text-transform: uppercase;
+    }
+
+    .bodySteps{
+        margin-top: 10px;
+    }
+
+    .step{
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .stepFront{
+        margin-left: 18px;
+        font-family: Salsa;
+        font-size: 22px;
+        color: #fff;
+        white-space:nowrap;
+        display: flex;
+        align-items: center;
+    }
+
+    .stepAfter{
+        margin-left: 10px;
+
+        color: #FFF;
+        text-align: justify;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        display: flex;
+        align-items: center ;
+    }
+
+    .buttonContinue{
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        cursor: pointer;
+
+        height: 25px;
+        width: 151px;
+        top: calc(100% + 10px);
+        right: -10px;
+
+        .txt{
+            color: #FFF;
+            font-family: Roboto;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+        .ctn{
+            height: 17px;
+            width: 17px;
+        }
+    }
+
+    .breadcrumb{
+        padding-top: 10px;
+        padding-left: 11.5px;
+        padding-bottom: 30px;
+    }
+    .breadcrumb >span{
+        font-size: 16px;
+    }
+    .img{
+        height: 603px;
+        width: 304px;
+    }
+    .buttonGroup{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 40px;
+    }
+
+    .activeButton{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 40px !important;
+        background: #FFC460;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+        width: 382px;
+        height: 58px;
+        padding: 5px 25px;
+        .txt{
+            color: #FFF;
+            font-family: Roboto;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .buttonTabs{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 40px !important;
+        background: #FFF;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+        width: 382px;
+        height: 58px;
+        padding: 5px 25px;
+        .txt{
+            color: #4C5BD4;
+            font-family: Roboto;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .buttonTabs2{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border-radius: 40px !important;
+        background: #FFF;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+
+        width: 382px;
+        height: 58px;
+        padding: 5px 25px;
+        .txt{
+            color: #4C5BD4;
+            font-family: Roboto;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+
+    .buttonTabsGroup{
+        display: flex;
+        padding: 4px 0px;
+        align-items: center;
+        gap: 15px;
+
+        border-radius: 20px !important;
+        .imge{
+            height: 30px;
+            width: 30px
+        }
+    }
+
+    .buttonTabsGroup1{
+        display: flex;
+        padding: 4px 0px;
+        align-items: center;
+        gap: 15px;
+        flex: 1 0 0;
+
+        border-radius: 20px !important;
+        .imge{
+            height: 30px;
+            width: 30px
+        }
+    }
+
+    .buttonTabsGroup2{
+        display: flex;
+        padding: 4px 0px;
+        align-items: center;
+        gap: 10px;
+        flex: 1 0 0;
+
+        border-radius: 20px !important;
+        .imge{
+            height: 30px;
+            width: 30px
+        }
+    }
+}

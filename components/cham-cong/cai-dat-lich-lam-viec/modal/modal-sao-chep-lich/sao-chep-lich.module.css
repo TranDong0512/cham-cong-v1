@@ -1,0 +1,66 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 15px 20px;
+  background-color: #4c5bd4;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.textHead {
+  font-size: 18px;
+  color: #fff;
+}
+.body {
+  padding: 0 20px 20px 20px;
+}
+.bodyItem {
+  font-size: 16px;
+  margin-top: 20px;
+}
+.scrollbar {
+  border: 1px solid #acacac;
+  border-radius: 10px;
+
+  height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.sticky {
+  display: flex;
+  justify-content: space-between;
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: #4c5bd4;
+  padding: 10px;
+  top: 0;
+  /* background-color: white; */
+  z-index: 2;
+  font-weight: bold;
+}
+.checkbox_list {
+  /* margin-top: 20px; */
+  padding: 10px;
+  z-index: 1;
+  position: relative;
+}
+.button {
+  width: 100%;
+  height: auto;
+  background-color: #4c5bd4;
+  .txt {
+    font-size: 18px;
+    color: #fff;
+  }
+}
+.checkItem {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dotted #9f9f9f;
+  padding: 8px;
+}
+.Luuy {
+  font-size: 16px;
+  margin-top: 20px;
+  text-align: justify;
+}

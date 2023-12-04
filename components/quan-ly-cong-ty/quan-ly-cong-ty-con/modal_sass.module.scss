@@ -1,0 +1,12 @@
+.body{
+    [class~="ant-form"]
+    [class~="ant-row"]
+    [class~="ant-col"]
+    [class~="ant-form-item"]
+    [class~="ant-row"]
+    [class~="ant-col"]
+    label::before{
+        position: absolute !important;
+        right: -15px !important;
+    }
+}

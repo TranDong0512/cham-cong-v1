@@ -1,0 +1,205 @@
+.modalDetailsLLV {
+  width: 1200px !important;
+  border-radius: 20px;
+}
+
+.tableDetailsLLV {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.list div.header > div {
+  justify-content: space-around;
+  list-style: none;
+  background-color: #4c5bd4 !important;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  height: auto;
+}
+
+.listli > li {
+  margin-bottom: 10px;
+  list-style: none;
+  color: #474747;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%; /* 21.76px */
+}
+
+.dayName {
+  color: #fff;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 136%; /* 27.2px */
+  display: flex;
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex: 1 0 0;
+}
+
+.big {
+  display: flex;
+}
+
+.small {
+  display: none;
+}
+
+.header > div .dayName:not(:last-child) {
+  border-right: 1px solid #fff;
+}
+
+.tableDetailsLLVItem {
+  border: 1px solid #c4c4c4;
+  height: 192px;
+}
+
+.itemWrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 10px;
+  gap: 5px;
+  flex: 1 0 0;
+  height: 192px;
+}
+
+.dateNumber {
+  color: #666;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 136%; /* 24.48px */
+}
+
+.shiftItem {
+  display: flex;
+  padding: 10px 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 15px;
+  border: 1px solid #bbb;
+  background: #d0eae7;
+}
+
+.shiftTxt {
+  color: #666;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%; /* 21.76px */
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .modalDetailsLLV {
+    width: 984px !important;
+  }
+
+  .tableDetailsLLVItem {
+    height: 182px;
+    overflow: hidden;
+  }
+
+  .shiftTxt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 991px) {
+  .modalDetailsLLV {
+    width: 720px !important;
+  }
+
+  .tableDetailsLLVItem {
+    height: 162px;
+    overflow: hidden;
+  }
+
+  .shiftItem {
+    padding: 5px;
+  }
+
+  .shiftTxt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .dayName {
+    color: #fff;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 136%;
+    padding: 30px 15px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .modalDetailsLLV {
+    width: 720px !important;
+  }
+
+  .tableDetailsLLV {
+    width: 720px;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+
+  .tableDetailsLLVItem {
+    height: 160px;
+    overflow: hidden;
+  }
+
+  .shiftItem {
+    padding: 5px;
+  }
+
+  .shiftTxt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .dayName {
+    color: #fff;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 136%; /* 21.76px */
+    padding: 15px 20px;
+  }
+
+  .big {
+    display: none;
+  }
+  .small {
+    display: flex;
+  }
+}

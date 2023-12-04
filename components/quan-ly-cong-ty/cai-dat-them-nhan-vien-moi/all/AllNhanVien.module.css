@@ -1,0 +1,19 @@
+.btnAdd {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .btnAdd {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+@media screen and (max-width: 414px) {
+  .nameInput {
+    margin-top: 20px;
+  }
+
+  .btnAdd {
+    margin-top: 20px;
+  }
+}

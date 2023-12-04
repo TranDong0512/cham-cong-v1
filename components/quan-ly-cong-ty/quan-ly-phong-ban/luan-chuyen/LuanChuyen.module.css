@@ -1,0 +1,32 @@
+.actionGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .divider {
+    width: 2px;
+    height: 30px;
+    background-color: grey;
+    margin: 0px 10px;
+  }
+}
+
+.headerTxt {
+  color: #fff !important;
+  font-weight: 400 !important;
+  text-align: center;
+}
+.input{
+  width: 100%;
+  border: 1px solid #9F9F9F;
+  border-radius: 10px;
+}
+.button{
+  display: flex;
+  justify-content: flex-end;
+}
+@media screen and (max-width:500px){
+  .button{
+    margin-top: 10px;
+  }
+}

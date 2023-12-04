@@ -1,0 +1,61 @@
+.actionGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .divider {
+    width: 2px;
+    height: 30px;
+    background-color: grey;
+    margin: 0px 10px;
+  }
+}
+
+.headerTxt {
+  color: #fff !important;
+  font-weight: 400 !important;
+  text-align: center;
+}
+
+.btnGroup {
+  display: flex;
+}
+
+.searchBtn {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  .btnGroup {
+    flex-direction: column !important;
+
+    .searchBtn,
+    .addBtn {
+      width: 100%;
+      display: flex;
+    }
+
+    .addBtn {
+      margin-top: 10px;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .btnGroup {
+    flex-direction: row !important;
+    margin-left: auto;
+
+    .addBtn,
+    .searchBtn {
+      margin-top: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .selectPb {
+    margin-top: 10px;
+  }
+}

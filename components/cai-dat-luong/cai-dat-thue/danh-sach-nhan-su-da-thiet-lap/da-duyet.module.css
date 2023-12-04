@@ -1,0 +1,267 @@
+.selects >div{
+    width: 100%;
+}
+.selects >button{
+    width: 100%;
+    background-color: #4C5BD4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.selects >button >span{
+    color: #fff;
+}
+.thongKe1{
+    display: none;
+}
+.rowFirst{
+    margin-bottom: 30px;
+}
+@media screen and (max-width:768px) {
+    .thongKe1{
+        display: flex;
+        margin-left: auto ;   
+    }
+    .thongKe2{
+        display: none;
+    }
+    .button1{
+        display: none;
+    }
+    .button2{
+        display: flex;
+    }
+    .table{
+        margin-top: 20px;
+    }
+    .rowFirst{
+        margin-top: 10px;
+    }
+}
+@media screen and (max-width:414px){
+    .button1{
+        display: flex;
+    }
+    .button2{
+        display: none;
+    }
+    .table{
+        margin-top: 20px;
+    }
+    .rowFirst{
+        margin-top: 10px;
+    }
+    .thongKe1{
+        margin-left: auto !important;
+    }
+}
+
+.khung{
+    border-radius: 10px;
+    background: #FFF;
+    border: 1px solid #C4C4C4;;
+    background: #4C5BD4;
+}
+.item{
+    background: white;
+    margin-top: 44px;
+}
+.itemt{
+    margin-left: 20px;
+}
+.khungavata{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.thietlap{
+    display: flex;
+    padding: 5px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: 20px;
+    background: #E9EBFF;
+    border: none;
+}
+.text{
+    color: #474747;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%;
+}
+.khungthietlap{
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    align-self: stretch;
+    margin-right: 20px;
+}
+.info{
+    display: flex;  
+}
+.infotext{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1 0 0;
+    align-self: stretch;
+    padding: 0 10px;
+}
+.title{
+    color: #4C5BD4;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%;
+}
+.tieuDe{
+    display: flex;
+    padding: 10px 0px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    margin-bottom: 20px;
+}
+.Tsearch{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    padding: 20px 0px 40px 0px;
+    flex-wrap: wrap;
+}
+.search1{
+    display: flex;
+    width: 271px;
+    height: 34px;
+   
+    align-items: center;
+    gap: 20px;
+    border-radius: 5px;
+    background: #FFF;
+    color: #474747;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%;
+}
+.search2{
+    display: flex;
+    width: 133px;
+    height: 34px;
+    align-items: center;
+    gap: 20px;
+    border-radius: 5px;
+    background: #FFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%;
+}
+.input{
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+    color: #474747;
+    text-align: justify;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%;
+    border: none;
+    width: 100%;
+}
+.thongke{
+    display: flex;
+    padding: 5px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 10px;
+    background: #4C5BD4;
+    border: none;
+}
+.textThongKe{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%;
+}
+.table{
+    border-radius: 10px;
+    color: #4C5BD4;
+}
+.chucnang{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.khungavata{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.title{
+    color: #4C5BD4;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%;
+}
+.titletieude{
+    color: #474747;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 136%; /* 27.2px */
+    }
+@media screen and (max-width: 1024px) {
+    .search1{
+        width: 26%;
+    }
+    .search2{
+        width: 15%;
+    }
+}
+@media screen and (max-width < 768px) {
+    .search1{
+        width: 49%;
+    }
+    .search2{
+        width: 39%;
+    }
+}
+@media screen and (max-width < 415px) {
+    .search1{
+        width: 100%;
+    }
+    .search2{
+        width: 100%;
+    }
+}
+.textnd{
+    color: #474747;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%; /* 21.76px */
+}

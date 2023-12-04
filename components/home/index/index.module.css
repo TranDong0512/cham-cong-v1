@@ -1,0 +1,31 @@
+.ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 0;
+  border-bottom: 16px solid #4c5bd4;
+  border-top: 18px solid #4c5bd4;
+  border-right: 20px solid transparent;
+  border-left: 20px solid transparent;
+  margin: auto;
+  margin-bottom: 20px;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #474747;
+
+  .text {
+    color: #fff;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .indexWrapper {
+    padding: 0;
+  }
+}
+/* @media screen and (max-width: 414px) {
+  .indexWrapper {
+    padding: 4px 0px;
+  }
+} */

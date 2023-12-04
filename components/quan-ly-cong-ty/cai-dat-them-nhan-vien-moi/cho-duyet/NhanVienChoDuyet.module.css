@@ -1,0 +1,10 @@
+@media screen and (max-width: 414px) {
+  .inputName {
+    margin: 00px 0px;
+  }
+
+  .searchBtn {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

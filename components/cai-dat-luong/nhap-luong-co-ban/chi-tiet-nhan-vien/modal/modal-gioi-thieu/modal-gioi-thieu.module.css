@@ -1,0 +1,65 @@
+.body{
+    padding: 20px;
+    gap: 10px;
+    border-radius: 15px;
+    background: #ECEDEF;
+}
+.khungtitle{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.title{
+    color: #474747;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.input{
+    display: flex;
+    padding: 20px 10px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.button1{
+    display: flex;
+    padding: 5px 30px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #4C5BD4;
+}
+.text1{
+    color: #4C5BD4;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%; /* 21.76px */
+}
+.button2{
+    display: flex;
+    padding: 5px 30px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 10px;
+    background: #4C5BD4;
+    border: none;
+}
+.text2{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%; /* 21.76px */
+}
+@media screen and (max-width: 500px) {
+    .body{
+        padding: 20px 10px;
+    }
+}

@@ -1,0 +1,98 @@
+.khung {
+  display: flex;
+  flex-wrap: wrap;
+}
+.the {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tit {
+  color: #4c5bd4;
+  font-size: 18px;
+  margin-top: 5px;
+}
+.hang {
+  display: flex;
+  gap: 5px;
+  align-self: stretch;
+}
+.card {
+  height: 330px !important;
+}
+.mieuta {
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  padding-bottom: 10px;
+}
+.noidung {
+  color: #474747;
+  text-align: justify;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%;
+}
+.header {
+  padding-top: 29px;
+  padding-bottom: 29px;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.moduleContent {
+  padding: 5px;
+  color: #500303;
+}
+.the {
+  margin-bottom: 10px;
+}
+.body {
+  margin: -4px;
+  font-size: 16px;
+}
+.bodyCell {
+  display: flex;
+  align-items: center;
+}
+.Dropdown {
+  color: black;
+}
+.DropdownDel {
+  color: black;
+}
+.xoa {
+  display: flex;
+  align-items: center;
+  margin: 5px 0 5px 0;
+  gap: 5px;
+  font-weight: 500;
+}
+.conlai {
+  display: flex;
+  align-items: center;
+  margin: 5px 0 5px 0;
+  gap: 5px;
+  font-weight: 500;
+}
+.xoa:hover {
+  color: red;
+  .do {
+    fill: red;
+  }
+}
+.conlai:hover {
+  color: #4c5bd4;
+  .tim {
+    fill: #4c5bd4;
+  }
+}
+.tim {
+  margin-right: 10px;
+}
+.do {
+  margin-right: 10px;
+}

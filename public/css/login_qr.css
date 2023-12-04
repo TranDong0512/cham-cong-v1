@@ -1,0 +1,139 @@
+.box_select_type {
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #CCCCCC;
+}
+
+.box_select_type .line {
+    width: 1px;
+    height: 17px;
+    background: #CCCCCC;
+}
+
+.box_select_type button {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #474747;
+    height: 49px;
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.box_select_type button .text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #474747;
+}
+
+.box_select_type button:hover,
+.box_select_type button.active {
+    color: #4C5BD4;
+    border-bottom: 2px solid #4C5BD4;
+    font-weight: 600;
+}
+
+.login_qr {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.login_qr button {
+    background: none;
+    border: none;
+    color: #4C5BD4;
+    cursor: pointer;
+}
+
+.dbn {
+    display: none !important;
+}
+
+.popup {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    background: none;
+    padding-top: 80px;
+}
+
+.popup .content_body {
+    padding: 38px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 450px;
+    height: fit-content;
+    align-items: center;
+    position: relative;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.popup .content_body .btn_close {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.popup .content_body .btn_close span {
+    font-size: 24px;
+}
+
+.popup .content_body .title_popup {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: #474747;
+}
+
+.popup .content_body .ct_list {
+    width: 100%;
+    display: flex;
+    gap: 11px;
+    flex-direction: column;
+}
+
+.popup .content_body .ct_list .item_l {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.popup .content_body .ct_list .item_l .cicle_list {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #4C5BD4;
+    border-radius: 50%;
+    color: #FFFFFF;
+}
+
+.popup .content_body .ct_list .item_l p {
+    width: calc(100% - 47px);
+    line-height: 24px;
+}
+
+@media screen and (max-width: 480px) {
+    .popup .content_body {
+        width: 370px;
+    }
+}

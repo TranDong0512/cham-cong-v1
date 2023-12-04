@@ -1,0 +1,104 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 15px 20px;
+  background-color: #4c5bd4;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.textHead {
+  font-size: 20px;
+  color: #fff;
+}
+.body {
+  padding: 20px;
+}
+.nameCT {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  margin-bottom: 20px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #9f9f9f;
+}
+@media screen and (max-width: 480px) {
+  .textHead {
+    font-size: 18px;
+  }
+}
+.info {
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px dotted #9f9f9f;
+  padding: 5px 0;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.textname {
+  color: #4c5bd4;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%; /* 24.48px */
+}
+.text {
+  color: #474747;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%; /* 21.76px */
+}
+.dau {
+  color: #ff5b4d;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%;
+}
+.khungbutton {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.button1 {
+  display: flex;
+  padding: 5px 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  border: 1px solid #4c5bd4;
+}
+.textbutton1 {
+  color: #4c5bd4;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 136%; /* 24.48px */
+}
+.button2 {
+  display: flex;
+  padding: 5px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: #4c5bd4;
+  border: none;
+}
+.textbutton2 {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 136%; /* 24.48px */
+}

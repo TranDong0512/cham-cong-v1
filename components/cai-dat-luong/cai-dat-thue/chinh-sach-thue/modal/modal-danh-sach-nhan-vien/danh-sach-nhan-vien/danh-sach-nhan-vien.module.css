@@ -1,0 +1,41 @@
+.chucnang{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+.chinhsua{
+    color: #474747;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%; /* 21.76px */
+    padding: 5px 0;
+}
+.chinhsua:hover{
+    color: #4C5BD4;
+}
+.xoa{
+    color: #474747;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%; /* 21.76px */
+}
+.xoa:hover{
+    color: #FF5B4D;
+}
+.moduleContent{
+    padding: 0 10px;
+}
+.texttable{
+    color: #474747;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%; /* 21.76px */
+}

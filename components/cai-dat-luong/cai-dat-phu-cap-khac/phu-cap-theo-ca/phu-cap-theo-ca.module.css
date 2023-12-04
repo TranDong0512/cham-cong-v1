@@ -1,0 +1,136 @@
+.DSPCKhungTitle {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  align-self: stretch;
+  margin-bottom: 20px;
+}
+.DSPCTitle {
+  padding: 10px 0px;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1 0 0;
+}
+.title1 {
+  color: #474747;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 10px;
+}
+.nd1 {
+  align-self: stretch;
+  color: #9f9f9f;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 136%; /* 21.76px */
+}
+.button1 {
+  display: flex;
+  padding: 10px 20px;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 10px;
+  background: #42d778;
+  border: none;
+  justify-content: center;
+  align-items: center;
+}
+.cong {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.buttonname {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Dropdown {
+  color: black;
+}
+.DropdownDel {
+  color: black;
+}
+.xoa {
+  display: flex;
+  align-items: center;
+  margin: 5px 0 5px 0;
+}
+.conlai {
+  display: flex;
+  align-items: center;
+  margin: 5px 0 5px 0;
+}
+.xoa:hover {
+  color: red;
+  .do {
+    fill: red;
+  }
+}
+.conlai:hover {
+  color: #4c5bd4;
+  .tim {
+    fill: #4c5bd4;
+  }
+}
+.tim {
+  margin-right: 10px;
+}
+.do {
+  margin-right: 10px;
+}
+.moduleContent {
+  padding: 5px;
+  color: #500303;
+}
+.header {
+  padding-top: 29px;
+  padding-bottom: 29px;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.bodyCell {
+  margin: -4px;
+  display: flex;
+  align-items: center;
+}
+.chucnang {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+.buttoncheck1 {
+  display: none;
+}
+@media screen and (max-width: 600px) {
+  .DSPCKhungTitle {
+    display: block;
+  }
+  .buttoncheck1 {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .buttoncheck2 {
+    display: none;
+  }
+}
+@media screen and (max-width: 450px) {
+  .title1 {
+    font-size: 18px;
+  }
+}

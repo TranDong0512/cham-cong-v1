@@ -1,0 +1,44 @@
+/** @format */
+
+.select_user {
+   display: flex;
+   align-items: center;
+   gap: 16px;
+   justify-content: flex-start;
+   .option_user {
+      .edit_tick {
+         background-color: #4c5db4;
+         padding: 2px 4px;
+         border-radius: 50%;
+      }
+   }
+   .name_id {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      .name_user {
+         color: #4c5bd4;
+         font-family: Roboto;
+         font-size: 16px;
+         font-style: normal;
+         font-weight: 500;
+         line-height: normal;
+      }
+      .name_app {
+         color: #333;
+         font-family: Roboto;
+         font-size: 18px;
+         font-style: normal;
+         font-weight: 600;
+         line-height: normal;
+      }
+      .id_user {
+         color: #333;
+         font-family: Roboto;
+         font-size: 16px;
+         font-style: normal;
+         font-weight: 400;
+         line-height: normal;
+      }
+   }
+}

@@ -1,0 +1,49 @@
+.container {
+   width: 100%;
+   background: #ffffff;
+   box-shadow: 0px 0px 20px rgba(55, 63, 255, 0.1);
+   border-radius: 10px;
+}
+.content {
+   width: 95%;
+   margin-left: 2.5%;
+   margin-right: 2.5%;
+   padding-top: 20px;
+   padding-bottom: 20px;
+   margin-bottom: 20px;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+.p {
+   text-indent: 20px;
+   color: #68798b;
+   font-size: 14px;
+}
+.h2 {
+   color: #2e3467;
+   font-size: 18px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+}
+.p_center {
+   text-align: center;
+   color: #68798b;
+   font-size: 14px;
+}
+.img {
+   width: 100%;
+   text-align: center;
+}
+.btn_cancer {
+   border: 1px solid #666666;
+   font-weight: 500;
+   font-size: 15px;
+   line-height: 21px;
+   background-color: white;
+   border-radius: 10px;
+   cursor: pointer;
+   height: 40px;
+   width: 135px !important;
+   float: right;
+}

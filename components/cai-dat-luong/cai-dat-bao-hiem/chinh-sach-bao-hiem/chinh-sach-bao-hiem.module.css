@@ -1,0 +1,184 @@
+
+.DropdownDel{
+    color: black;
+}
+.DropdownDel:hover{
+    color: red;
+}
+.Dropdown{
+    color: black;
+}
+.Dropdown:hover{
+    color: #4C5BD4;
+}
+
+
+@media (min-width: 1920px) {
+    .rowMain{
+        display: flex;
+        justify-content : space-between;
+        align-items: stretch;
+        margin-top: 24px;
+    }
+    .col{
+        flex-basis: calc(100%/3)
+    }
+    .header{
+        padding-top: 29px;
+        padding-bottom: 29px;
+        color: #fff;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+    .button{
+        width: 200px;
+        height: 41px;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        color: #fff;
+    }
+    .buttonCopy{
+        background-color: #4C5BD4;
+        padding: 10px 30px 10px 30px;
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 1366px) and (max-width: 1919px) {
+    .rowMain{
+        display: flex;
+        justify-content : space-between;
+        align-items: stretch;
+        margin-top: 24px;
+    }
+    .col{
+        flex-basis: calc(100%/3)
+    }
+    .header{
+        padding-top: 29px;
+        padding-bottom: 29px;
+        color: #fff;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+    .button{
+        width: 200px;
+        height: 41px;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        color: #fff;
+    }
+    .buttonCopy{
+        background-color: #4C5BD4;
+        padding: 10px 30px 10px 30px;
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1365px) {
+    .rowMain{
+        display: flex;
+        justify-content : space-between;
+        align-items: stretch;
+        margin-top: 87px;
+    }
+    .col{
+        flex-basis: calc(100%/2)
+    }
+    .header{
+        padding-top: 29px;
+        padding-bottom: 29px;
+        color: #fff;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+    .button{
+        width: 200px;
+        height: 41px;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        color: #fff;
+    }
+    .buttonCopy{
+        background-color: #4C5BD4;
+        padding: 10px 30px 10px 30px;
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .rowMain{
+        display: flex;
+        justify-content : space-between;
+        align-items: stretch;
+        margin-top: 87px;
+    }
+    .col{
+        flex-basis: calc(100%/2);
+    }
+    .header{
+        padding-top: 29px;
+        padding-bottom: 29px;
+        color: #fff;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+    .button{
+        width: 200px;
+        height: 41px;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        color: #fff;
+    }
+    .buttonCopy{
+        background-color: #4C5BD4;
+        padding: 10px 30px 10px 30px;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .rowMain{
+        display: flex;
+        justify-content : space-between;
+        align-items: stretch;
+        margin-top: 87px;
+    }
+    .col{
+        flex-basis: calc(100%)
+    }
+    .header{
+        padding-top: 29px;
+        padding-bottom: 29px;
+        color: #fff;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+    .button{
+        width: 200px;
+        height: 41px;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        color: #fff;
+    }
+    .buttonCopy{
+        background-color: #4C5BD4;
+        padding: 10px 30px 10px 30px;
+        margin-top: 20px;
+    }
+}

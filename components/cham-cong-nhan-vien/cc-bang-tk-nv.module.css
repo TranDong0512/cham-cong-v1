@@ -1,0 +1,208 @@
+.main{
+    background: url("/vitri-bg-2.png") 0 60px no-repeat,url("/vitri-bg.png") no-repeat;
+    background-size: contain,cover;
+}
+.back >div{
+    align-items: center;
+}
+.back >div >p{
+    font-size: 20px;
+}
+.title{
+    display: flex;
+    justify-content: center;
+}
+.title >p{
+    font-size: 35px;
+    font-weight: 700;
+    color: #fff;
+}
+.breadcrumb{
+    padding-top: 40px;
+    padding-left: 190px;
+    padding-bottom: 60px;
+}
+.breadcrumb >span{
+    font-size: 16px;
+}
+.body{
+    padding-left: 195px;
+    padding-right: 146px;
+    padding-bottom: 86px;
+    display: flex;
+}
+.bodyRight{
+    width: 100%;
+    margin-left: 40px;
+    padding-right: 10px;
+}
+.bodyHeader{
+    display: flex;
+    align-items: center;
+}
+.textBodyHeaderLeft{
+    font-family: "Salsa";
+    font-size: 30px;
+    height: 44px;
+    width: 44px;
+    border-radius: 22px;
+    background-color: #fff;
+    text-align: center;
+}
+.textBodyHeaderRight{
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #FFF;
+    margin-left: 14px;
+    font-weight: 600;
+}
+.bodySteps{
+    margin-top: 20px;
+}
+.step{
+    display: flex;
+    margin-bottom: 10px;
+}
+.stepTick{
+    display: flex;
+    align-items: center;
+}
+.stepFront{
+    margin-left: 20px;
+    font-family: "Salsa";
+    font-size: 20px;
+    color: #fff;
+    white-space:nowrap;
+    display: flex;
+    align-items: center;
+}
+.stepAfter{
+    font-size: 20px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+}
+@media screen and (max-width:1600px){
+    .img{
+        height: 397px;
+        width: 660px;
+    }.body{
+        padding-left: 100px;
+        padding-right: 100px;
+        padding-bottom: 77px;
+    }
+}
+@media screen and (max-width:1366px) {
+    .img{
+        height: 397px;
+        width: 660px;
+    }
+    .body{
+        padding-left: 33px;
+        padding-right: 33px;
+        padding-bottom: 77px;
+    }
+    .bodyRight{
+        margin-left: 20px;
+        padding-right: 0;
+    }
+    .breadcrumb{
+        padding-left: 83px;
+    }
+}
+@media screen and (max-width:1024px) {
+    .title >p{
+        font-size: 30px;
+    }
+    .img{
+        height: 300px;
+        width: 500px;
+    }
+    .breadcrumb{
+        padding-left: 30px;
+    }
+    .body{
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 36px;
+    }
+    .stepFront{
+        font-size: 18px;
+    }
+    .stepAfter{
+        font-size: 18px;
+    }
+}
+@media screen and (max-width:768px) {
+    .title >p{
+        font-size: 25px;
+    }
+    .body{
+        flex-direction: column;
+    }
+    .img{
+        height: 360px;
+        width: 600px;
+    }
+    .body{
+        padding-bottom: 20px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    .bodyRight{
+        margin-left: 0;
+    }
+    .bodyLeft{
+        display: flex;
+        justify-content: center;
+    }
+    .breadcrumb{
+        padding-top: 10px;
+        padding-left: 28px;
+        padding-bottom: 40px;
+    }
+    .breadcrumb >span{
+        justify-content: left;
+    }
+    .bodyHeader{
+        margin-top: 20px;
+    }
+}
+@media screen and (max-width:414px) {
+    .title >p{
+        font-size: 20px;
+    }
+    .img{
+        height: 233px;
+        width: 382px;
+    }
+    .title >p{
+        font-size: 20px;
+    }
+    .breadcrumb{
+        padding-left: 16px;
+    }
+    .breadcrumb >span{
+        display: block;
+        font-size: 16px;
+        padding-right: 100px;
+    }
+    .body{
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 25px;
+    }
+    .textBodyHeaderRight{
+        font-size: 18px;
+    }
+    .stepFront{
+        font-size: 16px;
+    }
+    .stepAfter{
+        font-size: 16px;
+    }
+    .back >div >p{
+        font-size: 16px;
+    }
+}

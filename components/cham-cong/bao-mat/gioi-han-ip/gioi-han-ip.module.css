@@ -1,0 +1,63 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  .addBtn {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    border-radius: 10px;
+    background-color: #42d778;
+    padding: 10px 20px;
+  }
+  .headerTxt{
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+.wifiItem {
+  border-bottom: 2px dotted #acacac;
+  padding: 20px 0px;
+}
+
+.topSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .info {
+    display: flex;
+    align-items: center;
+  }
+
+  .btnGroup {
+    display: flex;
+    align-items: center;
+
+    .divider {
+      width: 2px;
+      height: 20px;
+      background-color: #acacac;
+      margin: 0px 5px;
+    }
+  }
+}
+
+.updateTxt {
+  text-align: end;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 414px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-end;
+
+    .headerTxt {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+  }
+}

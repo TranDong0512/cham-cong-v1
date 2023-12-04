@@ -1,0 +1,14 @@
+.singleWrapper:not(:last-child) {
+  border-right: 1px solid #acacac;
+}
+
+.headerTxt {
+  width: 320px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+  font-weight: 600;
+  font-size: 18px;
+}

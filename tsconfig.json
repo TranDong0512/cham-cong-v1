@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/_app.js",
+    "pages/_document.js",
+    "pages/san-pham.html.js",
+    "pages/layout.js",
+    "components/header/Header.js",
+    "components/Layout.js",
+    "components/test.js",
+    "components/footer/Footer.js",
+    "components/crm/logout/index.js",
+    "components/crm/sidebar/sidebar.js",
+    "components/gioi-han-ip/congty/Congty.jsx",
+    "components/tinh-luong/components/small-component/Month_and_Year.jsx"
+  ],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,111 @@
+.card {
+  margin-bottom: 60px;
+}
+.avatar {
+  position: relative;
+}
+.editAvatar {
+  height: 30px;
+  width: 30px;
+  background-color: #d9d9d9;
+  border-radius: 15px;
+  position: absolute;
+  right: 9%;
+  bottom: 9%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  padding: 10px 0;
+  display: flex;
+  .leftSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .id {
+      text-align: center;
+      margin-top: 15px;
+    }
+  }
+  .rightSection {
+    margin-left: 40px;
+  }
+  .name {
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .companyName {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+}
+
+.singleItem {
+  display: flex;
+  .itemTitle {
+    font-weight: 600;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+.btn {
+  border-radius: 5px;
+  border: 1px solid #4c5bd4;
+  background: #fff;
+  margin-top: 10px;
+
+  .text {
+    color: #4c5bd4;
+    font-weight: 600;
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .card {
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .wrapper {
+    padding: 4px 0;
+    flex-direction: column;
+    .leftSection {
+      justify-content: center !important;
+      margin-bottom: 20px;
+    }
+    .rightSection {
+      margin-left: 0;
+    }
+  }
+
+  .card {
+    margin-bottom: 30px;
+    border-radius: 10px !important;
+  }
+  .footer {
+    text-align: center;
+  }
+
+  .cardWrapper {
+    padding: 0px 16px;
+  }
+
+  .name {
+    font-size: 20px !important;
+  }
+
+  .companyName {
+    font-size: 18px !important;
+  }
+}

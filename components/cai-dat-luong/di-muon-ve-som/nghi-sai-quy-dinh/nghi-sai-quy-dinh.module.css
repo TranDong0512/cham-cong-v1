@@ -1,0 +1,182 @@
+.text {
+  color: #474747;
+}
+.textTop {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.textBottom {
+  font-size: 16px;
+}
+.rightHeader > div > div {
+  margin: 0px;
+}
+.installButton {
+  background-color: #4c5bd4;
+  width: 100%;
+}
+.installButton > span {
+  color: #fff;
+}
+.table {
+  margin-top: 30px;
+}
+.middle {
+  margin-top: 30px;
+  border: 1px solid #c4c4c4;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+}
+.textInTable {
+  text-align: left;
+}
+.checkbox {
+  display: flex;
+  padding: 5px 10px;
+}
+.checkbox:hover {
+  background-color: #e3e6ff;
+}
+.textCheckbox {
+  margin-left: 10px;
+  color: #474747;
+  font-size: 16px;
+}
+.iconCheckbox {
+  transform: scale(1.2);
+}
+.containerCheckbox {
+  border: 1px solid #c4c4c4;
+  padding: 5px 0px;
+  width: calc(100% / 2);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 360px;
+}
+.containerInput {
+  padding: 20px 0px;
+  margin-left: 40px;
+  width: calc(100% / 2 - 40px);
+  height: fit-content;
+}
+.textInput {
+  display: flex;
+  margin-top: 20px;
+}
+.Luuy {
+  margin-left: 10px;
+  color: #474747;
+  font-size: 16px;
+  text-align: justify;
+}
+.button {
+  margin-top: 10px;
+  background-color: #4c5bd4;
+  display: flex;
+  align-items: center;
+}
+.button > span {
+  color: #fff;
+}
+.header {
+  display: flex;
+  padding: 16px 20px 15px 160px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 125px;
+  align-self: stretch;
+  background-color: #4c5bd4;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.actionGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .divider {
+    width: 2px;
+    height: 30px;
+    background-color: grey;
+    margin: 0px 10px;
+  }
+}
+.modalBody {
+  padding: 20px;
+}
+.textModal {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.money {
+  display: flex;
+  justify-content: center;
+}
+.table_chitiet > div > div > div > div > div > table > tbody > tr > td {
+  width: 170px;
+}
+@media screen and (max-width: 1024px) {
+  .containerCheckbox {
+    height: 385px;
+  }
+  .containerInput {
+    margin-left: 20px;
+    width: calc(100% / 2 - 20px);
+  }
+}
+@media screen and (max-width: 768px) {
+  .containerInput {
+    padding: 0 0 0 10px;
+    margin-left: 5px;
+    width: calc(100% / 2 - 5px);
+  }
+  .containerCheckbox {
+    height: 380px;
+  }
+  .middle {
+    padding: 20px 15px;
+  }
+}
+@media screen and (max-width: 414px) {
+  .textTop {
+    margin-top: 0px;
+  }
+  .installButton {
+    margin-top: 20px;
+  }
+  .table {
+    margin-top: 20px;
+  }
+  .middle {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  .containerInput {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+    padding: 0;
+  }
+  .containerCheckbox {
+    width: 100%;
+  }
+  .modal {
+    padding: 0 !important;
+  }
+  .money {
+    width: 90px;
+  }
+  .modalBody {
+    padding: 16px;
+  }
+  .table_chitiet > div > div > div > div > div > table > tbody > tr > td {
+    padding: 10px !important;
+    width: auto;
+  }
+  .table_chitiet > div > div > div > div > div > table > thead > tr > th {
+    padding: 10px !important;
+  }
+}

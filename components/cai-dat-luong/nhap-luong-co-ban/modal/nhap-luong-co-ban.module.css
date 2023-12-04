@@ -1,0 +1,144 @@
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 15px 20px 15px 20px;
+  background-color: #4c5bd4;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.body {
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+.khungc1 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.khung1 {
+  display: flex;
+  width: 460px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.iconUp {
+  display: flex;
+  justify-content: center;
+}
+.ktexthd {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.texthd {
+  color: #474747;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 136%; /* 21.76px */
+}
+.khungbutton {
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  margin-top: 10px;
+}
+.addfile {
+  display: flex;
+  padding: 10px 30px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: #4c5bd4;
+  width: 80%;
+  border: none;
+}
+.textaddfile {
+  color: #fff;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 136%; /* 21.76px */
+  width: cover;
+}
+.khung2 {
+  padding: 10px 20px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.note {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+}
+.textnote {
+  color: #474747;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 136%; /* 21.76px */
+  text-align: justify;
+}
+.link {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.textlink {
+  color: #4c5bd4;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 136%; /* 24.48px */
+}
+.iconlink {
+  display: flex;
+  padding: 5px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.khung3 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.buttontailen {
+  display: flex;
+  padding: 5px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px !important;
+  background: #4c5bd4;
+  border: none;
+}
+.texttailen {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 136%; /* 24.48px */
+}
+@media screen and (max-width: 500px) {
+  .khungc1 {
+    padding: 0 15px;
+  }
+  .addfile {
+    width: 76%;
+  }
+}

@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 15px 20px;
+  background-color: #4c5bd4;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.textHead {
+  font-size: 18px;
+  color: #fff;
+}
+.body {
+  padding: 20px 30px;
+}
+.formButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.button {
+  background-color: #4c5bd4;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+}
+.button > span {
+  color: #fff;
+}
+@media screen and (max-width: 414px) {
+  .modal {
+    padding: 0 !important;
+  }
+  .body {
+    padding: 20px;
+  }
+}

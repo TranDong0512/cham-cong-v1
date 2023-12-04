@@ -1,0 +1,21 @@
+.buttons {
+  background-color: #4c5bd4;
+  height: auto;
+  width: 100%;
+
+  .txt {
+    color: #fff !important;
+  }
+}
+.button p {
+  margin: 6px -5px 6px 0px;
+  width: 100%;
+}
+@media screen and (max-width: 414px) {
+  .tieuDe {
+    font-size: 18px !important;
+  }
+  .body {
+    padding: 4px 0 14px 0;
+  }
+}

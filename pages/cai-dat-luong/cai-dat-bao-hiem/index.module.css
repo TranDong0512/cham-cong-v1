@@ -1,0 +1,225 @@
+@media (min-width: 1920px) {
+  .card{
+    width: 100%;
+  }
+  .labelTabs{
+    margin: 0px 10px;
+  }  
+  .extraBTn{
+    width: 143px;
+    height: 43px;
+    display: flex;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: #42D778;
+  }
+  .plus{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display:flex;
+  }
+  
+  .buttonPlusText{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%;
+  }
+}
+
+@media (min-width: 1366px) and (max-width: 1919px) {
+  .card{
+    width: 100%;
+  }
+  .labelTabs{
+    margin: 0px 10px;
+  }  
+  .extraBTn{
+    width: 143px;
+    height: 43px;
+    display: flex;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: #42D778;
+  }
+  .plus{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display:flex;
+  }
+  
+  .buttonPlusText{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1365px) {
+  .card{
+    width: 100%;
+  }
+  .buttonPlus
+  {
+    display: flex;
+    position: absolute;
+    padding: 0px 10px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+    align-self: stretch;
+    margin-top: 40px;
+    right: -10px;
+  }
+  .labelTabs{
+    margin: 0px 10px;
+  }  
+  .extraBTn{
+    width: 143px;
+    height: 43px;
+    display: flex;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: #42D778;
+  }
+  .plus{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display:flex;
+  }
+  
+  .buttonPlusText{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .card{
+    width: 100%;
+  }
+  .buttonPlus
+  {
+    display: flex;
+    position: absolute;
+    padding: 0px 10px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+    align-self: stretch;
+    margin-top: 40px;
+    right: -10px;
+  }
+  .labelTabs{
+    margin: 0px 10px;
+  }  
+  .extraBTn{
+    width: 143px;
+    height: 43px;
+    display: flex;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: #42D778;
+  }
+  .plus{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display:flex;
+  }
+  
+  .buttonPlusText{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%;
+  }
+}
+
+@media (max-width: 767px) {
+  .card{
+    width: 100%;
+  }
+  .buttonPlus
+  {
+    display: flex;
+    position: absolute;
+    padding: 0px 10px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+    align-self: stretch;
+    margin-top: 40px;
+    right: -10px;
+  }
+  .labelTabs{
+    margin: 0px 10px;
+  }  
+  .extraBTn{
+    width: 143px;
+    height: 43px;
+    display: flex;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: #42D778;
+  }
+  .plus{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display:flex;
+  }
+  
+  .buttonPlusText{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%;
+  }
+}

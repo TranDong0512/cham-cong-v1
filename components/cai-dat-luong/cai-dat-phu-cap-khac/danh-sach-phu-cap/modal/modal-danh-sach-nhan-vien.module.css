@@ -1,0 +1,39 @@
+.body{
+    padding: 30px 20px;
+}
+.khungtitle{
+    margin-bottom: 20px;
+}
+.chucnang{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+.texttitle{
+    color: #474747;
+font-family: Roboto;
+font-size: 22px;
+font-style: normal;
+font-weight: 600;
+line-height: 136%; /* 29.92px */
+}
+.texttable{
+    color: #474747;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 136%; /* 21.76px */
+}
+@media screen and (max-width: 800px) {
+    .texttitle{
+        font-size: 20px;
+    }
+}
+@media screen and (max-width: 450px) {
+    .texttitle{
+        font-size: 18px;
+    }
+}
