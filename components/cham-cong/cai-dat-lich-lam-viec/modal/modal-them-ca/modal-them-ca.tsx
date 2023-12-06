@@ -54,7 +54,8 @@ export function ModalThemCa(
   type: any,
   listShift: any,
   listShiftSelected: any,
-  dateApply: any
+  dateApply: any,
+  setListShiftSelected: Function
 ) {
   const [applyMonth, setApplyMonth]: any = useState(dateApply?.substring(0, 7));
   const [current, setCurrent]: any = useState(new Date(dateApply));
@@ -315,7 +316,12 @@ export function ModalThemCa(
     <Modal
       className="bannerQLC modalThemLLV"
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={() => {
+        form.resetFields()
+        setAllCheck({})
+        setListShiftSelected([])
+        setOpen(false)
+      }}
       width={600}
       destroyOnClose={true}
       closable={false}
@@ -367,10 +373,12 @@ export function ModalChinhSua_Them({
   data,
   form,
   setOpen,
+  setDataTotal
 }: {
   data: any;
   form: any;
   setOpen: Function;
+  setDataTotal: Function;
 }) {
   // const [current, setCurrent]: any = useState(data?.apply_month && dayjs(data?.apply_month).format('YYYY-MM-DD'));
 
@@ -589,8 +597,9 @@ export function ModalChinhSua_Them({
       }).then((res) => {
         if (res?.result === true) {
           alert(res?.message);
+          setDataTotal()
           setOpen(false);
-          router.reload();
+          //router.reload();
         }
       });
     });

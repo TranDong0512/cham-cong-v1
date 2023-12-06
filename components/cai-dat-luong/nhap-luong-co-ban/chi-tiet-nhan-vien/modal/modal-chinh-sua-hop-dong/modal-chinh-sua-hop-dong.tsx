@@ -28,7 +28,7 @@ export function ModalChinhSuaHopDong(
       con_time_up: dayjs(data?.con_time_up),
       con_time_end: dayjs(data?.con_time_end),
     });
-  }, [data]);
+  }, [data, open]);
   console.log(data);
   const onFinish = async (value) => {
     const res = await POST_TL("api/tinhluong/congty/edit_contract", {

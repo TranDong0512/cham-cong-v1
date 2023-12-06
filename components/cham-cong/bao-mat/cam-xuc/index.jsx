@@ -23,6 +23,9 @@ const ModalAdd = ({ open, setOpen, reload, setReload }) => {
       }
     })
   }
+  useEffect(() => {
+    form.resetFields()
+  }, [open])
 
   const children = (
     <Form form={form}>

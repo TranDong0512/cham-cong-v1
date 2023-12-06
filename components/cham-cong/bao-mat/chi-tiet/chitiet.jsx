@@ -40,7 +40,7 @@ function getGMTOffset() {
   return formattedOffset;
 }
 
-const ChiTiet = ({ listIPs, listWifis, listEmps }) => {
+const ChiTiet = ({ listIPs, listWifis, listEmps, keyChildren }) => {
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [personalSettingSelected, setPersonalSettingSelected] = useState({});
   const [gmtString, setGmtString] = useState(getGMTOffset());
@@ -147,6 +147,10 @@ const ChiTiet = ({ listIPs, listWifis, listEmps }) => {
 
   const [form] = Form.useForm();
   const [listData, setListData] = useState([]);
+
+  useEffect(() => {
+    form.resetFields()
+  }, [keyChildren])
 
   useEffect(() => {
     const getList = async () => {

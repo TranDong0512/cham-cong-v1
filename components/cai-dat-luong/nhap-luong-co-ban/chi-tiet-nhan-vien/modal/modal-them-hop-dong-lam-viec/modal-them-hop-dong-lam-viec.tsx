@@ -46,7 +46,10 @@ export function ModalThemHopDong(open: boolean, setOpen: Function, data: any) {
     <Modal
       className="bannerQLC"
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={() => {
+        form.resetFields()  
+        setOpen(false)
+      }}
       width={600}
       closable={false}
       cancelButtonProps={{ style: { display: "none" } }}
@@ -60,7 +63,10 @@ export function ModalThemHopDong(open: boolean, setOpen: Function, data: any) {
           src={"/cross.png"}
           width={14}
           height={14}
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            form.resetFields()  
+            setOpen(false)
+          }}
         />
       </div>
       <div className={styles.body}>
@@ -160,7 +166,10 @@ export function ModalThemHopDong(open: boolean, setOpen: Function, data: any) {
               marginTop: "20px",
             }}
           >
-            <button className={styles.huyb} onClick={() => setOpen(false)}>
+            <button className={styles.huyb} onClick={() => {
+              form.resetFields()
+              setOpen(false)
+              }}>
               <p className={styles.texthuyb}>Huỷ bỏ</p>
             </button>
             <button className={styles.luu}>

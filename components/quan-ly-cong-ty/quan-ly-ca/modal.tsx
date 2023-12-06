@@ -133,7 +133,12 @@ export function AddCaModal(
       <Modal
         className="bannerQLC modalThemLLV"
         open={open}
-        onCancel={() => setOpenModal}
+        onCancel={() => {
+          setShowMore(false)
+          setChecked(false)
+          form.resetFields()
+          setOpen(false);
+        }}
         width={600}
         closable={false}
         cancelButtonProps={{ style: { display: "none" } }}

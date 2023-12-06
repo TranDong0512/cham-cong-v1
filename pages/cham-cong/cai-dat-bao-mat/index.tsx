@@ -19,6 +19,7 @@ export default function InstallSecurityPage({ listWifi, listIps, listEmps }) {
   const router = useRouter();
   const [wifiList, setWifiList] = useState(listWifi);
   const [ipList, setIpList] = useState(listIps);
+  const [keyChildren, setKeyChildren] = useState('1')
 
   const tabItems = [
     {
@@ -45,7 +46,7 @@ export default function InstallSecurityPage({ listWifi, listIps, listEmps }) {
       key: "4",
       label: "Chi tiết",
       children: (
-        <ChiTiet listIPs={listIps} listWifis={listWifi} listEmps={listEmps} />
+        <ChiTiet listIPs={listIps} listWifis={listWifi} listEmps={listEmps} keyChildren={keyChildren} />
       ),
     },
     {
@@ -57,7 +58,7 @@ export default function InstallSecurityPage({ listWifi, listIps, listEmps }) {
     {
       key: "6",
       label: "Chấm công QR",
-      children: <ChamCongQR />,
+      children: <ChamCongQR keyChildren={keyChildren}/>,
     },
     {
       key: "7",
@@ -72,10 +73,10 @@ export default function InstallSecurityPage({ listWifi, listIps, listEmps }) {
     </StickyBox>
   );
 
-  const onChange = (key: string) => {
-    if (key === "3") {
-      router.push(`/cai-dat-vi-tri`);
-    }
+   const onChange = (key: string) => {    
+    setKeyChildren(key)
+    return true
+
   };
 
   return (
