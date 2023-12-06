@@ -111,15 +111,17 @@ export default function LichLamViec() {
   )
 
   useEffect(() => {
-    const getList = async () => {
-      const listCalendar = await POST('api/qlc/cycle/list', {
-        year: curYear,
-        month: curMonth,
-      })
+    // const getList = async () => {
+    //   const listCalendar = await POST('api/qlc/cycle/list', {
+    //     year: curYear,
+    //     month: curMonth,
+    //   })
 
-      setTotalData(listCalendar?.data)
-    }
-    getList()
+    //   setTotalData(listCalendar?.data)
+    // }
+    // getList()
+
+    reFetch()
   }, [curMonth, curYear])
 
   const [form] = Form.useForm()
@@ -132,7 +134,9 @@ export default function LichLamViec() {
       }).then((res) => {
         if (res?.result === true) {
           // router.replace(router.asPath)
-          router.reload()
+          setModalCa(false)
+          reFetch()
+          //router.reload()
         }
       })
     })
@@ -145,6 +149,15 @@ export default function LichLamViec() {
       }
     })
   }, [])
+
+  const reFetch = async () => {
+    const listCalendar = await POST('api/qlc/cycle/list', {
+      year: curYear,
+      month: curMonth,
+    })
+
+    setTotalData(listCalendar?.data)
+  }
 
   return (
     <Card>
@@ -232,7 +245,7 @@ export default function LichLamViec() {
             </Row>
           </div>
           <div style={{ marginTop: '10px' }}>
-            {CaiDatLichLamViec(totalData)}
+            {CaiDatLichLamViec(totalData, reFetch)}
           </div>
           {/* <div style={{ marginTop: '10px' }}>
             <p
@@ -281,9 +294,10 @@ export default function LichLamViec() {
             weekType,
             listShift,
             listShiftSelected,
-            dateApply
+            dateApply,
+            setListShiftSelected
           )}
-          {SaoChepLich(modelSaoChep, setModalSaoChep, totalData, dateFilter)}
+          {SaoChepLich(modelSaoChep, setModalSaoChep, totalData, dateFilter, reFetch)}
         </Form>
       </div>
     </Card>

@@ -11,18 +11,21 @@ export function XoaLich(
   cySelected: any,
   empSelected?: any,
   listEmpInCy?: any,
-  setListEmpInCy?: Function
+  setListEmpInCy?: Function,
+  setDataTotal?: Function
 ) {
   const router = useRouter()
+
 
   const handleSubmit = () => {
     if (empSelected?.ep_id) {
       POST('api/qlc/cycle/delete_employee', {
         cy_id: cySelected?.cy_id,
         ep_id: empSelected?.ep_id,
-      }).then((res) => {
+      }).then(async (res) => {
         if (res?.result === true) {
           alert('Xóa thành công nhân viên khỏi lịch làm việc!')
+          setDataTotal()
           setListEmpInCy &&
             setListEmpInCy(
               listEmpInCy.filter((emp) => emp?.ep_id !== empSelected?.ep_id)
@@ -38,7 +41,8 @@ export function XoaLich(
         if (res?.data?.result) {
           alert('Xóa thành công lịch làm việc!')
           setOpen(false)
-          router.reload()
+          //router.reload()
+          setDataTotal()
         }
       })
     }
