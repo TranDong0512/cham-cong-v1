@@ -98,7 +98,7 @@ export const getServerSideProps = async (context) => {
 
   let com_id = undefined;
   com_id = getCompIdSS(context);
-
+  console.log("");
   const [resWifi, resIp, resEmp] = await Promise.all([
     await POST_SS("api/qlc/TrackingWifi/list", {}, context),
     await POST_SS("api/qlc/Setip/get", {}, context),
