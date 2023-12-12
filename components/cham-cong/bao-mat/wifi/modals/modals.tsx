@@ -1,4 +1,4 @@
-import { Button, Form, Input, Modal, Select } from "antd";
+import { Button, Form, Input, InputNumber, Modal, Select } from "antd";
 import styles from "./modals.module.css";
 import Image from "next/image";
 import { DELETE, POST } from "@/pages/api/BaseApi";
@@ -20,9 +20,8 @@ export function AddNewWifiModal(
   setReload: any
 ) {
   const [form] = Form.useForm();
-  const router = useRouter();
   const [listLoc, setListLoc] = useState([]);
-  const [curIp, setCurIp] = useState();
+  // const [curIp, setCurIp] = useState();
   useEffect(() => {
     const getListLoc = async () => {
       const ress = await POST("api/qlc/location/list", {});
@@ -34,25 +33,21 @@ export function AddNewWifiModal(
     getListLoc();
   }, []);
 
-  useEffect(() => {
-    const getIP = async () => {
-      try {
-        const res = await axios.get("https://geolocation-db.com/json/");
+  // useEffect(() => {
+  //   const getIP = async () => {
+  //     try {
+  //       const res = await axios.get("https://geolocation-db.com/json/");
 
-        if (res?.status === 200) {
-          setCurIp(res?.data?.IPv4);
-          form.setFieldValue("ip_access", res?.data?.IPv4);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getIP();
-  }, []);
-
-  useEffect(() => {
-    form.setFieldsValue({ ...selectedRow, ip_access: curIp })
-  }, [open])
+  //       if (res?.status === 200) {
+  //         setCurIp(res?.data?.IPv4);
+  //         form.setFieldValue("ip_access", res?.data?.IPv4);
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getIP();
+  // }, []);
 
   const onFinish = async (value: any) => {
     if (value) {
@@ -95,11 +90,7 @@ export function AddNewWifiModal(
   return (
     <Modal
       open={open}
-      onCancel={() => {
-        form.resetFields()
-        setOpen(false)
-      }
-      }
+      onCancel={() => setOpen(false)}
       width={600}
       closable={false}
       destroyOnClose={true}
@@ -117,11 +108,7 @@ export function AddNewWifiModal(
           width={14}
           height={14}
           style={{ marginRight: "20px" }}
-          onClick={() => {
-            form.resetFields()
-            setOpen(false)
-          }
-          }
+          onClick={() => setOpen(false)}
         />
       </div>
       <div className={styles.body}>
@@ -148,9 +135,19 @@ export function AddNewWifiModal(
           </p>
           <Form.Item
             name="ip_access"
-            rules={[{ required: true, message: "Trường này là bắt buộc" }]}
+            rules={[
+              { required: true, message: "Trường này là bắt buộc" },
+              {
+                pattern: /^[0-9.]+$/,
+                message: "Vui lòng chỉ nhập số và dấu chấm",
+              },
+            ]}
           >
-            <Input size="large" placeholder="Nhập IP" />
+            <Input
+              size="large"
+              placeholder="Nhập IP"
+              style={{ width: "100%" }}
+            />
           </Form.Item>
           <p className={styles.inputHeader}>
             Tọa độ <span style={{ color: "red" }}>*</span>

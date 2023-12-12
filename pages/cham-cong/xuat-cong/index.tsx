@@ -34,7 +34,6 @@ const listDaysVN = {
 };
 
 export default function XuatCong({ comData, listDepartments, listEmp }) {
-  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [comLabel, setComLabel] = useState({
     label: comData?.data?.com_name,

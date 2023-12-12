@@ -495,7 +495,8 @@ export const NhapLuongCoBan = ({}: // initData,
 
     if (value?.ep_id && value?.ep_id !== "all") {
       body["ep_id"] = value?.ep_id;
-    } else body["ep_id"] = undefined;
+    }
+
     if (value?.organizeDetailId) {
       const organizeDetailId = orgDetailList?.find(
         (item) => item?.id === value?.organizeDetailId

@@ -45,6 +45,7 @@ export function AddCaModal(
     form.resetFields();
   };
   useEffect(() => {
+    console.log("selectedShift", selectedShift);
     form.setFieldsValue(selectedShift);
     setSelectedPayMethod(selectedShift?.shift_type);
   }, [form, selectedShift]);
@@ -133,12 +134,7 @@ export function AddCaModal(
       <Modal
         className="bannerQLC modalThemLLV"
         open={open}
-        onCancel={() => {
-          setShowMore(false)
-          setChecked(false)
-          form.resetFields()
-          setOpen(false);
-        }}
+        onCancel={() => setOpenModal}
         width={600}
         closable={false}
         cancelButtonProps={{ style: { display: "none" } }}
@@ -184,7 +180,7 @@ export function AddCaModal(
               <Col sm={12} xs={24}>
                 <Form.Item
                   name="start_time"
-                  required={true}
+                  rules={[{ required: true, message: "Chọn giờ vào ca" }]}
                   label={<p>{"Giờ vào ca (check in)"}</p>}
                   labelCol={{ span: 24 }}
                 >
@@ -194,6 +190,7 @@ export function AddCaModal(
                       fontSize: "16px",
                       padding: "6px",
                       width: "100%",
+                      display: "flex",
                     }}
                   ></Input>
                 </Form.Item>
@@ -201,17 +198,17 @@ export function AddCaModal(
               <Col sm={12} xs={24}>
                 <Form.Item
                   name="end_time"
-                  required={true}
+                  rules={[{ required: true, message: "Chọn giờ hết ca" }]}
                   label={<p>{"Giờ hết ca (check out)"}</p>}
                   labelCol={{ span: 24 }}
                 >
                   <Input
                     type="time"
-                    style={{
-                      fontSize: "16px",
-                      padding: "6px",
-                      width: "100%",
-                    }}
+                    // style={{
+                    //   fontSize: "16px",
+                    //   padding: "6px",
+                    //   width: "100%",
+                    // }}
                   ></Input>
                 </Form.Item>
               </Col>
@@ -268,7 +265,16 @@ export function AddCaModal(
                 <div style={{ margin: "8px 0" }}>
                   {checked ? (
                     <>
-                      <Form.Item name="nums_day" labelCol={{ span: 24 }}>
+                      <Form.Item
+                        name="nums_day"
+                        labelCol={{ span: 24 }}
+                        rules={[
+                          {
+                            required: true,
+                            message: "Nhập khoảng ngày áp dụng!",
+                          },
+                        ]}
+                      >
                         <InputNumber
                           style={{ width: "100%" }}
                           size="large"

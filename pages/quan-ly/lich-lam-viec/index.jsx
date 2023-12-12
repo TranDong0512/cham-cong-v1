@@ -75,6 +75,7 @@ const List = () => {
     fetchApiUser()
   }, [])
   const DateCellRender = ({ value }) => {
+
     return (
       <ul className='events'>
         {value &&
@@ -104,10 +105,10 @@ const List = () => {
     )
   }
   const onPanelChange = (value, mode) => {
-    const selectedMonth = value.month() + 1
+    const selectedMonth = value.month() + 1 
     const selectedYear = value.year()
     setSelectedMonth(selectedMonth)
-    setSelectedYear(selectedYear)
+    setSelectedYear(selectedYear) 
   }
 
   return (
@@ -144,6 +145,7 @@ const List = () => {
                 locale: 'vi',
               },
             }}
+            mode='month'
             className={`${styles.centeredCalendar} centered-calendar`}
           />
         </div>

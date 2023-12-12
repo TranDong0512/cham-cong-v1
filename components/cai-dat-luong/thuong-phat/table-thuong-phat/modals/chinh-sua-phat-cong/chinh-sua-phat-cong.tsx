@@ -7,6 +7,7 @@ import _ from "lodash";
 import moment from "moment";
 import { GET, POST_TL, POST_VT_CONG, getCompIdCS } from "@/pages/api/BaseApi";
 import { useRouter } from "next/router";
+import dayjs from "dayjs";
 
 export function ModalChinhSuaThuongPhatCong(
   open: boolean,
@@ -15,8 +16,7 @@ export function ModalChinhSuaThuongPhatCong(
   setRowSelectKey: Function,
   selectedData: any
 ) {
-  console.log("rowSelectKey", rowSelectKey);
-
+  console.log("rowSelectKey-------------", rowSelectKey.phatcong_time);
   const [form] = Form.useForm();
   const { TextArea } = Input;
   const [xacNhanXoa, setXacNhanXoa] = useState(false);
@@ -24,32 +24,24 @@ export function ModalChinhSuaThuongPhatCong(
   const router = useRouter();
   const [listShift, setListShift] = useState<any>([]);
   const [cong, setCong] = useState<any>();
-  const [day, setDay] = useState<any>(
-    moment(rowSelectKey?.phatcong_time)?.format("YYYY-MM-DD")
-  );
+  const [dayKey, setDayKey] = useState<any>();
   const handleDay = (e) => {
-    setDay(e.target.value);
+    setDayKey(e.target.value);
   };
   useEffect(() => {
-    let com_id = null;
-    com_id = getCompIdCS();
-    com_id &&
-      POST_VT_CONG("api/vanthu/dexuat/empShiftInDay", {
-        ep_id: rowSelectKey?.ep_id,
-        day: day,
-      }).then((res) => {
-        setListShift(res.list);
-      });
-  }, [day, rowSelectKey]);
+    POST_VT_CONG("api/vanthu/dexuat/empShiftInDay", {
+      ep_id: rowSelectKey?.ep_id,
+      day: dayKey,
+    }).then((res) => {
+      setListShift(res.list);
+    });
+  }, [dayKey, rowSelectKey]);
 
   useEffect(() => {
-    if (selectedData && selectedData.tt_phat_cong.ds_phat_cong[0]) {
-      const so_cong =
-        selectedData.tt_phat_cong.ds_phat_cong[0].shifts?.num_to_calculate
-          ?.$numberDecimal;
-      setCong(so_cong);
-    }
-  }, [selectedData]);
+    const so_cong = rowSelectKey.shifts?.num_to_calculate?.$numberDecimal;
+    console.log("so_cong", so_cong);
+    setCong(so_cong);
+  }, [rowSelectKey]);
   const onChange = (value: string) => {
     const so_cong = listShift.find(
       (item) => item.shift_id == value
@@ -66,6 +58,7 @@ export function ModalChinhSuaThuongPhatCong(
     form.setFieldsValue({
       ...rowSelectKey,
       phatcong_time: moment(rowSelectKey?.phatcong_time)?.format("YYYY-MM-DD"),
+      phatcong_shift: rowSelectKey?.shifts?.shift_id,
     });
   }, [rowSelectKey]);
 

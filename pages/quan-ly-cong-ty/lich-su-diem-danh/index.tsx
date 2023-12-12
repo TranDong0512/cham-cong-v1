@@ -1,7 +1,7 @@
-import { removeVietnameseTones } from '@/constants/style-constants'
-import { GET, POST } from '@/pages/api/BaseApi'
-import { ExportExcellButton } from '@/utils/ExportExccel'
-import { EditOutlined } from '@ant-design/icons'
+import { removeVietnameseTones } from "@/constants/style-constants";
+import { GET, POST } from "@/pages/api/BaseApi";
+import { ExportExcellButton } from "@/utils/ExportExccel";
+import { EditOutlined } from "@ant-design/icons";
 import {
   Avatar,
   Button,
@@ -14,30 +14,30 @@ import {
   Row,
   Select,
   Table,
-} from 'antd'
-import dayjs from 'dayjs'
-import moment from 'moment'
-import { useEffect, useState } from 'react'
-import Toastify from 'toastify-js'
-import 'toastify-js/src/toastify.css'
+} from "antd";
+import dayjs from "dayjs";
+import moment from "moment";
+import { useEffect, useState } from "react";
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css";
 
 export default function LichSuChamCong() {
-  const [list, setList] = useState([])
-  const [count, setCount] = useState()
-  const [listEmp, setListEmp] = useState([])
-  const [listPb, setListPb] = useState([])
-  const [reload, setReload] = useState(false)
+  const [list, setList] = useState([]);
+  const [count, setCount] = useState();
+  const [listEmp, setListEmp] = useState([]);
+  const [listPb, setListPb] = useState([]);
+  const [reload, setReload] = useState(false);
 
-  const URL = process.env.NEXT_PUBLIC_BASE_URL + '/timviec365'
+  const URL = process.env.NEXT_PUBLIC_BASE_URL + "/timviec365";
   const [param, setParam] = useState<any>({
     curPage: 1,
     start_time: dayjs(),
     end_time: dayjs(),
-  })
+  });
 
   useEffect(() => {
     const getListEmp = async () => {
-      const res = await POST('api/qlc/timekeeping/getListEmpSimple', {})
+      const res = await POST("api/qlc/timekeeping/getListEmpSimple", {});
 
       if (res?.result) {
         setListEmp(
@@ -48,16 +48,16 @@ export default function LichSuChamCong() {
               `${item?.userName}(${item?.idQLC})`
             ),
           }))
-        )
+        );
       }
-    }
+    };
 
-    getListEmp()
-  }, [])
+    getListEmp();
+  }, []);
 
   useEffect(() => {
     const getListPb = async () => {
-      const res = await POST('api/qlc/department/list', {})
+      const res = await POST("api/qlc/department/list", {});
 
       if (res?.result) {
         setListPb(
@@ -65,63 +65,63 @@ export default function LichSuChamCong() {
             label: item?.dep_name,
             value: item?.dep_id,
           }))
-        )
+        );
       }
-    }
+    };
 
-    getListPb()
-  }, [])
-  const [loading, setLoading] = useState(true)
+    getListPb();
+  }, []);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const getList = async () => {
-      setLoading(true)
-      const res = await POST('api/qlc/timekeeping/getHistoryCheckin', param)
+      setLoading(true);
+      const res = await POST("api/qlc/timekeeping/getHistoryCheckin", param);
 
       if (res?.result) {
-        setList(res?.data)
-        setCount(res?.total)
-        setLoading(false)
+        setList(res?.data);
+        setCount(res?.total);
+        setLoading(false);
       }
-    }
+    };
 
-    getList()
-  }, [param, reload])
+    getList();
+  }, [param, reload]);
 
   const onFinish = (value) => {
     setParam({
       ...param,
-      ep_id: value?.ep_id === 'all' ? undefined : value?.ep_id,
-      dep_id: value?.dep_id === 'all' ? undefined : value?.dep_id,
+      ep_id: value?.ep_id === "all" ? undefined : value?.ep_id,
+      dep_id: value?.dep_id === "all" ? undefined : value?.dep_id,
       start_time: dayjs(value?.start_time),
       end_time: dayjs(value?.end_time),
-    })
-  }
+    });
+  };
 
-  const [form] = Form.useForm()
+  const [form] = Form.useForm();
 
   //get lít ca
-  const [listCa, setListCa] = useState([])
+  const [listCa, setListCa] = useState([]);
   useEffect(() => {
     const getListca = async () => {
-      const res = await GET('api/qlc/shift/list')
+      const res = await GET("api/qlc/shift/list");
 
       if (res?.result) {
-        setListCa(res?.items)
+        setListCa(res?.items);
       }
-    }
+    };
 
-    getListca()
-  }, [])
+    getListca();
+  }, []);
 
-  const [selectedCa, setSelectedCa] = useState()
+  const [selectedCa, setSelectedCa] = useState();
 
   const cols: any = [
     {
       title: <p>Ảnh</p>,
       render: (record) => (
-        <Avatar alt='/' src={`${URL}/${record?.image}`} size={50} />
+        <Avatar alt="/" src={`${URL}/${record?.image}`} size={50} />
       ),
-      align: 'center',
+      align: "center",
     },
     {
       title: <p>Họ và tên</p>,
@@ -130,69 +130,71 @@ export default function LichSuChamCong() {
           {record?.ep_id} - {record?.userName}
         </p>
       ),
-      align: 'center',
+      align: "center",
     },
     {
       title: <p>Tổ chức</p>,
       render: (record) => <p>{record?.dep?.organizeDetailName}</p>,
-      align: 'center',
+      align: "center",
     },
     {
       title: <p>Ca làm việc</p>,
       render: (record) => <p>{record?.shift_name}</p>,
-      align: 'center',
+      align: "center",
     },
     {
       title: <p>Thời gian chấm công</p>,
       render: (record) => (
         <>
-          <p style={{ fontWeight: 'bold' }}>
-            {moment(record?.at_time).format('HH:mm:ss ')}
+          <p style={{ fontWeight: "bold" }}>
+            {moment(record?.at_time).format("HH:mm:ss ")}
           </p>
-          <p>{moment(record?.at_time).format('DD-MM-YYYY')}</p>
+          <p>{moment(record?.at_time).format("DD-MM-YYYY")}</p>
         </>
       ),
-      align: 'center',
+      align: "center",
     },
     {
       title: <p>Thiết bị chấm công</p>,
       render: (record) => <p>{record?.device}</p>,
-      align: 'center',
+      align: "center",
     },
     {
       title: <p>Vị trí</p>,
-      render: (record) => <p>{record?.ts_location_name || 'Chưa cập nhật'}</p>,
-      align: 'center',
+      render: (record) => <p>{record?.ts_location_name || "Chưa cập nhật"}</p>,
+      align: "center",
     },
     {
-      title: 'Chỉnh sửa',
+      title: "Chỉnh sửa",
       render: (record, index) => (
         <Popover
           key={index}
-          trigger={['click']}
+          trigger={["click"]}
           content={
             <div
               style={{
-                padding: '20px',
-                width: '300px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-              }}>
+                padding: "20px",
+                width: "300px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
               <p
                 style={{
-                  color: '#000',
-                  fontWeight: 'bold',
-                  marginBottom: '10px',
-                }}>
+                  color: "#000",
+                  fontWeight: "bold",
+                  marginBottom: "10px",
+                }}
+              >
                 Chỉnh sửa ca
               </p>
               <Select
-                size='large'
-                placeholder='Chọn ca'
-                style={{ width: '100%' }}
+                size="large"
+                placeholder="Chọn ca"
+                style={{ width: "100%" }}
                 showSearch
-                optionFilterProp='label'
+                optionFilterProp="label"
                 onChange={(val) => setSelectedCa(val)}
                 options={listCa?.map((item) => ({
                   label: item?.shift_name,
@@ -200,58 +202,63 @@ export default function LichSuChamCong() {
                 }))}
               />
               <Button
-                size='large'
-                style={{ marginTop: '10px' }}
-                type='primary'
+                size="large"
+                style={{ marginTop: "10px" }}
+                type="primary"
                 onClick={async () => {
                   // handle update
-                  const res = await POST('api/qlc/shift/updateTimesheet', {
+                  const res = await POST("api/qlc/shift/updateTimesheet", {
                     sheet_id: record?.sheet_id,
                     shift_id: selectedCa,
-                  })
+                  });
 
-                  console.log(res)
+                  console.log(res);
                   if (res?.result) {
                     Toastify({
-                      text: 'Sửa thành công',
-                      className: 'info',
+                      text: "Sửa thành công!",
+                      className: "info",
                       style: {
                         background:
-                          'linear-gradient(to right, #00b09b, #96c93d)',
+                          "linear-gradient(to right, #00b09b, #96c93d)",
+                        padding: " 0 20px",
                       },
-                    }).showToast()
+                    }).showToast();
 
-                    setReload(!reload)
+                    setReload(!reload);
                   } else {
                     Toastify({
-                      text: 'Sua loi',
-                      className: 'info',
+                      text: "Sửa lỗi!",
+                      className: "info",
                       style: {
-                        background: 'red',
+                        background: "red",
+                        padding: " 0 20px",
                       },
-                    }).showToast()
+                    }).showToast();
                   }
-                }}>
+                }}
+              >
                 <p>Cập nhật</p>
               </Button>
             </div>
-          }>
+          }
+        >
           <EditOutlined />
         </Popover>
       ),
     },
-  ]
+  ];
 
   return (
     <Card
-      title={<h2 style={{ color: '#fff' }}>Danh sách lịch sử điểm danh </h2>}>
+      title={<h2 style={{ color: "#fff" }}>Danh sách lịch sử điểm danh </h2>}
+    >
       <Form form={form} initialValues={param} onFinish={onFinish}>
         <Row gutter={[20, 20]}>
           <Col xs={24} sm={24} md={6}>
-            <Form.Item name={'ep_id'}>
+            <Form.Item name={"ep_id"}>
               <Select
-                size='large'
-                placeholder='Tìm theo tên nhân viên'
+                size="large"
+                placeholder="Tìm theo tên nhân viên"
                 showSearch
                 filterOption={(input, option) =>
                   option?.label
@@ -263,7 +270,7 @@ export default function LichSuChamCong() {
                     ?.indexOf(input.toLowerCase()) >= 0
                 }
                 options={[
-                  { label: 'Tất cả nhân viên', value: 'all' },
+                  { label: "Tất cả nhân viên", value: "all" },
                   ...listEmp,
                 ]}
               />
@@ -271,35 +278,38 @@ export default function LichSuChamCong() {
           </Col>
           <Col xs={12} sm={12} md={6}>
             <Form.Item
-              name={'start_time'}
-              label={<p style={{ fontWeight: 'bold' }}>Từ</p>}>
+              name={"start_time"}
+              label={<p style={{ fontWeight: "bold" }}>Từ</p>}
+            >
               <DatePicker
-                style={{ width: '100%' }}
-                placeholder='Thời gian bắt đầu'
-                size='large'
-                format={'DD-MM-YYYY'}
+                style={{ width: "100%" }}
+                placeholder="Thời gian bắt đầu"
+                size="large"
+                format={"DD-MM-YYYY"}
               />
             </Form.Item>
           </Col>
           <Col xs={12} sm={12} md={6}>
             <Form.Item
-              name={'end_time'}
-              label={<p style={{ fontWeight: 'bold' }}>Đến</p>}>
+              name={"end_time"}
+              label={<p style={{ fontWeight: "bold" }}>Đến</p>}
+            >
               <DatePicker
-                style={{ width: '100%' }}
-                placeholder='Thời gian kết thúc'
-                size='large'
-                format={'DD-MM-YYYY'}
+                style={{ width: "100%" }}
+                placeholder="Thời gian kết thúc"
+                size="large"
+                format={"DD-MM-YYYY"}
               />
             </Form.Item>
           </Col>
 
           <Col xs={24} sm={24} md={3}>
             <Button
-              size='large'
-              style={{ backgroundColor: 'blue', width: '100%' }}
-              htmlType='submit'>
-              <p style={{ color: '#fff' }}>Tìm kiếm</p>
+              size="large"
+              style={{ backgroundColor: "blue", width: "100%" }}
+              htmlType="submit"
+            >
+              <p style={{ color: "#fff" }}>Tìm kiếm</p>
             </Button>
           </Col>
           <Col xs={24} sm={24} md={3}>
@@ -307,12 +317,12 @@ export default function LichSuChamCong() {
               fileName={`Danh sách lịch sử điểm danh `}
               fileHeaders={[]}
               listkeys={[
-                'Mã NV',
-                'Tên nhân viên',
-                'Ca làm việc',
-                'Thời gian điểm danh',
-                'Địa điểm',
-                'Thiết bị',
+                "Mã NV",
+                "Tên nhân viên",
+                "Ca làm việc",
+                "Thời gian điểm danh",
+                "Địa điểm",
+                "Thiết bị",
               ]}
               data={
                 list
@@ -320,7 +330,7 @@ export default function LichSuChamCong() {
                       item?.ep_id,
                       item?.userName,
                       item?.shift_name,
-                      moment(item?.at_time).format('DD-MM-YYYY HH:mm:ss'),
+                      moment(item?.at_time).format("DD-MM-YYYY HH:mm:ss"),
                       item?.ts_location_name,
                       item?.device,
                     ])
@@ -328,9 +338,10 @@ export default function LichSuChamCong() {
               }
               component={
                 <Button
-                  size='large'
-                  type='primary'
-                  style={{ marginLeft: '10px' }}>
+                  size="large"
+                  type="primary"
+                  style={{ marginLeft: "10px" }}
+                >
                   <p>Xuất file Excel</p>
                 </Button>
               }
@@ -344,28 +355,28 @@ export default function LichSuChamCong() {
         dataSource={list}
         loading={loading}
         rowKey={(record, idex) => {
-          return idex
+          return idex;
         }}
-        scroll={{ x: '2000px' }}
+        scroll={{ x: "2000px" }}
         pagination={{
           current: param?.curPage,
-          position: ['bottomCenter'],
+          position: ["bottomCenter"],
           showSizeChanger: false,
           total: count,
           onChange(page, pageSize) {
             setParam({
               ...param,
               curPage: page,
-            })
+            });
           },
           // pageSize: 20,
         }}
         style={{
-          marginTop: '20px',
-          border: '1px solid #ACACAC',
-          borderRadius: '10px',
+          marginTop: "20px",
+          border: "1px solid #ACACAC",
+          borderRadius: "10px",
         }}
       />
     </Card>
-  )
+  );
 }

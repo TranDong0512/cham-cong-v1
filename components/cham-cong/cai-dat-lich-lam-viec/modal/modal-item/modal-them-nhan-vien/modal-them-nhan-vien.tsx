@@ -87,8 +87,7 @@ export function ThemNhanVien(
   setNext: Function,
   cySelected: any,
   listEmp: any,
-  listEmpInCy: any,
-  setDataTotal: Function
+  listEmpInCy: any
 ) {
   const [listKeyBefore, setListKeyBefore]: any = useState([])
   const [listKeyAfter, setListKeyAfter]: any = useState([])
@@ -123,10 +122,6 @@ export function ThemNhanVien(
   const [filterdata, setFilterdata] = useState([])
   const [orgId, setOrgId] = useState(undefined)
   const [ep_id, setEpId] = useState(undefined)
-  const [searchName, setSearchName] = useState('')
-  const [searchOrg, setSearchOrg] = useState(undefined)
-  const [checkbox, getCheckbox] = useState(false)
-
   console.log(cySelected)
   useEffect(() => {
     const getNoCyListEmp = async () => {
@@ -148,11 +143,6 @@ export function ThemNhanVien(
       getNoCyListEmp()
     }
   }, [orgId, ep_id, cySelected])
-
-
-  useEffect(() => {
-    setOrgId(undefined)
-  }, [open])
 
   const router = useRouter()
 
@@ -205,11 +195,10 @@ export function ThemNhanVien(
           // }
         ).then((res) => {
           if (res?.result === true) {
-            window.alert('Thêm thành công')
+            setModalXacNhan(true)
             setOpen(false)
             // router.replace(router.asPath)
-            //router.reload()
-            setDataTotal()
+            router.reload()
           } else {
             window.alert('Co loi khi them')
           }
@@ -237,13 +226,7 @@ export function ThemNhanVien(
     <div>
       <Modal
         open={open}
-        onCancel={() => {
-          setSearchName('')
-          setSearchOrg(undefined)
-          setListKeyAfter([])
-          getCheckbox(false)
-          setOpen(false)
-        }}
+        onCancel={() => setOpen(false)}
         width={800}
         style={{ height: '100vh' }}
         closable={false}
@@ -262,41 +245,15 @@ export function ThemNhanVien(
         </div>
         <div className={styles.body}>
           <div className={styles.bodyItem}>
-            <Select
-              value={searchOrg}
-              size='large'
-              style={{ width: '100%' }}
-              options={[
-                { label: 'Tất cả phòng ban', value: 'all' },
-                ...listPb?.map((item) => ({
-                  label: item?.organizeDetailName,
-                  value: item?.id,
-                })),
-              ]}
-              placeholder='Chọn phòng ban'
-              onChange={(e) => {
-                setSearchName('')
-                if (e === 'all') {
-                  setOrgId(undefined)
-                  setSearchOrg(undefined)
-                } else {
-                  const orgId = listPb?.find((item) => item?.id === e)
-                  console.log(data)
-                  setOrgId(orgId?.listOrganizeDetailId)
-                  setSearchOrg(e)
-                }
-              }}
-            />
             <Input
-              value={searchName}
-              style={{ fontSize: '16px', width: '100%', marginTop: '20px' }}
+              style={{ fontSize: '16px' }}
               prefix={
                 <SearchOutlined rev={''} style={{ marginRight: '10px' }} />
               }
               size='large'
               onChange={(e) => {
                 const keyword = e.target.value
-                setSearchName(keyword)
+
                 if (!keyword) {
                   setFilterdata(data)
                 } else {
@@ -310,6 +267,27 @@ export function ThemNhanVien(
                 }
               }}
               placeholder='Nhập từ cần tìm'></Input>
+            <Select
+              size='large'
+              style={{ width: '100%', marginTop: '20px' }}
+              options={[
+                { label: 'Tất cả phòng ban', value: 'all' },
+                ...listPb?.map((item) => ({
+                  label: item?.organizeDetailName,
+                  value: item?.id,
+                })),
+              ]}
+              placeholder='Chọn phòng ban'
+              onChange={(e) => {
+                if (e === 'all') {
+                  setOrgId(undefined)
+                } else {
+                  const orgId = listPb?.find((item) => item?.id === e)
+                  console.log(data)
+                  setOrgId(orgId?.listOrganizeDetailId)
+                }
+              }}
+            />
           </div>
           <div className={styles.bodyItem}>
             <Row gutter={[40, 20]} style={{ alignItems: 'end' }}>
@@ -331,15 +309,10 @@ export function ThemNhanVien(
               </Col>
               <Col sm={8} xs={12}>
                 <Checkbox
-                  checked={checkbox}
-                  onChange={(e) => {
-                    getCheckbox(!checkbox)
-                    if (e.target.checked === true) {
-                      setListKeyAfter(data?.map((item) => item?.ep_id))
-                    } else setListKeyAfter([])
-                  }
+                  onChange={(e) =>
+                    setListKeyAfter(data?.map((item) => item?.ep_id))
                   }>
-                  Chọn tất cả
+                  Thêm tất cả
                 </Checkbox>
               </Col>
             </Row>

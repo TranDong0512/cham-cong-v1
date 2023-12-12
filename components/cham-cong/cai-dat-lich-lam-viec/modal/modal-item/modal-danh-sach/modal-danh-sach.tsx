@@ -18,16 +18,14 @@ export function DanhSach(
   open: boolean,
   setOpen: Function,
   cySelected: any,
-  listEmpInCy: any,
-  setDataTotal: Function
+  listEmpInCy: any
 ) {
   const [xacNhan, setXacNhan] = useState(false)
   const [data, setData]: any = useState(listEmpInCy)
   const [selectedRow, setSelectedRow]: any = useState({})
-  const [searchName, setSearchName] = useState('')
   useEffect(() => {
     setData(listEmpInCy)
-  }, [listEmpInCy, open])
+  }, [listEmpInCy])
 
   const columns: ColumnsType<DataType> = [
     {
@@ -89,10 +87,7 @@ export function DanhSach(
   return (
     <Modal
       open={open}
-      onCancel={() => {
-        setSearchName('')
-        setOpen(false)
-      }}
+      onCancel={() => setOpen(false)}
       width={1000}
       closable={false}
       cancelButtonProps={{ style: { display: 'none' } }}
@@ -129,12 +124,10 @@ export function DanhSach(
         <Row gutter={[20, 20]} style={{ marginBottom: '20px' }}>
           <Col span={12}>
             <Input
-              value={searchName}
               size='large'
               style={{ width: '100%' }}
               placeholder='Nhập tên cần tìm'
               onChange={(e) => {
-                setSearchName(e.target.value)
                 setData(
                   e
                     ? listEmpInCy?.filter((item) =>
@@ -173,8 +166,7 @@ export function DanhSach(
         cySelected,
         selectedRow,
         data,
-        setData,
-        setDataTotal
+        setData
       )}
     </Modal>
   )

@@ -39,7 +39,6 @@ export function AllNhanVien({
   const [selectedData, setSelectedData] = useState();
   const [openModalAdd, setOpenModalAdd] = useState<any>(false);
   const [load, setLoad] = useState<any>(false);
-
   const closeModalAdd = () => {
     setOpenModalAdd(false);
   };
@@ -47,6 +46,7 @@ export function AllNhanVien({
     label: infoCom?.data?.com_name,
     value: infoCom?.data?.com_id,
   });
+  console.log("infoCom", infoCom);
   const [param, setParam] = useState({
     curPage: 1,
     type: 0,
@@ -171,7 +171,6 @@ export function AllNhanVien({
           title="Chỉnh sửa thông tin tài khoản"
           onClick={(event) => {
             event.stopPropagation();
-            console.log(data);
             setSelectedData(data);
             setOpenEdit(true);
           }}
@@ -289,7 +288,13 @@ export function AllNhanVien({
                 cursor: "pointer",
               }}
             >
-              <Image alt="/" src={"/3dots.png"} width={3} height={15} />
+              <Image
+                alt="/"
+                src={"/3dots.png"}
+                width={3}
+                height={15}
+                style={{ marginBottom: 10 }}
+              />
               <p style={{ marginLeft: "5px", color: "#4C5BD4" }}>Tùy chỉnh</p>
             </div>
           </Popover>
@@ -332,7 +337,6 @@ export function AllNhanVien({
 
   const ModalDel = (open, setOpen) => {
     const onConfirm = async () => {
-      console.log(selectedKey);
       const res = await POST("api/qlc/managerUser/delListUsers", {
         listIds: selectedKey?.toString(),
       });
@@ -361,7 +365,7 @@ export function AllNhanVien({
       <div>
         <Form form={form} onFinish={onFinish}>
           <Row gutter={[16, 16]}>
-            <Col md={8} sm={12} xs={24}>
+            <Col md={6} sm={12} xs={24}>
               <Form.Item name={"orgDetail"}>
                 <Select
                   onChange={(val) => {
@@ -385,7 +389,7 @@ export function AllNhanVien({
                 />
               </Form.Item>
             </Col>
-            <Col md={8} sm={12} xs={24}>
+            <Col md={6} sm={12} xs={24}>
               <Form.Item name={"ep_id"}>
                 <Select
                   options={[
@@ -416,7 +420,7 @@ export function AllNhanVien({
               </Form.Item>
             </Col>
 
-            <Col md={8} sm={12} xs={24}>
+            <Col md={6} sm={12} xs={24}>
               <Form.Item name={"type"} initialValue={0}>
                 <Select
                   size="large"
@@ -454,17 +458,18 @@ export function AllNhanVien({
                 />
               </Form.Item>
             </Col>
+            {/* 
             <Col
-              md={0}
+              md={6}
               sm={0}
               xs={24}
               lg={12}
               xl={6}
               xxl={0}
               style={{ marginTop: "10px" }}
-            ></Col>
+            ></Col> */}
 
-            <Col md={4} sm={4} xs={24} style={{}}>
+            <Col md={6} sm={4} xs={24} style={{}}>
               <Button
                 size="large"
                 type="primary"
@@ -474,7 +479,7 @@ export function AllNhanVien({
                 <p style={{ color: "#fff" }}>Tìm kiếm</p>
               </Button>
             </Col>
-            <Col md={12} sm={4} xs={24} style={{}}></Col>
+            {/* <Col md={12} sm={4} xs={24} style={{}}></Col> */}
 
             <div
               style={{
@@ -484,13 +489,13 @@ export function AllNhanVien({
                 width: "430px",
               }}
             >
-              <Col md={12} sm={24} xs={24}>
+              <Col md={12} sm={12} xs={24}>
                 <Button
                   size="large"
                   style={{
                     backgroundColor: "#1677ff",
                     width: "100%",
-                    marginBottom: 28,
+                    marginBottom: 14,
                   }}
                   onClick={() => setOpenModalAdd(true)}
                 >
@@ -499,7 +504,7 @@ export function AllNhanVien({
               </Col>
               <Col
                 md={12}
-                sm={24}
+                sm={12}
                 xs={24}
                 style={{ display: "flex", justifyContent: "flex-end" }}
               >
@@ -568,7 +573,6 @@ export function AllNhanVien({
             total: total,
             pageSize: param?.pageSize,
             onChange(page, pageSize) {
-              console.log(pageSize);
               setParam({
                 ...param,
                 curPage: page,
@@ -597,7 +601,7 @@ export function AllNhanVien({
         setData,
         currentRow
       )}
-      {SetRoleModal(openSetRole, setOpenSetRole)}
+      {SetRoleModal(openSetRole, setOpenSetRole, currentRow)}
       {DeleteEmpModal(
         openDelete,
         setOpenDelete,

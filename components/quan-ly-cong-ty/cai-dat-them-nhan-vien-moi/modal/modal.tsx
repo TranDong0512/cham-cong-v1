@@ -16,6 +16,7 @@ import {
   positionLabel,
 } from "@/utils/function";
 import { Col, DatePicker, Form, Input, Row, Select } from "antd";
+import axios from "axios";
 import dayjs from "dayjs";
 import moment from "moment";
 import Image from "next/image";
@@ -286,7 +287,7 @@ export function EditEmpModal(
   const router = useRouter();
   const [selectedPb, setSelectedPb] = useState();
   const [listTeam, setListTeam] = useState([]);
-
+  console.log("data", data);
   useEffect(() => {
     setListTeam(listTeamLabel?.filter((item) => item?.dep_id === selectedPb));
   }, [selectedPb]);
@@ -397,7 +398,7 @@ export function EditEmpModal(
           </Form.Item>
         </Col>
         <Col md={12} sm={24} xs={24}>
-          {MyInput("Họ và tên1", "Nhập họ và tên", true, true, "ep_name")}
+          {MyInput("Họ và tên", "Nhập họ và tên", true, true, "ep_name")}
         </Col>
         {/* <Col md={12} sm={24} xs={24}>
           {MyInput(
@@ -557,14 +558,25 @@ export function EditEmpModal(
   );
 }
 
-export function SetRoleModal(open: boolean, setOpen: Function) {
+export function SetRoleModal(open: boolean, setOpen: Function, currentRow) {
   const [form] = Form.useForm();
   const [openSuccess, setOpenSuccess] = useState(false);
+  const [valSelect, setValSelect] = useState<any>(1);
 
+  const onFinish = async () => {
+    const updateAdmin = await POST(`api/qlc/managerUser/updateAdmin`, {
+      newIsAdmin: valSelect,
+      listUsers: [currentRow.ep_id],
+    });
+    if (updateAdmin?.result == true) {
+      setOpen(false);
+      setOpenSuccess(true);
+    }
+  };
   const children = (
-    <Form form={form}>
+    <Form form={form} onFinish={onFinish}>
       <Form.Item
-        name={"role"}
+        name={"newIsAdmin"}
         rules={[
           {
             required: true,
@@ -582,9 +594,10 @@ export function SetRoleModal(open: boolean, setOpen: Function) {
           }}
           options={[
             { label: "Admin (Toàn quyền)", value: 1 },
-            { label: "Thành viên", value: 2 },
+            { label: "Thành viên", value: 0 },
           ]}
           defaultValue={1}
+          onChange={(val) => setValSelect(val)}
           suffixIcon={
             <Image alt="/" src={"/down-icon.png"} width={14} height={14} />
           }
@@ -603,10 +616,11 @@ export function SetRoleModal(open: boolean, setOpen: Function) {
         600,
         "Phân quyền",
         "Cập nhật",
-        () => {
-          setOpen(false);
-          setOpenSuccess(true);
-        },
+        // () => {
+        //   setOpen(false);
+        //   setOpenSuccess(true);
+        // },
+        onFinish,
         true,
         true,
         false

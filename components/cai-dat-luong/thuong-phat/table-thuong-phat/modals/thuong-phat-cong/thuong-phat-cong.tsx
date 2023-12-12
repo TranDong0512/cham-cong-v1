@@ -50,7 +50,7 @@ export function ModalThemThuongPhatCong(
         ep_id: Number(selectedData?.inforUser.idQLC),
         day: day,
       }).then((res) => {
-        setListShift(res.list);
+        setListShift(res?.list);
       });
   }, [day]);
   const onChange = (value: string) => {
@@ -59,17 +59,25 @@ export function ModalThemThuongPhatCong(
       ?.num_to_calculate.$numberDecimal;
     setCong(so_cong);
   };
-
   const filterOption = (
     input: string,
     option?: { label: string; value: string }
   ) => (option?.label ?? "").toLowerCase().includes(input.toLowerCase());
 
   const onFinish = async (value) => {
+    const arrShift = [];
+    if (value.list_shift_phatcong == "all") {
+      listShift.map((item) => {
+        return arrShift.push(item.shift_id);
+      });
+    } else {
+      arrShift.push(Number(value.list_shift_phatcong));
+    }
     const body = {
       ...value,
       ep_id: selectedData?.inforUser?.idQLC,
       com_id: selectedData?.inforUser?.inForPerson?.employee?.com_id,
+      list_shift_phatcong: arrShift,
     };
 
     const res = await POST_TL("api/tinhluong/congty/phatcong", body);
@@ -140,7 +148,7 @@ export function ModalThemThuongPhatCong(
 
             <Form.Item
               className={styles.formItem}
-              name={"phatcong_shift"}
+              name={"list_shift_phatcong"}
               labelCol={{ span: 24 }}
               label={"Chọn ca phạt"}
               rules={[{ required: true, message: "Vui lòng chọn ca" }]}

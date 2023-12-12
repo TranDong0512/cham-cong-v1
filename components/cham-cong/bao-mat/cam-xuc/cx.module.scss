@@ -20,6 +20,7 @@
     }
     .top_content {
       display: flex;
+      flex-wrap: wrap;
       align-items: flex-start;
       gap: 12px;
       align-self: stretch;
@@ -424,7 +425,7 @@
   }
 }
 
-@media (max-width: 415px) {
+@media (max-width: 514px) {
   .khoi_form_con_top {
     display: flex;
     flex-direction: column;

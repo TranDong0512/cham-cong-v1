@@ -73,7 +73,7 @@ export default function ThemNguoiDung({ onOk, closeModalAdd, handleLoad }) {
   const handleSelect = async (e) => {};
   const handleSelect2 = async (e) => {
     const item = list.filter((item) => item.id === Number(e));
-    console.log("item", item);
+
     if (item?.length > 0) {
       setListOrganizeDetailId(item[0]?.listOrganizeDetailId);
     }
@@ -120,7 +120,7 @@ export default function ThemNguoiDung({ onOk, closeModalAdd, handleLoad }) {
       };
       const result = await fetcher();
       if (result?.data?.data?.result) {
-        toast("Thêm mới người dùng thành công");
+        window.alert("Thêm mới người dùng thành công");
         form.resetFields();
         closeModalAdd();
         handleLoad(result.data);

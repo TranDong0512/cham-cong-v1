@@ -93,6 +93,7 @@ export function ModalThemThuongPhat(
               className={styles.formItem}
               name={"pay_status"}
               labelCol={{ span: 24 }}
+              rules={[{ required: true, message: "Vui lòng chọn loại phạt!" }]}
               // initialValue={'1'}
             >
               <Radio.Group
@@ -112,7 +113,7 @@ export function ModalThemThuongPhat(
               name={"pay_day"}
               labelCol={{ span: 24 }}
               label={"Ngày áp dụng"}
-              rules={[{ required: true, message: "Vui lòng nhập số tiền" }]}
+              rules={[{ required: true, message: "Chọn ngày áp dụng!" }]}
             >
               <Input type="date" size="large"></Input>
             </Form.Item>
@@ -121,7 +122,7 @@ export function ModalThemThuongPhat(
               name={"pay_case"}
               labelCol={{ span: 24 }}
               label={"Lý do"}
-              rules={[{ required: true, message: "Vui lòng nhập số tiền" }]}
+              rules={[{ required: true, message: "Nhập lý do phạt!" }]}
             >
               <TextArea></TextArea>
             </Form.Item>
