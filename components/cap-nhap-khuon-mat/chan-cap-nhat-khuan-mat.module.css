@@ -1,0 +1,101 @@
+.main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    position: relative;
+    background-image: url(../../public/img/exp_banner_vip_1024.jpg);
+    height: 100vh;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.container {
+    margin: 0 auto;
+    max-width: 1200px
+}
+.ctn_qmk {
+    width: 100%;
+}
+.ctn_set_vip {
+    padding: 30px 50px;
+    margin: 80px 0px 120px 0px;
+    float: left;
+    width: 100%;
+    border-radius: 10px;
+    background: #ffffff;
+}
+.wn_vip {
+    display: block;
+    margin: 0 auto;
+}
+.wn_text_1 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 20px;
+    color: #474747;
+    margin: 10px 0px;
+    text-align: center;
+}
+.ctn_phone_box {
+    float: left;
+    width: 100%;
+    margin: 30px 0px 10px;
+}
+
+.box_hl_chat  {
+    width: 100%;
+    display: inline-flex;
+    margin-bottom: 30px;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+.ctn_vipchung {
+    width: 48%;
+}
+.ctn_vipchung button {
+    border-radius: 30px;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+    border: none;
+}
+.cr_weight {
+    font-weight: 500;
+    color: #ffffff;
+}
+.wn_text_2 {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: #474747;
+    margin: 10px 0px;
+    text-align: center;
+}
+.mobi {
+    width: 100%;
+    display: none;
+}
+@media screen and (max-width: 500px) {
+    .mobi {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}
+.pc{
+    width: 100%;
+    display: block;
+    display: flex;
+    justify-content: center;
+}
+@media screen and (max-width: 500px) {
+    .pc {
+        display: none;
+    }
+}

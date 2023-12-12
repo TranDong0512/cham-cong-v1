@@ -18,6 +18,7 @@ import {
   POST,
   POST_SS_TL,
   POST_TL,
+  POST_VT_CONG,
   getCompIdCS,
   getCompIdSS,
 } from "@/pages/api/BaseApi";
@@ -31,6 +32,7 @@ import { Router, useRouter } from "next/router";
 import { removeVietnameseTones } from "@/constants/style-constants";
 import { ExportExcellButton } from "@/utils/ExportExccel";
 import Cookies from "js-cookie";
+import jwtDecode from "jwt-decode";
 
 export default function ThuongPhat({ tpList, listPb, res }) {
   const [filterParam, setFilterParam] = useState<any>({
@@ -68,7 +70,7 @@ export default function ThuongPhat({ tpList, listPb, res }) {
         );
       } else if (localStorage.getItem("userSelect")) {
         const userSelect = localStorage.getItem("userSelect");
-        finalData = finalData.filter(
+        finalData = finalData?.filter(
           (item: any) => item.inforUser?.userName == userSelect
         );
         localStorage.removeItem("userSelect");
@@ -498,22 +500,18 @@ const ModalCong = ({
   const [form3] = Form.useForm();
   const [listEmp, setListEmp] = useState([]);
   const [listFilterEmp, setListFilterEmp] = useState([]);
-  const [listShift, setListShift] = useState<any>();
+  const [listShift, setListShift] = useState<any>([]);
   const [cong, setCong] = useState<any>();
   const com_id = Cookies.get("com_id");
   const router = useRouter();
+  const [day, setDay] = useState<any>();
+  const [epId, setEpId] = useState<any>();
 
   const filterOption = (
     input: string,
     option?: { label: string; value: string }
   ) => (option?.label ?? "").toLowerCase().includes(input.toLowerCase());
 
-  const onChange = (value: string) => {
-    const so_cong = listShift.find(
-      (item) => item.shift_id == value
-    )?.num_to_calculate;
-    setCong(so_cong);
-  };
   useEffect(() => {
     const getList = async () => {
       const res = await POST("api/qlc/managerUser/listAll", {});
@@ -535,20 +533,28 @@ const ModalCong = ({
     let com_id = null;
     com_id = getCompIdCS();
     com_id &&
-      GET("api/qlc/shift/list").then((res) => {
-        const data = res?.items.map((item, index) => ({
-          ...item,
-          value: item.shift_id,
-          label: item.shift_name,
-        }));
-        setListShift(data);
+      epId &&
+      POST_VT_CONG("api/vanthu/dexuat/empShiftInDay", {
+        ep_id: Number(epId),
+        day: day,
+      }).then((res) => {
+        setListShift(res.list);
       });
-  }, []);
+  }, [day, epId]);
   const onFinishAdd = async () => {
     const val = form3.getFieldsValue();
+    const arrShift = [];
+    if (val.list_shift_phatcong == "all") {
+      listShift.map((item) => {
+        return arrShift.push(item.shift_id);
+      });
+    } else {
+      arrShift.push(Number(val.list_shift_phatcong));
+    }
     const body = {
       ...val,
       com_id: com_id,
+      list_shift_phatcong: arrShift,
     };
     const res = await POST_TL("api/tinhluong/congty/phatcong", body);
     if (res?.message === "success") {
@@ -557,52 +563,40 @@ const ModalCong = ({
       // router.replace(router.asPath)
     }
   };
+
+  const [valueChange, setValueChange] = useState<any>();
+  const handleDay = (e) => {
+    setDay(e.target.value);
+  };
+
+  const onChangeShift = (value: string) => {
+    setValueChange(value);
+    const so_cong = listShift.find((item) => item.shift_id == value)
+      ?.num_to_calculate.$numberDecimal;
+    setCong(so_cong);
+  };
+
+  const onChangeEmp = (value: string) => {
+    setEpId(value);
+  };
+  let total = 0;
   const children = (
     <Form form={form3}>
       <Form.Item
-        rules={[
-          {
-            required: true,
-            message: "Trường này là bắt buộc",
-          },
-        ]}
-        label="Nhân viên"
+        className={styles.formItem}
         name={"ep_id"}
         labelCol={{ span: 24 }}
+        label={"Nhân viên áp dụng"}
+        rules={[{ required: true, message: "Chọn nhân viên áp dụng!" }]}
       >
         <Select
-          options={listFilterEmp}
-          size="large"
-          showSearch
-          placeholder="Tìm tên nhân viên"
-          filterOption={(input, option) =>
-            option?.label
-              ?.toString()
-              ?.toLowerCase()
-              ?.indexOf(input.toLowerCase()) >= 0 ||
-            option?.labelNoVN?.toLowerCase()?.indexOf(input.toLowerCase()) >= 0
-          }
-        />
-      </Form.Item>
-      <Form.Item
-        className={styles.formItem}
-        name={"phatcong_shift"}
-        labelCol={{ span: 24 }}
-        label={"Chọn ca phạt"}
-        rules={[{ required: true, message: "Vui lòng chọn ca" }]}
-      >
-        <Select
-          size="large"
           showSearch
           optionFilterProp="children"
-          onChange={onChange}
+          onChange={onChangeEmp}
           filterOption={filterOption}
-          placeholder="Chọn ca làm việc"
-          options={listShift}
+          placeholder="Chọn nhân viên áp dụng"
+          options={listEmp}
         ></Select>
-      </Form.Item>
-      <Form.Item labelCol={{ span: 24 }} label={"Số công áp dụng"}>
-        <Input disabled value={cong}></Input>
       </Form.Item>
 
       <Form.Item
@@ -612,8 +606,84 @@ const ModalCong = ({
         label={"Ngày áp dụng"}
         rules={[{ required: true, message: "Vui lòng chọn thời gian" }]}
       >
-        <Input type="date" size="large"></Input>
+        <Input type="date" size="middle" onChange={(e) => handleDay(e)}></Input>
       </Form.Item>
+
+      <Form.Item
+        className={styles.formItem}
+        name={"list_shift_phatcong"}
+        labelCol={{ span: 24 }}
+        label={"Chọn ca phạt"}
+        rules={[{ required: true, message: "Vui lòng chọn ca" }]}
+      >
+        <Select
+          showSearch
+          optionFilterProp="children"
+          onChange={onChangeShift}
+          filterOption={filterOption}
+          placeholder="Chọn ca làm việc"
+          options={[
+            { value: "all", label: "Cả ngày" },
+            ...listShift?.map((item, index) => ({
+              value: item.shift_id,
+              label: item.shift_name,
+            })),
+          ]}
+        ></Select>
+      </Form.Item>
+
+      {valueChange !== "all" ? (
+        <Form.Item labelCol={{ span: 24 }} label={"Chi tiết phạt công"}>
+          <Input
+            disabled
+            value={cong == undefined ? "Số công: " : `Số công: ${cong}`}
+          ></Input>
+        </Form.Item>
+      ) : (
+        <>
+          <Col>
+            <p style={{ marginBottom: 8 }}>Chi tiết phạt công</p>
+            {listShift?.map((item, index) => {
+              total += Number(item.num_to_calculate.$numberDecimal);
+              return (
+                <div>
+                  <Col
+                    span={24}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      marginBottom: 12,
+                    }}
+                  >
+                    <Col span={11}>
+                      <Input
+                        disabled
+                        value={item.shift_name}
+                        style={{ width: "100%" }}
+                      ></Input>
+                    </Col>
+
+                    <Col span={11}>
+                      <Input
+                        disabled
+                        value={
+                          "Số công: " + item.num_to_calculate.$numberDecimal
+                        }
+                        style={{ width: "100%" }}
+                      ></Input>
+                    </Col>
+                  </Col>
+                </div>
+              );
+            })}
+          </Col>
+
+          <Form.Item labelCol={{ span: 24 }} label={"Tổng số công"}>
+            <Input disabled value={"Tổng số công: " + total}></Input>
+          </Form.Item>
+        </>
+      )}
+
       <Form.Item
         className={styles.formItem}
         name={"ly_do"}

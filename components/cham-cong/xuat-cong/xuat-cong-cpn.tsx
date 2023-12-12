@@ -194,7 +194,7 @@ export function xuatCong(
           columns={columns}
           dataSource={listData}
           sticky={true}
-          scroll={{ x: "max-content" }}
+          scroll={data.length == 0 ? { x: 2000 } : { x: "max-content" }}
           pagination={{
             position: ["bottomCenter"],
             // total: totalPages,

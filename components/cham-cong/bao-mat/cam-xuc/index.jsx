@@ -11,6 +11,7 @@ const ModalAdd = ({ open, setOpen, reload, setReload }) => {
   const [form] = Form.useForm()
   const router = useRouter()
 
+ 
   const onFinish = async () => {
     form.validateFields().then(async (val) => {
       const res = await POST('api/qlc/emotions/create', val)
@@ -21,15 +22,14 @@ const ModalAdd = ({ open, setOpen, reload, setReload }) => {
         setOpen(false)
         setReload(!reload)
       }
+    }).catch((errorInfo) => {
+        console.log('errorInfo', errorInfo)
     })
   }
-  useEffect(() => {
-    form.resetFields()
-  }, [open])
 
   const children = (
     <Form form={form}>
-      <Form.Item name={'min_score'} label='Từ' labelCol={{ span: 24 }} required>
+      <Form.Item name={'min_score'} label='Từ' labelCol={{ span: 24 }} rules={[{required: true, message:'Vui lòng nhập!'}]}>
         <InputNumber
           step={0.1}
           precision={2}
@@ -42,12 +42,12 @@ const ModalAdd = ({ open, setOpen, reload, setReload }) => {
       </Form.Item>
       <Form.Item
         name={'max_score'}
-        step={0.1}
-        precision={2}
         label='Đến'
-        required
+        rules={[{required: true, message:'Vui lòng nhập!'}]}
         labelCol={{ span: 24 }}>
         <InputNumber
+          step={0.1}
+          precision={2}
           size='large'
           min={0}
           max={10}
@@ -57,7 +57,7 @@ const ModalAdd = ({ open, setOpen, reload, setReload }) => {
       </Form.Item>
       <Form.Item
         name={'emotion_detail'}
-        required
+        rules={[{required: true, message:'Vui lòng nhập!'}]}
         label='Thông tin cảm xúc'
         labelCol={{ span: 24 }}>
         <Input placeholder='Thông tin cảm xúc' style={{ width: '100%' }} />
@@ -327,9 +327,9 @@ const CauHinh = () => {
           </div>
         </div>
         <div className={styles.khoi_button}>
-          <div className={styles.btn_huy}>
+          {/* <div className={styles.btn_huy}>
             <div className={styles.btn_huy_text}>Hủy</div>
-          </div>
+          </div> */}
           <div className={styles.btn_luu} onClick={onChangeAvg}>
             <div className={styles.btn_luu_text}>Lưu</div>
           </div>

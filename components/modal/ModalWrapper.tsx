@@ -1,6 +1,6 @@
-import { Button, Modal } from 'antd'
-import Image from 'next/image'
-import styles from './ModalWrapper.module.css'
+import { Button, Modal } from "antd";
+import Image from "next/image";
+import styles from "./ModalWrapper.module.css";
 
 export function ModalWrapper(
   open: boolean,
@@ -18,7 +18,7 @@ export function ModalWrapper(
 ) {
   return (
     <Modal
-      bodyStyle={{ padding: '0px' }}
+      bodyStyle={{ padding: "0px" }}
       open={open}
       onCancel={() => setOpen(false)}
       width={width}
@@ -26,58 +26,64 @@ export function ModalWrapper(
       destroyOnClose={true}
       style={{
         top: 0,
-        padding: '20px',
+        padding: "20px",
       }}
-      className='bannerQLC'
+      className="bannerQLC"
       footer={
         hasFooter && (
           <div className={styles.footer}>
             {hasAbortBtn && (
               <Button
                 className={styles.cancel}
-                size='large'
+                size="large"
                 style={{
-                  border: '1px solid #4C5BD4',
-                  borderRadius: '10px',
-                  width: '110px',
+                  border: "1px solid #4C5BD4",
+                  borderRadius: "10px",
+                  width: "110px",
                 }}
-                onClick={() => setOpen(false)}>
+                onClick={() => setOpen(false)}
+              >
                 <p
                   className={styles.cancelTxt}
-                  style={{ color: '#4C5BD4', padding: '0px 15px' }}>
+                  style={{ color: "#4C5BD4", padding: "0px 15px" }}
+                >
                   Hủy
                 </p>
               </Button>
             )}
             <Button
-              size='large'
+              size="large"
               className={`${styles.okBtn}`}
-              id='button'
-              htmlType='submit'
+              id="button"
+              htmlType="submit"
               onClick={() => {
-                onConfirm()
+                onConfirm();
                 // setOpen(false)
-              }}>
-              <p className={styles.txt}>{okText}</p>
+              }}
+            >
+              <p className={styles.txt} style={{ padding: "0px 15px" }}>
+                {okText}
+              </p>
             </Button>
           </div>
         )
       }
-      cancelButtonProps={{ style: { display: 'none' } }}
+      cancelButtonProps={{ style: { display: "none" } }}
       okButtonProps={{
-        style: { display: 'none' },
-      }}>
+        style: { display: "none" },
+      }}
+    >
       {hasHeade ? (
         <div className={styles.header}>
           <div></div>
           <p className={styles.headerText}>{title}</p>
           {hasX ? (
             <Image
-              alt='/'
-              src={'/cross.png'}
+              alt="/"
+              src={"/cross.png"}
               width={14}
               height={14}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
               onClick={() => setOpen(false)}
             />
           ) : (
@@ -85,9 +91,9 @@ export function ModalWrapper(
           )}
         </div>
       ) : null}
-      <div style={{ padding: hasPadding ? '20px' : '0px' }}>{children}</div>
+      <div style={{ padding: hasPadding ? "20px" : "0px" }}>{children}</div>
     </Modal>
-  )
+  );
 }
 
 export function ModalWrapper2(
@@ -107,16 +113,16 @@ export function ModalWrapper2(
 ) {
   return (
     <Modal
-      bodyStyle={{ padding: '0px' }}
+      bodyStyle={{ padding: "0px" }}
       open={open}
       onCancel={() => setOpen(false)}
       width={width}
       closable={false}
       destroyOnClose={true}
-      className='bannerQLC'
+      className="bannerQLC"
       style={{
         top: 0,
-        padding: '20px',
+        padding: "20px",
       }}
       footer={
         hasFooter && (
@@ -124,49 +130,53 @@ export function ModalWrapper2(
             {hasAbortBtn && (
               <Button
                 className={styles.cancel}
-                size='large'
+                size="large"
                 style={{
-                  border: '1px solid #4C5BD4',
-                  borderRadius: '10px',
-                  width: '110px',
+                  border: "1px solid #4C5BD4",
+                  borderRadius: "10px",
+                  width: "110px",
                 }}
-                onClick={cancelFunc}>
+                onClick={cancelFunc}
+              >
                 <p
                   className={styles.cancelTxt}
-                  style={{ color: '#4C5BD4', padding: '0px 15px' }}>
+                  style={{ color: "#4C5BD4", padding: "0px 15px" }}
+                >
                   Hủy
                 </p>
               </Button>
             )}
             <Button
-              size='large'
+              size="large"
               className={`${styles.okBtn}`}
-              id='button'
-              htmlType='submit'
+              id="button"
+              htmlType="submit"
               onClick={() => {
-                onConfirm()
+                onConfirm();
                 // setOpen(false)
-              }}>
+              }}
+            >
               <p className={styles.txt}>{okText}</p>
             </Button>
           </div>
         )
       }
-      cancelButtonProps={{ style: { display: 'none' } }}
+      cancelButtonProps={{ style: { display: "none" } }}
       okButtonProps={{
-        style: { display: 'none' },
-      }}>
+        style: { display: "none" },
+      }}
+    >
       {hasHeade ? (
         <div className={styles.header}>
           <div></div>
           <p className={styles.headerText}>{title}</p>
           {hasX ? (
             <Image
-              alt='/'
-              src={'/cross.png'}
+              alt="/"
+              src={"/cross.png"}
               width={14}
               height={14}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
               onClick={() => setOpen(false)}
             />
           ) : (
@@ -174,7 +184,7 @@ export function ModalWrapper2(
           )}
         </div>
       ) : null}
-      <div style={{ padding: hasPadding ? '20px' : '0px' }}>{children}</div>
+      <div style={{ padding: hasPadding ? "20px" : "0px" }}>{children}</div>
     </Modal>
-  )
+  );
 }

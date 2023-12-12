@@ -147,7 +147,7 @@ const ModalLichLamViec = (
     </Col>
   )
 }
-export default function CaiDatLichLamViec(listCalendar: any, setDataTotal: Function) {
+export default function CaiDatLichLamViec(listCalendar: any) {
   const [modalThemNV, setModalThemNV] = useState(false)
   const [modalUpload, setModalUpload] = useState(false)
   const [modalDanhSach, setModalDanhSach] = useState(false)
@@ -305,28 +305,22 @@ export default function CaiDatLichLamViec(listCalendar: any, setDataTotal: Funct
         setModalUpload,
         cySelected,
         listEmp,
-        listEmpInCy,
-        setDataTotal
+        listEmpInCy
       )}
       {UpLoadNV(modalUpload, setModalUpload, setModalThemNV)}
-      {DanhSach(modalDanhSach, setModalDanhSach, cySelected, listEmpInCy, setDataTotal)}
-      {SaoChep(modalSaoChep, setModalSaoChep, listCalendar, cySelected, setDataTotal)}
+      {DanhSach(modalDanhSach, setModalDanhSach, cySelected, listEmpInCy)}
+      {SaoChep(modalSaoChep, setModalSaoChep, listCalendar, cySelected)}
       {XoaLich(
         modalXoaLich,
         setModalXoaLich,
         'Bạn chắc chắn muốn xóa lịch làm việc này?',
-        cySelected,
-        null,
-        null,
-        null,
-        setDataTotal
+        cySelected
       )}
       {ModalChinhSua(
         modelChinhSua,
         setModalChinhSua,
         cySelected,
-        setCySelected,
-        setDataTotal
+        setCySelected
       )}
     </Row>
   )

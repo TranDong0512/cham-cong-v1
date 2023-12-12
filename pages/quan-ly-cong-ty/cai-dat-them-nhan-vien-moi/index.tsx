@@ -15,7 +15,7 @@ import {
 import { useEffect } from "react";
 
 export default function CaiDatThemNhanVienMoiPage({
-  // listStaffs,
+  listStaffs,
   infoCom,
   listTeams,
   listDepartments,
@@ -24,7 +24,7 @@ export default function CaiDatThemNhanVienMoiPage({
 }) {
   const temp = getCurrentToken();
   const [openAddNew, setOpenAddNew] = useState(false);
-  // const [data, setData] = useState(listStaffs?.items)
+  const [data, setData] = useState(listStaffs?.items);
   const [activeKey, setActiveKey] = useState("1");
   const [pendingList, setPendingList] = useState(
     listAllPending?.result ? listAllPending?.items : []
@@ -39,7 +39,7 @@ export default function CaiDatThemNhanVienMoiPage({
   const LIST_TABS = [
     {
       key: "1",
-      label: ` Toàn bộ nhân viên`,
+      label: ` Toàn bộ nhân viên (${data?.length || 0})`,
       children: (
         <AllNhanVien
           // listStaffs={data}
@@ -84,20 +84,20 @@ export const getServerSideProps = async (context) => {
   com_id = getCompIdSS(context);
 
   const res = await Promise.all([
-    // await POST_SS(
-    //   'api/qlc/managerUser/listAllFilter',
-    //   {
-    //     com_id: com_id,
-    //   },
-    //   context
-    // ),
+    await POST_SS(
+      "api/qlc/managerUser/listAllFilter",
+      {
+        com_id: com_id,
+      },
+      context
+    ),
     await POST_SS("api/qlc/company/info", {}, context),
     await POST_SS("api/qlc/managerUser/listAllPending", {}, context),
   ]);
 
   return {
     props: {
-      // listStaffs: res?.[0],
+      listStaffs: res?.[0],
       infoCom: res?.[0],
       listAllPending: res?.[1],
     },

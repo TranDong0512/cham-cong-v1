@@ -20,7 +20,7 @@ import { DELETE, POST, getCompIdCS, getCompIdSS } from "@/pages/api/BaseApi";
 // import type { ColumnsType } from "antd/es/table";
 import { listDevices, EditChiTietModal } from "./editModal";
 
-export default function ChamCongQR({keyChildren}) {
+export default function ChamCongQR() {
   const [listOrg, setListOrg] = useState([]);
   const [listPos, setListPos] = useState([]);
   const [listUsers, setListUsers] = useState([]);
@@ -100,10 +100,6 @@ export default function ChamCongQR({keyChildren}) {
     getList();
   }, [recall]);
 
-  useEffect(() => {
-    form.resetFields()
-  }, [keyChildren])
-
   const SelectBlock = ({
     name,
     label,
@@ -169,7 +165,12 @@ export default function ChamCongQR({keyChildren}) {
   };
 
   const onFinish = async (value) => {
-    const data = {
+    if( dayjs(value.start_time) > dayjs(value.end_time)) {
+      window.alert('Thời gian bắt đầu phải nhỏ hơn thời gian kết thúc')
+      return
+    }
+    else {
+       const data = {
       // ...value,
       name: value.setting_name,
       list_org: value?.list_org,
@@ -218,6 +219,7 @@ export default function ChamCongQR({keyChildren}) {
       window.alert("Thêm thành công");
       setRecall(!recall);
       form.resetFields();
+    }
     }
   };
 
