@@ -19,7 +19,6 @@ export default function InstallSecurityPage({ listWifi, listIps, listEmps }) {
   const router = useRouter();
   const [wifiList, setWifiList] = useState(listWifi);
   const [ipList, setIpList] = useState(listIps);
-  const [keyChildren, setKeyChildren] = useState('1')
 
   const tabItems = [
     {
@@ -46,7 +45,7 @@ export default function InstallSecurityPage({ listWifi, listIps, listEmps }) {
       key: "4",
       label: "Chi tiết",
       children: (
-        <ChiTiet listIPs={listIps} listWifis={listWifi} listEmps={listEmps} keyChildren={keyChildren} />
+        <ChiTiet listIPs={listIps} listWifis={listWifi} listEmps={listEmps} />
       ),
     },
     {
@@ -58,7 +57,7 @@ export default function InstallSecurityPage({ listWifi, listIps, listEmps }) {
     {
       key: "6",
       label: "Chấm công QR",
-      children: <ChamCongQR keyChildren={keyChildren}/>,
+      children: <ChamCongQR />,
     },
     {
       key: "7",
@@ -73,10 +72,10 @@ export default function InstallSecurityPage({ listWifi, listIps, listEmps }) {
     </StickyBox>
   );
 
-   const onChange = (key: string) => {    
-    setKeyChildren(key)
-    return true
-
+  const onChange = (key: string) => {
+    if (key === "3") {
+      router.push(`/cai-dat-vi-tri`);
+    }
   };
 
   return (
@@ -99,7 +98,7 @@ export const getServerSideProps = async (context) => {
 
   let com_id = undefined;
   com_id = getCompIdSS(context);
-  console.log("");
+
   const [resWifi, resIp, resEmp] = await Promise.all([
     await POST_SS("api/qlc/TrackingWifi/list", {}, context),
     await POST_SS("api/qlc/Setip/get", {}, context),

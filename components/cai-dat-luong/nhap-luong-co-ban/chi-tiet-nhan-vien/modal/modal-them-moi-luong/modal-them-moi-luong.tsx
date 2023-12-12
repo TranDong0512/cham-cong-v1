@@ -73,10 +73,7 @@ export function ModalThemMoiLuong(
     <Modal
       className="bannerQLC"
       open={open}
-      onCancel={() => {
-        form.resetFields()  
-        setOpen(false)
-      }}
+      onCancel={() => setOpen(false)}
       width={600}
       closable={false}
       cancelButtonProps={{ style: { display: "none" } }}
@@ -90,10 +87,7 @@ export function ModalThemMoiLuong(
           src={"/cross.png"}
           width={14}
           height={14}
-          onClick={() => {
-            form.resetFields()    
-            setOpen(false)
-          }}
+          onClick={() => setOpen(false)}
         />
       </div>
       <div className={styles.body}>
@@ -254,10 +248,7 @@ export function ModalThemMoiLuong(
                 marginTop: "20px",
               }}
             >
-              <button className={styles.huyb} onClick={() => {
-                form.resetFields()
-                setOpen(false)
-                }}>
+              <button className={styles.huyb} onClick={() => setOpen(false)}>
                 <p className={styles.texthuyb}>Huỷ bỏ</p>
               </button>
               <button className={styles.luu} type="submit">

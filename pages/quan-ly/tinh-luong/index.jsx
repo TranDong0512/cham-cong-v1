@@ -91,7 +91,6 @@ const App = () => {
       .then((response) => {
         setApiDataUser(response.data.data)
 
-        console.log(response.data.data)
       })
       .catch((error) => {
         console.log('Error fetching data from API:', error)
@@ -169,10 +168,7 @@ const App = () => {
           },
         },
       ]
-      console.log(
-        'Đi muộn/ về sớm phạt tiền: ',
-        apiData?.data?.data_late_early[0]?.ts_date
-      )
+      
     }
     if (name == 'Đi muộn/ về sớm phạt công') {
       dataSource = apiData?.data?.data_late_early_cong
@@ -227,9 +223,7 @@ const App = () => {
 
   //*Hiển thị nút chi tiết
   const [openPopoverIndex, setOpenPopoverIndex] = useState(null)
-  console.log('openPopoverIndex', openPopoverIndex)
   const handlePopoverOpen = (index) => {
-    console.log('Đã chạy vào hàm handlePopoverOpen')
     if (openPopoverIndex === index) {
       setOpenPopoverIndex(null) // Close the popover if it's already open
     } else {
@@ -444,7 +438,6 @@ const App = () => {
       key: 'name',
       render: (name, record, index) => (
         <div className={styles.nameColumn}>
-          {console.log(`12<${record?.id} < 27`, 12 < record?.id < 27)}
           <p className={styles.p_style}>{name}</p>
           {12 < record.id && record.id < 27 && record.parameter !== '0' && (
             <Popover

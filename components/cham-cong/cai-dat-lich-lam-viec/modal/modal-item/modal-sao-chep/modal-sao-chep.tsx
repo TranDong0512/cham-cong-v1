@@ -9,11 +9,9 @@ export function SaoChep(
     open:boolean,
     setOpen:Function,
     data: any,
-    cySelected: any,
-    setDataTotal: Function
+    cySelected: any
 ){
     const [applyMonth, setApplyMonth]: any = useState("")
-    const [selectMonth, setSelectMonth] = useState('')
     const router = useRouter()
 
     const handleSubmit = () => {
@@ -28,20 +26,18 @@ export function SaoChep(
                     .then(res => {
                         if (res?.result === true) {
                             setOpen(false)
-                            //router.replace(router.asPath)
-                            setDataTotal()
+                            router.replace(router.asPath)
                         }
                     })
             }
         }
     }
+    
+
     return(
         <Modal
             open={open}
-            onCancel={() => {
-                setSelectMonth('')
-                setOpen(false)
-            }}
+            onCancel={() => setOpen(false)}
             width={600}
             closable={false}
             cancelButtonProps={{ style: { display: "none" } }}
@@ -55,26 +51,14 @@ export function SaoChep(
                 src={"/cross.png"}
                 width={14}
                 height={14}
-                onClick={() => {
-                    setSelectMonth('')
-                    setOpen(false)
-                }}
+                onClick={() => setOpen(false)}
             />
         </div>
         <div className={styles.body}>
-                <div>
-                    Chọn tháng áp dụng lịch làm việc <span style={{ color: 'red' }}>*</span>
-                    <Input
-                        value={selectMonth}
-                        onChange={(e) => {
-                            setSelectMonth(e.target.value)
-                            setApplyMonth(`${e.target.value}-01`)
-                        }}
-                        placeholder='Chọn tháng'
-                        type='month'
-                        style={{ width: '100%' }}>
-                    </Input>
-                </div>
+            <div>
+                Chọn tháng áp dụng lịch làm việc <span style={{color:'red'}}>*</span>
+                <Input onChange={(e) => setApplyMonth(`${e.target.value}-01`)} placeholder='Chọn tháng' type='month'style={{width:'100%'}}></Input>
+            </div>
             <Button className={styles.button} onClick={handleSubmit}>
                 <p className={styles.txt}>Lưu lại</p>
             </Button>

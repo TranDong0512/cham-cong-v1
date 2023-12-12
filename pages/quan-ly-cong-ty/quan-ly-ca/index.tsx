@@ -193,7 +193,9 @@ export default function QuanLyCaLamViecPage() {
             }}
           >
             <Image alt="/" src={"/plus.png"} width={60} height={60} />
-            <p className={styles.addText}>Thêm ca</p>
+            <p className={styles.addText} style={{ color: "#FFF" }}>
+              Thêm ca
+            </p>
           </Col>
           {filterList?.map((item, indx) => (
             <SingleItem

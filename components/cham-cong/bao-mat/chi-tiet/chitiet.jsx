@@ -40,7 +40,7 @@ function getGMTOffset() {
   return formattedOffset;
 }
 
-const ChiTiet = ({ listIPs, listWifis, listEmps, keyChildren }) => {
+const ChiTiet = ({ listIPs, listWifis, listEmps }) => {
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [personalSettingSelected, setPersonalSettingSelected] = useState({});
   const [gmtString, setGmtString] = useState(getGMTOffset());
@@ -149,10 +149,6 @@ const ChiTiet = ({ listIPs, listWifis, listEmps, keyChildren }) => {
   const [listData, setListData] = useState([]);
 
   useEffect(() => {
-    form.resetFields()
-  }, [keyChildren])
-
-  useEffect(() => {
     const getList = async () => {
       const res = await POST("api/qlc/settingTimesheet/list", {});
       setListData(res?.data);
@@ -162,52 +158,57 @@ const ChiTiet = ({ listIPs, listWifis, listEmps, keyChildren }) => {
   }, [recall]);
 
   const onFinish = async (value) => {
-    const data = {
-      ...value,
-      list_shifts: value?.list_shifts?.includes("all")
-        ? []
-        : value?.list_shifts?.map((item) => ({
-            id: Number(item?.split("-")?.[0]),
-            type_shift: Number(item?.split("-")?.[1]),
-          })),
-      list_pos: value?.list_pos?.includes("all") ? [] : value?.list_pos,
-      list_emps: value?.list_emps?.includes("all") ? [] : value?.list_emps,
-      start_time: value?.start_time
-        ? dayjs(value?.start_time)?.format("YYYY-MM-DD")
-        : undefined,
-      end_time: value?.end_time
-        ? dayjs(value?.end_time)?.format("YYYY-MM-DD")
-        : undefined,
-      list_device: value?.list_device?.includes("all")
-        ? []
-        : value?.list_device,
-      list_wifi:
-        value.list_wifi?.includes("Save") ||
-        value.list_wifi?.includes("allSave")
-          ? null
-          : value.list_wifi,
-      type_wifi: value.list_wifi?.includes("Save")
-        ? 3
-        : value.list_wifi?.includes("allSave")
-        ? 2
-        : null,
-      list_loc:
-        value.list_loc.includes("Save") || value.list_loc.includes("allSave")
-          ? null
-          : value.list_loc,
-      type_loc: value.list_loc.includes("Save")
-        ? 3
-        : value.list_loc.includes("allSave")
-        ? 2
-        : null,
-    };
+    if (dayjs(value.start_time) > dayjs(value.end_time)) {
+      window.alert("Thời gian bắt đầu phải nhỏ hơn thời gian kết thúc");
+      return;
+    } else {
+      const data = {
+        ...value,
+        list_shifts: value?.list_shifts?.includes("all")
+          ? []
+          : value?.list_shifts?.map((item) => ({
+              id: Number(item?.split("-")?.[0]),
+              type_shift: Number(item?.split("-")?.[1]),
+            })),
+        list_pos: value?.list_pos?.includes("all") ? [] : value?.list_pos,
+        list_emps: value?.list_emps?.includes("all") ? [] : value?.list_emps,
+        start_time: value?.start_time
+          ? dayjs(value?.start_time)?.format("YYYY-MM-DD")
+          : undefined,
+        end_time: value?.end_time
+          ? dayjs(value?.end_time)?.format("YYYY-MM-DD")
+          : undefined,
+        list_device: value?.list_device?.includes("all")
+          ? []
+          : value?.list_device,
+        list_wifi:
+          value.list_wifi?.includes("Save") ||
+          value.list_wifi?.includes("allSave")
+            ? null
+            : value.list_wifi,
+        type_wifi: value.list_wifi?.includes("Save")
+          ? 3
+          : value.list_wifi?.includes("allSave")
+          ? 2
+          : null,
+        list_loc:
+          value.list_loc.includes("Save") || value.list_loc.includes("allSave")
+            ? null
+            : value.list_loc,
+        type_loc: value.list_loc.includes("Save")
+          ? 3
+          : value.list_loc.includes("allSave")
+          ? 2
+          : null,
+      };
 
-    const res = await POST("api/qlc/settingTimesheet/add", data);
+      const res = await POST("api/qlc/settingTimesheet/add", data);
 
-    if (res?.result) {
-      window.alert("Thêm thành công");
-      setRecall(!recall);
-      form.resetFields();
+      if (res?.result) {
+        window.alert("Thêm thành công");
+        setRecall(!recall);
+        form.resetFields();
+      }
     }
   };
 
@@ -227,7 +228,6 @@ const ChiTiet = ({ listIPs, listWifis, listEmps, keyChildren }) => {
       }
     }
   };
-
 
   return (
     <>
@@ -273,7 +273,7 @@ const ChiTiet = ({ listIPs, listWifis, listEmps, keyChildren }) => {
                 setParam({ ...param, orgId: selected?.listOrganizeDetailId });
               }}
               multiple={true}
-              textReq={"Chọn phòng ban"}  
+              textReq={"Chọn phòng ban"}
             />
             <SelectBlock
               label={"Chức vụ"}
@@ -566,23 +566,26 @@ const ChiTiet = ({ listIPs, listWifis, listEmps, keyChildren }) => {
                           : "Tất cả"}
                       </Popover>
                     </td>
-                    
+
                     <td>
-                    <Popover
+                      <Popover
                         content={
                           <div style={{ padding: "10px" }}>
                             {item?.detail.list_device.length > 0 ? (
                               <>
-                                {item?.detail.list_device.map((item) => item).join(' - ')}
+                                {item?.detail.list_device
+                                  .map((item) => item)
+                                  .join(" - ")}
                               </>
-                            ): 
-                            <p>
-                             Tất cả thiết bị
-                            </p>}
+                            ) : (
+                              <p>Tất cả thiết bị</p>
+                            )}
                           </div>
                         }
                       >
-                        {item?.detail.list_device.length > 0 ? "Xem thêm" : 'Tất cả thiết bị'}
+                        {item?.detail.list_device.length > 0
+                          ? "Xem thêm"
+                          : "Tất cả thiết bị"}
                       </Popover>
                     </td>
                     {/* <td>
@@ -637,13 +640,15 @@ const ChiTiet = ({ listIPs, listWifis, listEmps, keyChildren }) => {
           </table>
         </div>
       </div>
-      {showModalEdit && <EditChiTietModal
-        open={showModalEdit}
-        selectedRow={personalSettingSelected}
-        setOpen={setShowModalEdit}
-        recall={recall}
-        setRecall={setRecall}
-      />}
+      {showModalEdit && (
+        <EditChiTietModal
+          open={showModalEdit}
+          selectedRow={personalSettingSelected}
+          setOpen={setShowModalEdit}
+          recall={recall}
+          setRecall={setRecall}
+        />
+      )}
     </>
   );
 };
