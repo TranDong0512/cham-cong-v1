@@ -30,12 +30,14 @@ export function ModalThemMoiPhucLoi(
             ? dayjs(value?.cl_day_end).format("YYYY-MM-01T00:00:00.000+00:00")
             : "",
       };
+      form.resetFields()
       setOpenFilterAddWelfareClick(false);
       const res = await POST_TL(
         "api/tinhluong/congty/insert_phuc_loi",
         finalValue
       );
       if (res) {
+
         setData([res?.newobj, ...data]);
       }
     });
@@ -49,6 +51,10 @@ export function ModalThemMoiPhucLoi(
     <Modal
       open={openFilterAddWelfareClick}
       closable={false}
+      onCancel={() => {
+        form.resetFields()
+        setOpenFilterAddWelfareClick(false)
+      }}
       width={700}
       cancelButtonProps={{ style: { display: "none" } }}
       okButtonProps={{ style: { display: "none" } }}
@@ -62,7 +68,10 @@ export function ModalThemMoiPhucLoi(
             src={"/cross.png"}
             width={14}
             height={14}
-            onClick={() => setOpenFilterAddWelfareClick(false)}
+            onClick={() => {
+              form.resetFields()  
+              setOpenFilterAddWelfareClick(false)
+            }}
           />
         </div>
       </div>

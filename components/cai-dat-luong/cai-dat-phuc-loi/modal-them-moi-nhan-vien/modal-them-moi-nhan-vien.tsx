@@ -187,6 +187,11 @@ export function ModalThemMoiNhanVien(
       open={openFilterAddClick}
       width={700}
       closable={false}
+      onCancel={() => {
+        setCheckedList([])
+        form.resetFields()
+        setOpenFilterAddClick(false)
+      }}
       cancelButtonProps={{ style: { display: 'none' } }}
       okButtonProps={{ style: { display: 'none' } }}
       className={`modal_them_moi_phuc_loi`}>

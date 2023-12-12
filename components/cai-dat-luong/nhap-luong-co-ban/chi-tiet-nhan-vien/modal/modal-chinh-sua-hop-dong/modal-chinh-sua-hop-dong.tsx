@@ -102,7 +102,8 @@ export function ModalChinhSuaHopDong(
             "Chọn tệp đính kèm (Tối đa 10MB)",
             false,
             true,
-            "con_file"
+            "con_file",
+            open
           )}
           <div
             style={{
