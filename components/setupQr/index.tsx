@@ -1,4 +1,4 @@
-import { Button, Image, Modal, Table, Input } from "antd";
+import { Button, Image, Modal, Table, Input, Tag } from "antd";
 import styles from "./styles.module.scss";
 import { useEffect, useState } from "react";
 import ModalAddQr from "./modalAdd";
@@ -106,22 +106,24 @@ export default function SetupQR() {
                   style={{
                     color: "#1677ff",
                     cursor: "pointer",
+                    marginBottom: '10px'
                   }}
                   onClick={() => handleStop(data?.id)}
                 >
-                  Tắt hoạt động
+                  <Tag  style={{fontSize: '14px'}} color="warning">Tắt hoạt động</Tag>
                 </div>
               ) : (
                 <div
                   style={{
                     color: "#1677ff",
                     cursor: "pointer",
+                    marginBottom: '10px'
                   }}
                   onClick={() => {
                     handleStart(data?.id);
                   }}
                 >
-                  Bật hoạt động
+                  <Tag style={{fontSize: '14px'}} color="success">Hoạt động</Tag>
                 </div>
               )}
             </div>
@@ -130,6 +132,7 @@ export default function SetupQR() {
               style={{
                 color: "#1677ff",
                 cursor: "pointer",
+                marginBottom: '10px'
               }}
               onClick={() => {
                 setOpenModalAdd(true);
@@ -137,18 +140,20 @@ export default function SetupQR() {
                 setInitName(data?.QRCodeName);
               }}
             >
-              Chỉnh sửa
+              <Tag style={{fontSize: '14px'}} color="processing">Chỉnh sửa</Tag>
             </div>
             <div
               style={{
                 color: "#1677ff",
                 cursor: "pointer",
+                marginBottom: '10px',
+
               }}
               onClick={() => {
                 handleDelete(data?.id);
               }}
             >
-              Xoá
+              <Tag style={{fontSize: '14px'}} color="error">Xóa</Tag>
             </div>
           </div>
         );

@@ -1,0 +1,115 @@
+.CustomerModal {
+  .ant-modal-content {
+    padding: 0 !important;
+  }
+  .ant-modal-close-x {
+    color: #fff;
+  }
+  .ant-pagination {
+    margin: 16px 0 8px 0 !important;
+  }
+}
+
+.CustomerTable {
+  .ant-table-thead > tr > th {
+    background-color: #4c5bd4;
+    color: #fff;
+  }
+}
+.customizeCalendar {
+  .ant-picker-calendar-header {
+    display: none;
+  }
+}
+#ThietLapCtPb {
+  .ant-collapse-header {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #4c5db4;
+    border-radius: 4px;
+    background: rgba(76, 91, 212, 0.1);
+  }
+  .ant-collapse-item {
+    border-bottom: none;
+  }
+}
+
+#diagramKpiPageGroupInput .ant-input {
+  width: 85px !important;
+  padding: 4px 26px 4px 11px;
+}
+.transform-component-module_wrapper__SPB86 {
+  width: 100% !important;
+}
+.DiagramKpi_transformWrapper__gWko8 {
+  height: 100% !important;
+}
+.DiagramKpi_cardCompany__ZBx1m {
+  margin-top: 20px;
+}
+
+.css-to7de5:empty {
+  display: none;
+  animation: all 1s ease-in-out;
+}
+
+.css-1pqvl61 > .css-1vs3jbz {
+  width: fit-content;
+}
+.css-1pqvl61 {
+  width: 100%;
+  overflow: auto;
+}
+.css-1vs3jbz {
+  width: 100%;
+  margin-bottom: 16px;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+#NavMenu {
+  .ant-menu-item {
+    padding: 0 !important;
+    margin: 0;
+    border-radius: 8px;
+    // padding-left: 12px !important;
+    // padding-right: 12px !important;
+    width: 100%;
+    // color: #fff;
+    // margin: 0;
+    height: 46px !important;
+  }
+  .ant-menu-submenu {
+    padding: 0 !important;
+    margin: 0;
+    .ant-menu-submenu-title {
+      height: 46px !important;
+      margin: 0;
+      padding: 0 !important;
+      width: 100%;
+    }
+    .ant-menu-title-content {
+      color: #fff;
+    }
+    .ant-menu-title-content > a {
+      color: #fff;
+    }
+  }
+}
+
+
+@media (min-width:1024px) {
+    .navbarLink {
+        color: #000 !important;
+    }
+    .MenuItemImg1024Show {
+        display: block;
+    }
+    .MenuItemImg1024Hidden {
+        display: none;
+    }
+}
+
+// .ant-menu-submenu-popup .ant-menu-vertical {
+//   background-color: #4c5bd4;
+// }
