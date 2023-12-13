@@ -474,7 +474,7 @@ export function AllNhanVien({
                 size="large"
                 type="primary"
                 htmlType="submit"
-                style={{ width: "100%", minWidth: 200 }}
+                style={{ width: "100%", minWidth: "max-content" }}
               >
                 <p style={{ color: "#fff" }}>Tìm kiếm</p>
               </Button>

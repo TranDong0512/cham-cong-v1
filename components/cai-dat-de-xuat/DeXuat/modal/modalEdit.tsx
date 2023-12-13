@@ -30,7 +30,6 @@ export default function ModalEditSCD({
   const [check, setCheck] = useState(false);
   const [propose, setPropose] = useState([]);
   const dataOld = useSelector((state: RootState) => state.tgd.dataOld);
-  console.log(dataOld);
   const [editFieldValue, setEditFieldValue] = useState(dataOld);
   const isUpdateSCD = useSelector(
     (state: RootState) => state.tgd.updateSoCapDuyet
