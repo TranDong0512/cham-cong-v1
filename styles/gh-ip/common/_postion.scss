@@ -1,0 +1,85 @@
+.display-none {
+    display: none;
+}
+.display-block {
+    display: block;
+}
+.flex {
+    display: flex;
+}
+.flex-start {
+    justify-content: start !important;
+}
+.flex-center {
+    justify-content: center;
+}
+
+.flex-end {
+    justify-content: end;
+}
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+.flex-space-between {
+    justify-content: space-between;
+}
+.flex-space-around {
+    justify-content: space-around;
+}
+.flex-column {
+    flex-direction: column;
+}
+.flex-align-center {
+    align-items: center;
+}
+.flex-align-top {
+    align-items: flex-top;
+}
+.flex-stretch {
+    align-items: stretch;
+}
+.flex-grow-1 {
+    flex-grow: 1;
+}
+.flex-grow-2 {
+    flex-grow: 2;
+}
+.flex-grow-3 {
+    flex-grow: 3;
+}
+.position-fixed {
+    position: fixed;
+}
+.position-relative {
+    position: relative;
+}
+.position-absolute {
+    position: absolute;
+}
+.text-center {
+    text-align: center;
+}
+.text-middle {
+    vertical-align: middle;
+}
+.text-align-right {
+    text-align: right;
+}
+.text-align-left {
+    text-align: left;
+}
+.x-center {
+    left: 50%;
+    transform: translateX(-50%);
+}
+.y-center {
+    top: 50%;
+    transform: translateY(-50%);
+}
+.cursor-pointer {
+    cursor: pointer !important; 
+}
+.cursor-move {
+    cursor: move;
+}

@@ -26,15 +26,13 @@ export const LIST_ACTIONS: any = [
       // },
       {
         title: "Thiết lập cơ cấu tổ chức",
-        url: "https://hungha365.com/thiet-lap-co-cau-to-chuc",
+        url: "thiet-lap-co-cau-to-chuc",
         required: false,
-        isDirect: true,
       },
       {
         title: "Thiết lập vị trí",
-        url: "https://hungha365.com/thiet-lap-vi-tri",
+        url: "thiet-lap-vi-tri",
         required: false,
-        isDirect: true,
       },
       // {
       //   title: 'Sơ đồ tổ chức',

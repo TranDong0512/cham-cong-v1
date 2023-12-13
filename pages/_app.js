@@ -13,6 +13,8 @@ import { ReduxProviders } from '@/redux/provider'
 import axios from 'axios'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDrop, DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 export const LoadingComp = () => {
   return (
     <Spin
@@ -35,7 +37,7 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     const checkUrl = async () => {
       if (!router.isReady) return
-      if (!router.pathname.includes('/van-thu-luu-tru')){
+      if (!router.pathname.includes('/van-thu-luu-tru')) {
         Cookies.remove('hasReloaded')
       }
       const rfToken = router?.query?.refresh_token
@@ -137,13 +139,22 @@ export default function App({ Component, pageProps }) {
           }}>
           <>
             {router.pathname.includes('huong-dan-camera') ||
-            router.pathname.includes('huong-dan-chi-tiet') ? (
-              <Component {...pageProps} />
-            ) : (
-              <Bodyframe>
- <ToastContainer />
+              router.pathname.includes('huong-dan-chi-tiet') ? (
+              <DndProvider backend={HTML5Backend}>
                 <Component {...pageProps} />
-              </Bodyframe>
+              </DndProvider>
+            ) : (
+              <DndProvider backend={HTML5Backend}>
+                <Bodyframe>
+                  <ToastContainer
+                    autoClose={2000}
+                    style={{
+                      marginTop: '52px',
+                    }}
+                  />
+                  <Component {...pageProps} />
+                </Bodyframe>
+              </DndProvider>
             )}
           </>
         </ConfigProvider>
