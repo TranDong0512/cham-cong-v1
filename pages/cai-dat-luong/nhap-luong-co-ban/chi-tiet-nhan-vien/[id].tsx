@@ -455,28 +455,32 @@ export default function ChiTietNhanVien({ detailInfo }) {
           <div className={styles.gioithieu}>
             <div className={styles.khungtitle}>
               <p className={styles.title}>Giới thiệu</p>
-              <button
-                style={{ border: "none" }}
-                onClick={() => {
-                  setModalGioiThieu(true), setModalText(false);
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M12 3.9979H7.1875C5.42709 3.9979 4 5.42499 4 7.1854V16.8104C4 18.5708 5.42709 19.9979 7.1875 19.9979H16.8125C18.5729 19.9979 20 18.5708 20 16.8104V11.9979M18.4142 8.4121L19.5 7.32634C20.281 6.54529 20.281 5.27897 19.5 4.49792C18.7189 3.71687 17.4526 3.71688 16.6715 4.49794L15.5858 5.58367M18.4142 8.4121L12.3779 14.4485C12.0987 14.7277 11.7431 14.918 11.356 14.9954L8.41422 15.5838L9.00257 12.642C9.08001 12.2548 9.27032 11.8992 9.54951 11.62L15.5858 5.58367M18.4142 8.4121L15.5858 5.58367"
-                    stroke="#4C5BD4"
-                    stroke-width="1.2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
+              {
+                !modalGioiThieu ? <>
+                  <button
+                    style={{ border: "none" }}
+                    onClick={() => {
+                      setModalGioiThieu(true), setModalText(false);
+                    }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M12 3.9979H7.1875C5.42709 3.9979 4 5.42499 4 7.1854V16.8104C4 18.5708 5.42709 19.9979 7.1875 19.9979H16.8125C18.5729 19.9979 20 18.5708 20 16.8104V11.9979M18.4142 8.4121L19.5 7.32634C20.281 6.54529 20.281 5.27897 19.5 4.49792C18.7189 3.71687 17.4526 3.71688 16.6715 4.49794L15.5858 5.58367M18.4142 8.4121L12.3779 14.4485C12.0987 14.7277 11.7431 14.918 11.356 14.9954L8.41422 15.5838L9.00257 12.642C9.08001 12.2548 9.27032 11.8992 9.54951 11.62L15.5858 5.58367M18.4142 8.4121L15.5858 5.58367"
+                        stroke="#4C5BD4"
+                        stroke-width="1.2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </> : <></>
+              }
             </div>
             {modalText ? <p className={styles.thanhtich}>{ND}</p> : <></>}
             {modalGioiThieu ? (
@@ -492,7 +496,7 @@ export default function ChiTietNhanVien({ detailInfo }) {
                   <button
                     className={styles.buttonb1}
                     onClick={() => {
-                      setModalGioiThieu(false), setModalText(true);
+                      setModalGioiThieu(false), setModalText(true), setND('');
                     }}
                   >
                     <p className={styles.textb1}>Huỷ</p>
@@ -519,29 +523,33 @@ export default function ChiTietNhanVien({ detailInfo }) {
                   alignItems: "center",
                 }}
               >
-                <button
-                  style={{ border: "none", background: "#fff" }}
-                  onClick={() => {
-                    setModalThongTinCaNhan(false);
-                    setModalChinhSuaThongTinCaNhan(true);
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                  >
-                    <path
-                      d="M12 3.9979H7.1875C5.42709 3.9979 4 5.42499 4 7.1854V16.8104C4 18.5708 5.42709 19.9979 7.1875 19.9979H16.8125C18.5729 19.9979 20 18.5708 20 16.8104V11.9979M18.4142 8.4121L19.5 7.32634C20.281 6.54529 20.281 5.27897 19.5 4.49792C18.7189 3.71687 17.4526 3.71688 16.6715 4.49794L15.5858 5.58367M18.4142 8.4121L12.3779 14.4485C12.0987 14.7277 11.7431 14.918 11.356 14.9954L8.41422 15.5838L9.00257 12.642C9.08001 12.2548 9.27032 11.8992 9.54951 11.62L15.5858 5.58367M18.4142 8.4121L15.5858 5.58367"
-                      stroke="#4C5BD4"
-                      stroke-width="1.2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </button>
+                               {
+                  !modalChinhSuaThongTinCaNhan ? <>
+                    <button
+                      style={{ border: "none", background: "#fff" }}
+                      onClick={() => {
+                        setModalThongTinCaNhan(false);
+                        setModalChinhSuaThongTinCaNhan(true);
+                      }}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M12 3.9979H7.1875C5.42709 3.9979 4 5.42499 4 7.1854V16.8104C4 18.5708 5.42709 19.9979 7.1875 19.9979H16.8125C18.5729 19.9979 20 18.5708 20 16.8104V11.9979M18.4142 8.4121L19.5 7.32634C20.281 6.54529 20.281 5.27897 19.5 4.49792C18.7189 3.71687 17.4526 3.71688 16.6715 4.49794L15.5858 5.58367M18.4142 8.4121L12.3779 14.4485C12.0987 14.7277 11.7431 14.918 11.356 14.9954L8.41422 15.5838L9.00257 12.642C9.08001 12.2548 9.27032 11.8992 9.54951 11.62L15.5858 5.58367M18.4142 8.4121L15.5858 5.58367"
+                          stroke="#4C5BD4"
+                          stroke-width="1.2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  </> : <></>
+                }
               </div>
             </div>
 
@@ -752,6 +760,7 @@ export default function ChiTietNhanVien({ detailInfo }) {
                         onClick={() => {
                           setModalThongTinCaNhan(true);
                           setModalChinhSuaThongTinCaNhan(false);
+                          form.resetFields()
                         }}
                       >
                         <p className={styles.huy}>Huỷ</p>

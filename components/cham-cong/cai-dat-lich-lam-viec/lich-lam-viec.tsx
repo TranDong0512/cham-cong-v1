@@ -150,20 +150,37 @@ const ModalLichLamViec = (
         </div>
       </Card>
     </Col>
-  );
-};
-export default function CaiDatLichLamViec(listCalendar: any) {
-  const [modalThemNV, setModalThemNV] = useState(false);
-  const [modalUpload, setModalUpload] = useState(false);
-  const [modalDanhSach, setModalDanhSach] = useState(false);
-  const [modalSaoChep, setModalSaoChep] = useState(false);
-  const [modalXoaLich, setModalXoaLich] = useState(false);
-  const [modelChinhSua, setModalChinhSua] = useState(false);
-  const [openTabBar, setOpenTabBar] = useState("");
-  const [cySelected, setCySelected]: any = useState({});
-  const [listEmp, setListEmp]: any = useState([]);
-  const [listEmpInCy, setListEmpInCy]: any = useState([]);
-  const [selectedCy, setSelectedCy] = useState<any>();
+// <<<<<<< hieu_fix
+  )
+}
+export default function CaiDatLichLamViec(listCalendar: any, setDataTotal: Function) {
+  const [modalThemNV, setModalThemNV] = useState(false)
+  const [modalUpload, setModalUpload] = useState(false)
+  const [modalDanhSach, setModalDanhSach] = useState(false)
+  const [modalSaoChep, setModalSaoChep] = useState(false)
+  const [modalXoaLich, setModalXoaLich] = useState(false)
+  const [modelChinhSua, setModalChinhSua] = useState(false)
+  const [openTabBar, setOpenTabBar] = useState('')
+  const [cySelected, setCySelected]: any = useState({})
+  const [listEmp, setListEmp]: any = useState([])
+  const [listEmpInCy, setListEmpInCy]: any = useState([])
+  const [selectedCy, setSelectedCy] = useState<any>()
+// =======
+//   );
+// };
+// export default function CaiDatLichLamViec(listCalendar: any) {
+//   const [modalThemNV, setModalThemNV] = useState(false);
+//   const [modalUpload, setModalUpload] = useState(false);
+//   const [modalDanhSach, setModalDanhSach] = useState(false);
+//   const [modalSaoChep, setModalSaoChep] = useState(false);
+//   const [modalXoaLich, setModalXoaLich] = useState(false);
+//   const [modelChinhSua, setModalChinhSua] = useState(false);
+//   const [openTabBar, setOpenTabBar] = useState("");
+//   const [cySelected, setCySelected]: any = useState({});
+//   const [listEmp, setListEmp]: any = useState([]);
+//   const [listEmpInCy, setListEmpInCy]: any = useState([]);
+//   const [selectedCy, setSelectedCy] = useState<any>();
+// >>>>>>> master
   useEffect(() => {
     let com_id = null;
     com_id = getCompIdCS();
@@ -312,22 +329,33 @@ export default function CaiDatLichLamViec(listCalendar: any) {
         setModalUpload,
         cySelected,
         listEmp,
-        listEmpInCy
+        listEmpInCy,
+        setDataTotal
       )}
       {UpLoadNV(modalUpload, setModalUpload, setModalThemNV)}
-      {DanhSach(modalDanhSach, setModalDanhSach, cySelected, listEmpInCy)}
-      {SaoChep(modalSaoChep, setModalSaoChep, listCalendar, cySelected)}
+      {DanhSach(modalDanhSach, setModalDanhSach, cySelected, listEmpInCy, setDataTotal)}
+      {SaoChep(modalSaoChep, setModalSaoChep, listCalendar, cySelected, setDataTotal)}
       {XoaLich(
         modalXoaLich,
         setModalXoaLich,
-        "Bạn chắc chắn muốn xóa lịch làm việc này?",
-        cySelected
+//<<<<<<< hieu_fix
+        'Bạn chắc chắn muốn xóa lịch làm việc này?',
+        cySelected,
+        null,
+        null,
+        null,
+        setDataTotal
+// <!-- =======
+//         "Bạn chắc chắn muốn xóa lịch làm việc này?",
+//         cySelected
+// >>>>>>> master -->
       )}
       {ModalChinhSua(
         modelChinhSua,
         setModalChinhSua,
         cySelected,
-        setCySelected
+        setCySelected,
+        setDataTotal
       )}
     </Row>
   );

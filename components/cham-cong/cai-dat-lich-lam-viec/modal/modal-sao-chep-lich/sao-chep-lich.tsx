@@ -32,7 +32,8 @@ export function SaoChepLich(
   open: boolean,
   setOpen: Function,
   data: any[],
-  dateFilter: any
+  dateFilter: any,
+  setDataTotal: Function
 ) {
   const [listKeyCheck, setListKeyCheck]: any = useState([])
   const [listCyInMonth, setListCyInMonth]: any = useState(
@@ -61,8 +62,10 @@ export function SaoChepLich(
           month: applyMonth,
         }).then((res) => {
           if (res?.result === true) {
+            setDataTotal()
           }
         })
+        window.alert("Thành công")
         //  Promise.all
         setOpen(false)
         // router.reload()
@@ -106,7 +109,10 @@ export function SaoChepLich(
   return (
     <Modal
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={() =>{
+        setApplyMonth()
+        setListKeyCheck([])
+        setOpen(false)}}
       width={600}
       closable={false}
       cancelButtonProps={{ style: { display: 'none' } }}
@@ -119,7 +125,11 @@ export function SaoChepLich(
           src={'/cross.png'}
           width={14}
           height={14}
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            setApplyMonth()
+            setListKeyCheck([])
+            setOpen(false)}
+          }
         />
       </div>
       <div className={styles.body}>
@@ -128,6 +138,7 @@ export function SaoChepLich(
           <span style={{ color: 'red' }}>*</span>
           <Input
             onChange={(e) => setApplyMonth(e.target.value)}
+            value={applyMonth}
             type='month'
             style={{ width: '100%' }}
             placeholder='Chọn tháng'></Input>

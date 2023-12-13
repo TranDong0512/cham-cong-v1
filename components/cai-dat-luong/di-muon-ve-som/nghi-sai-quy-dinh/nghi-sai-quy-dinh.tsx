@@ -38,6 +38,10 @@ const CaiDatMucPhat = (listCaPhat, type) => {
     getListCa();
   }, []);
 
+  useEffect(() => {
+    form.resetFields()
+  }, [type])
+
   const onFinish = async (value) => {
     if (!_.isEmpty(selectedCa)) {
       const com_id = getCompIdCS();
@@ -220,7 +224,12 @@ const ModalChiTiet = (open: any, setOpen: any, data: any) => {
   const [xoaThanhCong, setXoaThanhCong] = useState(false);
   const [chinhSua, setChinhSua] = useState(true);
   const [chinhSuaThanhCong, setChinhSuaThanhCong] = useState(false);
-  const [inputMoney, setInputMoney] = useState(data?.pc_money);
+  const [inputMoney, setInputMoney] = useState(null);
+
+  useEffect(() => {
+    setInputMoney(data?.pc_money)
+    setChinhSua(true)
+  }, [open, data])
 
   const onUpdate = async () => {
     const res = await POST_TL("api/tinhluong/congty/update_phat_ca", {
@@ -243,7 +252,10 @@ const ModalChiTiet = (open: any, setOpen: any, data: any) => {
     <Modal
       className={styles.modal}
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={() => {
+        setInputMoney(null)  
+        setOpen(false)
+      }}
       width={600}
       closable={false}
       cancelButtonProps={{ style: { display: "none" } }}
@@ -255,7 +267,10 @@ const ModalChiTiet = (open: any, setOpen: any, data: any) => {
           src={"/cross.png"}
           width={14}
           height={14}
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            setInputMoney(null)   
+            setOpen(false)
+          }}
           className={styles.crossImage}
         />
       </div>

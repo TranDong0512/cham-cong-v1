@@ -28,7 +28,7 @@ export function ModalChinhSuaHopDong(
       con_time_up: dayjs(data?.con_time_up),
       con_time_end: dayjs(data?.con_time_end),
     });
-  }, [data]);
+  }, [data, open]);
   console.log(data);
   const onFinish = async (value) => {
     const res = await POST_TL("api/tinhluong/congty/edit_contract", {
@@ -49,7 +49,10 @@ export function ModalChinhSuaHopDong(
     <Modal
       className="bannerQLC"
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={() => {
+        form.resetFields()  
+        setOpen(false)
+      }}
       width={600}
       closable={false}
       cancelButtonProps={{ style: { display: "none" } }}
@@ -63,7 +66,10 @@ export function ModalChinhSuaHopDong(
           src={"/cross.png"}
           width={14}
           height={14}
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            form.resetFields()  
+            setOpen(false)
+          }}
         />
       </div>
       <div className={styles.body}>
@@ -102,7 +108,8 @@ export function ModalChinhSuaHopDong(
             "Chọn tệp đính kèm (Tối đa 10MB)",
             false,
             true,
-            "con_file"
+            "con_file",
+            open
           )}
           <div
             style={{

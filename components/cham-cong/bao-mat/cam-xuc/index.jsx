@@ -27,6 +27,10 @@ const ModalAdd = ({ open, setOpen, reload, setReload }) => {
     })
   }
 
+  useEffect(() => {
+    form.resetFields()
+  }, [open])
+
   const children = (
     <Form form={form}>
       <Form.Item name={'min_score'} label='Từ' labelCol={{ span: 24 }} rules={[{required: true, message:'Vui lòng nhập!'}]}>

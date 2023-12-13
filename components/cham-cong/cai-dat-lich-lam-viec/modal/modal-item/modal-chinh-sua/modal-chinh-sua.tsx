@@ -7,7 +7,8 @@ export function ModalChinhSua(
   open: boolean,
   setOpen: Function,
   cySelected: any,
-  setCySelected: Function
+  setCySelected: Function,
+  setDataTotal: Function
 ) {
   const [form] = Form.useForm()
   useEffect(() => {
@@ -50,6 +51,7 @@ export function ModalChinhSua(
               data: cySelected,
               form: form,
               setOpen: setOpen,
+              setDataTotal: setDataTotal,
             })}
           </div>
         </Form>

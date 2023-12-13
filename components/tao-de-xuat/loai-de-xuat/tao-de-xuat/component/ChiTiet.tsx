@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from './ChiTiet.module.css'
 import { Button, Form, Input, Select, Upload } from 'antd'
 import { POST_VT } from '@/pages/api/BaseApi'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 export const GroupButton = (
@@ -205,8 +206,17 @@ export const MyInputFile = (
   placeholder: string,
   required: boolean,
   hasLabel: boolean,
-  name: string
+  name: string,
+  open?: boolean
 ) => {
+  const [fileList, setFileList] = useState([])
+  const handleChange = ({ fileList }) => {
+    setFileList(fileList);
+  };
+
+  useEffect(() => {
+    setFileList([])
+  }, [open])
   return (
     <Form.Item
       name={name}
@@ -221,6 +231,8 @@ export const MyInputFile = (
       <Upload
         className={styles.containerUpload}
         style={{ width: '100%' }}
+        onChange={handleChange}
+        fileList={fileList}
         showUploadList>
         <div className={styles.upload}>
           <p>{placeholder}</p>

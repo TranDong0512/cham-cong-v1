@@ -49,6 +49,10 @@ export function AddNewWifiModal(
   //   getIP();
   // }, []);
 
+  useEffect(() => {
+    form.setFieldsValue({ ...selectedRow })
+  }, [open])
+
   const onFinish = async (value: any) => {
     if (value) {
       if (type === TYPE_ADD) {
@@ -90,7 +94,11 @@ export function AddNewWifiModal(
   return (
     <Modal
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={() => {
+        form.resetFields()
+        setOpen(false)
+      }
+      }
       width={600}
       closable={false}
       destroyOnClose={true}
@@ -108,7 +116,11 @@ export function AddNewWifiModal(
           width={14}
           height={14}
           style={{ marginRight: "20px" }}
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            form.resetFields()
+            setOpen(false)
+          }
+          }
         />
       </div>
       <div className={styles.body}>
