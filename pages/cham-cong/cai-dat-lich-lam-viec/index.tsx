@@ -213,7 +213,7 @@ export default function LichLamViec() {
                       />
                     </Form.Item>
                   </Col>
-                  <Col lg={3} md={4} sm={4} xs={7}>
+                  <Col lg={3} md={4} sm={4} xs={12}>
                     <Button
                       className={`${styles.button} ${styles.buttonPlus}`}
                       onClick={() => setModalAdd(true)}
@@ -226,7 +226,7 @@ export default function LichLamViec() {
                     lg={4}
                     md={5}
                     sm={5}
-                    xs={9}
+                    xs={12}
                     style={{ justifyContent: "center" }}
                   >
                     <Button
