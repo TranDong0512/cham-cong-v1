@@ -256,7 +256,9 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                   size="large"
                   onClick={() => null}
                 >
-                  <p className={styles.txt}>Lọc</p>
+                  <p className={styles.txt} style={{ color: "#fff" }}>
+                    Lọc
+                  </p>
                 </Button>
               </Col>
               <Col xl={4} lg={4} md={5} sm={7} xs={12}>
@@ -364,6 +366,7 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                       className={styles.button2}
                       size="large"
                       type="primary"
+                      style={{ marginTop: 8 }}
                     >
                       <p className={styles.textB}>Xuất file Excel</p>
                     </Button>

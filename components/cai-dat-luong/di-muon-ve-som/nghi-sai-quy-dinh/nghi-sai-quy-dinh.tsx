@@ -39,8 +39,8 @@ const CaiDatMucPhat = (listCaPhat, type) => {
   }, []);
 
   useEffect(() => {
-    form.resetFields()
-  }, [type])
+    form.resetFields();
+  }, [type]);
 
   const onFinish = async (value) => {
     if (!_.isEmpty(selectedCa)) {
@@ -227,9 +227,9 @@ const ModalChiTiet = (open: any, setOpen: any, data: any) => {
   const [inputMoney, setInputMoney] = useState(null);
 
   useEffect(() => {
-    setInputMoney(data?.pc_money)
-    setChinhSua(true)
-  }, [open, data])
+    setInputMoney(data?.pc_money);
+    setChinhSua(true);
+  }, [open, data]);
 
   const onUpdate = async () => {
     const res = await POST_TL("api/tinhluong/congty/update_phat_ca", {
@@ -253,8 +253,8 @@ const ModalChiTiet = (open: any, setOpen: any, data: any) => {
       className={styles.modal}
       open={open}
       onCancel={() => {
-        setInputMoney(null)  
-        setOpen(false)
+        setInputMoney(null);
+        setOpen(false);
       }}
       width={600}
       closable={false}
@@ -268,8 +268,8 @@ const ModalChiTiet = (open: any, setOpen: any, data: any) => {
           width={14}
           height={14}
           onClick={() => {
-            setInputMoney(null)   
-            setOpen(false)
+            setInputMoney(null);
+            setOpen(false);
           }}
           className={styles.crossImage}
         />
@@ -433,6 +433,10 @@ export function CpmNghiSaiQuyDinh() {
             justify={"end"}
             align={"bottom"}
             className={styles.rightHeader}
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+            }}
           >
             <Col lg={10} md={12} sm={8} xs={13}>
               <Form.Item>
@@ -448,7 +452,7 @@ export function CpmNghiSaiQuyDinh() {
                 ></Select>
               </Form.Item>
             </Col>
-            <Col lg={7} md={12} sm={6} xs={11}>
+            <Col lg={7} md={12} sm={6} xs={11} style={{ minWidth: 170 }}>
               <Form.Item>
                 <Button
                   size="large"
