@@ -34,3 +34,14 @@
         font-size: 18px;
     }
 }
+@media screen and (max-width: 505px) {
+    .wrap {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .wrap_btn {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    
+}

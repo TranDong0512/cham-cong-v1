@@ -262,55 +262,78 @@ export default function ThuongPhat({ tpList, listPb, res }) {
                       className={styles.buttonTop}
                       size="large"
                       htmlType="submit"
+                      style={{ width: "max-content" }}
                     >
                       Thống kê
                     </Button>
                   </Form.Item>
                 </Col>
-                <Col md={11} sm={7}>
-                  <Popover content={content} title={null}>
-                    <Button
-                      size="large"
-                      type="primary"
-                      // onClick={() => setOpenInsert(true)}
-                    >
-                      <p style={{ color: "#fff" }}>Thêm mới thưởng phạt</p>
-                    </Button>
-                  </Popover>
-                </Col>
-                <Col md={11} sm={7}>
-                  <ExportExcellButton
-                    fileHeaders={[
-                      `Danh sách thưởng phạt tháng ${
-                        moment().month() + 1
-                      } ${moment().year()}`,
-                    ]}
-                    data={
-                      listData
-                        ? listData?.map((item) => [
-                            `${item?.inforUser?.userName} - ${item?.inforUser?.idQLC}`,
-                            `Thưởng: ${item?.tt_thuong?.tong_thuong} VNĐ`,
-                            `Phạt: ${item?.tt_phat?.tong_phat} VNĐ`,
-                          ])
-                        : []
-                    }
-                    listkeys={["Họ tên(ID)", "Thưởng", "Phạt"]}
-                    fileName={`Danh sách thưởng phạt tháng ${
-                      moment().month() + 1
-                    } ${moment().year()}`}
-                    component={
-                      <Button size="large" className={styles.buttonBottom}>
-                        <Image
-                          src={"/layers_light.png"}
-                          alt={""}
-                          width={24}
-                          height={24}
-                        ></Image>
-                        <p style={{ marginLeft: "10px" }}>Xuất file thống kê</p>
+
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-around",
+                  }}
+                  className={styles.wrap}
+                >
+                  <Col
+                    md={11}
+                    sm={7}
+                    style={{ minWidth: "max-content" }}
+                    className={styles.wrap_btn}
+                  >
+                    <Popover content={content} title={null}>
+                      <Button
+                        size="large"
+                        type="primary"
+                        style={{ width: "100%" }}
+                        // onClick={() => setOpenInsert(true)}
+                      >
+                        <p style={{ color: "#fff" }}>Thêm mới thưởng phạt</p>
                       </Button>
-                    }
-                  />
-                </Col>
+                    </Popover>
+                  </Col>
+                  <Col
+                    md={11}
+                    sm={7}
+                    style={{ minWidth: "max-content" }}
+                    className={styles.wrap_btn}
+                  >
+                    <ExportExcellButton
+                      fileHeaders={[
+                        `Danh sách thưởng phạt tháng ${
+                          moment().month() + 1
+                        } ${moment().year()}`,
+                      ]}
+                      data={
+                        listData
+                          ? listData?.map((item) => [
+                              `${item?.inforUser?.userName} - ${item?.inforUser?.idQLC}`,
+                              `Thưởng: ${item?.tt_thuong?.tong_thuong} VNĐ`,
+                              `Phạt: ${item?.tt_phat?.tong_phat} VNĐ`,
+                            ])
+                          : []
+                      }
+                      listkeys={["Họ tên(ID)", "Thưởng", "Phạt"]}
+                      fileName={`Danh sách thưởng phạt tháng ${
+                        moment().month() + 1
+                      } ${moment().year()}`}
+                      component={
+                        <Button size="large" className={styles.buttonBottom}>
+                          <Image
+                            src={"/layers_light.png"}
+                            alt={""}
+                            width={24}
+                            height={24}
+                          ></Image>
+                          <p style={{ marginLeft: "10px" }}>
+                            Xuất file thống kê
+                          </p>
+                        </Button>
+                      }
+                    />
+                  </Col>
+                </div>
               </Row>
             </Col>
           </Row>

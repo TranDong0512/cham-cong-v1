@@ -345,7 +345,9 @@ export function ModalThemMoiChinhSachBaoHiem(open: boolean, setOpen: Function) {
         {ModalCongThuc(next, setNext, form)}
         <div className={styles.hasButton}>
           <Button className={styles.Button} onClick={handleSubmit}>
-            <p className={styles.txt}>Lưu</p>
+            <p className={styles.txt} style={{ color: "#FFF" }}>
+              Lưu
+            </p>
           </Button>
         </div>
       </div>

@@ -79,12 +79,14 @@ export default function QuanLyCaLamViecPage() {
       onclick,
     }: {
       img: string;
-      title: string;
+      title: any;
       onclick: () => void;
     }) => (
       <div style={{ display: "flex" }} onClick={onclick}>
         <Image alt="/" src={img} width={24} height={24} />
-        <p style={{ marginLeft: "10px", color: "#fff" }}>{title}</p>
+        <p style={{ marginLeft: "10px", color: "#fff", display: "flex" }}>
+          {title}
+        </p>
       </div>
     );
 
@@ -108,12 +110,15 @@ export default function QuanLyCaLamViecPage() {
             </div>
           </div>
         ) : (
-          <div className={styles.functionGroupWrapper}>
+          <div
+            className={styles.functionGroupWrapper}
+            style={{ backgroundColor: "#4c5bd4" }}
+          >
             <div className={styles.functionGroup}>
               <div style={{ marginRight: "20px" }}>
                 <FunctionalBtn
                   img="/edit-w.png"
-                  title="Sửa"
+                  title={<p style={{ color: "#FFF" }}>Sửa</p>}
                   onclick={() => {
                     setShiftIdSelected(shift_id);
                     setIsOpenUpdate(true);
@@ -122,7 +127,7 @@ export default function QuanLyCaLamViecPage() {
               </div>
               <FunctionalBtn
                 img="/trash-w.png"
-                title="Xóa"
+                title={<p style={{ color: "#FFF" }}>Xóa</p>}
                 onclick={() => {
                   setShiftIdSelected(shift_id);
                   setIsOpenDel(true);

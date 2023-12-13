@@ -303,16 +303,24 @@ export default function LichSuChamCong() {
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={3}>
+          <Col xs={24} sm={24} md={4} xl={3}>
             <Button
               size="large"
               style={{ backgroundColor: "blue", width: "100%" }}
               htmlType="submit"
             >
-              <p style={{ color: "#fff" }}>Tìm kiếm</p>
+              <p
+                style={{
+                  color: "#fff",
+                  width: "max-content",
+                  margin: "0 auto",
+                }}
+              >
+                Tìm kiếm
+              </p>
             </Button>
           </Col>
-          <Col xs={24} sm={24} md={3}>
+          <Col xs={24} sm={24} md={4} xl={2}>
             <ExportExcellButton
               fileName={`Danh sách lịch sử điểm danh `}
               fileHeaders={[]}
@@ -342,7 +350,7 @@ export default function LichSuChamCong() {
                   type="primary"
                   style={{ marginLeft: "10px" }}
                 >
-                  <p>Xuất file Excel</p>
+                  <p>Xuất Excel</p>
                 </Button>
               }
             />

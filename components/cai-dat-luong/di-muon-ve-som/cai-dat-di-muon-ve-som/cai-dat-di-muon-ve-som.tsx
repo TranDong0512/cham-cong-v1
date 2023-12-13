@@ -209,7 +209,11 @@ export function CpmCaiDatDiMuonVeSom() {
                 xs={10}
                 className={`${styles.button} ${styles.button2}`}
               >
-                <Button size="large" onClick={() => setModalCaiDatDMVS(true)}>
+                <Button
+                  size="large"
+                  onClick={() => setModalCaiDatDMVS(true)}
+                  style={{ width: "max-content" }}
+                >
                   <Image
                     src="/plus-w.png"
                     width={24}

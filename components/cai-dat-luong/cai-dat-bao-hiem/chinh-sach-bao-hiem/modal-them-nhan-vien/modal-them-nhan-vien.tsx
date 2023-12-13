@@ -177,7 +177,9 @@ export function ModalThoiGianApDung({
 
         <div className={styles.hasButton}>
           <Button className={styles.Button} onClick={handleSubmit}>
-            <p className={styles.txt}>Lưu</p>
+            <p className={styles.txt} style={{ color: "#FFF" }}>
+              Lưu
+            </p>
           </Button>
         </div>
       </div>
@@ -404,7 +406,9 @@ export function ModalThemNhanVien({
 
         <div className={styles.hasButton}>
           <Button className={styles.Button} onClick={Save}>
-            <p className={styles.txt}>Tiếp tục</p>
+            <p className={styles.txt} style={{ color: "#FFF" }}>
+              Tiếp tục
+            </p>
           </Button>
         </div>
       </div>

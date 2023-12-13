@@ -30,14 +30,13 @@ export function ModalThemMoiPhucLoi(
             ? dayjs(value?.cl_day_end).format("YYYY-MM-01T00:00:00.000+00:00")
             : "",
       };
-      form.resetFields()
+      form.resetFields();
       setOpenFilterAddWelfareClick(false);
       const res = await POST_TL(
         "api/tinhluong/congty/insert_phuc_loi",
         finalValue
       );
       if (res) {
-
         setData([res?.newobj, ...data]);
       }
     });
@@ -52,8 +51,8 @@ export function ModalThemMoiPhucLoi(
       open={openFilterAddWelfareClick}
       closable={false}
       onCancel={() => {
-        form.resetFields()
-        setOpenFilterAddWelfareClick(false)
+        form.resetFields();
+        setOpenFilterAddWelfareClick(false);
       }}
       width={700}
       cancelButtonProps={{ style: { display: "none" } }}
@@ -69,8 +68,8 @@ export function ModalThemMoiPhucLoi(
             width={14}
             height={14}
             onClick={() => {
-              form.resetFields()  
-              setOpenFilterAddWelfareClick(false)
+              form.resetFields();
+              setOpenFilterAddWelfareClick(false);
             }}
           />
         </div>
@@ -180,7 +179,9 @@ export function ModalThemMoiPhucLoi(
                 <p style={{ color: "#4C5BD4", fontSize: "18px" }}>Hủy bỏ</p>
               </Button>
               <Button className={styles.Button} onClick={handleSubmit}>
-                <p className={styles.txt}>Thêm mới</p>
+                <p className={styles.txt} style={{ color: "#FFF" }}>
+                  Thêm mới
+                </p>
               </Button>
             </div>
           </Form.Item>

@@ -30,17 +30,22 @@
 
   .functionGroupWrapper {
     border-radius: 20px;
-    background-color: #4c5bd4;
+    background-color: #4c5bd4 !important;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    .functionGroup {
-      display: flex;
-    }
-  }
 
+  }
+  .functionGroup {
+    border-radius: 20px;
+    background-color: #4c5bd4 !important;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .selectSection {
     width: 40%;
     margin-top: 20px;
