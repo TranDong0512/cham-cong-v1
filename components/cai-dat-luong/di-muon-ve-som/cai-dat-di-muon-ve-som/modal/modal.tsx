@@ -12,6 +12,7 @@ import styles from "./modal.module.css";
 import { POST_TL, getCompIdCS } from "@/pages/api/BaseApi";
 import moment from "moment";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 export const ModalXoaCaiDaiDMVS = (
   open: boolean,
@@ -103,11 +104,19 @@ export const ModalUpDateCaiDatDiMuonVeSom = (
 ) => {
   const [form] = Form.useForm();
   const router = useRouter();
-  const initialValues = {
-    ...selectedRow,
-    pm_time_begin: moment(selectedRow?.pm_time_begin)?.format("YYYY-MM"),
-    pm_time_end: moment(selectedRow?.pm_time_end)?.format("YYYY-MM"),
-  };
+  // const initialValues = {
+  //   ...selectedRow,
+  //   pm_time_begin: moment(selectedRow?.pm_time_begin)?.format("YYYY-MM"),
+  //   pm_time_end: moment(selectedRow?.pm_time_end)?.format("YYYY-MM"),
+  // };
+
+  useEffect(() => {
+    form.setFieldsValue({
+      ...selectedRow,
+      pm_time_begin: moment(selectedRow?.pm_time_begin)?.format("YYYY-MM"),
+      pm_time_end: moment(selectedRow?.pm_time_end)?.format("YYYY-MM"),
+    })
+  }, [open, selectedRow])
 
   const onFinish = async (value) => {
     if (value) {
@@ -132,7 +141,10 @@ export const ModalUpDateCaiDatDiMuonVeSom = (
     <Modal
       className={styles.modal}
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={() => {
+        form.resetFields()  
+        setOpen(false)
+      }}
       width={600}
       closable={false}
       cancelButtonProps={{ style: { display: "none" } }}
@@ -146,11 +158,14 @@ export const ModalUpDateCaiDatDiMuonVeSom = (
           src={"/cross.png"}
           width={14}
           height={14}
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            form.resetFields()  
+            setOpen(false)
+          }}
         />
       </div>
       <div className={styles.body}>
-        <Form form={form} onFinish={onFinish} initialValues={initialValues}>
+        <Form form={form} onFinish={onFinish}>
           <Form.Item
             name="pm_type"
             label="Lý do phạt"
@@ -283,6 +298,7 @@ export const ModalCaiDatDiMuonVeSom = (
 
       if (res?.data) {
         window.alert("Thêm mới thành công");
+        form.resetFields()
         setOpen(false);
         setReload(!reload);
       }
@@ -293,7 +309,10 @@ export const ModalCaiDatDiMuonVeSom = (
     <Modal
       className={styles.modal}
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={() => {
+        form.resetFields()
+        setOpen(false)
+      }}
       width={600}
       destroyOnClose
       closable={false}
@@ -308,7 +327,10 @@ export const ModalCaiDatDiMuonVeSom = (
           src={"/cross.png"}
           width={14}
           height={14}
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            form.resetFields()
+            setOpen(false)
+          }}
         />
       </div>
       <div className={styles.body}>
