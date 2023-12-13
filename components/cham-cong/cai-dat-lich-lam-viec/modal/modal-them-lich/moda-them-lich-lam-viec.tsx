@@ -23,7 +23,11 @@ export function ModalTiepTuc(
   return (
     <Modal
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={() => {
+        form.resetFields()
+        setOpen(false)
+        setListShiftSelected([])
+      }}    
       width={600}
       closable={false}
       cancelButtonProps={{ style: { display: 'none' } }}
@@ -36,7 +40,11 @@ export function ModalTiepTuc(
           src={'/cross.png'}
           width={14}
           height={14}
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            form.resetFields()
+            setListShiftSelected([])
+            setOpen(false)
+          }}
         />
       </div>
       <div style={{ padding: '20px 20px 0px 20px', fontSize: '16px' }}>
@@ -137,7 +145,10 @@ export function ModalThemLichLamViec(
     <Modal
       className='bannerQLC modalThemLLV'
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={() => {
+        formData.resetFields()
+        setOpen(false)
+      }}
       width={600}
       closable={false}
       cancelButtonProps={{ style: { display: 'none' } }}
@@ -150,7 +161,10 @@ export function ModalThemLichLamViec(
           src={'/cross.png'}
           width={14}
           height={14}
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            formData.resetFields()
+            setOpen(false)
+          }}
         />
       </div>
       <div className={styles.body}>

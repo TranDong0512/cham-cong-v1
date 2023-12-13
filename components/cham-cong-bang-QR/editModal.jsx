@@ -55,7 +55,6 @@ export const EditChiTietModal = ({
   const [listLoc, setListLoc] = useState([])
   const [listWifi, setListWifi] = useState([])
   const [reload, setReload] = useState([])
-  console.log('selectedRow', selectedRow)
 
   useEffect(() => {
     form.setFieldsValue({
@@ -96,7 +95,7 @@ export const EditChiTietModal = ({
 
     })
 
-  }, [selectedRow])
+  }, [selectedRow, open])
 
   useEffect(() => {
     const getData = async () => {
@@ -227,7 +226,10 @@ export const EditChiTietModal = ({
       open={open}
       width={800}
       footer={null}
-      onCancel={() => setOpen(false)}
+      onCancel={() => {
+        form.resetFields()
+        setOpen(false)
+      }}
       destroyOnClose={true}>
       <Form form={form} onFinish={onFinish} style={{ padding: '20px' }}>
         <Row>

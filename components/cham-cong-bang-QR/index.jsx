@@ -20,7 +20,7 @@ import { DELETE, POST, getCompIdCS, getCompIdSS } from "@/pages/api/BaseApi";
 // import type { ColumnsType } from "antd/es/table";
 import { listDevices, EditChiTietModal } from "./editModal";
 
-export default function ChamCongQR() {
+export default function ChamCongQR({keyChildren}) {
   const [listOrg, setListOrg] = useState([]);
   const [listPos, setListPos] = useState([]);
   const [listUsers, setListUsers] = useState([]);
@@ -99,6 +99,10 @@ export default function ChamCongQR() {
 
     getList();
   }, [recall]);
+
+  useEffect(() => {
+    form.resetFields()
+  }, [keyChildren])
 
   const SelectBlock = ({
     name,
