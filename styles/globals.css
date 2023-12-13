@@ -1763,3 +1763,8 @@ label.ant-form-item-required {
   border-color: transparent !important;
   box-shadow: none !important;
 }
+@media screen and (max-width: 480) {
+  .centered-calendar .ant-picker-calendar-header .ant-picker-calendar-year-select {
+    width: 20% !important;
+  }
+}
