@@ -81,7 +81,10 @@ const titleModal = (
   cy: any
 ): React.ReactNode => (
   <div className={styles.header}>
-    <p style={{ width: 500, overflowWrap: "break-word" }}> {title}</p>
+    <p style={{ width: 500, overflowWrap: "break-word", whiteSpace: "normal" }}>
+      {" "}
+      {title}
+    </p>
     <div
       className={styles.bodyCell}
       style={{ position: "absolute", right: "calc(100%/75)", top: "50%" }}
