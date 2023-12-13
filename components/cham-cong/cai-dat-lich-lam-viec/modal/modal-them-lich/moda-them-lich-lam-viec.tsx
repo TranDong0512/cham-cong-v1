@@ -84,6 +84,7 @@ export function ModalTiepTuc(
             onClick={() => {
               setOpen(false)
               setBack(true)
+              setListShiftSelected([]) 
             }}>
             <img src='/quay_lai.png' alt='/' />
             <p className={styles.text}>Quay lại</p>

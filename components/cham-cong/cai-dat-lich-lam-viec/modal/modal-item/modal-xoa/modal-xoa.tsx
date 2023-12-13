@@ -24,14 +24,15 @@ export function XoaLich(
       }).then(async (res) => {
         if (res?.result === true) {
           alert('Xóa thành công nhân viên khỏi lịch làm việc!')
-          setDataTotal()
+          console.log(listEmpInCy);
+          
           setListEmpInCy &&
             setListEmpInCy(
-              listEmpInCy.filter((emp) => emp?.ep_id !== empSelected?.ep_id)
+              listEmpInCy?.filter((emp) => emp?.ep_id !== empSelected?.ep_id)
             )
           setOpen(false)
+          setDataTotal()
           //router.reload()
-          setDataTotal()          
         }
       })
     } else {
@@ -42,7 +43,8 @@ export function XoaLich(
         if (res?.data?.result) {
           alert('Xóa thành công lịch làm việc!')
           setOpen(false)
-          router.reload()
+          //router.reload()
+          setDataTotal()
         }
       })
     }

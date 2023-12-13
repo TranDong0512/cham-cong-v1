@@ -88,7 +88,7 @@ export function ThemNhanVien(
   cySelected: any,
   listEmp: any,
   listEmpInCy: any,
-  setDataTotal: Function
+  setDataTotal?: Function
 ) {
   const [listKeyBefore, setListKeyBefore]: any = useState([])
   const [listKeyAfter, setListKeyAfter]: any = useState([])
@@ -205,9 +205,9 @@ export function ThemNhanVien(
           if (res?.result === true) {
             setModalXacNhan(true)
             setOpen(false)
-            window.alert('Thêm thành công')
             // router.replace(router.asPath)
-            router.reload()
+            //router.reload()
+            setDataTotal()
           } else {
             window.alert('Co loi khi them')
           }

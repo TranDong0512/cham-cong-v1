@@ -172,6 +172,7 @@ export function DanhSach(
         'Bạn chắc chắn muốn xóa nhân viên này khỏi lịch làm việc không ?',
         cySelected,
         selectedRow,
+        data,
         setData,
         setDataTotal
       )}
