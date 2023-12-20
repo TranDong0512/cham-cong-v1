@@ -1,6 +1,7 @@
 import { removeVietnameseTones } from "@/constants/style-constants";
 import { GET, POST } from "@/pages/api/BaseApi";
 import { ExportExcellButton } from "@/utils/ExportExccel";
+import { ExportExcel } from "@/utils/btnExcel";
 import { EditOutlined } from "@ant-design/icons";
 import {
   Avatar,
@@ -27,7 +28,7 @@ export default function LichSuChamCong() {
   const [listEmp, setListEmp] = useState([]);
   const [listPb, setListPb] = useState([]);
   const [reload, setReload] = useState(false);
-
+  const [listDataExcel, setListDataExcel] = useState([]);
   const URL = process.env.NEXT_PUBLIC_BASE_URL + "/timviec365";
   const [param, setParam] = useState<any>({
     curPage: 1,
@@ -72,6 +73,26 @@ export default function LichSuChamCong() {
     getListPb();
   }, []);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getList = async () => {
+      setLoading(true);
+      const res = await POST("api/qlc/timekeeping/getHistoryCheckin", {
+        start_time: dayjs(),
+        end_time: dayjs(),
+        pageSize: 100000000,
+      });
+
+      if (res?.result) {
+        setList(res?.data);
+        setCount(res?.total);
+        setLoading(false);
+      }
+    };
+
+    getList();
+  }, [param, reload]);
+
   useEffect(() => {
     const getList = async () => {
       setLoading(true);
@@ -247,7 +268,7 @@ export default function LichSuChamCong() {
       ),
     },
   ];
-
+  console.log("list", list);
   return (
     <Card
       title={<h2 style={{ color: "#fff" }}>Danh sách lịch sử điểm danh </h2>}
@@ -321,16 +342,15 @@ export default function LichSuChamCong() {
             </Button>
           </Col>
           <Col xs={24} sm={24} md={4} xl={2}>
-            <ExportExcellButton
-              fileName={`Danh sách lịch sử điểm danh `}
-              fileHeaders={[]}
-              listkeys={[
-                "Mã NV",
-                "Tên nhân viên",
-                "Ca làm việc",
-                "Thời gian điểm danh",
-                "Địa điểm",
-                "Thiết bị",
+            <ExportExcel
+              title={`Danh sách lịch sử điểm danh`}
+              columns={[
+                { header: "Mã NV", key: "col1", width: 15 },
+                { header: "Tên nhân viên", key: "col1", width: 35 },
+                { header: "Ca làm việc", key: "col2", width: 35 },
+                { header: "Thời gian điểm danh", key: "col3", width: 30 },
+                { header: "Địa điểm", key: "col4", width: 15 },
+                { header: "Thiết bị", key: "col7", width: 15 },
               ]}
               data={
                 list
@@ -344,16 +364,9 @@ export default function LichSuChamCong() {
                     ])
                   : []
               }
-              component={
-                <Button
-                  size="large"
-                  type="primary"
-                  style={{ marginLeft: "10px" }}
-                >
-                  <p>Xuất Excel</p>
-                </Button>
-              }
-            />
+              name={""}
+              nameFile={"Danh_sach_diem_danh"}
+            ></ExportExcel>
           </Col>
         </Row>
       </Form>
