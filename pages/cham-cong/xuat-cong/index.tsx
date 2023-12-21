@@ -14,7 +14,10 @@ import moment from "moment";
 import { useRouter } from "next/router";
 import { xuatCong } from "@/components/cham-cong/xuat-cong/xuat-cong-cpn";
 import { ExportExcellButton } from "@/utils/ExportExccel";
+import { ExportExcel } from "@/utils/btnExcel/index";
 import { removeVietnameseTones } from "@/constants/style-constants";
+import Cookies from "js-cookie";
+import jwtDecode from "jwt-decode";
 export interface DataType {
   key: React.Key;
   url: React.ReactNode;
@@ -62,7 +65,7 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
   const oneMonthAgo = moment().startOf("month")?.format("YYYY-MM-DD");
   const [startDate, setStartDate] = useState(oneMonthAgo);
   const [endDate, setEndDate] = useState(now);
-
+  const [nameCty, setNameCty] = useState<any>();
   const [params, setParams] = useState<any>({
     curPage: 1,
     start_date: startDate,
@@ -75,6 +78,7 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
   }, [startDate, endDate]);
 
   useEffect(() => {
+    setNameCty(jwtDecode(Cookies.get("token_base365")));
     const getData = async () => {
       setLoading(true);
       const com_id = getCompIdCS();
@@ -262,91 +266,34 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                 </Button>
               </Col>
               <Col xl={4} lg={4} md={5} sm={7} xs={12}>
-                <ExportExcellButton
-                  fileName={`Bảng xuât công từ ${moment(startDate).format(
+                <ExportExcel
+                  title={`BẢNG XUẤT CÔNG TỪ ${moment(startDate).format(
                     "DD-MM-YYYY"
-                  )} đến ${moment(endDate).format("DD-MM-YYYY")}`}
-                  fileHeaders={[
-                    `Bảng xuât công từ ${moment(startDate).format(
-                      "DD-MM-YYYY"
-                    )} đến ${moment(endDate).format("DD-MM-YYYY")}`,
-                  ]}
-                  listkeys={[
-                    "Mã nhân viên",
-                    "Họ và tên",
-                    "Ngày tháng",
-                    "Thứ",
-                    "Công",
-                    "Muộn(phút)",
-                    "Sớm(phút)",
-                    "Số giờ",
-                    "Tổng thời gian",
-                    "Dữ liệu chấm công",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
+                  )} đến ${moment(endDate).format("DD-MM-YYYY")}`}
+                  columns={[
+                    { header: "Mã nhân viên", key: "col1", width: 20 },
+                    { header: "Họ và tên", key: "col2", width: 35 },
+                    { header: "Ngày tháng", key: "col3", width: 20 },
+                    { header: "Thứ", key: "col4", width: 15 },
+                    { header: "Công", key: "col5", width: 15 },
+                    { header: "Muộn(phút)", key: "col6", width: 15 },
+                    { header: "Sớm(phút)", key: "col7", width: 15 },
+                    { header: "Số giờ", key: "col8", width: 15 },
+                    { header: "Tổng thời gian", key: "col9", width: 20 },
+                    { header: "Dữ liệu chấm công", key: "col10", width: 9 },
                   ]}
                   data={
                     data
                       ? data?.map((item) => [
                           item?._id,
-                          item?.user?.userName,
+                          item.user?.userName,
                           item?.at_time?.split("T")?.[0],
                           listDaysVN[
                             moment(item?.at_time?.split("T")?.[0])?.day()
                           ],
                           //cong
                           item?.dataCal?.num_to_calculate,
+
                           //muon
                           item?.dataCal?.late,
                           //som
@@ -355,23 +302,18 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                           (item?.totalTime / 60).toFixed(2),
                           // tổng thời gian
                           item?.totalTime?.toFixed(2) + " phút",
+
                           ...item?.data?.map((i) => {
                             return moment(i?.at_time)?.format("HH:mm:ss");
                           }),
                         ])
                       : []
                   }
-                  component={
-                    <Button
-                      className={styles.button2}
-                      size="large"
-                      type="primary"
-                      style={{ marginTop: 8 }}
-                    >
-                      <p className={styles.textB}>Xuất file Excel</p>
-                    </Button>
-                  }
-                />
+                  name={nameCty?.data.userName}
+                  nameFile={"Bang_cong_nhan_vien"}
+                  loading={loading}
+                  type={1}
+                ></ExportExcel>
               </Col>
             </Row>
           </div>

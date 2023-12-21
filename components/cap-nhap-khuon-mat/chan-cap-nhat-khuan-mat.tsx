@@ -21,14 +21,17 @@ export default function BlockFaceUpdate() {
   const openAppStore = () => {
     const appID = "vn.timviec365.chat365";
 
-    window.open(`https://apps.apple.com/app/id${appID}`, "_blank");
+    window.open(
+      `https://apps.apple.com/us/app/chat365-nh%E1%BA%AFn-tin-nhanh-ch%C3%B3ng/id1623353330`,
+      "_blank"
+    );
   };
 
   const openMicrosoftStore = () => {
     const appPackageName = "vn.timviec365.chat365";
 
     window.open(
-      `ms-windows-store://pdp/?ProductId=${appPackageName}`,
+      `https://apps.microsoft.com/detail/XPFCH59RLHFFR6?hl=en-US&gl=US`,
       "_blank"
     );
   };
@@ -69,7 +72,7 @@ export default function BlockFaceUpdate() {
                     </div>
                     <div className={styles.ctn_vipchung}>
                       <button
-                        onClick={openMicrosoftStore}
+                        onClick={openAppStore}
                         style={{
                           background:
                             "linear-gradient(92.55deg, #039dfc 9.78%, #4051c4 99.38%)",
