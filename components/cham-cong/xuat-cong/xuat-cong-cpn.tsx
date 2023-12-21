@@ -68,7 +68,7 @@ export function xuatCong(
       title: <p style={{ color: "#fff" }}>Họ tên (ID)</p>,
       render: (record: any) => (
         <p>
-          {record?._id} - {record?.user?.userName}
+          {record?.ep_id} - {record?.ep_name}
         </p>
       ),
       align: "center",
@@ -85,59 +85,121 @@ export function xuatCong(
     {
       title: <p style={{ color: "#fff" }}>Ngày tháng</p>,
       render: (record: any) => (
-        <p>{moment(record?.at_time?.split("T")?.[0])?.format("DD-MM-YYYY")}</p>
+        <p>{moment(record?.ts_date)?.format("DD-MM-YYYY")}</p>
+      ),
+      align: "center",
+      width: "200px"
+    },
+    {
+      title: <p style={{ color: "#fff" }}>Ca làm việc</p>,
+      render: (record: any) => (
+        <p>{record?.shift_name || "Chưa cập nhật"}</p>
+      ),
+      align: "center",
+      width: "200px"
+    },
+    {
+      title: <p style={{ color: "#fff" }}>Thời gian làm việc (giờ)</p>,
+      render: (record: any) => (
+        <p>{record?.hour_real || 0}</p>
+      ),
+      align: "center",
+      width: "300px"
+    },
+    {
+      title: <p style={{ color: "#fff" }}>Đi muộn (phút)</p>,
+      render: (record: any) => (
+        <p>{record?.late || 0}</p>
+      ),
+      align: "center",
+      width: "200px"
+    },
+    {
+      title: <p style={{ color: "#fff" }}>Về sớm (phút)</p>,
+      render: (record: any) => (
+        <p>{record?.early || 0}</p>
+      ),
+      align: "center",
+      width: "200px"
+    },
+    {
+      title: <p style={{ color: "#fff" }}>Công</p>,
+      render: (record: any) => (
+        <p>{record?.num_to_calculate} công</p>
       ),
       align: "center",
     },
     {
+      title: <p style={{ color: "#fff" }}>Tiền</p>,
+      render: (record: any) => (
+        <p>{record?.num_to_money || 0} VNĐ</p>
+      ),
+      align: "center",
+    },
+    {
+      title: <p style={{ color: "#fff" }}>Tiền theo giờ</p>,
+      render: (record: any) => (
+        <p>{record?.money_per_hour || 0} VNĐ</p>
+      ),
+      align: "center",
+      width: "200px"
+    },
+    {
+      title: <p style={{ color: "#fff" }}>Cộng công</p>,
+      render: (record: any) => (
+        <p>{record?.cong_xn_them || 0} công</p>
+      ),
+      align: "center",
+      width: "200px"
+    },
+    {
+      title: <p style={{ color: "#fff" }}>Cộng tiền</p>,
+      render: (record: any) => (
+        <p>{record?.tien_xn_them || record?.tientheogio_xn_them || 0} VNĐ</p>
+      ),
+      align: "center",
+      width: "200px"
+    },
+    {
+      title: <p style={{ color: "#fff" }}>Phạt tiền (đi muộn về sớm)</p>,
+      render: (record: any) => (
+        <p>{record?.phat_tien_muon || 0} VNĐ</p>
+      ),
+      align: "center",
+      width: "300px"
+    },
+    {
+      title: <p style={{ color: "#fff" }}>Phạt công (đi muộn về sớm)</p>,
+      render: (record: any) => (
+        <p>{record?.phat_cong_muon || 0} công</p>
+      ),
+      align: "center",
+      width: "300px"
+    },
+    {
+      title: <p style={{ color: "#fff" }}>Phạt công (khác)</p>,
+      render: (record: any) => (
+        <p>{record?.phat_cong_khac || 0} công</p>
+      ),
+      align: "center",
+      width: "200px"
+    },
+    {
       title: <p style={{ color: "#fff" }}>Chi tiết thời gian chấm công </p>,
       render: (record: any) => (
-        <div style={{ display: "flex", overflow: "scroll" }}>
-          {record?.data?.map((item, index) => (
+        <div style={{ display: "flex", overflow: "" }}>
+          {record?.lst_time?.map((item, index) => (
             <p
               key={index}
               style={{ padding: "0px 20px", borderRight: "2px solid #000" }}
             >
-              {moment(item?.at_time)?.format("HH:mm:ss")}
+              {moment(item)?.format("HH:mm:ss")}
             </p>
           ))}
         </div>
       ),
       align: "center",
-    },
-    {
-      title: <p style={{ color: "#fff" }}>Chi tiết cộng công</p>,
-      render: (record: any) => {
-        if (record?.dexuat) {
-          console.log(record?.dexuat);
-        }
-        return (
-          <div style={{ display: "flex", width: "200px" }}>
-            {record?.dexuat?.map((item, index) => (
-              <Tooltip key={index} title={item?.name_dx}>
-                <Link
-                  href={`https://hungha365.com/van-thu-luu-tru/trang-quan-ly-de-xuat/${item?._id}`}
-                  style={{
-                    color: "#000",
-                    fontSize: "16px",
-                    textDecoration: "underline",
-                    width: "max-content",
-                    marginRight: "10px",
-                    borderRight: "1px solid #000",
-                    paddingRight: "10px",
-                  }}
-                  target="_blank"
-                >
-                  {item?.noi_dung?.xac_nhan_cong?.time_vao_ca} -
-                  {item?.noi_dung?.xac_nhan_cong?.time_het_ca}
-                </Link>
-              </Tooltip>
-            ))}
-          </div>
-        );
-      },
-      align: "center",
-      width: "500px",
+      width: "200px"
     },
     {
       title: "Hành động",
@@ -153,31 +215,9 @@ export function xuatCong(
                 alignItems: "center",
                 marginBottom: 8,
               }}
-              onClick={() => handleOpenPc(record)}
-            >
-              <SettingOutlined />
-              <span>Phạt công</span>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                marginBottom: 8,
-              }}
               onClick={() => handleXC(record)}
             >
               <SolutionOutlined /> <span>Xóa công</span>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-              onClick={() => handleLVV(record)}
-            >
-              <SolutionOutlined /> <span>Xóa lịch làm việc</span>
             </div>
           </>
         );
@@ -187,16 +227,18 @@ export function xuatCong(
 
   return (
     <>
-      <div style={{ overflowX: "scroll" }}>
+      <div >
         <Table
           loading={loading}
           className={`table_xuat_cong`}
           columns={columns}
           dataSource={listData}
           sticky={true}
-          scroll={data.length == 0 ? { x: 2000 } : { x: "max-content" }}
+          scroll={{ x: data.length === 0 ? 7000 : "max-content" }}
+          // scroll={{ x: 5000 }}
           pagination={{
             position: ["bottomCenter"],
+            defaultPageSize: 10
             // total: totalPages,
             // onChange(page, pageSize) {
             //   setParam({ ...param, curPage: page })
