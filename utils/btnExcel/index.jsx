@@ -17,7 +17,7 @@ export const ExportExcel = ({
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet("Sheet 1");
 
-    if(type == 2) {
+    if (type == 2) {
       worksheet.mergeCells(`A1:AJ1`)
       worksheet.mergeCells(`A2:AJ2`)
     }
@@ -59,20 +59,20 @@ export const ExportExcel = ({
 
   return (
     <div>
-     {type != 2 ? (
-       <Button
-       size="large"
-       type="primary"
-       loading={loading}
-       onClick={exportToExcel}
-     >
-       {!loading ? <p>Xuất file Excel</p> : <p style={{width:99.362}}></p>}
-     </Button>
-     ) : (
-      <Button  loading={loading} style={{ display: 'flex', padding: 20, justifyContent:'center', alignItems: 'center', background: '#34b171', width: '100%'}} icon={<IconEX />}>
-                <p style={{color: '#FFF', fontSize: 16, fontWeight: '400', lineHeight: '136%'}}>Xuất file lương cơ bản</p>
-              </Button>
-     )}
+      {type != 2 ? (
+        <Button
+          size="large"
+          type="primary"
+          loading={loading}
+          onClick={exportToExcel}
+        >
+          {!loading ? <p>Xuất file Excel</p> : <p style={{ width: 99.362 }}></p>}
+        </Button>
+      ) : (
+        <Button loading={loading} style={{ display: 'flex', padding: 20, justifyContent: 'center', alignItems: 'center', background: '#34b171', width: '100%' }} icon={<IconEX />}>
+          <p style={{ color: '#FFF', fontSize: 16, fontWeight: '400', lineHeight: '136%' }}>Xuất file lương cơ bản</p>
+        </Button>
+      )}
     </div>
   );
 };

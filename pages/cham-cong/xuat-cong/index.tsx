@@ -277,12 +277,12 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                     { header: "Công", key: "col8", width: 15 },
                     { header: "Tiền", key: "col9", width: 20 },
                     { header: "Tiền theo giờ", key: "col10", width: 15 },
-                    { header: "Cộng công", key: "col10", width: 15 },
-                    { header: "Cộng tiền", key: "col10", width: 15 },
-                    { header: "Phạt tiền (đi muộn về sớm)", key: "col10", width: 20 },
-                    { header: "Phạt công (đi muộn về sớm)", key: "col10", width: 20 },
-                    { header: "Phạt công (khác)", key: "col10", width: 9 },
-                    { header: "Chi tiết thời gian chấm công", key: "col10", width: 35 },
+                    { header: "Cộng công", key: "col11", width: 15 },
+                    { header: "Cộng tiền", key: "col12", width: 15 },
+                    { header: "Phạt tiền (đi muộn về sớm)", key: "col13", width: 20 },
+                    { header: "Phạt công (đi muộn về sớm)", key: "col14", width: 20 },
+                    { header: "Phạt công (khác)", key: "col15", width: 9 },
+                    { header: "Chi tiết thời gian chấm công", key: "col16", width: 35 },
 
                   ]}
                   data={
