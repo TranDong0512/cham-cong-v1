@@ -17,6 +17,8 @@ import {
   Table,
 } from "antd";
 import dayjs from "dayjs";
+import Cookies from "js-cookie";
+import jwtDecode from "jwt-decode";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import Toastify from "toastify-js";
@@ -29,6 +31,7 @@ export default function LichSuChamCong() {
   const [listPb, setListPb] = useState([]);
   const [reload, setReload] = useState(false);
   const [listDataExcel, setListDataExcel] = useState([]);
+  const [nameCty, setNameCty] = useState<any>();
   const URL = process.env.NEXT_PUBLIC_BASE_URL + "/timviec365";
   const [param, setParam] = useState<any>({
     curPage: 1,
@@ -73,39 +76,43 @@ export default function LichSuChamCong() {
     getListPb();
   }, []);
   const [loading, setLoading] = useState(true);
+  const [loadExcel, setLoadExcel] = useState(true);
+  useEffect(() => {
+    try {
+      const getList = async () => {
+        setLoadExcel(true);
+        const res = await POST("api/qlc/timekeeping/getHistoryCheckin", {
+          start_time: dayjs(),
+          end_time: dayjs(),
+          pageSize: 100000000,
+        });
+
+        if (res?.result) {
+          setListDataExcel(res?.data);
+          setLoadExcel(false);
+        }
+      };
+
+      getList();
+    } catch (error) {}
+  }, []);
 
   useEffect(() => {
-    const getList = async () => {
-      setLoading(true);
-      const res = await POST("api/qlc/timekeeping/getHistoryCheckin", {
-        start_time: dayjs(),
-        end_time: dayjs(),
-        pageSize: 100000000,
-      });
+    try {
+      setNameCty(jwtDecode(Cookies.get("token_base365")));
+      const getList = async () => {
+        setLoading(true);
+        const res = await POST("api/qlc/timekeeping/getHistoryCheckin", param);
 
-      if (res?.result) {
-        setList(res?.data);
-        setCount(res?.total);
-        setLoading(false);
-      }
-    };
+        if (res?.result) {
+          setList(res?.data);
+          setCount(res?.total);
+          setLoading(false);
+        }
+      };
 
-    getList();
-  }, [param, reload]);
-
-  useEffect(() => {
-    const getList = async () => {
-      setLoading(true);
-      const res = await POST("api/qlc/timekeeping/getHistoryCheckin", param);
-
-      if (res?.result) {
-        setList(res?.data);
-        setCount(res?.total);
-        setLoading(false);
-      }
-    };
-
-    getList();
+      getList();
+    } catch (error) {}
   }, [param, reload]);
 
   const onFinish = (value) => {
@@ -123,15 +130,17 @@ export default function LichSuChamCong() {
   //get lít ca
   const [listCa, setListCa] = useState([]);
   useEffect(() => {
-    const getListca = async () => {
-      const res = await GET("api/qlc/shift/list");
+    try {
+      const getListca = async () => {
+        const res = await GET("api/qlc/shift/list");
 
-      if (res?.result) {
-        setListCa(res?.items);
-      }
-    };
+        if (res?.result) {
+          setListCa(res?.items);
+        }
+      };
 
-    getListca();
+      getListca();
+    } catch (error) {}
   }, []);
 
   const [selectedCa, setSelectedCa] = useState();
@@ -233,7 +242,6 @@ export default function LichSuChamCong() {
                     shift_id: selectedCa,
                   });
 
-                  console.log(res);
                   if (res?.result) {
                     Toastify({
                       text: "Sửa thành công!",
@@ -268,7 +276,6 @@ export default function LichSuChamCong() {
       ),
     },
   ];
-  console.log("list", list);
   return (
     <Card
       title={<h2 style={{ color: "#fff" }}>Danh sách lịch sử điểm danh </h2>}
@@ -353,8 +360,8 @@ export default function LichSuChamCong() {
                 { header: "Thiết bị", key: "col7", width: 15 },
               ]}
               data={
-                list
-                  ? list?.map((item) => [
+                listDataExcel
+                  ? listDataExcel?.map((item) => [
                       item?.ep_id,
                       item?.userName,
                       item?.shift_name,
@@ -364,8 +371,10 @@ export default function LichSuChamCong() {
                     ])
                   : []
               }
-              name={""}
+              name={nameCty?.data.userName}
               nameFile={"Danh_sach_diem_danh"}
+              loading={loadExcel}
+              type={1}
             ></ExportExcel>
           </Col>
         </Row>

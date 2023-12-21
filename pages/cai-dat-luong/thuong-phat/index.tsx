@@ -33,6 +33,7 @@ import { removeVietnameseTones } from "@/constants/style-constants";
 import { ExportExcellButton } from "@/utils/ExportExccel";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
+import { ExportExcel } from "@/utils/btnExcel";
 
 export default function ThuongPhat({ tpList, listPb, res }) {
   const [filterParam, setFilterParam] = useState<any>({
@@ -41,9 +42,11 @@ export default function ThuongPhat({ tpList, listPb, res }) {
     userName: "all",
   });
   const [listData, setListData] = useState(tpList);
+  const [nameCty, setNameCty] = useState<any>();
 
   const [form] = Form.useForm();
   useEffect(() => {
+    setNameCty(jwtDecode(Cookies.get("token_base365")));
     const getData = async () => {
       const com_id = getCompIdCS();
       const res = await POST_TL("api/tinhluong/congty/take_thuong_phat", {
@@ -299,7 +302,7 @@ export default function ThuongPhat({ tpList, listPb, res }) {
                     style={{ minWidth: "max-content" }}
                     className={styles.wrap_btn}
                   >
-                    <ExportExcellButton
+                    {/* <ExportExcellButton
                       fileHeaders={[
                         `Danh sách thưởng phạt tháng ${
                           moment().month() + 1
@@ -331,7 +334,30 @@ export default function ThuongPhat({ tpList, listPb, res }) {
                           </p>
                         </Button>
                       }
-                    />
+                    /> */}
+                    <ExportExcel
+                      title={`Danh sách thưởng phạt tháng ${
+                        moment().month() + 1
+                      } ${moment().year()}`}
+                      columns={[
+                        { header: "Họ tên(ID)", key: "col1", width: 45 },
+                        { header: "Thưởng", key: "col1", width: 30 },
+                        { header: "Phạt", key: "col2", width: 30 },
+                      ]}
+                      data={
+                        listData
+                          ? listData?.map((item) => [
+                              `${item?.inforUser?.userName} - ${item?.inforUser?.idQLC}`,
+                              `Thưởng: ${item?.tt_thuong?.tong_thuong} VNĐ`,
+                              `Phạt: ${item?.tt_phat?.tong_phat} VNĐ`,
+                            ])
+                          : []
+                      }
+                      name={nameCty?.data.userName}
+                      nameFile={"Danh_sach_thuong_phat"}
+                      loading={false}
+                      type={1}
+                    ></ExportExcel>
                   </Col>
                 </div>
               </Row>

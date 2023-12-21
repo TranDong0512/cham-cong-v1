@@ -311,6 +311,8 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                   }
                   name={nameCty?.data.userName}
                   nameFile={"Bang_cong_nhan_vien"}
+                  loading={loading}
+                  type={1}
                 ></ExportExcel>
               </Col>
             </Row>
