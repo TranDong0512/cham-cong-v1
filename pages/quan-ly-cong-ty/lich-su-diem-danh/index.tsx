@@ -1,6 +1,7 @@
 import { removeVietnameseTones } from "@/constants/style-constants";
 import { GET, POST } from "@/pages/api/BaseApi";
 import { ExportExcellButton } from "@/utils/ExportExccel";
+import { ExportExcel } from "@/utils/btnExcel";
 import { EditOutlined } from "@ant-design/icons";
 import {
   Avatar,
@@ -16,6 +17,8 @@ import {
   Table,
 } from "antd";
 import dayjs from "dayjs";
+import Cookies from "js-cookie";
+import jwtDecode from "jwt-decode";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import Toastify from "toastify-js";
@@ -27,7 +30,8 @@ export default function LichSuChamCong() {
   const [listEmp, setListEmp] = useState([]);
   const [listPb, setListPb] = useState([]);
   const [reload, setReload] = useState(false);
-
+  const [listDataExcel, setListDataExcel] = useState([]);
+  const [nameCty, setNameCty] = useState<any>();
   const URL = process.env.NEXT_PUBLIC_BASE_URL + "/timviec365";
   const [param, setParam] = useState<any>({
     curPage: 1,
@@ -72,19 +76,43 @@ export default function LichSuChamCong() {
     getListPb();
   }, []);
   const [loading, setLoading] = useState(true);
+  const [loadExcel, setLoadExcel] = useState(true);
   useEffect(() => {
-    const getList = async () => {
-      setLoading(true);
-      const res = await POST("api/qlc/timekeeping/getHistoryCheckin", param);
+    try {
+      const getList = async () => {
+        setLoadExcel(true);
+        const res = await POST("api/qlc/timekeeping/getHistoryCheckin", {
+          start_time: dayjs(),
+          end_time: dayjs(),
+          pageSize: 100000000,
+        });
 
-      if (res?.result) {
-        setList(res?.data);
-        setCount(res?.total);
-        setLoading(false);
-      }
-    };
+        if (res?.result) {
+          setListDataExcel(res?.data);
+          setLoadExcel(false);
+        }
+      };
 
-    getList();
+      getList();
+    } catch (error) {}
+  }, []);
+
+  useEffect(() => {
+    try {
+      setNameCty(jwtDecode(Cookies.get("token_base365")));
+      const getList = async () => {
+        setLoading(true);
+        const res = await POST("api/qlc/timekeeping/getHistoryCheckin", param);
+
+        if (res?.result) {
+          setList(res?.data);
+          setCount(res?.total);
+          setLoading(false);
+        }
+      };
+
+      getList();
+    } catch (error) {}
   }, [param, reload]);
 
   const onFinish = (value) => {
@@ -102,15 +130,17 @@ export default function LichSuChamCong() {
   //get lít ca
   const [listCa, setListCa] = useState([]);
   useEffect(() => {
-    const getListca = async () => {
-      const res = await GET("api/qlc/shift/list");
+    try {
+      const getListca = async () => {
+        const res = await GET("api/qlc/shift/list");
 
-      if (res?.result) {
-        setListCa(res?.items);
-      }
-    };
+        if (res?.result) {
+          setListCa(res?.items);
+        }
+      };
 
-    getListca();
+      getListca();
+    } catch (error) {}
   }, []);
 
   const [selectedCa, setSelectedCa] = useState();
@@ -212,7 +242,6 @@ export default function LichSuChamCong() {
                     shift_id: selectedCa,
                   });
 
-                  console.log(res);
                   if (res?.result) {
                     Toastify({
                       text: "Sửa thành công!",
@@ -247,7 +276,6 @@ export default function LichSuChamCong() {
       ),
     },
   ];
-
   return (
     <Card
       title={<h2 style={{ color: "#fff" }}>Danh sách lịch sử điểm danh </h2>}
@@ -321,20 +349,19 @@ export default function LichSuChamCong() {
             </Button>
           </Col>
           <Col xs={24} sm={24} md={4} xl={2}>
-            <ExportExcellButton
-              fileName={`Danh sách lịch sử điểm danh `}
-              fileHeaders={[]}
-              listkeys={[
-                "Mã NV",
-                "Tên nhân viên",
-                "Ca làm việc",
-                "Thời gian điểm danh",
-                "Địa điểm",
-                "Thiết bị",
+            <ExportExcel
+              title={`Danh sách lịch sử điểm danh`}
+              columns={[
+                { header: "Mã NV", key: "col1", width: 15 },
+                { header: "Tên nhân viên", key: "col1", width: 35 },
+                { header: "Ca làm việc", key: "col2", width: 35 },
+                { header: "Thời gian điểm danh", key: "col3", width: 30 },
+                { header: "Địa điểm", key: "col4", width: 15 },
+                { header: "Thiết bị", key: "col7", width: 15 },
               ]}
               data={
-                list
-                  ? list?.map((item) => [
+                listDataExcel
+                  ? listDataExcel?.map((item) => [
                       item?.ep_id,
                       item?.userName,
                       item?.shift_name,
@@ -344,16 +371,11 @@ export default function LichSuChamCong() {
                     ])
                   : []
               }
-              component={
-                <Button
-                  size="large"
-                  type="primary"
-                  style={{ marginLeft: "10px" }}
-                >
-                  <p>Xuất Excel</p>
-                </Button>
-              }
-            />
+              name={nameCty?.data.userName}
+              nameFile={"Danh_sach_diem_danh"}
+              loading={loadExcel}
+              type={1}
+            ></ExportExcel>
           </Col>
         </Row>
       </Form>
