@@ -77,7 +77,7 @@ export function xuatCong(
       title: <p style={{ color: "#fff" }}>Phòng ban</p>,
       render: (record: any) => {
         return (
-          <p>{record?.organizeDetail?.organizeDetailName || "Chưa cập nhật"}</p>
+          <p>{record?.organizeDetailName || "Chưa cập nhật"}</p>
         );
       },
       align: "center",
