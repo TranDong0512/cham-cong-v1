@@ -104,8 +104,8 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
   const onFinish = (val) => {
     if (val?.ep_id === "all") {
       setParams({
-        start_date: val?.from?.format("YYYY-MM-DD"),
-        end_date: val?.to?.format("YYYY-MM-DD"),
+        start_date: val?.from?.format("YYYY-MM-DD").toString().replace(/-/g, '/'),
+        end_date: val?.to?.format("YYYY-MM-DD").toString().replace(/-/g, '/'),
         ep_id: null,
       });
     }
@@ -268,10 +268,14 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                   columns={[
                     { header: "Mã nhân viên", key: "col1", width: 20 },
                     { header: "Họ và tên", key: "col2", width: 35 },
-                    { header: "Phòng ban", key: "col2", width: 35 },
+                    { header: "Phòng ban", key: "col2", width: 55 },
                     { header: "Ngày tháng", key: "col3", width: 20 },
                     { header: "Ca làm việc", key: "col4", width: 35 },
-                    { header: "Thời gian làm việc (giờ)", key: "col5", width: 15 },
+                    {
+                      header: "Thời gian làm việc (giờ)",
+                      key: "col5",
+                      width: 25,
+                    },
                     { header: "Đi muộn (phút)", key: "col6", width: 15 },
                     { header: "Về sớm (phút)", key: "col7", width: 15 },
                     { header: "Công", key: "col8", width: 15 },
@@ -279,11 +283,22 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                     { header: "Tiền theo giờ", key: "col10", width: 15 },
                     { header: "Cộng công", key: "col11", width: 15 },
                     { header: "Cộng tiền", key: "col12", width: 15 },
-                    { header: "Phạt tiền (đi muộn về sớm)", key: "col13", width: 20 },
-                    { header: "Phạt công (đi muộn về sớm)", key: "col14", width: 20 },
-                    { header: "Phạt công (khác)", key: "col15", width: 9 },
-                    { header: "Chi tiết thời gian chấm công", key: "col16", width: 35 },
-
+                    {
+                      header: "Phạt tiền (đi muộn về sớm)",
+                      key: "col13",
+                      width: 27,
+                    },
+                    {
+                      header: "Phạt công (đi muộn về sớm)",
+                      key: "col14",
+                      width: 27,
+                    },
+                    { header: "Phạt công (khác)", key: "col15", width: 20 },
+                    {
+                      header: "Chi tiết ",
+                      key: "col16",
+                      width: 10,
+                    },
                   ]}
                   data={
                     data
@@ -313,7 +328,7 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                   name={nameCty?.data.userName}
                   nameFile={"Bang_cong_nhan_vien"}
                   loading={loading}
-                  type={1}
+                  type={2}
                 ></ExportExcel>
               </Col>
             </Row>
