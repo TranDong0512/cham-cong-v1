@@ -82,21 +82,16 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
     const getData = async () => {
       setLoading(true);
       const com_id = getCompIdCS();
-      const res = await POST_TL("api/tinhluong/congty/data_cham_cong", {
+      const res = await POST_TL("api/tinhluong/congty/data_xuat_cong", {
         ...params,
         com_id: com_id,
       });
 
       if (res?.message === "success") {
         const finalData = [];
-        const temp = res?.data?.listData;
-        // temp &&
-        //   temp?.forEach((item: any) => {
-        //     item &&
-        //       item?.data?.forEach((subitem) => {
-        //         finalData.push(subitem)
-        //       })
-        //   })
+
+        const temp = res?.data;
+
         setData(temp);
         setTotalPages(res?.data?.totalPages);
         setTotalCong(res?.data?.total);
@@ -122,7 +117,10 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
   };
 
   const [listDep, setListDep] = useState([]);
-
+  console.log(
+    "data",
+    data[0].lst_time.map((item) => moment(item)?.format("HH:mm:ss")).join(", ")
+  );
   return (
     <Card>
       <div className={styles.main}>
@@ -273,38 +271,61 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                   columns={[
                     { header: "Mã nhân viên", key: "col1", width: 20 },
                     { header: "Họ và tên", key: "col2", width: 35 },
+                    { header: "Phòng ban", key: "col2", width: 55 },
                     { header: "Ngày tháng", key: "col3", width: 20 },
-                    { header: "Thứ", key: "col4", width: 15 },
-                    { header: "Công", key: "col5", width: 15 },
-                    { header: "Muộn(phút)", key: "col6", width: 15 },
-                    { header: "Sớm(phút)", key: "col7", width: 15 },
-                    { header: "Số giờ", key: "col8", width: 15 },
-                    { header: "Tổng thời gian", key: "col9", width: 20 },
-                    { header: "Dữ liệu chấm công", key: "col10", width: 9 },
+                    { header: "Ca làm việc", key: "col4", width: 35 },
+                    {
+                      header: "Thời gian làm việc (giờ)",
+                      key: "col5",
+                      width: 25,
+                    },
+                    { header: "Đi muộn (phút)", key: "col6", width: 15 },
+                    { header: "Về sớm (phút)", key: "col7", width: 15 },
+                    { header: "Công", key: "col8", width: 15 },
+                    { header: "Tiền", key: "col9", width: 20 },
+                    { header: "Tiền theo giờ", key: "col10", width: 15 },
+                    { header: "Cộng công", key: "col11", width: 15 },
+                    { header: "Cộng tiền", key: "col12", width: 15 },
+                    {
+                      header: "Phạt tiền (đi muộn về sớm)",
+                      key: "col13",
+                      width: 25,
+                    },
+                    {
+                      header: "Phạt công (đi muộn về sớm)",
+                      key: "col14",
+                      width: 25,
+                    },
+                    { header: "Phạt công (khác)", key: "col15", width: 15 },
+                    {
+                      header: "Chi tiết ",
+                      key: "col16",
+                      width: 10,
+                    },
                   ]}
                   data={
                     data
                       ? data?.map((item) => [
-                          item?._id,
-                          item.user?.userName,
-                          item?.at_time?.split("T")?.[0],
-                          listDaysVN[
-                            moment(item?.at_time?.split("T")?.[0])?.day()
-                          ],
-                          //cong
-                          item?.dataCal?.num_to_calculate,
-
-                          //muon
-                          item?.dataCal?.late,
-                          //som
-                          item?.dataCal?.early,
-                          //so  gio
-                          (item?.totalTime / 60).toFixed(2),
-                          // tổng thời gian
-                          item?.totalTime?.toFixed(2) + " phút",
-
-                          ...item?.data?.map((i) => {
-                            return moment(i?.at_time)?.format("HH:mm:ss");
+                          item?.ep_id || "Chưa cập nhật",
+                          item?.ep_name || "Chưa cập nhật",
+                          item?.organizeDetailName || "Chưa cập nhật",
+                          moment(item?.ts_date)?.format("DD-MM-YYYY"),
+                          item?.shift_name || "Chưa cập nhật",
+                          `${item?.hour_real || 0}`,
+                          `${item?.late || 0} `,
+                          `${item?.early || 0}`,
+                          `${item?.num_to_calculate || 0} công`,
+                          `${item?.num_to_money || 0} VNĐ`,
+                          `${item?.money_per_hour || 0} VNĐ`,
+                          `${item?.cong_xn_them || 0} công`,
+                          `${
+                            item?.tien_xn_them || item?.tientheogio_xn_them || 0
+                          } VNĐ`,
+                          `${item?.phat_tien_muon || 0} VNĐ`,
+                          `${item?.phat_cong_muon || 0} công`,
+                          `${item?.phat_cong_khac || 0} công`,
+                          ...item?.lst_time?.map((i) => {
+                            return moment(i)?.format("HH:mm:ss");
                           }),
                         ])
                       : []
@@ -312,7 +333,7 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                   name={nameCty?.data.userName}
                   nameFile={"Bang_cong_nhan_vien"}
                   loading={loading}
-                  type={1}
+                  type={2}
                 ></ExportExcel>
               </Col>
             </Row>

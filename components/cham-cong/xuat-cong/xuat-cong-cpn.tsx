@@ -187,7 +187,7 @@ export function xuatCong(
 
   return (
     <>
-      <div style={{ overflowX: "scroll" }}>
+      <div>
         <Table
           loading={loading}
           className={`table_xuat_cong`}
