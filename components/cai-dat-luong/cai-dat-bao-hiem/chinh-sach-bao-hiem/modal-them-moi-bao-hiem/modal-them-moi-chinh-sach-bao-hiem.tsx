@@ -68,7 +68,9 @@ export function ModalCongThuc(
   open: boolean,
   setOpen: Function,
   form: any,
-  insureSelected?: any
+  insureSelected?: any,
+  openModalAdd?: boolean
+
 ) {
   const [fsData, setFsData]: any = useState("");
   const [listCt, setListCt]: any[] = useState([]);
@@ -120,7 +122,7 @@ export function ModalCongThuc(
       setListCt(insureSelected?.TinhluongFormSalary);
       setFsData(`${insureSelected?.TinhluongFormSalary?.[0]?.fs_data}`);
     }
-  }, [form, insureSelected]);
+  }, [insureSelected, open]);
 
   useEffect(() => {
     if (listCt?.length > 0) {
@@ -135,12 +137,23 @@ export function ModalCongThuc(
       });
       setFsRepica(repica);
     }
-  }, [listCt]);
+  }, [listCt, open]);
+
+  useEffect(() => {
+    form.resetFields()
+    setFsRepica('');
+    setFsData('')
+  }, [openModalAdd])
 
   return (
     <Modal
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={() => {
+        setOpen(false)
+        setFsRepica('');
+        setFsData('')
+        form.setFieldValue('fs_name', '')
+      }}
       width={700}
       closable={false}
       cancelButtonProps={{ style: { display: "none" } }}
@@ -155,7 +168,12 @@ export function ModalCongThuc(
             src={"/cross.png"}
             width={14}
             height={14}
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              setOpen(false)
+              setFsRepica('')
+              setFsData('')
+              form.setFieldValue('fs_name', '')
+            }}
           />
         </div>
       </div>
@@ -283,6 +301,9 @@ export function ModalThemMoiChinhSachBaoHiem(open: boolean, setOpen: Function) {
       open={open}
       width={600}
       closable={false}
+      onCancel={() => {
+        setOpen(false);
+      }}
       cancelButtonProps={{ style: { display: "none" } }}
       okButtonProps={{ style: { display: "none" } }}
     >
@@ -342,7 +363,7 @@ export function ModalThemMoiChinhSachBaoHiem(open: boolean, setOpen: Function) {
             <Image src="/right-arrow.svg" alt="" width={17.4} height={13} />
           </span>
         </Button>
-        {ModalCongThuc(next, setNext, form)}
+        {ModalCongThuc(next, setNext, form, null, open)}
         <div className={styles.hasButton}>
           <Button className={styles.Button} onClick={handleSubmit}>
             <p className={styles.txt} style={{ color: "#FFF" }}>

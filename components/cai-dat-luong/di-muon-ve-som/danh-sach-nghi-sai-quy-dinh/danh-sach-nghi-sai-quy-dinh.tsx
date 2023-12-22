@@ -71,7 +71,7 @@ const TableDanhSachNghiSaiQD = ({ data }: { data: any }) => {
   );
 };
 
-export function CpmDanhSachNghiSaiQuyDinh() {
+export function CpmDanhSachNghiSaiQuyDinh({keyChildren}) {
   const com_id = getCompIdCS();
   const token = Cookies.get("token_base365");
   const [listData, setListData] = useState([]);
@@ -103,7 +103,7 @@ export function CpmDanhSachNghiSaiQuyDinh() {
       .then((res) => {
         setViTri(res?.data.data.data);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   }, []);
   useEffect(() => {
     const getCa = async () => {
@@ -171,9 +171,12 @@ export function CpmDanhSachNghiSaiQuyDinh() {
         setListData(res?.data);
       }
     };
-
-    getData();
-  }, [isThongKe]);
+    console.log(keyChildren);
+    
+    if (keyChildren === '3') {
+      getData();
+    }
+  }, [isThongKe, keyChildren]);
   const [form] = Form.useForm();
 
   const onFinish = (value) => {
@@ -217,6 +220,17 @@ export function CpmDanhSachNghiSaiQuyDinh() {
       setDates(null);
     }
   };
+
+
+  useEffect(() => {
+    form.resetFields()
+    set_start_date(dayjs().startOf("month").format("YYYY/MM/DD"))
+    set_end_date(dayjs().endOf("month").format("YYYY/MM/DD"))
+    setSelectedEmp(null)
+    setPositions(null)
+    setSelectedDep(null)
+    setValue(null)
+  }, [keyChildren])
   return (
     <div>
       <Form
@@ -245,23 +259,25 @@ export function CpmDanhSachNghiSaiQuyDinh() {
                 </Form.Item>
               </Col>
               <Col lg={6} md={12} sm={12} xs={24} className={styles.selects}>
-                <Select
-                  size="large"
-                  showSearch
-                  allowClear
-                  placeholder={`Vị trí`}
-                  optionFilterProp="children"
-                  filterOption={(input, option) =>
-                    (option?.label ?? "").includes(input)
-                  }
-                  onChange={(e) => setPositions(e)}
-                  options={[
-                    ...viTri?.map((item) => ({
-                      label: item?.positionName,
-                      value: item?.id,
-                    })),
-                  ]}
-                ></Select>
+                <Form.Item name={"position"}>
+                  <Select
+                    size="large"
+                    showSearch
+                    allowClear
+                    placeholder={`Vị trí`}
+                    optionFilterProp="children"
+                    filterOption={(input, option) =>
+                      (option?.label ?? "").includes(input)
+                    }
+                    onChange={(e) => setPositions(e)}
+                    options={[
+                      ...viTri?.map((item) => ({
+                        label: item?.positionName,
+                        value: item?.id,
+                      })),
+                    ]}
+                  ></Select>
+                </Form.Item>
               </Col>
               <Col lg={6} md={12} sm={12} xs={24} className={styles.selects}>
                 <Form.Item name={"employee"}>

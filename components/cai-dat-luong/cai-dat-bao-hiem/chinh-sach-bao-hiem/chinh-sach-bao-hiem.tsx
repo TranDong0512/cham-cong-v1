@@ -462,6 +462,7 @@ export const ChinhSachBaoHiem = ({
         modalKey: listEmpSelected,
         // listStaff,
         insureSelected,
+        setOpenFilterAddClick,
         // idNV
       })}
       {ModalDanhSachNhanSu({

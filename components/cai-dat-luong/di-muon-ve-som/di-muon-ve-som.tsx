@@ -20,7 +20,7 @@ function secondsToMinutes(time) {
   return `${Math.floor(time / 60)} phút ${Math.floor(time % 60)} giây`;
 }
 
-export function CpmDiMuonVeSom() {
+export function CpmDiMuonVeSom({keyChildren}) {
   const [data, setData] = useState([]);
   const [filterParam, setFilterParam] = useState<any>({
     year: dayjs().year(),
@@ -52,7 +52,7 @@ export function CpmDiMuonVeSom() {
       .then((res) => {
         setViTri(res?.data.data.data);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   }, []);
   useEffect(() => {
     const getCa = async () => {
@@ -73,6 +73,16 @@ export function CpmDiMuonVeSom() {
     };
     getListPb();
   }, []);
+
+  useEffect(() => {
+    form.resetFields()
+    set_start_date(dayjs().startOf("month").format("YYYY/MM/DD"))
+    set_end_date(dayjs().endOf("month").format("YYYY/MM/DD"))
+    setSelectedEmp(null)
+    setPositions(null)
+    setSelectedDep(null)
+    setValue(null)
+  }, [keyChildren])
 
   useEffect(() => {
     const getListEmp = async () => {
@@ -160,7 +170,7 @@ export function CpmDiMuonVeSom() {
         return (
           <p style={{ fontSize: "15px", lineHeight: "22px", color: "#68798B" }}>
             {record?.addition?.early > 0 &&
-            record?.addition?.late_second > 0 ? (
+              record?.addition?.late_second > 0 ? (
               <p>
                 Đi muộn {secondsToMinutes(record?.addition?.late_second)} - Về
                 sớm {secondsToMinutes(record?.addition?.early_second)}
@@ -234,9 +244,11 @@ export function CpmDiMuonVeSom() {
         }
         setLoading(false);
       };
-      getData();
-    } catch (error) {}
-  }, [isThongKe]);
+      if (keyChildren === '4') {
+        getData();
+      }
+    } catch (error) { }
+  }, [isThongKe, keyChildren]);
 
   const onFinish = (value) => {
     setIsThongKe(!isThongKe);
@@ -305,23 +317,25 @@ export function CpmDiMuonVeSom() {
               </Col>
 
               <Col lg={6} md={12} sm={12} xs={24} className={styles.selects}>
-                <Select
-                  size="large"
-                  showSearch
-                  allowClear
-                  placeholder={`Vị trí`}
-                  optionFilterProp="children"
-                  filterOption={(input, option) =>
-                    (option?.label ?? "").includes(input)
-                  }
-                  onChange={(e) => setPositions(e)}
-                  options={[
-                    ...viTri?.map((item) => ({
-                      label: item?.positionName,
-                      value: item?.id,
-                    })),
-                  ]}
-                ></Select>
+                <Form.Item name={"position"}>
+                  <Select
+                    size="large"
+                    showSearch
+                    allowClear
+                    placeholder={`Vị trí`}
+                    optionFilterProp="children"
+                    filterOption={(input, option) =>
+                      (option?.label ?? "").includes(input)
+                    }
+                    onChange={(e) => setPositions(e)}
+                    options={[
+                      ...viTri?.map((item) => ({
+                        label: item?.positionName,
+                        value: item?.id,
+                      })),
+                    ]}
+                  ></Select>
+                </Form.Item>
               </Col>
               <Col lg={6} md={12} sm={12} xs={24} className={styles.selects}>
                 <Form.Item name={"employee"}>
@@ -498,48 +512,43 @@ export function CpmDiMuonVeSom() {
           <Col lg={19} md={18} sm={15}>
             <ExportExcellButton
               fileHeaders={[
-                `Danh sách nhân viên đi muộn ${
-                  moment().month() + 1
+                `Danh sách nhân viên đi muộn ${moment().month() + 1
                 } - ${moment().year()}`,
               ]}
-              fileName={`Danh sách nhân viên đi muộn ${
-                moment().month() + 1
-              } - ${moment().year()}`}
+              fileName={`Danh sách nhân viên đi muộn ${moment().month() + 1
+                } - ${moment().year()}`}
               data={
                 data
                   ? data.map((item) => [
-                      item?.info?.idQLC,
-                      item?.info?.userName,
-                      item?.info?.organizeDetail?.organizeDetailName
-                        ? item?.info?.organizeDetail?.organizeDetailName
-                        : "Chưa cập nhật",
-                      moment(item?.lateData?.ts_date)?.format("YYYY-MM-DD"),
-                      listCa?.find(
-                        (ca) => ca?.shift_id === item?.lateData?.shift_id
-                      )?.shift_name || "Chưa cập nhật",
-                      `${
-                        item?.lateData?.early_second > 0
-                          ? `Đi sớm ${secondsToMinutes(
-                              item?.lateData?.early_second
-                            )}`
-                          : ""
-                      }
-                    ${
-                      item?.lateData?.late_second > 0
-                        ? `Đi muộn ${secondsToMinutes(
-                            item?.lateData?.late_second
-                          )}`
-                        : ""
+                    item?.info?.idQLC,
+                    item?.info?.userName,
+                    item?.info?.organizeDetail?.organizeDetailName
+                      ? item?.info?.organizeDetail?.organizeDetailName
+                      : "Chưa cập nhật",
+                    moment(item?.lateData?.ts_date)?.format("YYYY-MM-DD"),
+                    listCa?.find(
+                      (ca) => ca?.shift_id === item?.lateData?.shift_id
+                    )?.shift_name || "Chưa cập nhật",
+                    `${item?.lateData?.early_second > 0
+                      ? `Đi sớm ${secondsToMinutes(
+                        item?.lateData?.early_second
+                      )}`
+                      : ""
+                    }
+                    ${item?.lateData?.late_second > 0
+                      ? `Đi muộn ${secondsToMinutes(
+                        item?.lateData?.late_second
+                      )}`
+                      : ""
                     }`,
-                      ` ${
+                    ` ${item?.moneyData?.cong
+                      ? new Intl.NumberFormat("ja-JP").format(
                         item?.moneyData?.cong
-                          ? new Intl.NumberFormat("ja-JP").format(
-                              item?.moneyData?.cong
-                            )
-                          : 0
-                      }
+                      )
+                      : 0
+                    }
                   ${item?.moneyData?.cong > 10 ? "VND" : "Công"}`,
-                    ])
+                  ])
                   : []
               }
               listkeys={[

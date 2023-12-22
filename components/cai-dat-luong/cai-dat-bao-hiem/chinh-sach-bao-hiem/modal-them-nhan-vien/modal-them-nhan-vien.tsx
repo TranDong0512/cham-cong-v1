@@ -31,17 +31,19 @@ export function ModalThoiGianApDung({
   modalKey,
   // listStaff,
   insureSelected,
+  setOpenFilterAddClick,
 }: // idNV
 
-{
-  open: boolean;
-  setOpen: any;
-  activeTabGroup: any;
-  modalKey: any;
-  // listStaff:any
-  insureSelected: any;
-  // idNV:any
-}) {
+  {
+    open: boolean;
+    setOpen: any;
+    activeTabGroup: any;
+    modalKey: any;
+    // listStaff:any
+    insureSelected: any;
+    setOpenFilterAddClick?: any
+    // idNV:any
+  }) {
   const [clsDay, setClsDay] = useState<any>("");
   const [clsDayEnd, setClsDayEnd] = useState<any>("");
   const [salaryBH, setSalaryBH] = useState<any>(undefined);
@@ -99,10 +101,19 @@ export function ModalThoiGianApDung({
     // }
   };
 
+  useEffect(() => {
+    setClsDay('')
+    setClsDayEnd('')
+    setSalaryBH(null)
+  }, [open])
+
   return (
     <Modal
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={() => {
+        setOpenFilterAddClick(false)
+        setOpen(false)
+      }}
       width={600}
       closable={false}
       cancelButtonProps={{ style: { display: "none" } }}
@@ -117,7 +128,10 @@ export function ModalThoiGianApDung({
             src={"/cross.png"}
             width={14}
             height={14}
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              setOpenFilterAddClick(false)
+              setOpen(false)
+            }}
           />
         </div>
       </div>
@@ -231,7 +245,6 @@ export function ModalThemNhanVien({
 
   const Save = () => {
     // setActiveTabGroup(activeTab === '1' ? false : true)
-    setOpenFilterAddClick(false);
     setOpenFilterNextClick(true);
     setIsTimeSetting(true);
   };
@@ -239,11 +252,31 @@ export function ModalThemNhanVien({
   const [modalKey, setModalKey] = useState(Array<String>);
   const [idNV, setIdNV] = useState(Array<Number>);
 
+  useEffect(() => {
+    console.log(valueCheckBox);
+
+    const newValue = [...valueCheckBox]
+    for (let item in newValue) {
+      newValue[item] = false
+    }
+    setValueCheckbox(newValue)
+    if (!openFilterAddClick) {
+      setListEmpSelected([])
+      setModalKey([])
+    }
+    console.log(newValue);
+  }, [openFilterAddClick])
+
+  const [valueCheckBox, setValueCheckbox] = useState([])
+
   return (
     <Modal
       open={openFilterAddClick}
       width={600}
       closable={false}
+      onCancel={() => {
+        setOpenFilterAddClick(false);
+      }}
       // destroyOnClose={true}
       cancelButtonProps={{ style: { display: "none" } }}
       okButtonProps={{ style: { display: "none" } }}
@@ -261,7 +294,9 @@ export function ModalThemNhanVien({
             src={"/cross.png"}
             width={14}
             height={14}
-            onClick={() => setOpenFilterAddClick(false)}
+            onClick={() => {
+              setOpenFilterAddClick(false)
+            }}
           />
         </div>
       </div>
@@ -334,8 +369,12 @@ export function ModalThemNhanVien({
                         >
                           <Checkbox
                             key={index}
+                            checked={valueCheckBox[index]}
                             style={{ width: "100%" }}
                             onChange={(e: CheckboxChangeEvent) => {
+                              const newValue = [...valueCheckBox]
+                              newValue[index] = e.target.checked;
+                              setValueCheckbox(newValue)
                               if (e.target.checked === true) {
                                 setListEmpSelected([...listEmpSelected, item]);
                                 setModalKey([...modalKey, item?.key]);
