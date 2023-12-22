@@ -413,7 +413,7 @@ export const POST_VT_CONG = async (url: string, body: any) => {
   };
 
   try {
-    const res = await axios.post(`${currentUrlVT}/${url}`, body, config);
+    const res = await axios.post(`${currentUrlQlc}/${url}`, body, config);
     if (res?.status === 200) {
       return res?.data;
     } else {

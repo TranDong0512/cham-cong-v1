@@ -14,7 +14,10 @@ import moment from "moment";
 import { useRouter } from "next/router";
 import { xuatCong } from "@/components/cham-cong/xuat-cong/xuat-cong-cpn";
 import { ExportExcellButton } from "@/utils/ExportExccel";
+import { ExportExcel } from "@/utils/btnExcel/index";
 import { removeVietnameseTones } from "@/constants/style-constants";
+import Cookies from "js-cookie";
+import jwtDecode from "jwt-decode";
 export interface DataType {
   key: React.Key;
   url: React.ReactNode;
@@ -62,7 +65,7 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
   const oneMonthAgo = moment().startOf("month")?.format("YYYY-MM-DD");
   const [startDate, setStartDate] = useState(oneMonthAgo);
   const [endDate, setEndDate] = useState(now);
-
+  const [nameCty, setNameCty] = useState<any>();
   const [params, setParams] = useState<any>({
     curPage: 1,
     start_date: startDate,
@@ -75,24 +78,20 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
   }, [startDate, endDate]);
 
   useEffect(() => {
+    setNameCty(jwtDecode(Cookies.get("token_base365")));
     const getData = async () => {
       setLoading(true);
       const com_id = getCompIdCS();
-      const res = await POST_TL("api/tinhluong/congty/data_cham_cong", {
+      const res = await POST_TL("api/tinhluong/congty/data_xuat_cong", {
         ...params,
         com_id: com_id,
       });
 
       if (res?.message === "success") {
         const finalData = [];
-        const temp = res?.data?.listData;
-        // temp &&
-        //   temp?.forEach((item: any) => {
-        //     item &&
-        //       item?.data?.forEach((subitem) => {
-        //         finalData.push(subitem)
-        //       })
-        //   })
+
+        const temp = res?.data;
+
         setData(temp);
         setTotalPages(res?.data?.totalPages);
         setTotalCong(res?.data?.total);
@@ -105,8 +104,8 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
   const onFinish = (val) => {
     if (val?.ep_id === "all") {
       setParams({
-        start_date: val?.from?.format("YYYY-MM-DD"),
-        end_date: val?.to?.format("YYYY-MM-DD"),
+        start_date: val?.from?.format("YYYY-MM-DD").toString().replace(/-/g, '/'),
+        end_date: val?.to?.format("YYYY-MM-DD").toString().replace(/-/g, '/'),
         ep_id: null,
       });
     }
@@ -262,116 +261,75 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                 </Button>
               </Col>
               <Col xl={4} lg={4} md={5} sm={7} xs={12}>
-                <ExportExcellButton
-                  fileName={`Bảng xuât công từ ${moment(startDate).format(
+                <ExportExcel
+                  title={`BẢNG XUẤT CÔNG TỪ ${moment(startDate).format(
                     "DD-MM-YYYY"
-                  )} đến ${moment(endDate).format("DD-MM-YYYY")}`}
-                  fileHeaders={[
-                    `Bảng xuât công từ ${moment(startDate).format(
-                      "DD-MM-YYYY"
-                    )} đến ${moment(endDate).format("DD-MM-YYYY")}`,
-                  ]}
-                  listkeys={[
-                    "Mã nhân viên",
-                    "Họ và tên",
-                    "Ngày tháng",
-                    "Thứ",
-                    "Công",
-                    "Muộn(phút)",
-                    "Sớm(phút)",
-                    "Số giờ",
-                    "Tổng thời gian",
-                    "Dữ liệu chấm công",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
+                  )} đến ${moment(endDate).format("DD-MM-YYYY")}`}
+                  columns={[
+                    { header: "Mã nhân viên", key: "col1", width: 20 },
+                    { header: "Họ và tên", key: "col2", width: 35 },
+                    { header: "Phòng ban", key: "col2", width: 55 },
+                    { header: "Ngày tháng", key: "col3", width: 20 },
+                    { header: "Ca làm việc", key: "col4", width: 35 },
+                    {
+                      header: "Thời gian làm việc (giờ)",
+                      key: "col5",
+                      width: 25,
+                    },
+                    { header: "Đi muộn (phút)", key: "col6", width: 15 },
+                    { header: "Về sớm (phút)", key: "col7", width: 15 },
+                    { header: "Công", key: "col8", width: 15 },
+                    { header: "Tiền", key: "col9", width: 20 },
+                    { header: "Tiền theo giờ", key: "col10", width: 15 },
+                    { header: "Cộng công", key: "col11", width: 15 },
+                    { header: "Cộng tiền", key: "col12", width: 15 },
+                    {
+                      header: "Phạt tiền (đi muộn về sớm)",
+                      key: "col13",
+                      width: 27,
+                    },
+                    {
+                      header: "Phạt công (đi muộn về sớm)",
+                      key: "col14",
+                      width: 27,
+                    },
+                    { header: "Phạt công (khác)", key: "col15", width: 20 },
+                    {
+                      header: "Chi tiết ",
+                      key: "col16",
+                      width: 10,
+                    },
                   ]}
                   data={
                     data
                       ? data?.map((item) => [
-                          item?._id,
-                          item?.user?.userName,
-                          item?.at_time?.split("T")?.[0],
-                          listDaysVN[
-                            moment(item?.at_time?.split("T")?.[0])?.day()
-                          ],
-                          //cong
-                          item?.dataCal?.num_to_calculate,
-                          //muon
-                          item?.dataCal?.late,
-                          //som
-                          item?.dataCal?.early,
-                          //so  gio
-                          (item?.totalTime / 60).toFixed(2),
-                          // tổng thời gian
-                          item?.totalTime?.toFixed(2) + " phút",
-                          ...item?.data?.map((i) => {
-                            return moment(i?.at_time)?.format("HH:mm:ss");
-                          }),
-                        ])
+                        item?.ep_id || "Chưa cập nhật",
+                        item?.ep_name || "Chưa cập nhật",
+                        item?.organizeDetailName || "Chưa cập nhật",
+                        moment(item?.ts_date)?.format("DD-MM-YYYY"),
+                        item?.shift_name || "Chưa cập nhật",
+                        `${item?.hour_real || 0}`,
+                        `${item?.late || 0} `,
+                        `${item?.early || 0}`,
+                        `${item?.num_to_calculate || 0} công`,
+                        `${item?.num_to_money || 0} VNĐ`,
+                        `${item?.money_per_hour || 0} VNĐ`,
+                        `${item?.cong_xn_them || 0} công`,
+                        `${item?.tien_xn_them || item?.tientheogio_xn_them || 0} VNĐ`,
+                        `${item?.phat_tien_muon || 0} VNĐ`,
+                        `${item?.phat_cong_muon || 0} công`,
+                        `${item?.phat_cong_khac || 0} công`,
+                        ...item?.lst_time?.map((i) => {
+                          return moment(i)?.format("HH:mm:ss");
+                        }),
+                      ])
                       : []
                   }
-                  component={
-                    <Button
-                      className={styles.button2}
-                      size="large"
-                      type="primary"
-                      style={{ marginTop: 8 }}
-                    >
-                      <p className={styles.textB}>Xuất file Excel</p>
-                    </Button>
-                  }
-                />
+                  name={nameCty?.data.userName}
+                  nameFile={"Bang_cong_nhan_vien"}
+                  loading={loading}
+                  type={2}
+                ></ExportExcel>
               </Col>
             </Row>
           </div>

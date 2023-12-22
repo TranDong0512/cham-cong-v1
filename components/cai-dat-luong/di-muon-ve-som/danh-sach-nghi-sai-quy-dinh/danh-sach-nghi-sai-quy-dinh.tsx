@@ -134,6 +134,7 @@ export function CpmDanhSachNghiSaiQuyDinh({keyChildren}) {
         listOrganizeDetailId: listPb.find(
           (item, index) => item.id == selectedDep
         )?.listOrganizeDetailId,
+        pageSize: 100000,
       };
       const res = await POST("api/qlc/managerUser/listUser", object);
       if (res.result == true) {

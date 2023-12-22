@@ -27,6 +27,9 @@ import { POST, POST_SS, POST_TL, getCompIdCS } from "@/pages/api/BaseApi";
 import { PAGE_DOMAIN } from "@/components/bodyFrameNs/bodyFrame";
 import { removeVietnameseTones } from "@/constants/style-constants";
 import dayjs from "dayjs";
+import { ExportExcel } from "@/utils/btnExcel";
+import jwtDecode from "jwt-decode";
+import Cookies from "js-cookie";
 
 export const filterUnique = (input: any[], name: string) => {
   const uniqueIds: any[] = [];
@@ -63,6 +66,8 @@ export const NhapLuongCoBan = ({}: // initData,
   const [loading, setLoading] = useState(false);
   const [listEmp, setListEmp] = useState([]);
   const [total, setTotal] = useState();
+  const [nameCty, setNameCty] = useState<any>();
+
   const renderMonth = _.range(1, 13, 1).map((item) => ({
     label: `Tháng ${item}`,
     value: item,
@@ -107,6 +112,7 @@ export const NhapLuongCoBan = ({}: // initData,
   });
 
   useEffect(() => {
+    setNameCty(jwtDecode(Cookies.get("token_base365")));
     const getDataLuong = async () => {
       setLoading(true);
       const res = await POST_TL("api/tinhluong/congty/show_bl_byday", param);
@@ -179,6 +185,7 @@ export const NhapLuongCoBan = ({}: // initData,
     {
       title: "Họ và Tên (ID)",
       dataIndex: "",
+      align: "center",
       render: (record: any) => (
         <div
           style={{
@@ -226,10 +233,10 @@ export const NhapLuongCoBan = ({}: // initData,
           </div>
         </div>
       ),
-      align: "center",
     },
     {
       title: "Phòng ban",
+      align: "center",
       render: (record) => (
         <p className={styles.text}>
           {record?.organizeDetail?.organizeDetailName || "Chưa cập nhật"}{" "}
@@ -238,6 +245,7 @@ export const NhapLuongCoBan = ({}: // initData,
     },
     {
       title: "Chức vụ",
+      align: "center",
       key: "chucVu",
       render: (record) => (
         <p className={styles.text}>
@@ -696,48 +704,45 @@ export const NhapLuongCoBan = ({}: // initData,
           </Button>
         </Col>
         <Col xl={5} sm={8} md={6} xs={13} className={styles.colbutton}>
-          <ExportExcellButton
-            fileHeaders={[`Bảng lương tháng ${moment().month() + 1}`]}
-            fileName={`Bảng lương tháng ${moment().month() + 1}`}
-            listkeys={[
-              // 'Id',
-              "Tên",
-              // 'Email',
-              "Số điện thoại",
-              "Địa chỉ",
-              "Phòng ban",
-              "Chức vụ",
-              "Lương cơ bản",
-              "Phần trăm hợp đồng",
-              "Công chuẩn",
-              "Công thực",
-              "Công sau phạt",
-              "Công theo tiền",
-              "Công ghi nhận",
-              "Công nghỉ phép",
-              "Tổng công nhận",
-              "Lương thực",
-              "Lương sau phạt",
-              "Lương bảo hiểm",
-              "Tiền phạt muộn",
-              "Công phạt đi muộn về sớm",
-              "Tổng hoa hồng",
-              "Tiền tạm ứng",
-              "Thưởng",
-              "Lương nghỉ lễ",
-              "Phạt",
-              "Tiền phạt nghỉ không phép",
-              "Phạt nghỉ sai quy định",
-              "Tiền phúc lợi",
-              "Tiền phụ cấp",
-              "Tiền phụ cấp theo ca",
-              "Tổng bảo hiểm",
-              "Tiền khác",
-              "Tổng lương",
-              "Thuế",
-              "Lương theo giờ",
-              "Tiền thực nhận",
-              "Lương đã trả",
+          <ExportExcel
+            title={`Bảng lương tháng ${moment().month() + 1}`}
+            columns={[
+              { header: "Tên nhân viên", key: "col2", width: 35 },
+              { header: "Số điện thoại", key: "col4", width: 20 },
+              { header: "Địa chỉ", key: "col5", width: 65 },
+              { header: "Phòng ban", key: "col6", width: 50 },
+              { header: "Chức vụ", key: "col7", width: 30 },
+              { header: "Lương cơ bản", key: "col8", width: 15 },
+              { header: "Phần trăm hợp đồng", key: "col9", width: 30 },
+              { header: "Công chuẩn", key: "col10", width: 20 },
+              { header: "Công thực", key: "col11", width: 20 },
+              { header: "Công sau phạt", key: "col12", width: 20 },
+              { header: "Công theo tiền", key: "col3", width: 20 },
+              { header: "Công ghi nhận", key: "col14", width: 20 },
+              { header: "Công nghỉ phép", key: "col15", width: 20 },
+              { header: "Tổng công nhận", key: "col16", width: 20 },
+              { header: "Lương thực", key: "col17", width: 25 },
+              { header: "Lương sau phạt", key: "col18", width: 25 },
+              { header: "Lương bảo hiểm ", key: "col19", width: 25 },
+              { header: "Tiền phạt muộn", key: "col20", width: 25 },
+              { header: "Công phạt đi muộn về sớm", key: "col21", width: 25 },
+              { header: "Tổng hoa hồng", key: "col22", width: 20 },
+              { header: "Tiền tạm ứng", key: "col23", width: 20 },
+              { header: "Thưởng", key: "col24", width: 20 },
+              { header: "Lương nghỉ lễ", key: "col25", width: 20 },
+              { header: "Phạt", key: "col26", width: 20 },
+              { header: "Tiền phạt nghỉ không phép", key: "col27", width: 27 },
+              { header: "Phạt nghỉ sai quy định", key: "col28", width: 25 },
+              { header: "Tiền phúc lợi", key: "col29", width: 20 },
+              { header: "Tiền phụ cấp", key: "col30", width: 20 },
+              { header: "Tiền phụ cấp theo ca", key: "col31", width: 25 },
+              { header: "Tổng bảo hiểm", key: "col32", width: 20 },
+              { header: "Tiền khác", key: "col33", width: 15 },
+              { header: "Tổng lương", key: "col34", width: 20 },
+              { header: "Thuế", key: "col35", width: 15 },
+              { header: "Lương theo giờ", key: "col36", width: 20 },
+              { header: "Tiền thực nhận", key: "col37", width: 25 },
+              { header: "Lương đã trả", key: "col38", width: 20 },
             ]}
             data={
               data
@@ -783,12 +788,11 @@ export const NhapLuongCoBan = ({}: // initData,
                   ])
                 : []
             }
-            component={
-              <Button className={styles.button2} icon={<IconEX />}>
-                <p className={styles.textB}>Xuất file lương cơ bản</p>
-              </Button>
-            }
-          />
+            name={nameCty?.data.userName}
+            nameFile={`Bảng lương tháng ${moment().month() + 1}`}
+            loading={loading}
+            type={2}
+          ></ExportExcel>
         </Col>
       </Row>
 
