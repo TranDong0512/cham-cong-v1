@@ -1,7 +1,7 @@
 import { Modal, Input, Select, Button, Form, Avatar } from 'antd'
 import styles from './modal-thiet-lap-nhan-su.module.css'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { DaDuyet } from '@/components/cai-dat-luong/cai-dat-thue/danh-sach-nhan-su-da-thiet-lap/danh-sach-nhan-su'
 import { IconSelect } from '../anh'
 import { POST_TL, getCompIdCS } from '@/pages/api/BaseApi'
@@ -38,6 +38,14 @@ export function ModalThiepLapNhanSu(
     })),
   ])
   const [selected, setSelected] = useState()
+
+  useEffect(() => {
+    if(!open) {
+      setFrom(null)
+      setTo(null)
+      setSelectedTax('')
+    }
+  }, [open])
 
   const handleAdd = async () => {
     if (!from) window.alert('Thiếu trường áp dụng từ')
@@ -145,6 +153,7 @@ export function ModalThiepLapNhanSu(
                     style={{ width: '100%' }}
                     onChange={handleChange}
                     options={taxes}
+                    value={selectedTax}
                     onSelect={(e) => setSelectedTax(e)}
                     suffixIcon={<IconSelect />}
                   />

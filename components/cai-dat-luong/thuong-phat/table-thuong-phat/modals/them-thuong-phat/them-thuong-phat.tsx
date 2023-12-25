@@ -56,6 +56,7 @@ export function ModalThemThuongPhat(
       open={open}
       onCancel={() => {
         setOpen(false);
+        form.resetFields()
         localStorage.removeItem("userSelect");
       }}
       width={1200}
@@ -74,6 +75,7 @@ export function ModalThemThuongPhat(
           onClick={() => {
             setOpen(false);
             localStorage.removeItem("userSelect");
+            form.resetFields()
           }}
         />
       </div>

@@ -11,7 +11,7 @@ import {
 } from "antd";
 import styles from "./modal-them-nhan-vien.module.css";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Search } from "@/components/cai-dat-luong/cai-dat-thue/danh-sach-nhan-su-chua-thiet-lap/anh";
 import { CheckboxChangeEvent } from "antd/es/checkbox";
 import { POST_TL } from "@/pages/api/BaseApi";
@@ -72,6 +72,14 @@ export function ModalThemNhanVien(
   const [idNV, setIdNV] = useState(Array<Number>);
   const [form] = Form.useForm();
   const router = useRouter();
+
+  useEffect(() => {
+    if(!open) {
+      form.resetFields()
+      setSelectAll(false)
+      setSelectedItems([])
+    }
+  }, [open])
 
   const handelSubmit = async () => {
     form.validateFields().then((value) => {

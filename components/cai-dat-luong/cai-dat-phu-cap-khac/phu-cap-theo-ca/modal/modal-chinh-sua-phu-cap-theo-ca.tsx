@@ -23,16 +23,18 @@ export function ModalChinhSuaPhuCapTheoCa(
   const router = useRouter();
 
   useEffect(() => {
-    if (wfShiftSelected?.wf_id) {
-      setFromDate(wfShiftSelected?.wf_time);
-      setToDate(
-        wfShiftSelected?.wf_time_end == "1970-01-01T00:00:00.000Z"
-          ? ""
-          : wfShiftSelected?.wf_time_end
-      );
-      setMoney(wfShiftSelected?.wf_money);
+    if (open) {
+      if (wfShiftSelected?.wf_id) {
+        setFromDate(wfShiftSelected?.wf_time);
+        setToDate(
+          wfShiftSelected?.wf_time_end == "1970-01-01T00:00:00.000Z"
+            ? ""
+            : wfShiftSelected?.wf_time_end
+        );
+        setMoney(wfShiftSelected?.wf_money);
+      }
     }
-  }, [wfShiftSelected]);
+  }, [wfShiftSelected, open]);
 
   const handleInputChange = (event: any) => {
     setND(event.target.value);
