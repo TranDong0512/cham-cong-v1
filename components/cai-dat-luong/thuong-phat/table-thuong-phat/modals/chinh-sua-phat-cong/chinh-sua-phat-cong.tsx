@@ -55,12 +55,14 @@ export function ModalChinhSuaThuongPhatCong(
   ) => (option?.label ?? "").toLowerCase().includes(input.toLowerCase());
 
   useEffect(() => {
-    form.setFieldsValue({
-      ...rowSelectKey,
-      phatcong_time: moment(rowSelectKey?.phatcong_time)?.format("YYYY-MM-DD"),
-      phatcong_shift: rowSelectKey?.shifts?.shift_id,
-    });
-  }, [rowSelectKey]);
+    if (open) {
+      form.setFieldsValue({
+        ...rowSelectKey,
+        phatcong_time: moment(rowSelectKey?.phatcong_time)?.format("YYYY-MM-DD"),
+        phatcong_shift: rowSelectKey?.shifts?.shift_id,
+      });
+    }
+  }, [rowSelectKey, open]);
 
   const onFinish = async (value) => {
     const body = {
@@ -297,7 +299,7 @@ export function ModalChinhSuaThuongPhatCong(
               ]}
               rowClassName={(record, index) =>
                 rowSelectKey?.pay_id === record?.pay_id &&
-                rowSelectKey?.pay_status === "phatcong"
+                  rowSelectKey?.pay_status === "phatcong"
                   ? `${styles.select}`
                   : ``
               }

@@ -263,7 +263,7 @@ export default function ThemCoCau({ close, open }) {
                       value: 2,
                     },
                   ]}
-                  size="small"
+                  size="large"
                 />
               </Form.Item>
             </Col>

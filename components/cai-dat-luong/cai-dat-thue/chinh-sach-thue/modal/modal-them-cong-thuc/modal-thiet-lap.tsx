@@ -36,7 +36,8 @@ export function ModalThietLapCongThuc(
   setOpen: Function,
   setNext: Function,
   form: any,
-  taxSelected?: any
+  taxSelected?: any,
+  openModalAdd?: boolean
 ) {
   const [fsData, setFsData]: any = useState("");
   const [listCt, setListCt]: any[] = useState([]);
@@ -45,6 +46,17 @@ export function ModalThietLapCongThuc(
   const handleInputChange = (event: any) => {
     setFsRepica(event.target.value);
   };
+
+  useEffect(() => {
+    if (!openModalAdd) {
+      console.log(1236549872);
+      
+      form.resetFields()
+      setFsData(null)
+      setFsRepica(null)
+      setListCt(null)
+    }
+  }, [openModalAdd])
 
   useEffect(() => {
     if (taxSelected?.cl_id) {
@@ -72,7 +84,13 @@ export function ModalThietLapCongThuc(
   return (
     <Modal
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={() => {
+        form.resetFields()
+        setFsData(null)
+        setFsRepica(null)
+        setListCt(null)
+        setOpen(false)
+      }}
       width={710}
       closable={false}
       cancelButtonProps={{ style: { display: "none" } }}
@@ -86,7 +104,13 @@ export function ModalThietLapCongThuc(
           src={"/cross.png"}
           width={14}
           height={14}
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            form.resetFields()
+            setFsData(null)
+            setFsRepica(null)
+            setListCt(null)
+            setOpen(false)
+          }}
         />
       </div>
       <Form

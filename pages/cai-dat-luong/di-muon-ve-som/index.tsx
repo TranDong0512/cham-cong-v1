@@ -12,13 +12,14 @@ import {
   getCompIdSS,
 } from '@/pages/api/BaseApi'
 import moment from 'moment'
-import _ from 'lodash'
+import _, { set } from 'lodash'
 import { useEffect, useState } from 'react'
 import { DsKhongChoNghi } from '@/components/khong-cho-nghi'
 
 export default function DiMuonVeSom() {
   const KEY_TL = 'key_tl'
   const [key, setKey] = useState(window.localStorage.getItem(KEY_TL) || '1')
+  const [keyChildren, setKeyChildren] = useState('')
 
   const tabItems = [
     {
@@ -34,12 +35,12 @@ export default function DiMuonVeSom() {
     {
       key: '3',
       label: 'Danh sách nghỉ sai quy định',
-      children: <CpmDanhSachNghiSaiQuyDinh />,
+      children: <CpmDanhSachNghiSaiQuyDinh keyChildren={keyChildren}/>,
     },
     {
       key: '4',
       label: 'Đi muộn về sớm',
-      children: <CpmDiMuonVeSom />,
+      children: <CpmDiMuonVeSom keyChildren={keyChildren}/>,
     },
   ]
 
@@ -48,7 +49,10 @@ export default function DiMuonVeSom() {
       <Tabs
         items={tabItems}
         defaultActiveKey={key}
-        onChange={(key) => window.localStorage.setItem(KEY_TL, key)}
+        onChange={(key) => {
+          setKeyChildren(key)
+          window.localStorage.setItem(KEY_TL, key)
+        }}
       />
     </Card>
   )

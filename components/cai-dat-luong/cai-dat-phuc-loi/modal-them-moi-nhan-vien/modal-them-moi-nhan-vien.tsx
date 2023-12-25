@@ -133,8 +133,8 @@ export function ModalThemMoiNhanVien(
                           checkedItem
                             ? [...checkedList, checkedItem.idQLC]
                             : checkedList.filter(
-                                (staff) => staff !== item.idQLC
-                              )
+                              (staff) => staff !== item.idQLC
+                            )
                         )
                       }}>
                       <Row style={{ margin: '10px', width: '100%' }}>
@@ -191,6 +191,7 @@ export function ModalThemMoiNhanVien(
         setCheckedList([])
         form.resetFields()
         setOpenFilterAddClick(false)
+        setCheckAll(false)
       }}
       cancelButtonProps={{ style: { display: 'none' } }}
       okButtonProps={{ style: { display: 'none' } }}
@@ -203,7 +204,12 @@ export function ModalThemMoiNhanVien(
             src={'/cross.png'}
             width={14}
             height={14}
-            onClick={() => setOpenFilterAddClick(false)}
+            onClick={() => {
+              setCheckedList([])
+              form.resetFields()
+              setOpenFilterAddClick(false)
+              setCheckAll(false)
+            }}
           />
         </div>
       </div>

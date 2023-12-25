@@ -36,7 +36,7 @@ export function ModalChinhSuaChinhSachBaoHiem({
     if (insureSelected?.cl_id) {
       form.setFieldsValue(insureSelected)
     }
-  }, [form, insureSelected])
+  }, [insureSelected, openFilterSettingClick])
 
   const openFormula = () => {
     setNext(true)
@@ -77,6 +77,10 @@ export function ModalChinhSuaChinhSachBaoHiem({
     <Modal
       open={openFilterSettingClick}
       width={600}
+      onCancel={() => {
+        setOpenFilterSettingClick(false)
+        form.resetFields()
+      }}
       closable={false}
       cancelButtonProps={{ style: { display: 'none' } }}
       okButtonProps={{ style: { display: 'none' } }}>
@@ -88,7 +92,10 @@ export function ModalChinhSuaChinhSachBaoHiem({
             src={'/cross.png'}
             width={14}
             height={14}
-            onClick={() => setOpenFilterSettingClick(false)}
+            onClick={() => {
+              form.resetFields()  
+              setOpenFilterSettingClick(false)
+            }}
           />
         </div>
       </div>

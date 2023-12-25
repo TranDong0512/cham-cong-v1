@@ -43,10 +43,12 @@ export function ModalChinhSua(
   const [taxId, setTaxId] = useState();
 
   useEffect(() => {
-    setFrom(moment(current?.ADTN).format("YYYY-MM"));
-    setTo(moment(current?.DN).format("YYYY-MM"));
-    setTaxId(current?.cls_id_cl);
-  }, [current]);
+    if (open) {
+      setFrom(moment(current?.ADTN).format("YYYY-MM"));
+      setTo(moment(current?.DN).format("YYYY-MM"));
+      setTaxId(current?.cls_id_cl);
+    }
+  }, [current, open]);
 
   const handleEdit = async () => {
     if (!from) window.alert("Thiếu trường từ ngày");
@@ -97,7 +99,7 @@ export function ModalChinhSua(
             const handleChange = (value: {
               value: string;
               label: React.ReactNode;
-            }) => {};
+            }) => { };
             return (
               <div key={index}>
                 <div>
