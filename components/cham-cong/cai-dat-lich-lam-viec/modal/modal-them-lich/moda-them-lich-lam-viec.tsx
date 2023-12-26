@@ -27,7 +27,7 @@ export function ModalTiepTuc(
         form.resetFields()
         setOpen(false)
         setListShiftSelected([])
-      }}    
+      }}
       width={600}
       closable={false}
       cancelButtonProps={{ style: { display: 'none' } }}
@@ -62,8 +62,8 @@ export function ModalTiepTuc(
             const onChange = async (key: string) => {
               listShiftSelected?.includes(key)
                 ? setListShiftSelected(
-                    listShiftSelected?.filter((d: any) => d !== key)
-                  )
+                  listShiftSelected?.filter((d: any) => d !== key)
+                )
                 : setListShiftSelected([...listShiftSelected, key])
             }
             return (
@@ -84,7 +84,7 @@ export function ModalTiepTuc(
             onClick={() => {
               setOpen(false)
               setBack(true)
-              setListShiftSelected([]) 
+              setListShiftSelected([])
             }}>
             <img src='/quay_lai.png' alt='/' />
             <p className={styles.text}>Quay lại</p>
@@ -183,7 +183,7 @@ export function ModalThemLichLamViec(
             <Input
               placeholder='Nhập tên'
               className={styles.input}
-              // onChange={(value)=>setData({...data,name:value.target.value})}
+            // onChange={(value)=>setData({...data,name:value.target.value})}
             ></Input>
           </Form.Item>
           <Form.Item
@@ -260,15 +260,15 @@ export function ModalThemLichLamViec(
                 console.log(e)
                 setDateApply(e.target.value)
               }}
-              // format={'DD-MM-YYYY'}
-              // onChange={(e) => {
-              //   formData.setFieldValue(
-              //     'month_add',
-              //     e.target.value.substring(0, 7)
-              //   )
-              //   setDateApply(e.target.value)
-              // }}
-              // onChange={(value)=>setData({...data,date:value.target.value})}
+            // format={'DD-MM-YYYY'}
+            // onChange={(e) => {
+            //   formData.setFieldValue(
+            //     'month_add',
+            //     e.target.value.substring(0, 7)
+            //   )
+            //   setDateApply(e.target.value)
+            // }}
+            // onChange={(value)=>setData({...data,date:value.target.value})}
             ></Input>
           </Form.Item>
           <div className={styles.hasButton}>

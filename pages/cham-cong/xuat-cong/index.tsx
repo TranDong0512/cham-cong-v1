@@ -284,17 +284,6 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                     { header: "Cộng công", key: "col11", width: 15 },
                     { header: "Cộng tiền", key: "col12", width: 15 },
                     {
-                      header: "Phạt tiền (đi muộn về sớm)",
-                      key: "col13",
-                      width: 27,
-                    },
-                    {
-                      header: "Phạt công (đi muộn về sớm)",
-                      key: "col14",
-                      width: 27,
-                    },
-                    { header: "Phạt công (khác)", key: "col15", width: 20 },
-                    {
                       header: "Chi tiết ",
                       key: "col16",
                       width: 10,
@@ -316,9 +305,6 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                         `${item?.money_per_hour || 0} VNĐ`,
                         `${item?.cong_xn_them || 0} công`,
                         `${item?.tien_xn_them || item?.tientheogio_xn_them || 0} VNĐ`,
-                        `${item?.phat_tien_muon || 0} VNĐ`,
-                        `${item?.phat_cong_muon || 0} công`,
-                        `${item?.phat_cong_khac || 0} công`,
                         ...item?.lst_time?.map((i) => {
                           return moment(i)?.format("HH:mm:ss");
                         }),

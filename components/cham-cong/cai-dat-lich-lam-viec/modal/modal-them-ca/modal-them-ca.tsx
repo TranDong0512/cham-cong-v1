@@ -11,20 +11,45 @@ const TYPE_MALFULL = "T2-T7";
 const TYPE_FULL = "T2-CN";
 
 function dates(current: any) {
+
   let month = new Array();
   let m = current.getMonth();
-
   current.setDate(current.getDate() - current.getDay());
-  do {
-    const date = new Date(current);
-    date.setHours(7);
-    month.push(date);
-    current.setDate(current.getDate() + 1);
-  } while (
-    (current.getMonth() <= m || current.getDay() != 0) &&
-    current.getMonth() + 1 !== 1
-  );
-  return month;
+  if (m == 0) {
+    do {
+      const date = new Date(current);
+      date.setHours(7);
+      month.push(date);
+      current.setDate(current.getDate() + 1);
+    } while (
+      (current.getMonth() <= m || current.getDay() != 0) &&
+      current.getMonth() !== 2
+    );
+    return month;
+  } if (m == 1) {
+    do {
+      const date = new Date(current);
+      date.setHours(7);
+      month.push(date);
+      current.setDate(current.getDate() + 1);
+    } while (
+      (current.getMonth() <= m || current.getDay() != 0) &&
+      current.getMonth() !== 3
+    );
+    return month;
+  } else {
+    do {
+      const date = new Date(current);
+      date.setHours(7);
+      month.push(date);
+      current.setDate(current.getDate() + 1);
+    } while (
+      (current.getMonth() <= m || current.getDay() != 0) &&
+      current.getMonth() + 1 !== 1
+    );
+    return month;
+  }
+
 }
 function filterDate(item: any, type: number) {
   switch (type) {
@@ -182,35 +207,33 @@ export function ModalThemCa(
                 >
                   <span
                     onClick={() => onClick()}
-                    className={`${styles.cover} circleDate ${
-                      styles[
-                        _.isEqual(
-                          `${item?.getDate()} ${item?.getMonth()}`,
-                          `${current?.getDate()} ${current?.getMonth()}`
-                        )
-                          ? "active"
-                          : item >= firstDate &&
-                            item.getMonth() ===
-                              Number(dateApply?.substring(5, 7) - 1) &&
-                            filterDate(item, type)
+                    className={`${styles.cover} circleDate ${styles[
+                      _.isEqual(
+                        `${item?.getDate()} ${item?.getMonth()}`,
+                        `${current?.getDate()} ${current?.getMonth()}`
+                      )
+                        ? "active"
+                        : item >= firstDate &&
+                          item.getMonth() ===
+                          Number(dateApply?.substring(5, 7) - 1) &&
+                          filterDate(item, type)
                           ? "choose"
                           : item.getMonth() ===
-                              Number(dateApply?.substring(5, 7) - 1) &&
+                            Number(dateApply?.substring(5, 7) - 1) &&
                             filterDate(item, type)
-                          ? "overDay"
-                          : item.getMonth() ===
-                            Number(dateApply?.substring(5, 7) - 1)
-                          ? "normal"
-                          : "disable"
-                      ]
-                    }  ${
-                      styles[
-                        allCheck[formatDate(item)] &&
+                            ? "overDay"
+                            : item.getMonth() ===
+                              Number(dateApply?.substring(5, 7) - 1)
+                              ? "normal"
+                              : "disable"
+                    ]
+                      }  ${styles[
+                      allCheck[formatDate(item)] &&
                         allCheck[formatDate(item)].length > 0
-                          ? "circleActive"
-                          : "circleBase"
+                        ? "circleActive"
+                        : "circleBase"
                       ]
-                    } `}
+                      } `}
                   >
                     <span className={styles.dateTxt}>{item.getDate()}</span>
                     <i className={styles.iconX}>
@@ -239,23 +262,21 @@ export function ModalThemCa(
                     </i>
                   </span>
                   <span
-                    className={`${
-                      styles[
-                        allCheck[formatDate(item)] &&
+                    className={`${styles[
+                      allCheck[formatDate(item)] &&
                         allCheck[formatDate(item)].length > 0
-                          ? "count_base"
-                          : "count_none"
+                        ? "count_base"
+                        : "count_none"
+                    ]
+                      } ${styles[
+                      _.isEqual(
+                        `${item?.getDate()} ${item?.getMonth()}`,
+                        `${current?.getDate()} ${current?.getMonth()}`
+                      )
+                        ? "count_red"
+                        : "count_blue"
                       ]
-                    } ${
-                      styles[
-                        _.isEqual(
-                          `${item?.getDate()} ${item?.getMonth()}`,
-                          `${current?.getDate()} ${current?.getMonth()}`
-                        )
-                          ? "count_red"
-                          : "count_blue"
-                      ]
-                    }`}
+                      }`}
                   >
                     {allCheck[formatDate(item)] &&
                       allCheck[formatDate(item)].length}
@@ -487,38 +508,36 @@ export function ModalChinhSua_Them({
                 >
                   <span
                     onClick={() => onClick()}
-                    className={`${styles.cover} circleDate ${
-                      styles[
-                        _.isEqual(
-                          `${item?.getDate()} ${item?.getMonth()}`,
-                          `${current?.getDate()} ${current?.getMonth()}`
-                        )
-                          ? "active"
-                          : item >= firstDate &&
-                            item.getMonth() ===
-                              Number(data?.apply_month?.substring(5, 7) - 1)
+                    className={`${styles.cover} circleDate ${styles[
+                      _.isEqual(
+                        `${item?.getDate()} ${item?.getMonth()}`,
+                        `${current?.getDate()} ${current?.getMonth()}`
+                      )
+                        ? "active"
+                        : item >= firstDate &&
+                          item.getMonth() ===
+                          Number(data?.apply_month?.substring(5, 7) - 1)
                           ? "choose"
                           : item.getMonth() ===
                             Number(data?.apply_month?.substring(5, 7) - 1)
-                          ? "overDay"
-                          : item.getMonth() ===
-                            Number(data?.apply_month?.substring(5, 7) - 1)
-                          ? "normal"
-                          : "disable"
-                      ]
-                    } `}
+                            ? "overDay"
+                            : item.getMonth() ===
+                              Number(data?.apply_month?.substring(5, 7) - 1)
+                              ? "normal"
+                              : "disable"
+                    ]
+                      } `}
                   >
                     {item.getDate()}
                   </span>
                   <span
-                    className={`${
-                      styles[
-                        allCheck[formatDate(item)] &&
+                    className={`${styles[
+                      allCheck[formatDate(item)] &&
                         allCheck[formatDate(item)].length > 0
-                          ? "count_base"
-                          : "count_none"
-                      ]
-                    }`}
+                        ? "count_base"
+                        : "count_none"
+                    ]
+                      }`}
                   >
                     {allCheck[formatDate(item)] &&
                       allCheck[formatDate(item)].length}
