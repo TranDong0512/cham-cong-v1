@@ -104,8 +104,11 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
   const onFinish = (val) => {
     if (val?.ep_id === "all") {
       setParams({
-        start_date: val?.from?.format("YYYY-MM-DD").toString().replace(/-/g, '/'),
-        end_date: val?.to?.format("YYYY-MM-DD").toString().replace(/-/g, '/'),
+        start_date: val?.from
+          ?.format("YYYY-MM-DD")
+          .toString()
+          .replace(/-/g, "/"),
+        end_date: val?.to?.format("YYYY-MM-DD").toString().replace(/-/g, "/"),
         ep_id: null,
       });
     }
@@ -117,7 +120,10 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
   };
 
   const [listDep, setListDep] = useState([]);
-
+  console.log(
+    "data",
+    data[0].lst_time.map((item) => moment(item)?.format("HH:mm:ss")).join(", ")
+  );
   return (
     <Card>
       <div className={styles.main}>
@@ -292,23 +298,29 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                   data={
                     data
                       ? data?.map((item) => [
-                        item?.ep_id || "Chưa cập nhật",
-                        item?.ep_name || "Chưa cập nhật",
-                        item?.organizeDetailName || "Chưa cập nhật",
-                        moment(item?.ts_date)?.format("DD-MM-YYYY"),
-                        item?.shift_name || "Chưa cập nhật",
-                        `${item?.hour_real || 0}`,
-                        `${item?.late || 0} `,
-                        `${item?.early || 0}`,
-                        `${item?.num_to_calculate || 0} công`,
-                        `${item?.num_to_money || 0} VNĐ`,
-                        `${item?.money_per_hour || 0} VNĐ`,
-                        `${item?.cong_xn_them || 0} công`,
-                        `${item?.tien_xn_them || item?.tientheogio_xn_them || 0} VNĐ`,
-                        ...item?.lst_time?.map((i) => {
-                          return moment(i)?.format("HH:mm:ss");
-                        }),
-                      ])
+
+                          item?.ep_id || "Chưa cập nhật",
+                          item?.ep_name || "Chưa cập nhật",
+                          item?.organizeDetailName || "Chưa cập nhật",
+                          moment(item?.ts_date)?.format("DD-MM-YYYY"),
+                          item?.shift_name || "Chưa cập nhật",
+                          `${item?.hour_real || 0}`,
+                          `${item?.late || 0} `,
+                          `${item?.early || 0}`,
+                          `${item?.num_to_calculate || 0} công`,
+                          `${item?.num_to_money || 0} VNĐ`,
+                          `${item?.money_per_hour || 0} VNĐ`,
+                          `${item?.cong_xn_them || 0} công`,
+                          `${
+                            item?.tien_xn_them || item?.tientheogio_xn_them || 0
+                          } VNĐ`,
+                          `${item?.phat_tien_muon || 0} VNĐ`,
+                          `${item?.phat_cong_muon || 0} công`,
+                          `${item?.phat_cong_khac || 0} công`,
+                          ...item?.lst_time?.map((i) => {
+                            return moment(i)?.format("HH:mm:ss");
+                          }),
+                        ])
                       : []
                   }
                   name={nameCty?.data.userName}

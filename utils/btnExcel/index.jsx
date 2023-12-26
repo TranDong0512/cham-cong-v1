@@ -59,21 +59,20 @@ export const ExportExcel = ({
 
   return (
     <div>
-      {type != 2 ? (
-        <Button
-          size="large"
-          type="primary"
-          loading={loading}
-          onClick={exportToExcel}
-        >
-          {!loading ? <p>Xuất file Excel</p> : <p style={{ width: 99.362 }}></p>}
-        </Button>
-      ) : (
-        <Button onClick={exportToExcel} loading={loading} style={{ display: 'flex', padding: 20, justifyContent: 'center', alignItems: 'center', background: '#34b171', width: '100%' }} icon={<IconEX />}>
-          <p style={{ color: '#FFF', fontSize: 16, fontWeight: '400', lineHeight: '136%' }}>Xuất file Excel</p>
-
-        </Button>
-      )}
+     {type != 2 ? (
+       <Button
+       size="large"
+       type="primary"
+       loading={loading}
+       onClick={exportToExcel}
+     >
+       {!loading ? <p>Xuất file Excel</p> : <p style={{width:99.362}}></p>}
+     </Button>
+     ) : (
+      <Button  onClick={exportToExcel} loading={loading} style={{ display: 'flex', padding: 20, justifyContent:'center', alignItems: 'center', background: '#34b171', width: '100%'}} icon={<IconEX />}>
+                <p style={{color: '#FFF', fontSize: 16, fontWeight: '400', lineHeight: '136%'}}>Xuất file excel</p>
+              </Button>
+     )}
     </div>
   );
 };

@@ -221,7 +221,7 @@
 .btnAds {
   background: linear-gradient(94deg, #ff4c3d 11.14%, #b00e00 90.07%);
   border: 1px solid #acacac;
-  width: max-content;
+  width: 100%;
   border-radius: 20px;
   cursor: pointer;
   margin-bottom: 20px;
