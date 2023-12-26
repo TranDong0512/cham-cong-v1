@@ -10,7 +10,7 @@ const TYPE_NOTFULL = "T2-T6";
 const TYPE_MALFULL = "T2-T7";
 const TYPE_FULL = "T2-CN";
 
-function dates(current: any, type?: any) {
+function dates(current: any) {
   let month = new Array();
   let m = current.getMonth();
   current.setDate(current.getDate() - current.getDay());
@@ -132,7 +132,7 @@ export function ModalThemCa(
   useEffect(() => {
     setCurrent(new Date(dateApply));
     setFirstDate(new Date(dateApply));
-    setMonth(dates(new Date(`${dateApply?.substring(0, 7)}-01`), 1));
+    setMonth(dates(new Date(`${dateApply?.substring(0, 7)}-01`)));
     setOpenCheck(true);
   }, [dateApply]);
 
