@@ -28,12 +28,12 @@ export const ExportExcel = ({
     const nameCty = worksheet.getCell("A1");
     nameCty.value = name;
     nameCty.font = { bold: true, size: 16 };
-    nameCty.alignment = { horizontal: "center" };
+    nameCty.alignment = { horizontal: "left" };
 
     const titleCell = worksheet.getCell("A2");
     titleCell.value = title;
     titleCell.font = { bold: true, size: 14 };
-    titleCell.alignment = { horizontal: "center" };
+    titleCell.alignment = { horizontal: "left" };
 
     worksheet.addRow([]);
 

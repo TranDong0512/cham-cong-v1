@@ -11,6 +11,7 @@ const TYPE_MALFULL = "T2-T7";
 const TYPE_FULL = "T2-CN";
 
 function dates(current: any) {
+
   let month = new Array();
   let m = current.getMonth();
   current.setDate(current.getDate() - current.getDay());
