@@ -420,8 +420,9 @@ export default function Header() {
                     </a>
                     {!renderContent ? (
                       <>
-                        <a
-                          href='https://hungha365.com/lua-chon-dang-ky.html'
+                        <div
+                          // href='https://hungha365.com/lua-chon-dang-ky.html'
+                          onClick={()=>setOpenModalRegister(true)}
                           className={styles['nav-item']}>
                           <li
                             className={`${styles['nav-child-item']} ${styles.cr_weight_bold} ${styles.share_fsize_tow} ${styles.share_clr_tow} ${styles.d_flex}`}>
@@ -430,9 +431,10 @@ export default function Header() {
                             </span>
                             <p style={{ color: '#fff' }}>Đăng ký</p>
                           </li>
-                        </a>
-                        <a
-                          href='/lua-chon-dang-nhap.html'
+                        </div>
+                        <div
+                          onClick={()=>setOpenModal(true)}
+                          // href='/lua-chon-dang-nhap.html'
                           className={styles['nav-item']}>
                           <li
                             className={`${styles['nav-child-item']} ${styles.cr_weight_bold} ${styles.share_fsize_tow} ${styles.share_clr_tow} ${styles.d_flex}`}>
@@ -441,7 +443,7 @@ export default function Header() {
                             </span>
                             <p style={{ color: '#fff' }}>Đăng nhập</p>
                           </li>
-                        </a>
+                        </div>
                       </>
                     ) : (
                       <>

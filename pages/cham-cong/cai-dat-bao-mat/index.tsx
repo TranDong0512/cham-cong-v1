@@ -11,6 +11,7 @@ import CauHinh from "@/components/cham-cong/bao-mat/cam-xuc";
 import ChiTiet from "@/components/cham-cong/bao-mat/chi-tiet/chitiet";
 import SetupQR from "@/components/setupQr";
 import ChamCongQR from "@/components/cham-cong-bang-QR/index";
+import LoaiHinhChamCong from "@/components/cham-cong/bao-mat/loai-hinh-cham-cong";
 
 import Notification from "@/components/cham-cong/bao-mat/notification";
 export default function InstallSecurityPage({ listWifi, listIps, listEmps }) {
@@ -22,6 +23,11 @@ export default function InstallSecurityPage({ listWifi, listIps, listEmps }) {
   const [keyChildren, setKeyChildren] = useState('1')
 
   const tabItems = [
+    {
+      key: "8",
+      label: "Loại hình chấm công",
+      children: <LoaiHinhChamCong />,
+    },
     {
       key: "1",
       label: "Wifi",

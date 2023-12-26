@@ -17,7 +17,7 @@ export const ExportExcel = ({
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet("Sheet 1");
 
-    if(type == 2) {
+    if (type == 2) {
       worksheet.mergeCells(`A1:AJ1`)
       worksheet.mergeCells(`A2:AJ2`)
     }

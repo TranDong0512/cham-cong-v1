@@ -1,0 +1,46 @@
+.header {
+    margin: 0 0 30px 0;
+    font-size: 16;
+}
+
+// .header p {
+//     margin-bottom: 7px;
+//     font-size: 25px;
+//     font-weight: 1000;
+// }
+
+.header p {
+    color: "#474747";
+    font-weight: 400;
+    margin-left: 5px;
+    line-height: 30px;
+}
+
+.button_top {
+    .button {
+        margin-right: 5px;
+        width: 45%;
+        max-width: 320px;
+        border-radius: 9999px;
+        font-size: 16px;
+        font-family: Roboto;
+        font-weight: 500;
+        line-height: 24.48px;
+        word-wrap: break-word;
+        padding: 1.8% 16px;
+        margin-bottom: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white !important ;
+        background-color: #4C5BD4;
+    }
+}
+
+.button_switch {
+    display: flex;
+    margin-bottom: 20px;
+    & > p {
+        margin-left: 10px;
+    }
+}

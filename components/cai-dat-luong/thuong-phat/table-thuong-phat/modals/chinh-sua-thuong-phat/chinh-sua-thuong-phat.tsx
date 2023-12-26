@@ -22,11 +22,13 @@ export function ModalChinhSuaThuongPhat(
   const router = useRouter();
 
   useEffect(() => {
-    form.setFieldsValue({
-      ...rowSelectKey,
-      pay_day: moment(rowSelectKey?.pay_day)?.format("YYYY-MM-DD"),
-    });
-  }, [rowSelectKey]);
+    if (open) {
+      form.setFieldsValue({
+        ...rowSelectKey,
+        pay_day: moment(rowSelectKey?.pay_day)?.format("YYYY-MM-DD"),
+      });
+    }
+  }, [rowSelectKey, open]);
 
   const onFinish = async (value) => {
     const body = {
@@ -187,7 +189,7 @@ export function ModalChinhSuaThuongPhat(
               ]}
               rowClassName={(record, index) =>
                 rowSelectKey?.pay_id === record?.pay_id &&
-                rowSelectKey?.pay_status === 1
+                  rowSelectKey?.pay_status === 1
                   ? `${styles.select}`
                   : ``
               }
@@ -255,7 +257,7 @@ export function ModalChinhSuaThuongPhat(
               ]}
               rowClassName={(record, index) =>
                 rowSelectKey?.pay_id === record?.pay_id &&
-                rowSelectKey?.pay_status === "phat"
+                  rowSelectKey?.pay_status === "phat"
                   ? `${styles.select}`
                   : ``
               }

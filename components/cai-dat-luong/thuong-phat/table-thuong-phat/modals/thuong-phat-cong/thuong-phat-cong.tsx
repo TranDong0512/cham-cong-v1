@@ -102,6 +102,14 @@ export function ModalThemThuongPhatCong(
       window.alert("Xóa phạt công thất bại");
     }
   };
+
+  useEffect(() => {
+    if (!open) {
+      form.resetFields()
+      setValueChange('')
+      setCong(undefined)
+    }
+  }), [open]
   let total = 0;
   return (
     <Modal

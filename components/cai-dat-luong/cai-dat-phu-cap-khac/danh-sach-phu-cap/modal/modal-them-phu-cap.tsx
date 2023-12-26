@@ -2,7 +2,7 @@ import { Modal, Input, Select, Button, Form, List, Checkbox } from "antd";
 import styles from "./modal-them-phu-cap.module.css";
 import Image from "next/image";
 import { values } from "lodash";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IconSelect } from "@/components/cai-dat-luong/cai-dat-thue/danh-sach-nhan-su-chua-thiet-lap/anh";
 import { POST_TL, getCompIdCS } from "@/pages/api/BaseApi";
 import { useRouter } from "next/router";
@@ -25,6 +25,12 @@ export function ModalThemPhuCap(
 ) {
   const [form] = Form.useForm();
   const router = useRouter();
+
+  useEffect(() => {
+    if (!open) {
+      form.resetFields()
+    }
+  }, [open])
   const onFinish = (value: any) => {
     const com_id = getCompIdCS();
     let finalValue = {

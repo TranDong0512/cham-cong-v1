@@ -11,13 +11,15 @@ export function ModalChinhSua(open: boolean, setOpen: Function, data: any) {
   const [form] = Form.useForm()
   const router = useRouter()
   useEffect(() => {
-    form.setFieldsValue({
-      ...data,
-      cl_name: data?.cl_name,
-      cl_day: moment(data?.cl_day).format('YYYY-MM-DD'),
-      cl_day_end: moment(data?.cl_day_end).format('YYYY-MM-DD'),
-    })
-  }, [data])
+    if (open) {
+      form.setFieldsValue({
+        ...data,
+        cl_name: data?.cl_name,
+        cl_day: moment(data?.cl_day).format('YYYY-MM-DD'),
+        cl_day_end: moment(data?.cl_day_end).format('YYYY-MM-DD'),
+      })
+    }
+  }, [data, open])
   const onFinish = (value) => {
     let finalValue = {
       ...value,

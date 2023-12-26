@@ -104,8 +104,11 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
   const onFinish = (val) => {
     if (val?.ep_id === "all") {
       setParams({
-        start_date: val?.from?.format("YYYY-MM-DD"),
-        end_date: val?.to?.format("YYYY-MM-DD"),
+        start_date: val?.from
+          ?.format("YYYY-MM-DD")
+          .toString()
+          .replace(/-/g, "/"),
+        end_date: val?.to?.format("YYYY-MM-DD").toString().replace(/-/g, "/"),
         ep_id: null,
       });
     }
@@ -289,14 +292,14 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                     {
                       header: "Phạt tiền (đi muộn về sớm)",
                       key: "col13",
-                      width: 25,
+                      width: 27,
                     },
                     {
                       header: "Phạt công (đi muộn về sớm)",
                       key: "col14",
-                      width: 25,
+                      width: 27,
                     },
-                    { header: "Phạt công (khác)", key: "col15", width: 15 },
+                    { header: "Phạt công (khác)", key: "col15", width: 20 },
                     {
                       header: "Chi tiết ",
                       key: "col16",
