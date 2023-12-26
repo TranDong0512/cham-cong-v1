@@ -1,7 +1,7 @@
 import { Modal, Input, Select, Button, Form } from 'antd'
 import styles from './modal-them-lich.module.css'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ModalThietLapCongThuc } from './modal-them-cong-thuc/modal-thiet-lap'
 import { POST_TL, getCompIdCS } from '@/pages/api/BaseApi'
 import { useRouter } from 'next/router'
@@ -15,6 +15,12 @@ export function ModalThemThue(
   const [modalNext, setModalNext] = useState(false)
   const [form] = Form.useForm()
   const router = useRouter()
+
+  useEffect(() => {
+    if (!open) {
+      form.resetFields()
+    }
+  }, [open])
 
   const handleSubmit = () => {
     // setOpen(false);
@@ -120,7 +126,7 @@ export function ModalThemThue(
             </svg>
           </div>
         </div>
-        {ModalThietLapCongThuc(modalAdd, setModalAdd, setModalNext, form)}
+        {ModalThietLapCongThuc(modalAdd, setModalAdd, setModalNext, form, null, open)}
         <div
           style={{
             display: 'flex',

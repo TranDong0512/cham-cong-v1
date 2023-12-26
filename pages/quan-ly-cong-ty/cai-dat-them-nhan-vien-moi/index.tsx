@@ -98,8 +98,8 @@ export const getServerSideProps = async (context) => {
   return {
     props: {
       listStaffs: res?.[0],
-      infoCom: res?.[0],
-      listAllPending: res?.[1],
+      infoCom: res?.[1],
+      listAllPending: res?.[2],
     },
   };
 };

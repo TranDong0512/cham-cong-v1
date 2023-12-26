@@ -38,6 +38,13 @@ export function ModalChinhSuaNhanVien({
       }`,
     });
   }, [key]);
+
+  useEffect(() => {
+    if (!openFilterSettingClick) {
+      form.resetFields()
+    }
+  }, [openFilterSettingClick])
+
   const handleSubmit = async () => {
     const isFieldsFilled1 = form.getFieldValue("cls_day");
     const isFieldsFilled2 = form.getFieldValue("cls_day_end");
@@ -64,6 +71,7 @@ export function ModalChinhSuaNhanVien({
     <Modal
       open={openFilterSettingClick}
       closable={false}
+      onCancel={() => {setOpenFilterSettingClick(false)}}
       width={700}
       cancelButtonProps={{ style: { display: "none" } }}
       okButtonProps={{ style: { display: "none" } }}

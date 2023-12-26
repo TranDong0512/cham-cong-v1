@@ -24,13 +24,15 @@ export function ModalChinhSua(open: boolean, setOpen: Function, data: any) {
   const [toDate, setToDate] = useState(data?.cls_day_end);
   const router = useRouter();
   useEffect(() => {
-    if (data) {
-      setFromDate(data?.cls_day);
-      setToDate(
-        data?.cls_day_end == "1970-01-01T00:00:00.000Z" ? "" : data?.cls_day_end
-      );
+    if (open) {
+      if (data) {
+        setFromDate(data?.cls_day);
+        setToDate(
+          data?.cls_day_end == "1970-01-01T00:00:00.000Z" ? "" : data?.cls_day_end
+        );
+      }
     }
-  }, [data]);
+  }, [data, open]);
   const handleSubmit = () => {
     if (!fromDate) {
       window.alert("Vui lòng nhập thời điểm áp dụng");

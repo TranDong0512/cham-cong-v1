@@ -2,7 +2,7 @@ import { Modal, Input, Select, Button, Form, List, Checkbox } from "antd";
 import styles from "./model-them-phu-cap-theo-ca.module.css";
 import Image from "next/image";
 import { values } from "lodash";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IconSelect } from "@/components/cai-dat-luong/cai-dat-thue/danh-sach-nhan-su-chua-thiet-lap/anh";
 import moment from "moment";
 import { POST_TL, getCompIdCS } from "@/pages/api/BaseApi";
@@ -20,6 +20,15 @@ export function ModalThemPhuCapTheoCa(
   const [toDate, setToDate] = useState<any>(null);
   const [money, setMoney] = useState<any>(undefined);
   const router = useRouter();
+  useEffect(() => {
+    if (!open) {
+      setFromDate(null)
+      setToDate(null)
+      setMoney(null)
+      setShiftSelected(null)
+      setND(null)
+    }
+  }, [open])
 
   const handleChange = (value: any, option: any) => {
     setShiftSelected(value);
@@ -33,24 +42,24 @@ export function ModalThemPhuCapTheoCa(
     shiftSelected
       ? fromDate
         ? // ? toDate
-          money
+        money
           ? POST_TL("api/tinhluong/congty/insert_wf_shift", {
-              wf_com: com_id,
-              wf_money: money,
-              wf_time: fromDate,
-              wf_time_end: toDate,
-              wf_shift: shiftSelected,
-            }).then((res) => {
-              if (res?.message === "success") {
-                alert("Thêm phụ cấp theo ca thành công!");
-                // router.replace(router.asPath)
-                setOpen(false);
-                router.reload();
-              }
-            })
+            wf_com: com_id,
+            wf_money: money,
+            wf_time: fromDate,
+            wf_time_end: toDate,
+            wf_shift: shiftSelected,
+          }).then((res) => {
+            if (res?.message === "success") {
+              alert("Thêm phụ cấp theo ca thành công!");
+              // router.replace(router.asPath)
+              setOpen(false);
+              router.reload();
+            }
+          })
           : alert("Vui lòng nhập số tiền phụ cấp!")
         : // : alert("Vui lòng nhập ngày hết hạn!")
-          alert("Vui lòng nhập ngày áp dụng!")
+        alert("Vui lòng nhập ngày áp dụng!")
       : alert("Vui lòng chọn ca làm việc!");
   };
   // console.log(ND);
@@ -134,6 +143,7 @@ export function ModalThemPhuCapTheoCa(
           <TextArea
             style={{ resize: "none" }}
             rows={5}
+            value={ND}
             onChange={handleInputChange}
             placeholder="Nhập ghi chú nếu có"
           />

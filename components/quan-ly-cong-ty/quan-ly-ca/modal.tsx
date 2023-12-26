@@ -50,14 +50,25 @@ export function AddCaModal(
     setSelectedPayMethod(selectedShift?.shift_type);
   }, [form, selectedShift]);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     // update
     if (type === TYPE_UPDATE && selectedShift !== 0) {
+      console.log({
+        ...form.getFieldsValue(),
+        shift_type: selectedPayMethod,
+        shift_id: selectedShift.shift_id,
+        type_end_date: checkFinish ? 1 : 0,
+        over_night: checked ? 1 : 0,
+        nums_day: nums_day ? nums_day : selectedShift.nums_day,
+      });
+      
       // console.log({...form.getFieldsValue(), shift_id: selectedShift.shift_id})
       POST("api/qlc/shift/edit", {
         ...form.getFieldsValue(),
         shift_type: selectedPayMethod,
         shift_id: selectedShift.shift_id,
+        type_end_date: checkFinish ? 1 : 0,
         over_night: checked ? 1 : 0,
         nums_day: nums_day ? nums_day : selectedShift.nums_day,
       })
@@ -76,6 +87,7 @@ export function AddCaModal(
         ...form.getFieldsValue(),
         shift_type: selectedPayMethod,
         over_night: checked ? 1 : 0,
+        type_end_date: checkFinish ? 1 : 0,
         nums_day: nums_day,
       }).then((res) => {
         if (res?.result === true) {
@@ -114,6 +126,7 @@ export function AddCaModal(
   };
 
   const [checked, setChecked] = useState<any>(false);
+  const [checkFinish, setCheckFinish] = useState(false)
   const onChange = (checked: boolean) => {
     setChecked(checked);
   };
@@ -128,15 +141,21 @@ export function AddCaModal(
     } else {
       setChecked(false);
     }
+    if (selectedShift?.type_end_date == 1) {
+      setCheckFinish(true);
+    } else {
+      setCheckFinish(false);
+    }
   }, [selectedShift]);
   return (
-    <div>
+    <div>s
       <Modal
         className="bannerQLC modalThemLLV"
         open={open}
         onCancel={() => {
           setShowMore(false)
           setChecked(false)
+          setCheckFinish(false)
           form.resetFields()
           setOpen(false);
         }}
@@ -181,6 +200,13 @@ export function AddCaModal(
               true,
               "shift_name"
             )}
+
+            <Form.Item name="type_end_date">
+              <Switch defaultChecked={checkFinish} onChange={(checked) => {
+                setCheckFinish(checked)
+              }} />{" "}
+              <span>Giờ kết thúc không cố định</span>
+            </Form.Item>
             <Row gutter={30} className={styles.negativeMargin15}>
               <Col sm={12} xs={24}>
                 <Form.Item
@@ -200,23 +226,27 @@ export function AddCaModal(
                   ></Input>
                 </Form.Item>
               </Col>
-              <Col sm={12} xs={24}>
-                <Form.Item
-                  name="end_time"
-                  rules={[{ required: true, message: "Chọn giờ hết ca" }]}
-                  label={<p>{"Giờ hết ca (check out)"}</p>}
-                  labelCol={{ span: 24 }}
-                >
-                  <Input
-                    type="time"
-                    // style={{
-                    //   fontSize: "16px",
-                    //   padding: "6px",
-                    //   width: "100%",
-                    // }}
-                  ></Input>
-                </Form.Item>
-              </Col>
+              {
+                !checkFinish ? <>
+                  <Col sm={12} xs={24}>
+                    <Form.Item
+                      name="end_time"
+                      rules={[{ required: true, message: "Chọn giờ hết ca" }]}
+                      label={<p>{"Giờ hết ca (check out)"}</p>}
+                      labelCol={{ span: 24 }}
+                    >
+                      <Input
+                        type="time"
+                      // style={{
+                      //   fontSize: "16px",
+                      //   padding: "6px",
+                      //   width: "100%",
+                      // }}
+                      ></Input>
+                    </Form.Item>
+                  </Col>
+                </> : <></>
+              }
             </Row>
             <p
               className={styles.title}
@@ -241,22 +271,26 @@ export function AddCaModal(
                     }}
                   ></Input>
                 </Form.Item>
-                <Form.Item
-                  name="end_time_earliest"
-                  label={
-                    <p>{"Ghi nhận check out muộn nhất (không bắt buộc)"}</p>
-                  }
-                  labelCol={{ span: 24 }}
-                >
-                  <Input
-                    type="time"
-                    style={{
-                      fontSize: "16px",
-                      padding: "6px",
-                      width: "100%",
-                    }}
-                  ></Input>
-                </Form.Item>
+                {
+                  !checkFinish ? <>
+                    <Form.Item
+                      name="end_time_earliest"
+                      label={
+                        <p>{"Ghi nhận check out muộn nhất (không bắt buộc)"}</p>
+                      }
+                      labelCol={{ span: 24 }}
+                    >
+                      <Input
+                        type="time"
+                        style={{
+                          fontSize: "16px",
+                          padding: "6px",
+                          width: "100%",
+                        }}
+                      ></Input>
+                    </Form.Item>
+                  </> : <></>
+                }
               </div>
             )}
 
@@ -329,22 +363,33 @@ export function AddCaModal(
               Chọn ca thuộc loại hình nào để tính công cuối tháng
             </p>
             <Row gutter={30} className={styles.negativeMargin15}>
-              <Col sm={12} xs={24}>
-                <SelectPaymentMethodBtn
-                  type={THEO_SO_CA}
-                  title="Tính công theo số ca"
-                />
-                <SelectPaymentMethodBtn
-                  type={THEO_GIO}
-                  title="Tính công theo số giờ"
-                />
-              </Col>
-              <Col sm={12} xs={24}>
-                <SelectPaymentMethodBtn
-                  type={THEO_TIEN}
-                  title="Tính công theo tiền"
-                />
-              </Col>
+              {
+                !checkFinish ? <>
+                  <Col sm={12} xs={24}>
+                    <SelectPaymentMethodBtn
+                      type={THEO_SO_CA}
+                      title="Tính công theo số ca"
+                    />
+                    <SelectPaymentMethodBtn
+                      type={THEO_GIO}
+                      title="Tính công theo số giờ"
+                    />
+                  </Col>
+                  <Col sm={12} xs={24}>
+                    <SelectPaymentMethodBtn
+                      type={THEO_TIEN}
+                      title="Tính công theo tiền"
+                    />
+                  </Col>
+                </> : <>
+                  <Col sm={12} xs={24}>
+                    <SelectPaymentMethodBtn
+                      type={THEO_GIO}
+                      title="Tính công theo số giờ"
+                    />
+                  </Col>
+                </>
+              }
             </Row>
             {selectedPayMethod === THEO_SO_CA ? (
               MySelect(

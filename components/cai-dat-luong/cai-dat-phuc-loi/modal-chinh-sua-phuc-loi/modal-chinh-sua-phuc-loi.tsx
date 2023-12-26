@@ -25,23 +25,25 @@ export function ModalChinhSuaPhucLoi(
   const [form] = Form.useForm();
 
   useEffect(() => {
-    form.setFieldsValue({
-      ...data,
-      cl_day: `${moment(data?.cl_day).year()}-${(
-        moment(data?.cl_day).month() + 1
-      ).toLocaleString("en-US", {
-        minimumIntegerDigits: 2,
-        useGrouping: false,
-      })}`,
-      cl_day_end: `${moment(data?.cl_day_end).year()}-${(
-        moment(data?.cl_day_end).month() + 1
-      ).toLocaleString("en-US", {
-        minimumIntegerDigits: 2,
-        useGrouping: false,
-      })}`,
-      cl_note: data?.cl_note != "undefined" ? data?.cl_note : "",
-    });
-  }, [data]);
+    if (openFilterSettingWelfareClick) {
+      form.setFieldsValue({
+        ...data,
+        cl_day: `${moment(data?.cl_day).year()}-${(
+          moment(data?.cl_day).month() + 1
+        ).toLocaleString("en-US", {
+          minimumIntegerDigits: 2,
+          useGrouping: false,
+        })}`,
+        cl_day_end: `${moment(data?.cl_day_end).year()}-${(
+          moment(data?.cl_day_end).month() + 1
+        ).toLocaleString("en-US", {
+          minimumIntegerDigits: 2,
+          useGrouping: false,
+        })}`,
+        cl_note: data?.cl_note != "undefined" ? data?.cl_note : "",
+      });
+    }
+  }, [data, openFilterSettingWelfareClick]);
   const Save = () => {
     setOpenFilterSettingWelfareClick(false);
   };
@@ -69,6 +71,7 @@ export function ModalChinhSuaPhucLoi(
       open={openFilterSettingWelfareClick}
       closable={false}
       width={700}
+      onCancel={() => {setOpenFilterSettingWelfareClick(false)}}
       cancelButtonProps={{ style: { display: "none" } }}
       okButtonProps={{ style: { display: "none" } }}
       className={`modal_chinh_sua_nhan_vien_phuc_loi`}

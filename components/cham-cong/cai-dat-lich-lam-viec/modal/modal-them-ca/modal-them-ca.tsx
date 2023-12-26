@@ -90,7 +90,6 @@ export function ModalThemCa(
   const [openCheck, setOpenCheck] = useState(false);
   const [allCheck, setAllCheck]: any = useState({});
   // const [typeWeek, setTypeWeek] = useState<any>(form.getFieldValue('type_week'))
-  console.log(dateApply);
   const getDaysInMonth = (
     thang_ap_dung,
     listShiftSelected,
@@ -169,7 +168,6 @@ export function ModalThemCa(
     // console.log(allCheck[formatDate(current)])
   }, [current]);
 
-  console.log("current" + current);
   // console.log(allCheck)
   const Calender = (dates: any) => (
     <div className={styles.day}>
@@ -410,7 +408,6 @@ export function ModalChinhSua_Them({
   const [current, setCurrent]: any = useState(
     new Date(dayjs(data?.apply_month).format("YYYY-MM-DD"))
   );
-  console.log(data?.apply_month);
   const [firstDate, setFirstDate]: any = useState(
     new Date(dayjs(data?.apply_month).format("YYYY-MM-DD"))
   );
