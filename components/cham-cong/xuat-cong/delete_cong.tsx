@@ -4,12 +4,14 @@ import dayjs from "dayjs";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import moment from "moment";
 export default function XoaCong({ openXC, handleCloseXC, data }) {
   const [finalData, setFinalData] = useState<any>();
 
   const curentUrlTL = process.env.NEXT_PUBLIC_API;
   const dateFormat = "YYYY-MM-DD";
   useEffect(() => {
+    console.log("check====================================", window.location.pathname)
     const filteredData = data?.data.filter((item) => item.shift_id !== 0);
 
     const uniqueData = Array.from(
@@ -28,8 +30,8 @@ export default function XoaCong({ openXC, handleCloseXC, data }) {
     try {
       const token = Cookies.get("token_base365");
       const object = {
-        ep_id: data._id,
-        at_time: data.at_time.split("T")?.[0],
+        ep_id: data.ep_id,
+        at_time: moment(data?.ts_date)?.format("DD-MM-YYYY"),
         shift_id: value.shift_id,
         token: token,
       };
@@ -85,7 +87,7 @@ export default function XoaCong({ openXC, handleCloseXC, data }) {
                       margin: "auto",
                     }}
                   >
-                    {data?.user.userName}
+                    {data?.ep_name}
                   </p>
                 </div>
 

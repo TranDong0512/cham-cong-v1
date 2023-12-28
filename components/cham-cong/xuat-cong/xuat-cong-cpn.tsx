@@ -143,6 +143,7 @@ export function xuatCong(
       width: "200px",
     },
     {
+
       title: <p style={{ color: "#fff" }}>Phạt tiền (đi muộn về sớm)</p>,
       render: (record: any) => <p>{record?.phat_tien_muon || 0} VNĐ</p>,
       align: "center",

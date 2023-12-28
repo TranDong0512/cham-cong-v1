@@ -287,17 +287,6 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                     { header: "Cộng công", key: "col11", width: 15 },
                     { header: "Cộng tiền", key: "col12", width: 15 },
                     {
-                      header: "Phạt tiền (đi muộn về sớm)",
-                      key: "col13",
-                      width: 27,
-                    },
-                    {
-                      header: "Phạt công (đi muộn về sớm)",
-                      key: "col14",
-                      width: 27,
-                    },
-                    { header: "Phạt công (khác)", key: "col15", width: 20 },
-                    {
                       header: "Chi tiết ",
                       key: "col16",
                       width: 10,
@@ -306,6 +295,7 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                   data={
                     data
                       ? data?.map((item) => [
+
                           item?.ep_id || "Chưa cập nhật",
                           item?.ep_name || "Chưa cập nhật",
                           item?.organizeDetailName || "Chưa cập nhật",
