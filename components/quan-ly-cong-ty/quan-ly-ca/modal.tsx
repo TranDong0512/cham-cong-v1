@@ -45,7 +45,7 @@ export function AddCaModal(
     form.resetFields();
   };
   useEffect(() => {
-    console.log("selectedShift", selectedShift);
+
     form.setFieldsValue(selectedShift);
     setSelectedPayMethod(selectedShift?.shift_type);
   }, [form, selectedShift]);
@@ -59,16 +59,18 @@ export function AddCaModal(
         shift_type: selectedPayMethod,
         shift_id: selectedShift.shift_id,
         type_end_date: checkFinish ? 1 : 0,
+        type_flex: checkFlex ? 1 : 0,
         over_night: checked ? 1 : 0,
         nums_day: nums_day ? nums_day : selectedShift.nums_day,
       });
-      
+
       // console.log({...form.getFieldsValue(), shift_id: selectedShift.shift_id})
       POST("api/qlc/shift/edit", {
         ...form.getFieldsValue(),
         shift_type: selectedPayMethod,
         shift_id: selectedShift.shift_id,
         type_end_date: checkFinish ? 1 : 0,
+        type_flex: checkFlex ? 1 : 0,
         over_night: checked ? 1 : 0,
         nums_day: nums_day ? nums_day : selectedShift.nums_day,
       })
@@ -88,6 +90,7 @@ export function AddCaModal(
         shift_type: selectedPayMethod,
         over_night: checked ? 1 : 0,
         type_end_date: checkFinish ? 1 : 0,
+        type_flex: checkFlex ? 1 : 0,
         nums_day: nums_day,
       }).then((res) => {
         if (res?.result === true) {
@@ -127,6 +130,8 @@ export function AddCaModal(
 
   const [checked, setChecked] = useState<any>(false);
   const [checkFinish, setCheckFinish] = useState(false)
+  const [checkFlex, setCheckFlex] = useState(false)
+  const [checkPhuCap, setCheckPhuCap] = useState(false)
   const onChange = (checked: boolean) => {
     setChecked(checked);
   };
@@ -146,9 +151,17 @@ export function AddCaModal(
     } else {
       setCheckFinish(false);
     }
+
+    if (selectedShift?.type_flex === 1) {
+      setCheckFlex(true)
+    }
+    else {
+      setCheckFlex(false)
+    }
+
   }, [selectedShift]);
   return (
-    <div>s
+    <div>
       <Modal
         className="bannerQLC modalThemLLV"
         open={open}
@@ -415,31 +428,96 @@ export function AddCaModal(
                 "number"
               )
             ) : selectedPayMethod === THEO_GIO ? (
-              <Form.Item
-                label="Số tiền theo giờ"
-                labelCol={{ span: 24 }}
-                name={"money_per_hour"}
-                rules={[
-                  {
-                    required: true,
-                    message: "Trường này là bắt buộc",
-                  },
-                ]}
-              >
-                <InputNumber
-                  size="large"
-                  style={{ width: "100%" }}
-                  placeholder="Nhập số tiền theo giờ"
-                  formatter={(value) =>
-                    `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                  }
-                  controls={false}
-                  addonAfter={"VND"}
-                />
-              </Form.Item>
+              <>
+                <Form.Item
+                  label="Số tiền theo giờ"
+                  labelCol={{ span: 24 }}
+                  name={"money_per_hour"}
+                  rules={[
+                    {
+                      required: true,
+                      message: "Trường này là bắt buộc",
+                    },
+                  ]}
+                >
+                  <InputNumber
+                    size="large"
+                    style={{ width: "100%" }}
+                    placeholder="Nhập số tiền theo giờ"
+                    formatter={(value) =>
+                      `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                    }
+                    controls={false}
+                    addonAfter={"VND"}
+                  />
+                </Form.Item>
+
+                <Form.Item name="type_flex">
+                  <Switch
+                    defaultChecked={checkFlex}
+                    onChange={(checked) => {
+                      setCheckFlex(checked);
+                    }}
+                  />
+                  <span > Tính tiền linh hoạt</span>
+                  <br />
+                  <i style={{}}>Mặc định : Ca này sẽ tính tiền dựa trên giờ vào ca và giờ kết thúc ca như cài đặt</i>
+                  <br />
+                  <i style={{}}>Tính tiền linh hoạt : Ca này sẽ tính tiền dựa trên số giờ thực tế bạn làm được trong khoảng thời gian cho phép</i>
+
+                </Form.Item>
+
+              </>
+
+
             ) : (
               <div></div>
             )}
+
+            <>
+              <Form.Item name="type_flex">
+                <Switch
+                  defaultChecked={checkPhuCap}
+                  onChange={(checkPhuCap) => {
+                    setCheckPhuCap(checkPhuCap)
+                  }}
+                />
+                <span > Phụ cấp ca </span>
+                <i style={{}}>(Tiền ăn, vé xe .....)</i>
+
+              </Form.Item>
+
+              <div style={{ margin: "8px 0" }}>
+                {checkPhuCap ? (
+                  <>
+                    <Form.Item
+                      name="money_allowances"
+                      labelCol={{ span: 24 }}
+                      rules={[
+                        {
+                          required: true,
+                          message: "Nhập tiền phụ cấp ca",
+                        },
+                      ]}
+                    >
+                      <InputNumber
+                        style={{ width: "100%" }}
+                        size="large"
+                        placeholder="Tiền phụ cấp ca"
+                        formatter={(value) =>
+                          `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                        }
+                        addonAfter={"VND"}
+
+                      ></InputNumber>
+                    </Form.Item>
+                  </>
+                ) : (
+                  <></>
+                )}
+              </div>
+
+            </>
             <Form.Item style={{ display: "flex", justifyContent: "center" }}>
               <Button
                 htmlType="submit"
@@ -452,6 +530,8 @@ export function AddCaModal(
                 </p>
               </Button>
             </Form.Item>
+
+
           </Form>
         </div>
       </Modal>

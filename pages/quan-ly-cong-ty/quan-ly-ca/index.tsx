@@ -29,7 +29,6 @@ export default function QuanLyCaLamViecPage() {
   useEffect(() => {
     GET("api/qlc/shift/list")
       .then((res) => {
-        // console.log(res);
         setListShifts(res?.items);
         setFilterList(res?.items);
       })
@@ -226,7 +225,7 @@ export default function QuanLyCaLamViecPage() {
           listShifts,
           setListShifts,
           listShifts &&
-            listShifts.find((shift) => shift.shift_id === shiftIdSelected)
+          listShifts.find((shift) => shift.shift_id === shiftIdSelected)
         )}
         {ConfirmDeleteShiftModal(isOpenDel, setIsOpenDel, handleSubmitDelete)}
       </Card>
