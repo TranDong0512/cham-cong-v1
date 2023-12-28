@@ -137,30 +137,20 @@ export function xuatCong(
     {
       title: <p style={{ color: "#fff" }}>Cộng tiền</p>,
       render: (record: any) => (
-        <p>{record?.tien_xn_them || record?.tientheogio_xn_them || 0} VNĐ</p>
+        <p>{record?.tien_xn_them || record?.tien_xn_them || 0} VNĐ</p>
       ),
       align: "center",
       width: "200px",
     },
     {
-
-      title: <p style={{ color: "#fff" }}>Phạt tiền (đi muộn về sớm)</p>,
-      render: (record: any) => <p>{record?.phat_tien_muon || 0} VNĐ</p>,
-      align: "center",
-      width: "300px",
-    },
-    {
-      title: <p style={{ color: "#fff" }}>Phạt công (đi muộn về sớm)</p>,
-      render: (record: any) => <p>{record?.phat_cong_muon || 0} công</p>,
-      align: "center",
-      width: "300px",
-    },
-    {
-      title: <p style={{ color: "#fff" }}>Phạt công (khác)</p>,
-      render: (record: any) => <p>{record?.phat_cong_khac || 0} công</p>,
+      title: <p style={{ color: "#fff" }}>Cộng tiền theo giờ</p>,
+      render: (record: any) => (
+        <p>{record?.tien_xn_them || record?.tientheogio_xn_them || 0} VNĐ</p>
+      ),
       align: "center",
       width: "200px",
     },
+
     {
       title: <p style={{ color: "#fff" }}>Chi tiết thời gian chấm công </p>,
       render: (record: any) => (

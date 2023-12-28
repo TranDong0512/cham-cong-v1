@@ -1,3 +1,3 @@
-console.log(new Date("2023-12-07T11:29:31.100+00:00").getTime())
+console.log(new Date() > new Date().setHours(14, 23, 0, 0))
 
 // console.log(new Date("2023-12-21"))
