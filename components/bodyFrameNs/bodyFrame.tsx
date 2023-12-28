@@ -1,99 +1,104 @@
-import React, { useState } from 'react'
-import styles from './bodyFrame.module.css'
-import Header from '../header/Header.js'
-import { Button, Card, Col, ConfigProvider, Popover, Row } from 'antd'
-import IndexSection from '../home/index'
-import Article from '../home/article/article'
-import { BackButton, MyBreadCrumb } from './bread-crump/BreadCrump'
-import { useRouter } from 'next/router'
-import { AddButton, ExportExcelButton } from '../commons/Buttons'
-import Footer from '../footer/Footer'
-import { Banner } from './banner/banner'
-import { CCBannerNV_TKCTY } from '../cham-cong-nhan-vien/cc-bang-tk-nv'
-import { BANNER_CCBNDKM_CHAMCONG365 } from '../cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/cham-cong-365'
-import { BANNER_CCBNDKM_CHAT365 } from '../cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/chat-365'
-import { BANNER_CCBNDKM_PC365NV } from '../cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/pc-365-nhan-vien'
-import { ChamCong365 } from '../cham-cong-bang-QR/cham-cong-365/cham-cong-365'
-import { Chat365 } from '../cham-cong-bang-QR/chat-365/chat365'
-import { PC365 } from '../cham-cong-bang-QR/pc365/pc365'
-import { CCBanner } from './cai-dat-cham-cong-banner/cc-banner'
-import Meta from '../meta/meta'
+import React, { useState } from "react";
+import styles from "./bodyFrame.module.css";
+import Header from "../header/Header.js";
+import { Button, Card, Col, ConfigProvider, Popover, Row } from "antd";
+import IndexSection from "../home/index";
+import Article from "../home/article/article";
+import { BackButton, MyBreadCrumb } from "./bread-crump/BreadCrump";
+import { useRouter } from "next/router";
+import { AddButton, ExportExcelButton } from "../commons/Buttons";
+import Footer from "../footer/Footer";
+import { Banner } from "./banner/banner";
+import { CCBannerNV_TKCTY } from "../cham-cong-nhan-vien/cc-bang-tk-nv";
+import { BANNER_CCBNDKM_CHAMCONG365 } from "../cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/cham-cong-365";
+import { BANNER_CCBNDKM_CHAT365 } from "../cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/chat-365";
+import { BANNER_CCBNDKM_PC365NV } from "../cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/pc-365-nhan-vien";
+import { ChamCong365 } from "../cham-cong-bang-QR/cham-cong-365/cham-cong-365";
+import { Chat365 } from "../cham-cong-bang-QR/chat-365/chat365";
+import { PC365 } from "../cham-cong-bang-QR/pc365/pc365";
+import { CCBanner } from "./cai-dat-cham-cong-banner/cc-banner";
+import Meta from "../meta/meta";
+import Cookies from "js-cookie";
+import ModalRegsiter from "../modal/ModalRegsiter";
+import ModalLogin from "../modal/ModalLogin";
+import { ModalSignInHome } from "../modal/ModalSigninCC";
 export interface BodyFrame {}
 
-export const PAGE_DOMAIN = '/phan-mem-cham-cong/'
+export const PAGE_DOMAIN = "/phan-mem-cham-cong/";
 
 export default function Bodyframe({ children }: any) {
-  const [showMore, setShowmore] = useState<boolean>(false)
+  const [showMore, setShowmore] = useState<boolean>(false);
 
-  const router = useRouter()
-  const CAI_DAT_VI_TRI_URL = `/cai-dat-vi-tri`
-  const NV_CCCTY_URL = '/cham-cong-nhan-vien/cc-bang-tai-khoan-cong-ty'
+  const router = useRouter();
+  const CAI_DAT_VI_TRI_URL = `/cai-dat-vi-tri`;
+  const NV_CCCTY_URL = "/cham-cong-nhan-vien/cc-bang-tai-khoan-cong-ty";
   const NV_CCBNDKM_CC365 =
-    '/cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/cham-cong-365'
+    "/cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/cham-cong-365";
   const NV_CCBNDKM_CHAT365 =
-    '/cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/chat-365'
+    "/cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/chat-365";
   const NV_CCBNDKM_PC365 =
-    '/cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/pc-365-nhan-vien'
-  const NV_CCQR_URL = `/cham-cong-bang-QR/cham-cong-365`
-  const CTY_CCCTY = `/cham-cong/cham-cong-cong-ty`
-  const ADD_DX = `${PAGE_DOMAIN}tao-de-xuat/tao-de-xuat`
+    "/cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/pc-365-nhan-vien";
+  const NV_CCQR_URL = `/cham-cong-bang-QR/cham-cong-365`;
+  const CTY_CCCTY = `/cham-cong/cham-cong-cong-ty`;
+  const ADD_DX = `${PAGE_DOMAIN}tao-de-xuat/tao-de-xuat`;
 
   const AddNewPopoverContent = () => {
     const listAdds = [
       {
-        title: 'Thêm mới công ty con',
-        url: '/quan-ly-cong-ty/quan-ly-cong-ty-con',
-        tabIndex: '1',
+        title: "Thêm mới công ty con",
+        url: "/quan-ly-cong-ty/quan-ly-cong-ty-con",
+        tabIndex: "1",
       },
       {
-        title: 'Thêm mới phòng ban',
-        url: '/quan-ly-cong-ty/quan-ly-phong-ban',
-        tabIndex: '1',
+        title: "Thêm mới phòng ban",
+        url: "/quan-ly-cong-ty/quan-ly-phong-ban",
+        tabIndex: "1",
       },
       {
-        title: 'Thêm mới tổ',
-        url: '/quan-ly-cong-ty/quan-ly-phong-ban',
-        tabIndex: '2',
+        title: "Thêm mới tổ",
+        url: "/quan-ly-cong-ty/quan-ly-phong-ban",
+        tabIndex: "2",
       },
       {
-        title: 'Thêm mới nhóm',
-        url: '/quan-ly-cong-ty/quan-ly-phong-ban',
-        tabIndex: '3',
+        title: "Thêm mới nhóm",
+        url: "/quan-ly-cong-ty/quan-ly-phong-ban",
+        tabIndex: "3",
       },
-    ]
+    ];
 
     const item = (item: any) => (
       <p
-        style={{ color: '#4C5BD4', cursor: 'pointer' }}
+        style={{ color: "#4C5BD4", cursor: "pointer" }}
         onClick={() => {
           // window.localStorage.setItem(PHONGBAN_ACTIVE_KEY, item?.tabIndex)
-          router.push(item?.url)
-        }}>
+          router.push(item?.url);
+        }}
+      >
         {item?.title}
       </p>
-    )
+    );
 
     return (
       <div>
         {listAdds.map((singleLink: any, index: number) => (
-          <div key={index} style={{ marginBottom: '10px' }}>
+          <div key={index} style={{ marginBottom: "10px" }}>
             {item(singleLink)}
           </div>
         ))}
       </div>
-    )
-  }
+    );
+  };
 
-  const DEXUAT_TO_CHUC_URL = '/de-xuat/so-do-to-chuc'
+  const DEXUAT_TO_CHUC_URL = "/de-xuat/so-do-to-chuc";
   const DEXUAT_SO_DO_TO_CHUC_DANHSACHNHANVIEN =
-    '/de-xuat/so-do-to-chuc/danh-sach-nhan-vien'
+    "/de-xuat/so-do-to-chuc/danh-sach-nhan-vien";
   const DEXUAT_SO_DO_TO_CHUC_DANHSACHNHANVIENCC =
-    '/de-xuat/so-do-to-chuc/danh-sach-nhan-vien-cham-cong'
+    "/de-xuat/so-do-to-chuc/danh-sach-nhan-vien-cham-cong";
   const DEXUAT_SO_DO_TO_CHUC_DANHSACHNHANVIEN_CHUACC =
-    '/de-xuat/so-do-to-chuc/danh-sach-nhan-vien-chua-cham-cong'
-  const UPDATE_FACE_URL = '/cap-nhat-du-lieu-khuon-mat'
-  const CC_TK_CTY_URL = '/cham-cong-bang-tai-khoan-cong-ty'
-  const CC_TK_NV_URL = '/cham-cong-bang-tai-khoan-nhan-vien'
+    "/de-xuat/so-do-to-chuc/danh-sach-nhan-vien-chua-cham-cong";
+  const UPDATE_FACE_URL = "/cap-nhat-du-lieu-khuon-mat";
+  const CC_TK_CTY_URL = "/cham-cong-bang-tai-khoan-cong-ty";
+  const CC_TK_NV_URL = "/cham-cong-bang-tai-khoan-nhan-vien";
   const renderBackButton = () => {
     if (
       router.pathname !== CAI_DAT_VI_TRI_URL &&
@@ -109,27 +114,27 @@ export default function Bodyframe({ children }: any) {
     ) {
       if (
         router.pathname?.includes(
-          '/quan-ly-cong-ty/danh-sach-ung-vien/chi-tiet-ung-vien'
+          "/quan-ly-cong-ty/danh-sach-ung-vien/chi-tiet-ung-vien"
         )
       ) {
-        return <div style={{ marginTop: '20px' }}></div>
+        return <div style={{ marginTop: "20px" }}></div>;
       } else {
-        return <BackButton router={router} color='#474747' isCC={false} />
+        return <BackButton router={router} color="#474747" isCC={false} />;
       }
     }
-  }
+  };
 
   const renderArticle = () => {
     if (
       router.pathname?.includes(
-        'quan-ly-cong-ty/cai-dat-them-nhan-vien-moi/chi-tiet-nhan-vien'
+        "quan-ly-cong-ty/cai-dat-them-nhan-vien-moi/chi-tiet-nhan-vien"
       ) ||
       router.pathname === UPDATE_FACE_URL ||
       router.pathname === CC_TK_CTY_URL ||
       router.pathname === CC_TK_NV_URL ||
       router.pathname === CTY_CCCTY
     ) {
-      return <div></div>
+      return <div></div>;
     } else {
       return (
         <Row gutter={[20, 20]} className={`bannerQLC ${styles.moreSection}`}>
@@ -152,15 +157,16 @@ export default function Bodyframe({ children }: any) {
             <div className={styles.btnWrapper}>
               <Button
                 className={styles.moreBtn}
-                onClick={() => setShowmore(!showMore)}>
+                onClick={() => setShowmore(!showMore)}
+              >
                 <p className={styles.text}>Xem thêm</p>
               </Button>
             </div>
           </Col>
         </Row>
-      )
+      );
     }
-  }
+  };
 
   const renderExportExcelBtn = () => {
     if (
@@ -169,91 +175,172 @@ export default function Bodyframe({ children }: any) {
       router.pathname === DEXUAT_SO_DO_TO_CHUC_DANHSACHNHANVIEN_CHUACC
     ) {
       return (
-        <div style={{ marginLeft: '20px' }}>
+        <div style={{ marginLeft: "20px" }}>
           {ExportExcelButton(() => null)}
         </div>
-      )
+      );
     } else {
-      return null
+      return null;
     }
-  }
+  };
 
   const renderBanner = () => {
-    const pathname = router.pathname
-    if (pathname === '/cham-cong-nhan-vien/cc-bang-tai-khoan-cong-ty') {
-      return <CCBannerNV_TKCTY />
+    const pathname = router.pathname;
+    if (pathname === "/cham-cong-nhan-vien/cc-bang-tai-khoan-cong-ty") {
+      return <CCBannerNV_TKCTY />;
     } else if (
       pathname ===
-      '/cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/cham-cong-365'
+      "/cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/cham-cong-365"
     ) {
-      return <BANNER_CCBNDKM_CHAMCONG365 />
+      return <BANNER_CCBNDKM_CHAMCONG365 />;
     } else if (
       pathname ===
-      '/cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/chat-365'
+      "/cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/chat-365"
     ) {
-      return <BANNER_CCBNDKM_CHAT365 />
+      return <BANNER_CCBNDKM_CHAT365 />;
     } else if (
       pathname ===
-      '/cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/pc-365-nhan-vien'
+      "/cham-cong-nhan-vien/cham-cong-bang-nhan-dien-khuon-mat/pc-365-nhan-vien"
     ) {
-      return <BANNER_CCBNDKM_PC365NV />
-    } else if (pathname === '/cham-cong-bang-QR/cham-cong-365') {
-      return <ChamCong365 />
-    } else if (pathname === '/cham-cong-bang-QR/chat-365') {
-      return <Chat365 />
-    } else if (pathname === '/cham-cong-bang-QR/pc-365') {
-      return <PC365 />
-    } else if (pathname === '/cai-dat-vi-tri') {
-      return <CCBanner />
+      return <BANNER_CCBNDKM_PC365NV />;
+    } else if (pathname === "/cham-cong-bang-QR/cham-cong-365") {
+      return <ChamCong365 />;
+    } else if (pathname === "/cham-cong-bang-QR/chat-365") {
+      return <Chat365 />;
+    } else if (pathname === "/cham-cong-bang-QR/pc-365") {
+      return <PC365 />;
+    } else if (pathname === "/cai-dat-vi-tri") {
+      return <CCBanner />;
     } else if (
       pathname === UPDATE_FACE_URL ||
       pathname === CC_TK_CTY_URL ||
       pathname === CC_TK_NV_URL ||
       pathname === CTY_CCCTY
     ) {
-      return null
+      return null;
     } else {
-      return <Banner />
+      return <Banner />;
     }
-  }
+  };
 
+  const token = Cookies.get("token_base365");
+  const [openModalRegister, setOpenModalRegister] = useState(false);
+  const [openModalLogin, setOpenModalLogin] = useState(false);
+  const [key, setKey] = useState();
+  const [openModal, setOpenModal] = useState(false);
+  const renderBoxLog = () => {
+    return (
+      <div className={styles.boxLog}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: 20,
+          }}
+        >
+          <div style={{ width: "48%" }}>
+            <Button
+              onClick={() => setOpenModalLogin(true)}
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "10px 16px",
+                borderRadius: 30,
+                height: 38,
+                border: "none",
+                background: "linear-gradient(180deg, #FF9052 0%, #FF7629 100%)",
+                boxShadow: "0px 3px 10px 0px rgba(0, 0, 0, 0.20)",
+              }}
+            >
+              <p
+                style={{
+                  color: "#FFF",
+                  fontSize: 16,
+                  fontStyle: "normal",
+                  fontWeight: 500,
+                }}
+              >
+                Đăng nhập
+              </p>
+            </Button>
+          </div>
+
+          <div style={{ width: "48%" }}>
+            <Button
+              onClick={() => setOpenModalRegister(true)}
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "10px 16px",
+                borderRadius: 30,
+                backgroundColor: "#4C5BD4",
+                height: 38,
+                border: "none",
+                boxShadow: "0px 3px 10px 0px rgba(0, 0, 0, 0.20)",
+                background: "linear-gradient(180deg, #4C5BD4 0%, #3648D9 100%)",
+              }}
+            >
+              <p
+                style={{
+                  color: "#FFF",
+                  fontSize: 16,
+                  fontStyle: "normal",
+                  fontWeight: 500,
+                }}
+              >
+                Đăng ký
+              </p>
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  };
   return (
     <div
       style={{
         backgroundColor: `${
-          router.pathname === '/pham-mem-cham-cong' ? '#F6F6F6' : ''
+          router.pathname === "/pham-mem-cham-cong" ? "#F6F6F6" : ""
         }`,
-      }}>
+      }}
+    >
       <Header />
       {/* <Banner /> */}
       <div
-        className='bannerQLC'
+        className="bannerQLC"
         style={{
           paddingTop:
             router.pathname === UPDATE_FACE_URL ||
             router.pathname === CC_TK_CTY_URL ||
             router.pathname === CC_TK_NV_URL ||
             router.pathname === CTY_CCCTY
-              ? '0px'
-              : '50px',
-        }}>
+              ? "0px"
+              : "50px",
+        }}
+      >
         {renderBanner()}
+        {!token && renderBoxLog()}
       </div>
       {renderBackButton()}
 
       <div
         style={{
-          display: 'flex',
-          alignItems: 'center',
+          display: "flex",
+          alignItems: "center",
         }}
         className={`bannerQLC ${
-          router.pathname?.includes('/cap-nhat-du-lieu-khuon-mat') ||
-          router.pathname.includes('/cham-cong-bang-tai-khoan-cong-ty') ||
-          router.pathname.includes('/cham-cong-cong-ty') ||
+          router.pathname?.includes("/cap-nhat-du-lieu-khuon-mat") ||
+          router.pathname.includes("/cham-cong-bang-tai-khoan-cong-ty") ||
+          router.pathname.includes("/cham-cong-cong-ty") ||
           !router.pathname.includes(CTY_CCCTY)
             ? styles.breadcrumbUpdateFace
             : styles.breadcrumb
-        }`}>
+        }`}
+      >
         {router.pathname !== CAI_DAT_VI_TRI_URL &&
           router.pathname !== NV_CCCTY_URL &&
           // router.pathname !== UPDATE_FACE_URL &&
@@ -261,16 +348,17 @@ export default function Bodyframe({ children }: any) {
           router.pathname !== NV_CCBNDKM_PC365 &&
           router.pathname !== NV_CCBNDKM_CHAT365 &&
           !router.pathname.includes(CTY_CCCTY) &&
-          !router.pathname?.includes('/cham-cong-bang-QR') && (
-            <MyBreadCrumb color='#474747' />
+          !router.pathname?.includes("/cham-cong-bang-QR") && (
+            <MyBreadCrumb color="#474747" />
           )}
         {router.pathname === DEXUAT_TO_CHUC_URL && (
-          <Popover content={AddNewPopoverContent()} trigger={'click'}>
+          <Popover content={AddNewPopoverContent()} trigger={"click"}>
             <div
               style={{
-                marginLeft: ' 20px',
-              }}>
-              {AddButton('Thêm mới', () => null)}
+                marginLeft: " 20px",
+              }}
+            >
+              {AddButton("Thêm mới", () => null)}
             </div>
           </Popover>
         )}
@@ -278,21 +366,22 @@ export default function Bodyframe({ children }: any) {
       </div>
       <div
         className={`bannerQLC ${
-          router.pathname.includes('/cap-nhat-du-lieu-khuon-mat') ||
-          router.pathname.includes('/cham-cong-bang-tai-khoan-cong-ty') ||
-          router.pathname.includes('/cham-cong-cong-ty')
-            ? 'hiddenScrollBar'
-            : ''
-        }`}>
+          router.pathname.includes("/cap-nhat-du-lieu-khuon-mat") ||
+          router.pathname.includes("/cham-cong-bang-tai-khoan-cong-ty") ||
+          router.pathname.includes("/cham-cong-cong-ty")
+            ? "hiddenScrollBar"
+            : ""
+        }`}
+      >
         <div
           style={{
             marginTop:
-              router.pathname.includes('/cap-nhat-du-lieu-khuon-mat') ||
-              router.pathname.includes('/cham-cong-bang-tai-khoan-cong-ty') ||
-              router.pathname.includes('/cham-cong-cong-ty') ||
+              router.pathname.includes("/cap-nhat-du-lieu-khuon-mat") ||
+              router.pathname.includes("/cham-cong-bang-tai-khoan-cong-ty") ||
+              router.pathname.includes("/cham-cong-cong-ty") ||
               !router.pathname.includes(CTY_CCCTY)
-                ? '0'
-                : '10px',
+                ? "0"
+                : "10px",
           }}
           className={
             router.pathname === DEXUAT_TO_CHUC_URL ||
@@ -304,14 +393,15 @@ export default function Bodyframe({ children }: any) {
               : router.pathname.includes(ADD_DX)
               ? styles.noPaddingForm
               : styles.main
-          }>
+          }
+        >
           {children}
         </div>
         {/* <div className={styles.main}>{renderArticle()}</div> */}
         {/* Vấn đề màn 414 width 50% tại đây!!!! --pvh */}
         <link
-          rel='stylesheet'
-          href='https://timviec365.vn/css/footer_new.css?v=2'
+          rel="stylesheet"
+          href="https://timviec365.vn/css/footer_new.css?v=2"
         />
         {router.pathname === UPDATE_FACE_URL ||
         router.pathname === CC_TK_CTY_URL ||
@@ -320,6 +410,17 @@ export default function Bodyframe({ children }: any) {
           <Footer></Footer>
         )}
       </div>
+      {openModalRegister && (
+        <ModalRegsiter setOpenModalRegister={setOpenModalRegister} />
+      )}
+      {openModalLogin && (
+        <ModalLogin
+          setOpenModalLogin={setOpenModalLogin}
+          setKey={setKey}
+          setOpenModal={setOpenModal}
+        />
+      )}
+      <ModalSignInHome open={openModal} setOpen={setOpenModal} type={key} />
     </div>
-  )
+  );
 }

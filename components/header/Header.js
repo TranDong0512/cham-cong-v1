@@ -119,7 +119,6 @@ export default function Header() {
           console.log('Error:', error)
         }
       }
-
       getData()
       setRenderContent(true)
     }
@@ -149,18 +148,16 @@ export default function Header() {
                   <li>
                     <Link
                       href={getLinkHome}
-                      className={`cr_weight_bold share_fsize_tow share_clr_tow  ${
-                        router.pathname === '/' ? 'active' : ''
-                      }`}>
+                      className={`cr_weight_bold share_fsize_tow share_clr_tow  ${router.pathname === '/' ? 'active' : ''
+                        }`}>
                       Giới thiệu
                     </Link>
                   </li>
                   <li>
                     <Link
                       href={'/san-pham.html'}
-                      className={`cr_weight_bold share_fsize_tow share_clr_tow ${
-                        router.pathname === '/san-pham.html' ? 'active' : ''
-                      }`}>
+                      className={`cr_weight_bold share_fsize_tow share_clr_tow ${router.pathname === '/san-pham.html' ? 'active' : ''
+                        }`}>
                       Hướng dẫn
                     </Link>
                   </li>
@@ -422,7 +419,7 @@ export default function Header() {
                       <>
                         <div
                           // href='https://hungha365.com/lua-chon-dang-ky.html'
-                          onClick={()=>setOpenModalRegister(true)}
+                          onClick={() => setOpenModalRegister(true)}
                           className={styles['nav-item']}>
                           <li
                             className={`${styles['nav-child-item']} ${styles.cr_weight_bold} ${styles.share_fsize_tow} ${styles.share_clr_tow} ${styles.d_flex}`}>
@@ -433,7 +430,7 @@ export default function Header() {
                           </li>
                         </div>
                         <div
-                          onClick={()=>setOpenModal(true)}
+                          onClick={() => setOpenModal(true)}
                           // href='/lua-chon-dang-nhap.html'
                           className={styles['nav-item']}>
                           <li
@@ -458,15 +455,17 @@ export default function Header() {
                             <p style={{ color: '#fff' }}>Chuyển đổi số 365</p>
                           </li>
                         </a>
-                        <a className='nav-item btx_logout' onClick={show}>
-                          <li
-                            className={`${styles['nav-child-item']} ${styles.cr_weight_bold} ${styles.share_fsize_tow} ${styles.share_clr_tow} ${styles.d_flex}`}>
-                            <span className={styles.item_ic}>
-                              <img src='../img/logout_ind.png' alt='' />
-                            </span>
-                            <p style={{ color: '#fff' }}>Đăng xuất</p>
-                          </li>
-                        </a>
+                        <div>
+                          <a className='nav-item btx_logout' onClick={show}>
+                            <li
+                              className={`${styles['nav-child-item']} ${styles.cr_weight_bold} ${styles.share_fsize_tow} ${styles.share_clr_tow} `}>
+                              <span className={styles.item_ic} style={{ padding: '10px 15px', position: 'relative', top: 4 }}>
+                                <img src='../img/logout_ind.png' alt='' />
+                              </span>
+                              <p style={{ color: '#fff', display: 'inline-block' }}>Đăng xuất</p>
+                            </li>
+                          </a>
+                        </div>
                       </>
                     )}
                   </ul>

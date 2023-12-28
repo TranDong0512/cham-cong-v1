@@ -1,7 +1,7 @@
 import { Row, Col, Select, Button, Table, Form, Avatar } from "antd";
 import Image from "next/image";
-import styles from "./di-muon-ve-som-cpn.module.css";
-import { filterUnique } from "../nhap-luong-co-ban/nhap-luong-co-ban";
+import styles from "./danh-sach-nghi-co-phep.module.css";
+// import { filterUnique } from "../nhap-luong-co-ban/nhap-luong-co-ban";
 import _, { filter } from "lodash";
 import { useState, useEffect, useRef } from "react";
 import { GET, POST, POST_TL, getCompIdCS } from "@/pages/api/BaseApi";
@@ -15,12 +15,14 @@ const { RangePicker } = DatePicker;
 import type { Dayjs } from "dayjs";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { ExportExcel } from "@/utils/btnExcel";
+import jwtDecode from "jwt-decode";
 type RangeValue = [Dayjs | null, Dayjs | null] | null;
 function secondsToMinutes(time) {
   return `${Math.floor(time / 60)} phút ${Math.floor(time % 60)} giây`;
 }
 
-export function CpmDiMuonVeSom({ keyChildren }) {
+export function Cpmnghiphep({ keyChildren }) {
   const [data, setData] = useState([]);
   const [filterParam, setFilterParam] = useState<any>({
     year: dayjs().year(),
@@ -40,6 +42,7 @@ export function CpmDiMuonVeSom({ keyChildren }) {
   form.setFieldsValue(filterParam);
   const com_id = getCompIdCS();
   const token = Cookies.get("token_base365");
+  // ds vị trí
   useEffect(() => {
     axios
       .post(
@@ -54,6 +57,7 @@ export function CpmDiMuonVeSom({ keyChildren }) {
       })
       .catch((err) => {});
   }, []);
+  //ds ca làm việc
   useEffect(() => {
     try {
       const getCa = async () => {
@@ -66,6 +70,7 @@ export function CpmDiMuonVeSom({ keyChildren }) {
     } catch (error) {}
   }, []);
 
+  //ds phòng ban
   useEffect(() => {
     try {
       const getListPb = async () => {
@@ -86,6 +91,7 @@ export function CpmDiMuonVeSom({ keyChildren }) {
     setValue(null);
   }, [keyChildren]);
 
+  //ds nhân viên
   useEffect(() => {
     try {
       const getListEmp = async () => {
@@ -133,7 +139,7 @@ export function CpmDiMuonVeSom({ keyChildren }) {
         <div style={{ textAlign: "left" }}>
           <p style={{ color: "#4C5BD4" }}>
             {" "}
-            {record?.addition?.ep_id} - {record?.addition?.ep_name}
+            {record?.ep_id} - {record?.userName}
           </p>
         </div>
       ),
@@ -141,18 +147,28 @@ export function CpmDiMuonVeSom({ keyChildren }) {
     {
       title: "Phòng ban",
       render: (record: any) => (
-        <div>{record?.user?.organizeDetailName || "Chưa cập nhật"}</div>
+        <div>{record?.organizeDetailName || "Chưa cập nhật"}</div>
       ),
       align: "center",
     },
     {
-      title: "Thời gian",
+      title: "Thời gian bắt đầu",
       align: "center",
       render: (record: any) => (
         <div>
           <p style={{ fontSize: "15px", lineHeight: "22px", color: "#68798B" }}>
-            {record?.date &&
-              dayjs(record?.date)?.format("DD-MM-YYYY HH:mm:ss A")}
+            {record?.nd_nghi_phep[0].bd_nghi}
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: "Thời gian kết thúc",
+      align: "center",
+      render: (record: any) => (
+        <div>
+          <p style={{ fontSize: "15px", lineHeight: "22px", color: "#68798B" }}>
+            {record?.nd_nghi_phep[0].kt_nghi}
           </p>
         </div>
       ),
@@ -162,76 +178,46 @@ export function CpmDiMuonVeSom({ keyChildren }) {
       align: "center",
       render: (record: any) => (
         <p style={{ fontSize: "15px", lineHeight: "22px", color: "#68798B" }}>
-          {record?.shift.shift_name}
+          {record?.nd_nghi_phep[0].shift_name}
         </p>
       ),
     },
     {
-      title: "Muộn/sớm",
+      title: "Hình thức nghỉ",
       align: "center",
       render: (record) => {
         return (
           <p style={{ fontSize: "15px", lineHeight: "22px", color: "#68798B" }}>
-            {record?.addition?.early > 0 &&
-            record?.addition?.late_second > 0 ? (
-              <p>
-                Đi muộn {secondsToMinutes(record?.addition?.late_second)} - Về
-                sớm {secondsToMinutes(record?.addition?.early_second)}
-              </p>
-            ) : (
-              <>
-                {record?.addition?.early > 0 ? (
-                  <p>
-                    Về sớm {secondsToMinutes(record?.addition?.early_second)}
-                  </p>
-                ) : (
-                  <>
-                    {record?.addition?.late_second > 0 ? (
-                      <p>
-                        Đi muộn{" "}
-                        {secondsToMinutes(record?.addition?.late_second)}
-                      </p>
-                    ) : (
-                      ""
-                    )}
-                  </>
-                )}
-              </>
-            )}
+            {record?.loai_nghi_phep}
           </p>
         );
       },
     },
     {
-      title: "Phạt",
+      title: "Lý do",
       align: "center",
       render: (record: any) => (
         <p style={{ fontSize: "15px", lineHeight: "22px", color: "#68798B" }}>
-          {record?.pm_type_phat == 0 ? (
-            <p>Phạt {record?.cong} công</p>
-          ) : (
-            <p>Phạt {record?.cong} VND</p>
-          )}
+          {record?.ly_do}
         </p>
       ),
     },
   ];
+  const [nameCty, setNameCty] = useState<any>();
 
   const [start_date, set_start_date] = useState<any>(
-    dayjs().startOf("month").format("YYYY/MM/DD")
+    dayjs().startOf("month").format("YYYY-MM-DD")
   );
   const [end_date, set_end_date] = useState<any>(
-    dayjs().endOf("month").format("YYYY/MM/DD")
+    dayjs().endOf("month").format("YYYY-MM-DD")
   );
 
   useEffect(() => {
+    setNameCty(jwtDecode(Cookies.get("token_base365")));
     try {
       const getData = async () => {
         setLoading(true);
-        const com_id = Cookies.get("com_id");
-        const token = Cookies.get("token_base365");
-
-        const res = await POST_TL("api/tinhluong/congty/show_staff_late", {
+        const object = {
           start_date: start_date,
           end_date: end_date,
           com_id: com_id,
@@ -240,14 +226,17 @@ export function CpmDiMuonVeSom({ keyChildren }) {
           listOrgDetailId: listPb?.find((item) => item.id == selectedDep) //phòng ban
             ?.listOrganizeDetailId,
           position_id: positions,
-        });
-
+        };
+        const res = await POST_TL(
+          "api/tinhluong/congty/data_nghi_phep",
+          object
+        );
+        console.log("res", res);
         if (res?.message == "success") {
           setData(res?.data);
         }
         setLoading(false);
       };
-
       getData();
     } catch (error) {}
   }, [isThongKe, keyChildren]);
@@ -273,8 +262,8 @@ export function CpmDiMuonVeSom({ keyChildren }) {
 
   useEffect(() => {
     if (value != null && value) {
-      set_start_date(value[0]?.format("YYYY/MM/DD"));
-      set_end_date(value[1]?.format("YYYY/MM/DD"));
+      set_start_date(value[0]?.format("YYYY-MM-DD"));
+      set_end_date(value[1]?.format("YYYY-MM-DD"));
     }
   }, [dates]);
   const disabledDate = (current: Dayjs) => {
@@ -404,91 +393,6 @@ export function CpmDiMuonVeSom({ keyChildren }) {
                     </Button>
                   </Form.Item>
                 </Col>
-                {/* <Col
-                  lg={19}
-                  md={18}
-                  sm={24}
-                  xs={24}
-                  className={`${styles.button} ${styles.button1}`}
-                >
-                  <ExportExcellButton
-                    fileHeaders={[
-                      `Danh sách nhân viên đi muộn ${
-                        moment().month() + 1
-                      } - ${moment().year()}`,
-                    ]}
-                    fileName={`Danh sách nhân viên đi muộn ${
-                      moment().month() + 1
-                    } - ${moment().year()}`}
-                    data={[
-                      data
-                        ? data.map((item) => [
-                            item?.idQLC,
-                            item?.info?.userName,
-                            item?.info?.organizeDetail?.organizeDetailName
-                              ? item?.info?.organizeDetail?.organizeDetailName
-                              : "Chưa cập nhật",
-                            moment(item?.lateData?.ts_date)?.format(
-                              "YYYY-MM-DD"
-                            ),
-                            listCa?.filter(
-                              (item) =>
-                                item?.shift_id === item?.lateData?.shift_id
-                            )?.[0]?.shift_name || "Chưa cập nhật",
-                            ` ${
-                              item?.lateData?.early_second > 0 && (
-                                <p>
-                                  Đi sớm
-                                  {secondsToMinutes(
-                                    item?.lateData?.early_second
-                                  )}
-                                </p>
-                              )
-                            }
-                        ${
-                          item?.lateData?.late_second > 0 && (
-                            <p>
-                              Đi muộn
-                              {secondsToMinutes(item?.lateData?.late_second)}
-                            </p>
-                          )
-                        }`,
-                            ` ${
-                              item?.moneyData?.cong
-                                ? new Intl.NumberFormat("ja-JP").format(
-                                    item?.moneyData?.cong
-                                  )
-                                : 0
-                            }
-                      ${item?.moneyData?.cong > 10 ? "VND" : "Công"}`,
-                          ])
-                        : [],
-                    ]}
-                    listkeys={[
-                      "ID",
-                      "Tên",
-                      "Thời gian",
-                      "Ca",
-                      "Muộn/sớm",
-                      "Phạt",
-                    ]}
-                    component={
-                      <Button
-                        size="large"
-                        style={{ display: "flex", marginTop: "-10px" }}
-                      >
-                        <Image
-                          src="/excel-icon-white.png"
-                          width={24}
-                          height={24}
-                          alt=""
-                          style={{ marginRight: "10px" }}
-                        ></Image>
-                        Xuất file thống kê
-                      </Button>
-                    }
-                  />
-                </Col> */}
               </div>
             </Row>
           </Col>
@@ -501,18 +405,20 @@ export function CpmDiMuonVeSom({ keyChildren }) {
           >
             <Form.Item>
               <Button size="large" htmlType="submit" type="primary">
-                <p>Thống kê</p>
+                <p style={{ fontFamily: "sans-serif" }}>Thống kê</p>
               </Button>
             </Form.Item>
           </Col>
         </Row>
         <Row className={styles.rowSecond}>
-          <Col lg={5} md={6} sm={9} className={styles.text}>
-            <div className={styles.textTop}>Theo dõi đi muộn về sớm</div>
-            <div className={styles.textBottom}>Quản lý nhân viên ra về</div>
+          <Col lg={6} md={6} sm={9} className={styles.text}>
+            <div className={styles.textTop}>Danh sách nhân viên nghỉ phép</div>
+            <div className={styles.textBottom}>
+              Quản lý theo dõi nhân viên nghỉ phép
+            </div>
           </Col>
-          <Col lg={19} md={18} sm={15}>
-            <ExportExcellButton
+          <Col lg={18} md={18} sm={15}>
+            {/* <ExportExcellButton
               fileHeaders={[
                 `Danh sách nhân viên đi muộn ${
                   moment().month() + 1
@@ -569,10 +475,44 @@ export function CpmDiMuonVeSom({ keyChildren }) {
               ]}
               component={
                 <Button size="large" type="primary">
-                  <p> Xuất file thống kê</p>
+                  <p style={{ fontFamily: "sans-serif" }}>
+                    {" "}
+                    Xuất file thống kê
+                  </p>
                 </Button>
               }
-            />
+            /> */}
+            <ExportExcel
+              title={`Danh sách nhân viên nghỉ phép ${start_date} đến ${end_date}`}
+              columns={[
+                { header: "Họ tên(ID)", key: "col1", width: 40 },
+                { header: "Ngày bắt đầu nghỉ", key: "col2", width: 20 },
+                { header: "Ngày kết thúc nghỉ", key: "col3", width: 20 },
+                { header: "Ca xin nghỉ", key: "col4", width: 35 },
+                { header: "Phòng ban", key: "col5", width: 50 },
+                { header: "Chức vụ", key: "col6", width: 30 },
+                { header: "Loại hình", key: "col8", width: 27 },
+                { header: "Lý do nghỉ", key: "col7", width: 60 },
+              ]}
+              data={
+                data
+                  ? data.map((item) => [
+                      `${item?.userName} - ${item?.ep_id}`,
+                      `${item?.nd_nghi_phep[0].bd_nghi}`,
+                      `${item?.nd_nghi_phep[0].kt_nghi}`,
+                      `${item?.nd_nghi_phep[0].shift_name}`,
+                      `${item?.organizeDetailName}`,
+                      `${item?.positionName}`,
+                      `${item?.loai_nghi_phep}`,
+                      `${item?.ly_do}`,
+                    ])
+                  : []
+              }
+              name={nameCty?.data.userName}
+              nameFile={"Danh_sach_nghi_le"}
+              loading={loading}
+              type={1}
+            ></ExportExcel>
           </Col>
         </Row>
       </Form>

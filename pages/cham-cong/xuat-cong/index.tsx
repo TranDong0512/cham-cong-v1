@@ -120,6 +120,7 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
   };
 
   const [listDep, setListDep] = useState([]);
+
   return (
     <Card>
       <div className={styles.main}>
