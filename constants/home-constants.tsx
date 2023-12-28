@@ -131,6 +131,11 @@ export const LIST_ACTIONS: any = [
         required: false,
       },
       {
+        title: "Cài đặt thiết lập nghỉ lễ - nghỉ phép",
+        url: "cai-dat-luong/nghi-le-nghi-phep",
+        required: false,
+      },
+      {
         title: "Cài đặt bảo hiểm",
         url: "cai-dat-luong/cai-dat-bao-hiem",
         required: false,

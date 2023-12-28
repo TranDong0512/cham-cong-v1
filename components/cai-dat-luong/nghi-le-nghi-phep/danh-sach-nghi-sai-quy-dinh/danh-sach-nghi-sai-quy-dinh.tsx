@@ -71,7 +71,7 @@ const TableDanhSachNghiSaiQD = ({ data }: { data: any }) => {
   );
 };
 
-export function CpmDanhSachNghiSaiQuyDinh({keyChildren}) {
+export function CpmDanhSachNghiSaiQuyDinh({ keyChildren }) {
   const com_id = getCompIdCS();
   const token = Cookies.get("token_base365");
   const [listData, setListData] = useState([]);
@@ -91,6 +91,7 @@ export function CpmDanhSachNghiSaiQuyDinh({keyChildren}) {
     dayjs().endOf("month").format("YYYY/MM/DD")
   );
 
+  // ds vi tri
   useEffect(() => {
     axios
       .post(
@@ -103,55 +104,59 @@ export function CpmDanhSachNghiSaiQuyDinh({keyChildren}) {
       .then((res) => {
         setViTri(res?.data.data.data);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   }, []);
+  // ds ca làm việc
   useEffect(() => {
-    const getCa = async () => {
-      const res = await GET("api/qlc/shift/list");
-
-      if (res?.result) {
-        setListCa(res?.items);
-      }
-    };
-
-    getCa();
-  }, []);
-
-  useEffect(() => {
-    const getListPb = async () => {
-      const res = await getOrganizeDetail();
-      setListPb(res);
-    };
-    getListPb();
-  }, []);
-
-  useEffect(() => {
-    const getListEmp = async () => {
-      const object = {
-        id_com: com_id,
-        token: token,
-        position_id: positions,
-        listOrganizeDetailId: listPb.find(
-          (item, index) => item.id == selectedDep
-        )?.listOrganizeDetailId,
-        pageSize: 100000,
+    try {
+      const getCa = async () => {
+        const res = await GET("api/qlc/shift/list");
+        if (res?.result) {
+          setListCa(res?.items);
+        }
       };
-      const res = await POST("api/qlc/managerUser/listUser", object);
-      if (res.result == true) {
-        const dataRes = res?.data;
-        const newData = dataRes.map((item, index) => ({
-          ...item,
-          key: index + 1,
-          value: item.ep_id,
-          label: item.userName,
-        }));
-        setListEmp(newData);
-      }
-    };
-
-    getListEmp();
+      getCa();
+    } catch (error) {}
+  }, []);
+  // ds phòng ban
+  useEffect(() => {
+    try {
+      const getListPb = async () => {
+        const res = await getOrganizeDetail();
+        setListPb(res);
+      };
+      getListPb();
+    } catch (error) {}
+  }, []);
+  // ds nhanvien
+  useEffect(() => {
+    try {
+      const getListEmp = async () => {
+        const object = {
+          id_com: com_id,
+          token: token,
+          position_id: positions,
+          listOrganizeDetailId: listPb.find(
+            (item, index) => item.id == selectedDep
+          )?.listOrganizeDetailId,
+          pageSize: 100000,
+        };
+        const res = await POST("api/qlc/managerUser/listUser", object);
+        if (res.result == true) {
+          const dataRes = res?.data;
+          const newData = dataRes.map((item, index) => ({
+            ...item,
+            key: index + 1,
+            value: item.ep_id,
+            label: item.userName,
+          }));
+          setListEmp(newData);
+        }
+      };
+      getListEmp();
+    } catch (error) {}
   }, [selectedDep, positions]);
-
+  //data table
   useEffect(() => {
     const getData = async () => {
       const res = await POST_TL(
@@ -173,8 +178,8 @@ export function CpmDanhSachNghiSaiQuyDinh({keyChildren}) {
       }
     };
     console.log(keyChildren);
-    
-    if (keyChildren === '3') {
+
+    if (keyChildren === "2") {
       getData();
     }
   }, [isThongKe, keyChildren]);
@@ -222,16 +227,15 @@ export function CpmDanhSachNghiSaiQuyDinh({keyChildren}) {
     }
   };
 
-
   useEffect(() => {
-    form.resetFields()
-    set_start_date(dayjs().startOf("month").format("YYYY/MM/DD"))
-    set_end_date(dayjs().endOf("month").format("YYYY/MM/DD"))
-    setSelectedEmp(null)
-    setPositions(null)
-    setSelectedDep(null)
-    setValue(null)
-  }, [keyChildren])
+    form.resetFields();
+    set_start_date(dayjs().startOf("month").format("YYYY/MM/DD"));
+    set_end_date(dayjs().endOf("month").format("YYYY/MM/DD"));
+    setSelectedEmp(null);
+    setPositions(null);
+    setSelectedDep(null);
+    setValue(null);
+  }, [keyChildren]);
   return (
     <div>
       <Form

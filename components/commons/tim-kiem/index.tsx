@@ -1,31 +1,33 @@
-import { Button } from 'antd'
+import { Button } from "antd";
+
 export default function SearchCustomize({ searchEmployee }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+    <div style={{ display: "flex", alignItems: "flex-end", marginTop: 8 }}>
       <Button
-        type='primary'
+        type="primary"
         onClick={searchEmployee}
-        size='large'
+        size="large"
         style={{
-          fontSize: '14px',
-          width: '100%',
+          fontSize: "14px",
+          width: "100%",
           //   justifyContent: 'center',
 
-          margin: 'auto',
-          color: '#fff',
+          margin: "auto",
+          color: "#fff",
         }}
         icon={
           <img
-            src='../img/Group.png'
-            alt='Tìm việc 365'
+            src="../img/Group.png"
+            alt="Tìm việc 365"
             style={{
-              width: '16px',
-              height: '16px',
+              width: "16px",
+              height: "16px",
             }}
           />
-        }>
-        <span style={{ color: '#fff' }}> Tìm kiếm</span>
+        }
+      >
+        <span style={{ color: "#fff" }}> Tìm kiếm</span>
       </Button>
     </div>
-  )
+  );
 }

@@ -120,10 +120,7 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
   };
 
   const [listDep, setListDep] = useState([]);
-  console.log(
-    "data",
-    data[0].lst_time.map((item) => moment(item)?.format("HH:mm:ss")).join(", ")
-  );
+
   return (
     <Card>
       <div className={styles.main}>
