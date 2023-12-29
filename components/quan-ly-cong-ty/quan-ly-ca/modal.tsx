@@ -50,6 +50,12 @@ export function AddCaModal(
     setSelectedPayMethod(selectedShift?.shift_type);
   }, [form, selectedShift]);
 
+  useEffect(() => {
+    if (selectedPayMethod !== THEO_GIO) setCheckFlex(false)
+  }, [selectedPayMethod])
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // update
@@ -59,18 +65,18 @@ export function AddCaModal(
         shift_type: selectedPayMethod,
         shift_id: selectedShift.shift_id,
         type_end_date: checkFinish ? 1 : 0,
-        type_flex: checkFlex ? 1 : 0,
+        type_money_flex: checkFlex ? 1 : 0,
         over_night: checked ? 1 : 0,
         nums_day: nums_day ? nums_day : selectedShift.nums_day,
       });
 
-      // console.log({...form.getFieldsValue(), shift_id: selectedShift.shift_id})
+
       POST("api/qlc/shift/edit", {
         ...form.getFieldsValue(),
         shift_type: selectedPayMethod,
         shift_id: selectedShift.shift_id,
         type_end_date: checkFinish ? 1 : 0,
-        type_flex: checkFlex ? 1 : 0,
+        type_money_flex: checkFlex ? 1 : 0,
         over_night: checked ? 1 : 0,
         nums_day: nums_day ? nums_day : selectedShift.nums_day,
       })
@@ -90,7 +96,7 @@ export function AddCaModal(
         shift_type: selectedPayMethod,
         over_night: checked ? 1 : 0,
         type_end_date: checkFinish ? 1 : 0,
-        type_flex: checkFlex ? 1 : 0,
+        type_money_flex: checkFlex ? 1 : 0,
         nums_day: nums_day,
       }).then((res) => {
         if (res?.result === true) {
@@ -137,9 +143,15 @@ export function AddCaModal(
   };
 
   const [nums_day, setNums_day] = useState<any>();
+  const [money_allowances, setMoney_allowances] = useState<Number>();
   const handleInputNumber = (value) => {
     setNums_day(value);
   };
+
+  // useEffect(() => {
+  //   if (!checkPhuCap) setMoney_allowances(0)
+  // }, [checkPhuCap])
+
   useEffect(() => {
     if (selectedShift?.over_night == 1) {
       setChecked(true);
@@ -152,7 +164,7 @@ export function AddCaModal(
       setCheckFinish(false);
     }
 
-    if (selectedShift?.type_flex === 1) {
+    if (selectedShift?.type_money_flex === 1) {
       setCheckFlex(true)
     }
     else {
@@ -405,6 +417,7 @@ export function AddCaModal(
               }
             </Row>
             {selectedPayMethod === THEO_SO_CA ? (
+
               MySelect(
                 "Số công tương ứng",
                 "Chọn ca làm việc",
@@ -418,6 +431,7 @@ export function AddCaModal(
                   { label: "3 công / 1 ca", value: 3 },
                 ]
               )
+
             ) : selectedPayMethod === THEO_TIEN ? (
               MyInput(
                 "Số tiền tương ứng",
@@ -475,7 +489,7 @@ export function AddCaModal(
             )}
 
             <>
-              <Form.Item name="type_flex">
+              <Form.Item name="">
                 <Switch
                   defaultChecked={checkPhuCap}
                   onChange={(checkPhuCap) => {
@@ -507,6 +521,7 @@ export function AddCaModal(
                         formatter={(value) =>
                           `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                         }
+                        // onChange={(value) => setMoney_allowances(value)}
                         addonAfter={"VND"}
 
                       ></InputNumber>
