@@ -284,6 +284,7 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                     { header: "Công", key: "col8", width: 15 },
                     { header: "Tiền", key: "col9", width: 20 },
                     { header: "Tiền theo giờ", key: "col10", width: 15 },
+                    { header: "Phụ cấp ca", key: "col10", width: 15 },
                     { header: "Cộng công", key: "col11", width: 15 },
                     { header: "Cộng tiền", key: "col12", width: 15 },
                     {
@@ -307,6 +308,7 @@ export default function XuatCong({ comData, listDepartments, listEmp }) {
                         `${item?.num_to_calculate || 0} công`,
                         `${item?.num_to_money || 0} VNĐ`,
                         `${item?.money_per_hour || 0} VNĐ`,
+                        `${item?.money_allowances || 0} VNĐ`,
                         `${item?.cong_xn_them || 0} công`,
                         `${item?.tien_xn_them || item?.tientheogio_xn_them || 0
                         } VNĐ`,

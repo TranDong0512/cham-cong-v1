@@ -129,6 +129,12 @@ export function xuatCong(
       width: "200px",
     },
     {
+      title: <p style={{ color: "#fff" }}>Phụ cấp ca</p>,
+      render: (record: any) => <p>{record?.money_allowances || 0} VNĐ</p>,
+      align: "center",
+      width: "200px",
+    },
+    {
       title: <p style={{ color: "#fff" }}>Cộng công</p>,
       render: (record: any) => <p>{record?.cong_xn_them || 0} công</p>,
       align: "center",
@@ -137,19 +143,12 @@ export function xuatCong(
     {
       title: <p style={{ color: "#fff" }}>Cộng tiền</p>,
       render: (record: any) => (
-        <p>{record?.tien_xn_them || record?.tien_xn_them || 0} VNĐ</p>
-      ),
-      align: "center",
-      width: "200px",
-    },
-    {
-      title: <p style={{ color: "#fff" }}>Cộng tiền theo giờ</p>,
-      render: (record: any) => (
         <p>{record?.tien_xn_them || record?.tientheogio_xn_them || 0} VNĐ</p>
       ),
       align: "center",
       width: "200px",
     },
+
 
     {
       title: <p style={{ color: "#fff" }}>Chi tiết thời gian chấm công </p>,
