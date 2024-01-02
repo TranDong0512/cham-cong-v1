@@ -17,10 +17,7 @@ import Notification from "@/components/cham-cong/bao-mat/notification";
 export default function InstallSecurityPage({ listWifi, listIps, listEmps }) {
   // const { setHasBanner } = useContext(HasBannerContext)
   // setHasBanner(true)
-  const router = useRouter();
-  const [wifiList, setWifiList] = useState(listWifi);
-  const [ipList, setIpList] = useState(listIps);
-  const [keyChildren, setKeyChildren] = useState('1')
+  const [keyChildren, setKeyChildren] = useState("1");
 
   const tabItems = [
     {
@@ -64,7 +61,7 @@ export default function InstallSecurityPage({ listWifi, listIps, listEmps }) {
     {
       key: "6",
       label: "Chấm công QR",
-      children: <ChamCongQR keyChildren={keyChildren}/>,
+      children: <ChamCongQR keyChildren={keyChildren} />,
     },
     {
       key: "7",
@@ -79,9 +76,9 @@ export default function InstallSecurityPage({ listWifi, listIps, listEmps }) {
     </StickyBox>
   );
 
-  const onChange = (key: string) => {    
-    setKeyChildren(key)
-    return true
+  const onChange = (key: string) => {
+    setKeyChildren(key);
+    return true;
   };
 
   return (

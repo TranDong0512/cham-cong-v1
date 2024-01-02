@@ -50,8 +50,8 @@ export function AddNewWifiModal(
   // }, []);
 
   useEffect(() => {
-    form.setFieldsValue({ ...selectedRow })
-  }, [open])
+    form.setFieldsValue({ ...selectedRow });
+  }, [open]);
 
   const onFinish = async (value: any) => {
     if (value) {
@@ -95,10 +95,9 @@ export function AddNewWifiModal(
     <Modal
       open={open}
       onCancel={() => {
-        form.resetFields()
-        setOpen(false)
-      }
-      }
+        form.resetFields();
+        setOpen(false);
+      }}
       width={600}
       closable={false}
       destroyOnClose={true}
@@ -117,10 +116,9 @@ export function AddNewWifiModal(
           height={14}
           style={{ marginRight: "20px" }}
           onClick={() => {
-            form.resetFields()
-            setOpen(false)
-          }
-          }
+            form.resetFields();
+            setOpen(false);
+          }}
         />
       </div>
       <div className={styles.body}>
@@ -140,7 +138,7 @@ export function AddNewWifiModal(
             name="name_wifi"
             rules={[{ required: true, message: "Trường này là bắt buộc" }]}
           >
-            <Input size="large" placeholder="Nhập tên  wifi" />
+            <Input size="large" placeholder="Nhập tên wifi" />
           </Form.Item>
           <p className={styles.inputHeader}>
             Địa chỉ IP <span style={{ color: "red" }}>*</span>

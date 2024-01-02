@@ -15,6 +15,8 @@ const { RangePicker } = DatePicker;
 import type { Dayjs } from "dayjs";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { ExportExcel } from "@/utils/btnExcel";
+import jwtDecode from "jwt-decode";
 type RangeValue = [Dayjs | null, Dayjs | null] | null;
 function secondsToMinutes(time) {
   return `${Math.floor(time / 60)} phút ${Math.floor(time % 60)} giây`;
@@ -37,6 +39,7 @@ export function CpmDiMuonVeSom({ keyChildren }) {
   const [positions, setPositions] = useState<any>();
   const [selectedEmp, setSelectedEmp] = useState<any>();
   const [selectedDep, setSelectedDep] = useState<any>();
+  const [nameCty, setNameCty] = useState<any>();
   form.setFieldsValue(filterParam);
   const com_id = getCompIdCS();
   const token = Cookies.get("token_base365");
@@ -226,6 +229,8 @@ export function CpmDiMuonVeSom({ keyChildren }) {
 
   useEffect(() => {
     try {
+      setNameCty(jwtDecode(Cookies.get("token_base365")));
+
       const getData = async () => {
         setLoading(true);
         const com_id = Cookies.get("com_id");
@@ -252,6 +257,7 @@ export function CpmDiMuonVeSom({ keyChildren }) {
     } catch (error) {}
   }, [isThongKe, keyChildren]);
 
+  console.log("data", data);
   const onFinish = (value) => {
     setIsThongKe(!isThongKe);
   };
@@ -404,91 +410,6 @@ export function CpmDiMuonVeSom({ keyChildren }) {
                     </Button>
                   </Form.Item>
                 </Col>
-                {/* <Col
-                  lg={19}
-                  md={18}
-                  sm={24}
-                  xs={24}
-                  className={`${styles.button} ${styles.button1}`}
-                >
-                  <ExportExcellButton
-                    fileHeaders={[
-                      `Danh sách nhân viên đi muộn ${
-                        moment().month() + 1
-                      } - ${moment().year()}`,
-                    ]}
-                    fileName={`Danh sách nhân viên đi muộn ${
-                      moment().month() + 1
-                    } - ${moment().year()}`}
-                    data={[
-                      data
-                        ? data.map((item) => [
-                            item?.idQLC,
-                            item?.info?.userName,
-                            item?.info?.organizeDetail?.organizeDetailName
-                              ? item?.info?.organizeDetail?.organizeDetailName
-                              : "Chưa cập nhật",
-                            moment(item?.lateData?.ts_date)?.format(
-                              "YYYY-MM-DD"
-                            ),
-                            listCa?.filter(
-                              (item) =>
-                                item?.shift_id === item?.lateData?.shift_id
-                            )?.[0]?.shift_name || "Chưa cập nhật",
-                            ` ${
-                              item?.lateData?.early_second > 0 && (
-                                <p>
-                                  Đi sớm
-                                  {secondsToMinutes(
-                                    item?.lateData?.early_second
-                                  )}
-                                </p>
-                              )
-                            }
-                        ${
-                          item?.lateData?.late_second > 0 && (
-                            <p>
-                              Đi muộn
-                              {secondsToMinutes(item?.lateData?.late_second)}
-                            </p>
-                          )
-                        }`,
-                            ` ${
-                              item?.moneyData?.cong
-                                ? new Intl.NumberFormat("ja-JP").format(
-                                    item?.moneyData?.cong
-                                  )
-                                : 0
-                            }
-                      ${item?.moneyData?.cong > 10 ? "VND" : "Công"}`,
-                          ])
-                        : [],
-                    ]}
-                    listkeys={[
-                      "ID",
-                      "Tên",
-                      "Thời gian",
-                      "Ca",
-                      "Muộn/sớm",
-                      "Phạt",
-                    ]}
-                    component={
-                      <Button
-                        size="large"
-                        style={{ display: "flex", marginTop: "-10px" }}
-                      >
-                        <Image
-                          src="/excel-icon-white.png"
-                          width={24}
-                          height={24}
-                          alt=""
-                          style={{ marginRight: "10px" }}
-                        ></Image>
-                        Xuất file thống kê
-                      </Button>
-                    }
-                  />
-                </Col> */}
               </div>
             </Row>
           </Col>
@@ -512,67 +433,65 @@ export function CpmDiMuonVeSom({ keyChildren }) {
             <div className={styles.textBottom}>Quản lý nhân viên ra về</div>
           </Col>
           <Col lg={19} md={18} sm={15}>
-            <ExportExcellButton
-              fileHeaders={[
-                `Danh sách nhân viên đi muộn ${
-                  moment().month() + 1
-                } - ${moment().year()}`,
-              ]}
-              fileName={`Danh sách nhân viên đi muộn ${
+            <ExportExcel
+              title={`Danh sách nhân viên đi muộn về sớm ${
                 moment().month() + 1
               } - ${moment().year()}`}
+              columns={[
+                { header: "ID", key: "col0", width: 13 },
+                { header: "Họ tên", key: "col1", width: 40 },
+                { header: "Phòng ban", key: "col2", width: 25 },
+                { header: "Thời gian", key: "col3", width: 25 },
+                { header: "Ca", key: "col4", width: 35 },
+                { header: "Muộn/sớm", key: "col5", width: 30 },
+                { header: "Phạt", key: "col6", width: 20 },
+              ]}
               data={
                 data
                   ? data.map((item) => [
-                      item?.info?.idQLC,
-                      item?.info?.userName,
-                      item?.info?.organizeDetail?.organizeDetailName
-                        ? item?.info?.organizeDetail?.organizeDetailName
-                        : "Chưa cập nhật",
-                      moment(item?.lateData?.ts_date)?.format("YYYY-MM-DD"),
-                      listCa?.find(
-                        (ca) => ca?.shift_id === item?.lateData?.shift_id
-                      )?.shift_name || "Chưa cập nhật",
+                      `${item?.user?.idQLC}`,
+                      `${item?.user?.userName}`,
                       `${
-                        item?.lateData?.early_second > 0
+                        item?.user?.organizeDetail?.organizeDetailName
+                          ? item?.user?.organizeDetail?.organizeDetailName
+                          : "Chưa cập nhật"
+                      }`,
+                      `${moment(item?.addition?.ts_date)?.format(
+                        "YYYY-MM-DD"
+                      )}`,
+                      `${
+                        listCa?.find(
+                          (ca) => ca?.shift_id === item?.shift?.shift_id
+                        )?.shift_name || "Chưa cập nhật"
+                      }`,
+                      `${
+                        item?.addition?.early_second > 0
                           ? `Đi sớm ${secondsToMinutes(
-                              item?.lateData?.early_second
+                              item?.addition?.early_second
                             )}`
                           : ""
                       }
                     ${
-                      item?.lateData?.late_second > 0
+                      item?.addition?.late_second > 0
                         ? `Đi muộn ${secondsToMinutes(
-                            item?.lateData?.late_second
+                            item?.addition?.late_second
                           )}`
                         : ""
                     }`,
                       ` ${
-                        item?.moneyData?.cong
-                          ? new Intl.NumberFormat("ja-JP").format(
-                              item?.moneyData?.cong
-                            )
+                        item?.cong
+                          ? new Intl.NumberFormat("ja-JP").format(item?.cong)
                           : 0
                       }
-                  ${item?.moneyData?.cong > 10 ? "VND" : "Công"}`,
+                ${item?.cong > 10 ? "VND" : "Công"}`,
                     ])
                   : []
               }
-              listkeys={[
-                "ID",
-                "Tên",
-                "Phòng ban",
-                "Thời gian",
-                "Ca",
-                "Muộn/sớm",
-                "Phạt",
-              ]}
-              component={
-                <Button size="large" type="primary">
-                  <p> Xuất file thống kê</p>
-                </Button>
-              }
-            />
+              name={nameCty?.data.userName}
+              nameFile={"Danh_sach_di_muon_ve_som"}
+              loading={loading}
+              type={1}
+            ></ExportExcel>
           </Col>
         </Row>
       </Form>
