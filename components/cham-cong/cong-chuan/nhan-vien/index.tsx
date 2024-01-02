@@ -32,7 +32,7 @@ import { removeVietnameseTones } from "@/constants/style-constants";
 import axios from "axios";
 import { baseURL, getOrganizeDetail } from "@/utils/BaseApi";
 import Cookies from "js-cookie";
-const { RangePicker } = DatePicker;
+import ModalAdd from "./modal/modalAdd";
 interface Item {
   key: string;
   num_days: number;
@@ -270,6 +270,9 @@ export default function CongchuanNhanVien() {
     } catch (error) {}
   }, [selectedDep, positions]);
 
+  const handleCall = () => {
+    setCall(!call);
+  };
   useEffect(() => {
     setLoading(true);
     try {
@@ -305,6 +308,10 @@ export default function CongchuanNhanVien() {
     set_apply_month(dateString);
   };
 
+  const [openModal, setOpenModal] = useState<any>(false);
+  const closeModal = () => {
+    setOpenModal(false);
+  };
   return (
     <>
       <Card>
@@ -336,6 +343,7 @@ export default function CongchuanNhanVien() {
                   icon={
                     <SettingOutlined style={{ color: "#fff" }} rev={"xxx"} />
                   }
+                  onClick={() => setOpenModal(true)}
                 >
                   <span style={{ color: "#fff" }}> Cài đặt</span>
                 </Button>
@@ -460,6 +468,14 @@ export default function CongchuanNhanVien() {
           </Form>
         </div>
       </Card>
+
+      {openModal && (
+        <ModalAdd
+          open={openModal}
+          handleCancel={closeModal}
+          setCall={handleCall}
+        ></ModalAdd>
+      )}
     </>
   );
 }

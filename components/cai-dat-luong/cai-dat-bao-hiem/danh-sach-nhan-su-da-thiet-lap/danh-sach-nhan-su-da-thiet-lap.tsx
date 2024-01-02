@@ -315,7 +315,7 @@ export const DanhSachNhanSuDaThietLap = ({
               option?.labelNoVN?.toLowerCase()?.indexOf(input.toLowerCase()) >=
                 0
             }
-            options={[{ label: "Tat ca", value: "all" }, ...listEmpLabel]}
+            options={[{ label: "Tất cả", value: "all" }, ...listEmpLabel]}
             className={styles.selectStaff}
           />
         </div>

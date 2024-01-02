@@ -115,8 +115,8 @@ export const ModalUpDateCaiDatDiMuonVeSom = (
       ...selectedRow,
       pm_time_begin: moment(selectedRow?.pm_time_begin)?.format("YYYY-MM"),
       pm_time_end: moment(selectedRow?.pm_time_end)?.format("YYYY-MM"),
-    })
-  }, [open, selectedRow])
+    });
+  }, [open, selectedRow]);
 
   const onFinish = async (value) => {
     if (value) {
@@ -142,8 +142,8 @@ export const ModalUpDateCaiDatDiMuonVeSom = (
       className={styles.modal}
       open={open}
       onCancel={() => {
-        form.resetFields()  
-        setOpen(false)
+        form.resetFields();
+        setOpen(false);
       }}
       width={600}
       closable={false}
@@ -159,8 +159,8 @@ export const ModalUpDateCaiDatDiMuonVeSom = (
           width={14}
           height={14}
           onClick={() => {
-            form.resetFields()  
-            setOpen(false)
+            form.resetFields();
+            setOpen(false);
           }}
         />
       </div>
@@ -298,7 +298,7 @@ export const ModalCaiDatDiMuonVeSom = (
 
       if (res?.data) {
         window.alert("Thêm mới thành công");
-        form.resetFields()
+        form.resetFields();
         setOpen(false);
         setReload(!reload);
       }
@@ -310,8 +310,8 @@ export const ModalCaiDatDiMuonVeSom = (
       className={styles.modal}
       open={open}
       onCancel={() => {
-        form.resetFields()
-        setOpen(false)
+        form.resetFields();
+        setOpen(false);
       }}
       width={600}
       destroyOnClose
@@ -328,8 +328,8 @@ export const ModalCaiDatDiMuonVeSom = (
           width={14}
           height={14}
           onClick={() => {
-            form.resetFields()
-            setOpen(false)
+            form.resetFields();
+            setOpen(false);
           }}
         />
       </div>
@@ -339,7 +339,7 @@ export const ModalCaiDatDiMuonVeSom = (
             name="pm_type"
             label="Lý do phạt"
             labelCol={{ span: 24 }}
-            rules={[{ required: true, message: "Trường này là bắt buộc" }]}
+            rules={[{ required: true, message: "Chọn lý do phạt!" }]}
           >
             <Select
               placeholder="Chọn lí do"
@@ -355,7 +355,7 @@ export const ModalCaiDatDiMuonVeSom = (
             name="pm_shift"
             label="Ca làm việc áp dụng"
             labelCol={{ span: 24 }}
-            rules={[{ required: true, message: "Trường này là bắt luộc" }]}
+            rules={[{ required: true, message: "Chọn ca làm việc!" }]}
           >
             <Select
               placeholder="Tất cả các ca"
@@ -374,7 +374,7 @@ export const ModalCaiDatDiMuonVeSom = (
             name="pm_minute"
             label="Số phút áp dụng mức phạt"
             labelCol={{ span: 24 }}
-            rules={[{ required: true, message: "Trường này là bắt luộc" }]}
+            rules={[{ required: true, message: "Nhập số phút áp dụng!" }]}
           >
             <Input
               placeholder="Nhập số phút"
@@ -386,7 +386,7 @@ export const ModalCaiDatDiMuonVeSom = (
             name="pm_type_phat"
             label="Loại phạt"
             labelCol={{ span: 24 }}
-            rules={[{ required: true, message: "Trường này là bắt luộc" }]}
+            rules={[{ required: true, message: "Chọn hình thức phạt!" }]}
           >
             <Select
               placeholder="Chọn phương thức"
@@ -405,7 +405,7 @@ export const ModalCaiDatDiMuonVeSom = (
             name="pm_monney"
             label="Số tiền hoặc công phạt"
             labelCol={{ span: 24 }}
-            rules={[{ required: true, message: "Trường này là bắt luộc" }]}
+            rules={[{ required: true, message: "Trường này là bắt buộc!" }]}
           >
             <InputNumber
               placeholder="Nhập số tiền hoặc công phạt"
@@ -418,9 +418,11 @@ export const ModalCaiDatDiMuonVeSom = (
           </Form.Item>
           <Form.Item
             name="pm_time_begin"
-            label="Thời gian bắt đầu áp dụng    "
+            label="Thời gian bắt đầu áp dụng"
             labelCol={{ span: 24 }}
-            rules={[{ required: true, message: "Trường này là bắt luộc" }]}
+            rules={[
+              { required: true, message: "Nhập thời gian bắt đầu áp dụng!" },
+            ]}
           >
             <Input type="month" size="large"></Input>
             {/* <DatePicker

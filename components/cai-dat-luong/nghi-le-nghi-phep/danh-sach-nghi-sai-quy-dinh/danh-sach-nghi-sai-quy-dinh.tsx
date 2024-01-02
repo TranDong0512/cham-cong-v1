@@ -14,6 +14,8 @@ import { baseURL, getOrganizeDetail } from "@/utils/BaseApi";
 import { DatePicker } from "antd";
 const { RangePicker } = DatePicker;
 import type { Dayjs } from "dayjs";
+import { ExportExcel } from "@/utils/btnExcel";
+import jwtDecode from "jwt-decode";
 
 type RangeValue = [Dayjs | null, Dayjs | null] | null;
 const TableDanhSachNghiSaiQD = ({ data }: { data: any }) => {
@@ -83,6 +85,7 @@ export function CpmDanhSachNghiSaiQuyDinh({ keyChildren }) {
   const [positions, setPositions] = useState<any>();
   const [selectedDep, setSelectedDep] = useState<any>();
   const [listEmp, setListEmp] = useState([]);
+  const [nameCty, setNameCty] = useState<any>();
 
   const [start_date, set_start_date] = useState<any>(
     dayjs().startOf("month").format("YYYY/MM/DD")
@@ -158,30 +161,29 @@ export function CpmDanhSachNghiSaiQuyDinh({ keyChildren }) {
   }, [selectedDep, positions]);
   //data table
   useEffect(() => {
-    const getData = async () => {
-      const res = await POST_TL(
-        "api/tinhluong/congty/take_listuser_nghi_khong_phep",
-        {
-          start_date: start_date,
-          end_date: end_date,
-          com_id: com_id,
-          token: token,
-          ep_id: selectedEmp,
-          listOrgDetailId: listPb?.find((item) => item.id == selectedDep) //phòng ban
-            ?.listOrganizeDetailId,
-          position_id: positions,
+    try {
+      setNameCty(jwtDecode(Cookies.get("token_base365")));
+      const getData = async () => {
+        const res = await POST_TL(
+          "api/tinhluong/congty/take_listuser_nghi_khong_phep",
+          {
+            start_date: start_date,
+            end_date: end_date,
+            com_id: com_id,
+            token: token,
+            ep_id: selectedEmp,
+            listOrgDetailId: listPb?.find((item) => item.id == selectedDep) //phòng ban
+              ?.listOrganizeDetailId,
+            position_id: positions,
+          }
+        );
+
+        if (res?.message == "success") {
+          setListData(res?.data);
         }
-      );
-
-      if (res?.message == "success") {
-        setListData(res?.data);
-      }
-    };
-    console.log(keyChildren);
-
-    if (keyChildren === "2") {
+      };
       getData();
-    }
+    } catch (error) {}
   }, [isThongKe, keyChildren]);
   const [form] = Form.useForm();
 
@@ -236,6 +238,7 @@ export function CpmDanhSachNghiSaiQuyDinh({ keyChildren }) {
     setSelectedDep(null);
     setValue(null);
   }, [keyChildren]);
+  console.log("listData", listData);
   return (
     <div>
       <Form
@@ -349,14 +352,16 @@ export function CpmDanhSachNghiSaiQuyDinh({ keyChildren }) {
                 md={18}
                 sm={15}
                 xs={15}
-                className={`${styles.button} ${styles.button1}`}>
-                <Button size='large'>
+                className={`${styles.button} ${styles.button1}`}
+              >
+                <Button size="large">
                   <Image
-                    src='/excel-icon-white.png'
+                    src="/excel-icon-white.png"
                     width={24}
                     height={24}
-                    alt=''
-                    style={{ marginRight: '10px' }}></Image>
+                    alt=""
+                    style={{ marginRight: "10px" }}
+                  ></Image>
                   Xuất file thống kê
                 </Button>
               </Col> */}
@@ -385,21 +390,40 @@ export function CpmDanhSachNghiSaiQuyDinh({ keyChildren }) {
               Quản lý nhân viên nghỉ sai quy định
             </div>
           </Col>
-          {/* <Col
+          <Col
             lg={17}
             md={15}
             sm={13}
-            className={`${styles.button} ${styles.button2}`}>
-            <Button size='large'>
-              <Image
-                src='/excel-icon-white.png'
-                width={24}
-                height={24}
-                alt=''
-                style={{ marginRight: '10px' }}></Image>
-              Xuất file thống kê
-            </Button>
-          </Col> */}
+            // className={`${styles.button} ${styles.button2}`}
+          >
+            <ExportExcel
+              title={`Danh sách nhân viên nghỉ phép ${start_date} đến ${end_date}`}
+              columns={[
+                { header: "Họ tên(ID)", key: "col1", width: 40 },
+                { header: "Tổ chức", key: "col2", width: 40 },
+                { header: "Thời gian áp dụng", key: "col3", width: 20 },
+                { header: "Ca", key: "col4", width: 35 },
+                { header: "Phạt", key: "col5", width: 25 },
+              ]}
+              data={
+                listData
+                  ? listData.map((item) => [
+                      `${item?.userName} - ${item?.ep_id}`,
+                      `${item?.organizeDetailName}`,
+                      `${moment(item?.date).format("DD-MM-YYYY")}`,
+                      `${item?.shift_name}`,
+                      `${new Intl.NumberFormat("ja-JP").format(
+                        item?.phat
+                      )} VND`,
+                    ])
+                  : []
+              }
+              name={nameCty?.data.userName}
+              nameFile={"Danh_sach_nhan_vien_nghi_sai_quy_dinh"}
+              loading={false}
+              type={1}
+            ></ExportExcel>
+          </Col>
         </Row>
       </Form>
       <div>
