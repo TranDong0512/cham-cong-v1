@@ -1,38 +1,25 @@
-import { Button, Col, DatePicker, Form, Modal, Row, Select } from "antd";
+import { Button, Col, DatePicker, Form, Modal, Row, Select, Input } from "antd";
 import axios from "axios";
 import dayjs from "dayjs";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import moment from "moment";
-export default function XoaCong({ openXC, handleCloseXC, data }) {
+export default function XoaCong({ openXC, handleCloseXC, data, onClick }) {
   const [finalData, setFinalData] = useState<any>();
 
   const curentUrlTL = process.env.NEXT_PUBLIC_API;
   const dateFormat = "YYYY-MM-DD";
-  useEffect(() => {
-    console.log("check====================================", window.location.pathname)
-    const filteredData = data?.data.filter((item) => item.shift_id !== 0);
-
-    const uniqueData = Array.from(
-      new Set(filteredData?.map((item) => item.shift_id))
-    ).map((shiftId) => filteredData?.find((item) => item.shift_id === shiftId));
-
-    const dataOld = uniqueData?.map((item, index) => ({
-      value: item.shift_id,
-      label: item.shift[0]?.shift_name,
-    }));
-    setFinalData(dataOld);
-  }, [data]);
 
   const router = useRouter();
-  const onFinish = async (value) => {
+  const onFinish = async (values) => {
     try {
+
       const token = Cookies.get("token_base365");
       const object = {
         ep_id: data.ep_id,
-        at_time: moment(data?.ts_date)?.format("DD-MM-YYYY"),
-        shift_id: value.shift_id,
+        at_time: moment(data?.ts_date)?.format("YYYY-MM-DD"),
+        shift_id: data?.shift_id,
         token: token,
       };
       const response: any = await axios.post(
@@ -41,8 +28,11 @@ export default function XoaCong({ openXC, handleCloseXC, data }) {
       );
 
       if (response?.status == 200) {
+        onClick(data)
         window.alert("Xóa công thành công");
-        router.reload();
+        handleCloseXC()
+
+
       }
     } catch (error) {
       if (error.response.status == 500) {
@@ -75,7 +65,10 @@ export default function XoaCong({ openXC, handleCloseXC, data }) {
         }
       >
         <div style={{ padding: 20 }}>
-          <Form onFinish={onFinish}>
+          <Form
+            onFinish={onFinish}
+
+          >
             <Row gutter={[16, 24]}>
               <Col span={24}>
                 <div style={{ padding: "0px 0" }}>
@@ -101,7 +94,7 @@ export default function XoaCong({ openXC, handleCloseXC, data }) {
                           width: "max-content",
                         }}
                       >
-                        Thời gian phạt
+                        Thời gian
                       </p>
                     }
                     name={"time"}
@@ -109,14 +102,13 @@ export default function XoaCong({ openXC, handleCloseXC, data }) {
                   >
                     <DatePicker
                       disabled
-                      defaultValue={dayjs(
-                        data.at_time?.split("T")?.[0],
-                        dateFormat
-                      )}
+                      defaultValue={dayjs(data?.ts_date, "YYYY-MM-DD")}
+                      format="DD-MM-YYYY"
                       style={{ width: "100%" }}
                       size="large"
                     ></DatePicker>
                   </Form.Item>
+
                   <Form.Item
                     label={
                       <p
@@ -126,19 +118,21 @@ export default function XoaCong({ openXC, handleCloseXC, data }) {
                           width: "max-content",
                         }}
                       >
-                        Chọn ca xóa
+                        Ca làm việc
                       </p>
                     }
                     name={"shift_id"}
-                    rules={[{ required: true, message: "Chọn ca xóa công" }]}
                     labelCol={{ span: 24 }}
                   >
-                    <Select
-                      placeholder={"Chọn ca xóa"}
+                    <Input
+                      disabled
+                      defaultValue={data?.shift_name}
+                      value={data?.shift_id}
+                      style={{ width: "100%" }}
                       size="large"
-                      options={finalData}
-                    ></Select>
+                    ></Input>
                   </Form.Item>
+
                 </div>
 
                 <div
@@ -162,6 +156,7 @@ export default function XoaCong({ openXC, handleCloseXC, data }) {
                       type="primary"
                       style={{ padding: "4px 40px" }}
                       htmlType="submit"
+
                     >
                       <p>Lưu</p>
                     </Button>

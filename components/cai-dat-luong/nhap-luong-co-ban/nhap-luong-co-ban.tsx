@@ -47,16 +47,16 @@ export const filterUnique = (input: any[], name: string) => {
   });
 };
 
-export const NhapLuongCoBan = ({}: // initData,
-// listPb,
-// listIds,
-// total,
-{
-  // initData: any[]
-  // listPb: any[]
-  // listIds: any[]
-  // total: Number
-}) => {
+export const NhapLuongCoBan = ({ }: // initData,
+  // listPb,
+  // listIds,
+  // total,
+  {
+    // initData: any[]
+    // listPb: any[]
+    // listIds: any[]
+    // total: Number
+  }) => {
   // const [total, setTotal] = useState()
   const [data, setData] = useState<any[]>();
   const [date, setDate] = useState<String>();
@@ -100,9 +100,14 @@ export const NhapLuongCoBan = ({}: // initData,
     com_id: com_id,
     month: moment().month() + 1,
     year: moment().year(),
-    start_date:
+    start_date: (moment().month() + 1) > 10 ?
       moment().year() +
       SEPERATOR +
+      (moment().month() + 1) +
+      SEPERATOR +
+      "01" +
+      POSTFIX : moment().year() +
+      SEPERATOR + '0' +
       (moment().month() + 1) +
       SEPERATOR +
       "01" +
@@ -235,7 +240,7 @@ export const NhapLuongCoBan = ({}: // initData,
       ),
     },
     {
-      title: "Phòng ban",
+      title: "Tổ chức",
       align: "center",
       render: (record) => (
         <p className={styles.text}>
@@ -275,188 +280,188 @@ export const NhapLuongCoBan = ({}: // initData,
       ),
     },
 
-    {
-      title: "Công chuẩn",
-      render: (record) => (
-        <p className={styles.text}>{record?.cong_chuan || 0} </p>
-      ),
-    },
-    {
-      title: "Công thực",
-      render: (record) => (
-        <p className={styles.text}>{record?.cong_thuc || 0} </p>
-      ),
-    },
-    {
-      title: "Công sau phạt",
-      render: (record) => (
-        <p className={styles.text}>{record?.cong_sau_phat || 0} </p>
-      ),
-    },
-    {
-      title: "Công theo tiền",
-      render: (record) => (
-        <p className={styles.text}>{record?.cong_theo_tien || 0} </p>
-      ),
-    },
-    {
-      title: "Công được ghi nhận",
-      render: (record) => (
-        <p className={styles.text}>{record?.cong_ghi_nhan || 0} </p>
-      ),
-    },
-    {
-      title: "Công nghỉ phép",
-      render: (record) => (
-        <p className={styles.text}>{record?.cong_nghi_phep || 0} </p>
-      ),
-    },
-    {
-      title: "Tổng công nhận",
-      render: (record) => (
-        <p className={styles.text}>{record?.tong_cong_nhan || 0} </p>
-      ),
-    },
-    {
-      title: "Lương thực",
-      render: (record) => (
-        <p className={styles.text}>{formatMoney(record?.luong_thuc || 0)} </p>
-      ),
-    },
-    {
-      title: "Lương theo giờ",
-      render: (record) => (
-        <p className={styles.text}>
-          {formatMoney(record?.tongTienTheoGio || 0)}{" "}
-        </p>
-      ),
-    },
-    {
-      title: "Lương đóng bảo hiểm",
-      render: (record) => (
-        <p className={styles.text}>
-          {formatMoney(record?.luong_bao_hiem || 0)}{" "}
-        </p>
-      ),
-    },
-    {
-      title: "Phạt đi muộn/về sớm theo công",
-      render: (record) => (
-        <p className={styles.text}>{record?.cong_phat_di_muon_ve_som || 0} </p>
-      ),
-    },
-    {
-      title: "Phạt đi muộn/về sớm theo tiền",
-      render: (record) => (
-        <p className={styles.text}>
-          {formatMoney(record?.tien_phat_muon || 0)}{" "}
-        </p>
-      ),
-    },
-    {
-      title: "Hoa hồng",
-      render: (record) => (
-        <p className={styles.text}>
-          {formatMoney(record?.tong_hoa_hong || 0)}{" "}
-        </p>
-      ),
-    },
-    {
-      title: "Tạm ứng",
-      render: (record) => (
-        <p className={styles.text}>{formatMoney(record?.tien_tam_ung || 0)} </p>
-      ),
-    },
-    {
-      title: "Thưởng",
-      render: (record) => (
-        <p className={styles.text}>{formatMoney(record?.thuong || 0)} </p>
-      ),
-    },
-    {
-      title: "Thưởng nghỉ lễ",
-      render: (record) => (
-        <p className={styles.text}>
-          {formatMoney(record?.luong_nghi_le || 0)}{" "}
-        </p>
-      ),
-    },
-    {
-      title: "Phạt",
-      render: (record) => (
-        <p className={styles.text}>{formatMoney(record?.phat || 0)} </p>
-      ),
-    },
-    {
-      title: "Nghỉ sai quy định",
-      render: (record) => (
-        <p className={styles.text}>
-          {formatMoney(record?.phat_nghi_sai_quy_dinh || 0)}{" "}
-        </p>
-      ),
-    },
-    {
-      title: "Phúc lợi",
-      render: (record) => (
-        <p className={styles.text}>
-          {formatMoney(record?.tien_phuc_loi || 0)}{" "}
-        </p>
-      ),
-    },
-    {
-      title: "Phụ cấp",
-      render: (record) => (
-        <p className={styles.text}>{formatMoney(record?.tien_phu_cap || 0)} </p>
-      ),
-    },
-    {
-      title: "Phụ cấp theo ca",
-      render: (record) => (
-        <p className={styles.text}>
-          {formatMoney(record?.phu_cap_theo_ca || 0)}{" "}
-        </p>
-      ),
-    },
-    {
-      title: "Bảo hiểm",
-      render: (record) => (
-        <p className={styles.text}>
-          {formatMoney(record?.tong_bao_hiem || 0)}{" "}
-        </p>
-      ),
-    },
-    {
-      title: "Tiền khác",
-      render: (record) => (
-        <p className={styles.text}>{formatMoney(record?.tien_khac || 0)} </p>
-      ),
-    },
-    {
-      title: "Tổng lương",
-      render: (record) => (
-        <p className={styles.text}>{formatMoney(record?.tong_luong || 0)} </p>
-      ),
-    },
-    {
-      title: "Thuế",
-      render: (record) => (
-        <p className={styles.text}>{formatMoney(record?.thue || 0)} </p>
-      ),
-    },
-    {
-      title: "Tổng lương thực nhận",
-      render: (record) => (
-        <p className={styles.text}>
-          {formatMoney(record?.tien_thuc_nhan || 0)}{" "}
-        </p>
-      ),
-    },
-    {
-      title: "Tổng lương đã trả",
-      render: (record) => (
-        <p className={styles.text}>{formatMoney(record?.luong_da_tra || 0)} </p>
-      ),
-    },
+    // {
+    //   title: "Công chuẩn",
+    //   render: (record) => (
+    //     <p className={styles.text}>{record?.cong_chuan || 0} </p>
+    //   ),
+    // },
+    // {
+    //   title: "Công thực",
+    //   render: (record) => (
+    //     <p className={styles.text}>{record?.cong_thuc || 0} </p>
+    //   ),
+    // },
+    // {
+    //   title: "Công sau phạt",
+    //   render: (record) => (
+    //     <p className={styles.text}>{record?.cong_sau_phat || 0} </p>
+    //   ),
+    // },
+    // {
+    //   title: "Công theo tiền",
+    //   render: (record) => (
+    //     <p className={styles.text}>{record?.cong_theo_tien || 0} </p>
+    //   ),
+    // },
+    // {
+    //   title: "Công được ghi nhận",
+    //   render: (record) => (
+    //     <p className={styles.text}>{record?.cong_ghi_nhan || 0} </p>
+    //   ),
+    // },
+    // {
+    //   title: "Công nghỉ phép",
+    //   render: (record) => (
+    //     <p className={styles.text}>{record?.cong_nghi_phep || 0} </p>
+    //   ),
+    // },
+    // {
+    //   title: "Tổng công nhận",
+    //   render: (record) => (
+    //     <p className={styles.text}>{record?.tong_cong_nhan || 0} </p>
+    //   ),
+    // },
+    // {
+    //   title: "Lương thực",
+    //   render: (record) => (
+    //     <p className={styles.text}>{formatMoney(record?.luong_thuc || 0)} </p>
+    //   ),
+    // },
+    // {
+    //   title: "Lương theo giờ",
+    //   render: (record) => (
+    //     <p className={styles.text}>
+    //       {formatMoney(record?.tongTienTheoGio || 0)}{" "}
+    //     </p>
+    //   ),
+    // },
+    // {
+    //   title: "Lương đóng bảo hiểm",
+    //   render: (record) => (
+    //     <p className={styles.text}>
+    //       {formatMoney(record?.luong_bao_hiem || 0)}{" "}
+    //     </p>
+    //   ),
+    // },
+    // {
+    //   title: "Phạt đi muộn/về sớm theo công",
+    //   render: (record) => (
+    //     <p className={styles.text}>{record?.cong_phat_di_muon_ve_som || 0} </p>
+    //   ),
+    // },
+    // {
+    //   title: "Phạt đi muộn/về sớm theo tiền",
+    //   render: (record) => (
+    //     <p className={styles.text}>
+    //       {formatMoney(record?.tien_phat_muon || 0)}{" "}
+    //     </p>
+    //   ),
+    // },
+    // {
+    //   title: "Hoa hồng",
+    //   render: (record) => (
+    //     <p className={styles.text}>
+    //       {formatMoney(record?.tong_hoa_hong || 0)}{" "}
+    //     </p>
+    //   ),
+    // },
+    // {
+    //   title: "Tạm ứng",
+    //   render: (record) => (
+    //     <p className={styles.text}>{formatMoney(record?.tien_tam_ung || 0)} </p>
+    //   ),
+    // },
+    // {
+    //   title: "Thưởng",
+    //   render: (record) => (
+    //     <p className={styles.text}>{formatMoney(record?.thuong || 0)} </p>
+    //   ),
+    // },
+    // {
+    //   title: "Thưởng nghỉ lễ",
+    //   render: (record) => (
+    //     <p className={styles.text}>
+    //       {formatMoney(record?.luong_nghi_le || 0)}{" "}
+    //     </p>
+    //   ),
+    // },
+    // {
+    //   title: "Phạt",
+    //   render: (record) => (
+    //     <p className={styles.text}>{formatMoney(record?.phat || 0)} </p>
+    //   ),
+    // },
+    // {
+    //   title: "Nghỉ sai quy định",
+    //   render: (record) => (
+    //     <p className={styles.text}>
+    //       {formatMoney(record?.phat_nghi_sai_quy_dinh || 0)}{" "}
+    //     </p>
+    //   ),
+    // },
+    // {
+    //   title: "Phúc lợi",
+    //   render: (record) => (
+    //     <p className={styles.text}>
+    //       {formatMoney(record?.tien_phuc_loi || 0)}{" "}
+    //     </p>
+    //   ),
+    // },
+    // {
+    //   title: "Phụ cấp",
+    //   render: (record) => (
+    //     <p className={styles.text}>{formatMoney(record?.tien_phu_cap || 0)} </p>
+    //   ),
+    // },
+    // {
+    //   title: "Phụ cấp theo ca",
+    //   render: (record) => (
+    //     <p className={styles.text}>
+    //       {formatMoney(record?.phu_cap_theo_ca || 0)}{" "}
+    //     </p>
+    //   ),
+    // },
+    // {
+    //   title: "Bảo hiểm",
+    //   render: (record) => (
+    //     <p className={styles.text}>
+    //       {formatMoney(record?.tong_bao_hiem || 0)}{" "}
+    //     </p>
+    //   ),
+    // },
+    // {
+    //   title: "Tiền khác",
+    //   render: (record) => (
+    //     <p className={styles.text}>{formatMoney(record?.tien_khac || 0)} </p>
+    //   ),
+    // },
+    // {
+    //   title: "Tổng lương",
+    //   render: (record) => (
+    //     <p className={styles.text}>{formatMoney(record?.tong_luong || 0)} </p>
+    //   ),
+    // },
+    // {
+    //   title: "Thuế",
+    //   render: (record) => (
+    //     <p className={styles.text}>{formatMoney(record?.thue || 0)} </p>
+    //   ),
+    // },
+    // {
+    //   title: "Tổng lương thực nhận",
+    //   render: (record) => (
+    //     <p className={styles.text}>
+    //       {formatMoney(record?.tien_thuc_nhan || 0)}{" "}
+    //     </p>
+    //   ),
+    // },
+    // {
+    //   title: "Tổng lương đã trả",
+    //   render: (record) => (
+    //     <p className={styles.text}>{formatMoney(record?.luong_da_tra || 0)} </p>
+    //   ),
+    // },
     // {
     //   title: 'Liên hệ',
     //   dataIndex: '',
@@ -549,19 +554,7 @@ export const NhapLuongCoBan = ({}: // initData,
                 alignItems: "center",
               }}
             >
-              {/* <p style={{ fontWeight: '600', margin: '0px 10px' }}>Từ</p> */}
               <Form.Item name={"start_date"} style={{ width: "100%" }}>
-                {/* <Input
-                  type='date'
-                  className={styles.time}
-                  onChange={(e) => setDate(e.target.value)}
-                  size='large'
-                /> */}
-                {/* <Select
-                  options={renderMonth}
-                  size='large'
-                  style={{ width: '100%' }}
-                /> */}
                 <DatePicker
                   size="large"
                   placeholder="Ngày bắt đầu"
@@ -580,14 +573,7 @@ export const NhapLuongCoBan = ({}: // initData,
                 alignItems: "center",
               }}
             >
-              {/* <p style={{ fontWeight: '600', margin: '0px 10px' }}>Đến</p> */}
               <Form.Item name={"end_date"} style={{ width: "100%" }}>
-                {/* <Input
-                  type='date'
-                  className={styles.time}
-                  onChange={(e) => setDate(e.target.value)}
-                  size='large'
-                /> */}
                 <DatePicker
                   size="large"
                   placeholder="Ngày bắt đầu"
@@ -596,27 +582,6 @@ export const NhapLuongCoBan = ({}: // initData,
                 />
               </Form.Item>
             </Col>
-            {/* <Col xl={4} md={4} xs={24} sm={12} className={styles.col}>
-              <Form.Item>
-                <Select
-                  className={styles.phongBan}
-                  placeholder='Chọn cơ cấu'
-                  suffixIcon={<Logo />}
-                  size='large'
-                  options={[
-                    { label: 'Tất cả', value: 'all' },
-                    ...orgList?.map((item) => ({
-                      label: item?.organizeName,
-                      value: item?.id,
-                    })),
-                  ]}
-                  onChange={(value) => {
-                    form.resetFields(['orgDetail'])
-                    setSelectedOrgId(value)
-                  }}
-                />
-              </Form.Item>
-            </Col> */}
             <Col xl={8} md={4} xs={24} sm={12} className={styles.col}>
               <Form.Item name={"organizeDetailId"}>
                 <Select
@@ -689,10 +654,10 @@ export const NhapLuongCoBan = ({}: // initData,
           <Input type="date" />
         </Col>
         <Col xl={12} sm={8} md={6} xs={13} className={styles.colbutton}>
-          <p style={{ fontWeight: "bold", fontSize: "20px" }}>
+          {/* <p style={{ fontWeight: "bold", fontSize: "20px" }}>
             Tổng lương công ty:{" "}
             {new Intl.NumberFormat().format(Number(total) || 0)} VNĐ
-          </p>
+          </p> */}
         </Col>
         <Col xl={5} sm={8} md={6} xs={13} className={styles.colbutton}>
           <Button
@@ -714,78 +679,78 @@ export const NhapLuongCoBan = ({}: // initData,
               { header: "Chức vụ", key: "col7", width: 30 },
               { header: "Lương cơ bản", key: "col8", width: 15 },
               { header: "Phần trăm hợp đồng", key: "col9", width: 30 },
-              { header: "Công chuẩn", key: "col10", width: 20 },
-              { header: "Công thực", key: "col11", width: 20 },
-              { header: "Công sau phạt", key: "col12", width: 20 },
-              { header: "Công theo tiền", key: "col3", width: 20 },
-              { header: "Công ghi nhận", key: "col14", width: 20 },
-              { header: "Công nghỉ phép", key: "col15", width: 20 },
-              { header: "Tổng công nhận", key: "col16", width: 20 },
-              { header: "Lương thực", key: "col17", width: 25 },
-              { header: "Lương sau phạt", key: "col18", width: 25 },
-              { header: "Lương bảo hiểm ", key: "col19", width: 25 },
-              { header: "Tiền phạt muộn", key: "col20", width: 25 },
-              { header: "Công phạt đi muộn về sớm", key: "col21", width: 25 },
-              { header: "Tổng hoa hồng", key: "col22", width: 20 },
-              { header: "Tiền tạm ứng", key: "col23", width: 20 },
-              { header: "Thưởng", key: "col24", width: 20 },
-              { header: "Lương nghỉ lễ", key: "col25", width: 20 },
-              { header: "Phạt", key: "col26", width: 20 },
-              { header: "Tiền phạt nghỉ không phép", key: "col27", width: 27 },
-              { header: "Phạt nghỉ sai quy định", key: "col28", width: 25 },
-              { header: "Tiền phúc lợi", key: "col29", width: 20 },
-              { header: "Tiền phụ cấp", key: "col30", width: 20 },
-              { header: "Tiền phụ cấp theo ca", key: "col31", width: 25 },
-              { header: "Tổng bảo hiểm", key: "col32", width: 20 },
-              { header: "Tiền khác", key: "col33", width: 15 },
-              { header: "Tổng lương", key: "col34", width: 20 },
-              { header: "Thuế", key: "col35", width: 15 },
-              { header: "Lương theo giờ", key: "col36", width: 20 },
-              { header: "Tiền thực nhận", key: "col37", width: 25 },
-              { header: "Lương đã trả", key: "col38", width: 20 },
+              // { header: "Công chuẩn", key: "col10", width: 20 },
+              // { header: "Công thực", key: "col11", width: 20 },
+              // { header: "Công sau phạt", key: "col12", width: 20 },
+              // { header: "Công theo tiền", key: "col3", width: 20 },
+              // { header: "Công ghi nhận", key: "col14", width: 20 },
+              // { header: "Công nghỉ phép", key: "col15", width: 20 },
+              // { header: "Tổng công nhận", key: "col16", width: 20 },
+              // { header: "Lương thực", key: "col17", width: 25 },
+              // { header: "Lương sau phạt", key: "col18", width: 25 },
+              // { header: "Lương bảo hiểm ", key: "col19", width: 25 },
+              // { header: "Tiền phạt muộn", key: "col20", width: 25 },
+              // { header: "Công phạt đi muộn về sớm", key: "col21", width: 25 },
+              // { header: "Tổng hoa hồng", key: "col22", width: 20 },
+              // { header: "Tiền tạm ứng", key: "col23", width: 20 },
+              // { header: "Thưởng", key: "col24", width: 20 },
+              // { header: "Lương nghỉ lễ", key: "col25", width: 20 },
+              // { header: "Phạt", key: "col26", width: 20 },
+              // { header: "Tiền phạt nghỉ không phép", key: "col27", width: 27 },
+              // { header: "Phạt nghỉ sai quy định", key: "col28", width: 25 },
+              // { header: "Tiền phúc lợi", key: "col29", width: 20 },
+              // { header: "Tiền phụ cấp", key: "col30", width: 20 },
+              // { header: "Tiền phụ cấp theo ca", key: "col31", width: 25 },
+              // { header: "Tổng bảo hiểm", key: "col32", width: 20 },
+              // { header: "Tiền khác", key: "col33", width: 15 },
+              // { header: "Tổng lương", key: "col34", width: 20 },
+              // { header: "Thuế", key: "col35", width: 15 },
+              // { header: "Lương theo giờ", key: "col36", width: 20 },
+              // { header: "Tiền thực nhận", key: "col37", width: 25 },
+              // { header: "Lương đã trả", key: "col38", width: 20 },
             ]}
             data={
               data
                 ? data?.map((item) => [
-                    item?.userName,
-                    // item?.email,
-                    item?.phone || item?.phoneTK,
-                    item?.address,
-                    item?.department?.[0]?.dep_name || "Chưa cập nhật",
-                    positionLabel?.[item?.inForPerson?.employee?.position_id]
-                      ?.label,
-                    item?.luong_co_ban || 0 || 0,
-                    item?.phan_tram_hop_dong || 0,
-                    item?.cong_chuan || 0,
-                    item?.cong_thuc || 0,
-                    item?.cong_sau_phat || 0,
-                    item?.cong_theo_tien || 0,
-                    item?.cong_ghi_nhan || 0,
-                    item?.cong_nghi_phep || 0,
-                    item?.tong_cong_nhan || 0,
-                    item?.luong_thuc || 0,
-                    item?.luong_sau_phat || 0,
-                    item?.luong_bao_hiem || 0,
-                    item?.tien_phat_muon || 0,
-                    item?.cong_phat_di_muon_ve_som || 0,
-                    item?.tong_hoa_hong || 0,
-                    item?.tien_tam_ung || 0,
-                    item?.thuong || 0,
-                    item?.luong_nghi_le || 0,
-                    item?.phat || 0,
-                    item?.tien_phat_nghi_khong_phep || 0,
-                    item?.phat_nghi_sai_quy_dinh || 0,
-                    item?.tien_phuc_loi || 0,
-                    item?.tien_phu_cap || 0,
-                    item?.phu_cap_theo_ca || 0,
-                    item?.tong_bao_hiem || 0,
-                    item?.tien_khac || 0,
-                    item?.tong_luong || 0,
-                    item?.thue || 0,
-                    item?.tongTienTheoGio || 0,
-                    item?.tien_thuc_nhan || 0,
-                    item?.luong_da_tra || 0,
-                  ])
+                  item?.userName,
+                  // item?.email,
+                  item?.phone || item?.phoneTK,
+                  item?.address,
+                  item?.department?.[0]?.dep_name || "Chưa cập nhật",
+                  positionLabel?.[item?.inForPerson?.employee?.position_id]
+                    ?.label,
+                  item?.luong_co_ban || 0 || 0,
+                  item?.phan_tram_hop_dong || 0,
+                  // item?.cong_chuan || 0,
+                  // item?.cong_thuc || 0,
+                  // item?.cong_sau_phat || 0,
+                  // item?.cong_theo_tien || 0,
+                  // item?.cong_ghi_nhan || 0,
+                  // item?.cong_nghi_phep || 0,
+                  // item?.tong_cong_nhan || 0,
+                  // item?.luong_thuc || 0,
+                  // item?.luong_sau_phat || 0,
+                  // item?.luong_bao_hiem || 0,
+                  // item?.tien_phat_muon || 0,
+                  // item?.cong_phat_di_muon_ve_som || 0,
+                  // item?.tong_hoa_hong || 0,
+                  // item?.tien_tam_ung || 0,
+                  // item?.thuong || 0,
+                  // item?.luong_nghi_le || 0,
+                  // item?.phat || 0,
+                  // item?.tien_phat_nghi_khong_phep || 0,
+                  // item?.phat_nghi_sai_quy_dinh || 0,
+                  // item?.tien_phuc_loi || 0,
+                  // item?.tien_phu_cap || 0,
+                  // item?.phu_cap_theo_ca || 0,
+                  // item?.tong_bao_hiem || 0,
+                  // item?.tien_khac || 0,
+                  // item?.tong_luong || 0,
+                  // item?.thue || 0,
+                  // item?.tongTienTheoGio || 0,
+                  // item?.tien_thuc_nhan || 0,
+                  // item?.luong_da_tra || 0,
+                ])
                 : []
             }
             name={nameCty?.data.userName}

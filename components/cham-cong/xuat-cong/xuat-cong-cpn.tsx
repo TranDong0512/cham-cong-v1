@@ -19,6 +19,7 @@ export function xuatCong(
 ) {
   const [listData, setListData] = useState<any>();
   useEffect(() => {
+    console.log("data cu", data)
     setListData(data);
   }, [data]);
   const handleListData = (newData) => {
@@ -62,7 +63,7 @@ export function xuatCong(
           height={46}
         />
       ),
-      width: 100,
+      width: data?.length ? "200px" : "150px",
     },
     {
       title: <p style={{ color: "#fff" }}>Họ tên (ID)</p>,
@@ -72,13 +73,15 @@ export function xuatCong(
         </p>
       ),
       align: "center",
+      width: data?.length ? "200px" : "150px",
     },
     {
-      title: <p style={{ color: "#fff" }}>Phòng ban</p>,
+      title: <p style={{ color: "#fff" }}>Tổ chức</p>,
       render: (record: any) => {
         return <p>{record?.organizeDetailName || "Chưa cập nhật"}</p>;
       },
       align: "center",
+      width: data?.length ? "200px" : "150px",
     },
     {
       title: <p style={{ color: "#fff" }}>Ngày tháng</p>,
@@ -86,59 +89,61 @@ export function xuatCong(
         <p>{moment(record?.ts_date)?.format("DD-MM-YYYY")}</p>
       ),
       align: "center",
-      width: "200px",
+      width: data?.length ? "200px" : "150px",
     },
     {
       title: <p style={{ color: "#fff" }}>Ca làm việc</p>,
       render: (record: any) => <p>{record?.shift_name || "Chưa cập nhật"}</p>,
       align: "center",
-      width: "200px",
+      width: data?.length ? "200px" : "150px",
     },
     {
       title: <p style={{ color: "#fff" }}>Thời gian làm việc (giờ)</p>,
       render: (record: any) => <p>{record?.hour_real || 0}</p>,
       align: "center",
-      width: "300px",
+      width: data?.length ? "300px" : "250px",
     },
     {
       title: <p style={{ color: "#fff" }}>Đi muộn (phút)</p>,
       render: (record: any) => <p>{record?.late || 0}</p>,
       align: "center",
-      width: "200px",
+      width: data?.length ? "200px" : "150px",
     },
     {
       title: <p style={{ color: "#fff" }}>Về sớm (phút)</p>,
       render: (record: any) => <p>{record?.early || 0}</p>,
       align: "center",
-      width: "200px",
+      width: data?.length ? "200px" : "150px",
     },
     {
       title: <p style={{ color: "#fff" }}>Công</p>,
       render: (record: any) => <p>{record?.num_to_calculate} công</p>,
       align: "center",
+      width: data?.length ? "200px" : "150px",
     },
     {
       title: <p style={{ color: "#fff" }}>Tiền</p>,
       render: (record: any) => <p>{record?.num_to_money || 0} VNĐ</p>,
       align: "center",
+      width: data?.length ? "200px" : "150px",
     },
     {
       title: <p style={{ color: "#fff" }}>Tiền theo giờ</p>,
       render: (record: any) => <p>{record?.money_per_hour || 0} VNĐ</p>,
       align: "center",
-      width: "200px",
+      width: data?.length ? "200px" : "150px",
     },
     {
       title: <p style={{ color: "#fff" }}>Phụ cấp ca</p>,
       render: (record: any) => <p>{record?.money_allowances || 0} VNĐ</p>,
       align: "center",
-      width: "200px",
+      width: data?.length ? "200px" : "150px",
     },
     {
       title: <p style={{ color: "#fff" }}>Cộng công</p>,
       render: (record: any) => <p>{record?.cong_xn_them || 0} công</p>,
       align: "center",
-      width: "200px",
+      width: data?.length ? "200px" : "150px",
     },
     {
       title: <p style={{ color: "#fff" }}>Cộng tiền</p>,
@@ -146,7 +151,7 @@ export function xuatCong(
         <p>{record?.tien_xn_them || record?.tientheogio_xn_them || 0} VNĐ</p>
       ),
       align: "center",
-      width: "200px",
+      width: data?.length ? "200px" : "150px",
     },
 
 
@@ -165,7 +170,7 @@ export function xuatCong(
         </div>
       ),
       align: "center",
-      width: "200px",
+      width: data?.length ? "200px" : "250px",
     },
     {
       title: "Hành động",
@@ -190,17 +195,24 @@ export function xuatCong(
       },
     },
   ];
+  const check = (value) => {
+
+    const data_new = listData.filter(e => e != value)
+    setListData(data_new);
+
+  }
 
   return (
     <>
       <div>
         <Table
           loading={loading}
+
           className={`table_xuat_cong`}
           columns={columns}
           dataSource={listData}
           sticky={true}
-          scroll={{ x: data.length === 0 ? 7000 : "max-content" }}
+          scroll={{ x: data.length === 0 ? 0 : "max-content" }}
           // scroll={{ x: 5000 }}
           pagination={{
             position: ["bottomCenter"],
@@ -228,6 +240,7 @@ export function xuatCong(
           openXC={openXC}
           handleCloseXC={handleCloseXC}
           data={valueSelect}
+          onClick={check}
         ></XoaCong>
       )}
 
