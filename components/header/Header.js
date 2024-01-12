@@ -147,17 +147,23 @@ export default function Header() {
                 <ul>
                   <li>
                     <Link
-                      href={getLinkHome}
+                      href={'https://hungha365.com/tin-tuc/gioi-thieu-chung-ve-hungha365-24'}
                       className={`cr_weight_bold share_fsize_tow share_clr_tow  ${router.pathname === '/' ? 'active' : ''
-                        }`}>
+                        }`}
+                      style={{ fontSize: "18px" }}
+                      target="_blank"
+                    >
                       Giới thiệu
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href={'/san-pham.html'}
+                      href={'https://hungha365.com/tin-tuc/thong-tin-can-viet-ve-hungha365-18'}
                       className={`cr_weight_bold share_fsize_tow share_clr_tow ${router.pathname === '/san-pham.html' ? 'active' : ''
-                        }`}>
+                        }`}
+                      style={{ fontSize: "18px" }}
+                      target="_blank"
+                    >
                       Hướng dẫn
                     </Link>
                   </li>
@@ -172,8 +178,11 @@ export default function Header() {
                   </li> */}
                   <li>
                     <Link
-                      href='/tin-tuc/trang-chu'
-                      className='cr_weight_bold share_fsize_tow share_clr_tow'>
+                      href='https://hungha365.com/tin-tuc'
+                      className='cr_weight_bold share_fsize_tow share_clr_tow'
+                      style={{ fontSize: "18px" }}
+                      target='_blank'
+                    >
                       Tin tức
                     </Link>
                   </li>
@@ -255,20 +264,24 @@ export default function Header() {
                         </p>
                       </div>
                     </div> */}
-                    <div className={styles.hd_log}>
+                    <div className={styles.hd_log} >
                       <Button
                         className={'btnU'}
                         style={{
                           backgroundColor: '#FFAF52',
                           marginRight: '10px',
+                          height: "36px"
                         }}
                         onClick={() => setOpenModalLogin(true)}>
-                        <p style={{ color: '#fff' }}>Đăng nhập</p>
+                        <p style={{ color: '#fff', fontSize: "18px" }}>Đăng nhập</p>
                       </Button>
                       <Button
                         className={'btnU'}
-                        onClick={() => setOpenModalRegister(true)}>
-                        <p style={{ color: '#4C5BD4' }}>Đăng ký</p>
+                        onClick={() => setOpenModalRegister(true)}
+                        style={{ height: "36px" }}
+                      >
+
+                        <p style={{ color: '#4C5BD4', fontSize: "18px" }}>Đăng ký</p>
                       </Button>
                     </div>
                   </>
@@ -277,7 +290,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-      </div>
+      </div >
       <div
         className={styles.bg_logout}
         style={{
@@ -412,7 +425,7 @@ export default function Header() {
                         <span className={styles.item_ic}>
                           <img src='../img/tin-tuc.png' alt='' />
                         </span>
-                        <p style={{ color: '#fff' }}>Tin tức</p>
+                        <p style={{ color: '#fff', fontSize: "18px" }}>Tin tức</p>
                       </li>
                     </a>
                     {!renderContent ? (
@@ -475,23 +488,29 @@ export default function Header() {
           </div>
         </div>
       </div>
-      {openModalConfirm && (
-        <ModalConfirm
-          setOpenModalConfirm={setOpenModalConfirm}
-          setOpenModalRegister={setOpenModalRegister}
-          setOpenModalLogin={setOpenModalLogin}
-        />
-      )}
-      {openModalRegister && (
-        <ModalRegsiter setOpenModalRegister={setOpenModalRegister} />
-      )}
-      {openModalLogin && (
-        <ModalLogin
-          setOpenModalLogin={setOpenModalLogin}
-          setKey={setKey}
-          setOpenModal={setOpenModal}
-        />
-      )}
+      {
+        openModalConfirm && (
+          <ModalConfirm
+            setOpenModalConfirm={setOpenModalConfirm}
+            setOpenModalRegister={setOpenModalRegister}
+            setOpenModalLogin={setOpenModalLogin}
+          />
+        )
+      }
+      {
+        openModalRegister && (
+          <ModalRegsiter setOpenModalRegister={setOpenModalRegister} />
+        )
+      }
+      {
+        openModalLogin && (
+          <ModalLogin
+            setOpenModalLogin={setOpenModalLogin}
+            setKey={setKey}
+            setOpenModal={setOpenModal}
+          />
+        )
+      }
       <ModalSignInHome open={openModal} setOpen={setOpenModal} type={key} />
     </>
   )

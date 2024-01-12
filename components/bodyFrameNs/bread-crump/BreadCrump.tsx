@@ -35,7 +35,7 @@ export const MyBreadCrumb = ({ color }: { color: string }) => {
             // display: "flex",
             color: `${color}`,
           }}
-          // separator={<p style={{ color: `${color}` }}>/</p>}
+        // separator={<p style={{ color: `${color}` }}>/</p>}
         >
           {splitted?.map(
             (item, index) =>
@@ -74,7 +74,7 @@ export const BackButton = ({
       />
       <p
         className={styles.backTxt}
-        style={{ color: `${color}`, fontSize: '16px' }}>
+        style={{ color: `${color}`, fontSize: '18px' }}>
         Quay lại
       </p>
     </div>

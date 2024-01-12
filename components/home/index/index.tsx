@@ -25,11 +25,11 @@ export default function IndexSection({
   return (
     <div className={`${styles.indexWrapper} ${className}`}>
       <div className={styles.ribbon}>
-        <span className={styles.text} style={{ color: '#fff' }}>
+        <span className={styles.text} style={{ color: '#fff', fontSize: "18px" }}>
           MỤC LỤC
         </span>
       </div>
-      <div>
+      <div className='fix-font-size-cc'>
         {INDEX_DATA.map((item, index) => (
           <div key={index}>
             <div style={{ marginTop: '10px' }}>
@@ -53,8 +53,7 @@ export default function IndexSection({
                             <li
                               onClick={() =>
                                 scrollTo(
-                                  `${index + 1}_${subIndex + 1}_${
-                                    sub2Index + 1
+                                  `${index + 1}_${subIndex + 1}_${sub2Index + 1
                                   }`
                                 )
                               }>

@@ -30,7 +30,7 @@ export default function BlogIndexPage() {
                         size="large"
                         onClick={() => setShowmore(!showMore)}
                     >
-                        <p className={styles.text}>Xem thêm</p>
+                        <p className={styles.text} style={{ fontSize: "18px" }}>Xem thêm</p>
                     </Button>
                 </div>
             </Col>

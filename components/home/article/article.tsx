@@ -418,7 +418,7 @@ export default function Article({
                 },
                 {
                     p: (
-                        <span>
+                        <span style={{ fontSize: "18px" }}>
                             Nếu doanh nghiệp của bạn vẫn đang loay hoay tìm kiếm
                             công nghệ thích hợp để ứng dụng vào hoạt động chấm
                             công của công ty thì Chấm công bằng AI365 tại
@@ -449,10 +449,16 @@ export default function Article({
             style={{
                 height: `${showMore ? "max-content" : "1600px"}`,
                 overflow: "hidden",
+
             }}
         >
             <TilteBlog title={title} />
-            <ParagraphBlog paragraph={paragraph} />
+
+            <div className="fix-font-size-cc">
+                <ParagraphBlog paragraph={paragraph} />
+
+            </div>
+
         </div>
     );
 }

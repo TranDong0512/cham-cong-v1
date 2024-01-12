@@ -412,25 +412,25 @@ export default function HomeQLNS() {
         {checkLogin() && Number(selectedBtn) === 3
           ? null
           : // step(
-            //     1,
-            //     'Cài đặt đề xuất',
-            //     false,
-            //     `/cai-dat-de-xuat`,
-            //     null,
-            //     null,
-            //     false
-            //   )
-            LIST_ACTIONS[selectedBtn]?.steps.map((stepData, index1) => {
-              return step(
-                index1 + 1,
-                stepData.title,
-                stepData?.required,
-                `${stepData.url}`,
-                null,
-                null,
-                stepData?.isDirect
-              );
-            })}
+          //     1,
+          //     'Cài đặt đề xuất',
+          //     false,
+          //     `/cai-dat-de-xuat`,
+          //     null,
+          //     null,
+          //     false
+          //   )
+          LIST_ACTIONS[selectedBtn]?.steps.map((stepData, index1) => {
+            return step(
+              index1 + 1,
+              stepData.title,
+              stepData?.required,
+              `${stepData.url}`,
+              null,
+              null,
+              stepData?.isDirect
+            );
+          })}
         {Number(selectedBtn) === Number(3) && !checkLogin() && (
           <p
             onClick={() => setModalSelect(true)}
@@ -509,7 +509,7 @@ export default function HomeQLNS() {
                       "https://hungha365.com/dang-ky-cong-ty.html";
                   }}
                 >
-                  <p className={styles.btnTxt}>
+                  <p className={styles.btnTxt} style={{ fontSize: "18px" }}>
                     đăng ký trải nghiệm miễn phí 3 tháng
                   </p>
                 </div>

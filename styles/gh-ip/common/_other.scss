@@ -1,9 +1,11 @@
 .scroll-behavior {
     scroll-behavior: auto;
 }
+
 .overflow-x-auto {
     overflow-x: auto;
 }
+
 .overflow-y-auto {
     overflow-y: auto;
 }
@@ -11,10 +13,16 @@
 .overflow-auto {
     overflow: auto !important;
 }
+
 .overflow-hidden {
     overflow: hidden;
 }
+
 .scroll-y {
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+.fix-font-size-cc span {
+    font-size: 18px;
 }

@@ -22,7 +22,7 @@ import Cookies from "js-cookie";
 import ModalRegsiter from "../modal/ModalRegsiter";
 import ModalLogin from "../modal/ModalLogin";
 import { ModalSignInHome } from "../modal/ModalSigninCC";
-export interface BodyFrame {}
+export interface BodyFrame { }
 
 export const PAGE_DOMAIN = "/phan-mem-cham-cong/";
 
@@ -303,9 +303,8 @@ export default function Bodyframe({ children }: any) {
   return (
     <div
       style={{
-        backgroundColor: `${
-          router.pathname === "/pham-mem-cham-cong" ? "#F6F6F6" : ""
-        }`,
+        backgroundColor: `${router.pathname === "/pham-mem-cham-cong" ? "#F6F6F6" : ""
+          }`,
       }}
     >
       <Header />
@@ -315,9 +314,9 @@ export default function Bodyframe({ children }: any) {
         style={{
           paddingTop:
             router.pathname === UPDATE_FACE_URL ||
-            router.pathname === CC_TK_CTY_URL ||
-            router.pathname === CC_TK_NV_URL ||
-            router.pathname === CTY_CCCTY
+              router.pathname === CC_TK_CTY_URL ||
+              router.pathname === CC_TK_NV_URL ||
+              router.pathname === CTY_CCCTY
               ? "0px"
               : "50px",
         }}
@@ -332,14 +331,13 @@ export default function Bodyframe({ children }: any) {
           display: "flex",
           alignItems: "center",
         }}
-        className={`bannerQLC ${
-          router.pathname?.includes("/cap-nhat-du-lieu-khuon-mat") ||
+        className={`bannerQLC ${router.pathname?.includes("/cap-nhat-du-lieu-khuon-mat") ||
           router.pathname.includes("/cham-cong-bang-tai-khoan-cong-ty") ||
           router.pathname.includes("/cham-cong-cong-ty") ||
           !router.pathname.includes(CTY_CCCTY)
-            ? styles.breadcrumbUpdateFace
-            : styles.breadcrumb
-        }`}
+          ? styles.breadcrumbUpdateFace
+          : styles.breadcrumb
+          }`}
       >
         {router.pathname !== CAI_DAT_VI_TRI_URL &&
           router.pathname !== NV_CCCTY_URL &&
@@ -365,34 +363,33 @@ export default function Bodyframe({ children }: any) {
         {renderExportExcelBtn()}
       </div>
       <div
-        className={`bannerQLC ${
-          router.pathname.includes("/cap-nhat-du-lieu-khuon-mat") ||
+        className={`bannerQLC ${router.pathname.includes("/cap-nhat-du-lieu-khuon-mat") ||
           router.pathname.includes("/cham-cong-bang-tai-khoan-cong-ty") ||
           router.pathname.includes("/cham-cong-cong-ty")
-            ? "hiddenScrollBar"
-            : ""
-        }`}
+          ? "hiddenScrollBar"
+          : ""
+          }`}
       >
         <div
           style={{
             marginTop:
               router.pathname.includes("/cap-nhat-du-lieu-khuon-mat") ||
-              router.pathname.includes("/cham-cong-bang-tai-khoan-cong-ty") ||
-              router.pathname.includes("/cham-cong-cong-ty") ||
-              !router.pathname.includes(CTY_CCCTY)
+                router.pathname.includes("/cham-cong-bang-tai-khoan-cong-ty") ||
+                router.pathname.includes("/cham-cong-cong-ty") ||
+                !router.pathname.includes(CTY_CCCTY)
                 ? "0"
                 : "10px",
           }}
           className={
             router.pathname === DEXUAT_TO_CHUC_URL ||
-            router.pathname === UPDATE_FACE_URL ||
-            router.pathname === CC_TK_CTY_URL ||
-            router.pathname === CC_TK_NV_URL ||
-            router.pathname === CTY_CCCTY
+              router.pathname === UPDATE_FACE_URL ||
+              router.pathname === CC_TK_CTY_URL ||
+              router.pathname === CC_TK_NV_URL ||
+              router.pathname === CTY_CCCTY
               ? styles.mainNoPadding
               : router.pathname.includes(ADD_DX)
-              ? styles.noPaddingForm
-              : styles.main
+                ? styles.noPaddingForm
+                : styles.main
           }
         >
           {children}
@@ -404,9 +401,9 @@ export default function Bodyframe({ children }: any) {
           href="https://timviec365.vn/css/footer_new.css?v=2"
         />
         {router.pathname === UPDATE_FACE_URL ||
-        router.pathname === CC_TK_CTY_URL ||
-        router.pathname === CC_TK_NV_URL ||
-        router.pathname === CTY_CCCTY ? null : (
+          router.pathname === CC_TK_CTY_URL ||
+          router.pathname === CC_TK_NV_URL ||
+          router.pathname === CTY_CCCTY ? null : (
           <Footer></Footer>
         )}
       </div>
