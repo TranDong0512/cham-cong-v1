@@ -13,6 +13,7 @@ const Huongdan = () => {
             <button
               type='primary'
               className={styles.btn_cancer}
+              style={{ fontSize: "18px" }}
               onClick={() => router.push('/cai-dat-luong/hoa-hong/hoa-hong')}>
               Quay lại
             </button>
