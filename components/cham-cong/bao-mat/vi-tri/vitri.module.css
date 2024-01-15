@@ -1,0 +1,57 @@
+.custom_header {
+  background-color: #1890ff; /* Đổi màu nền thành màu xanh của Ant Design */
+  color: white; /* Màu chữ trắng để tương phản */
+  display: block;
+  text-align: center; /* Căn giữa nội dung */
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.search {
+  margin-bottom: 35px;
+}
+
+.searchLabel {
+  margin: 0 10px 0 0px;
+  font-weight: 700;
+}
+
+.select_location {
+  border: 1px solid rgb(172, 172, 172);
+  border-radius: 10px;
+  width: 40%;
+}
+
+.toa_do {
+  padding: 5px;
+}
+
+
+.actions span {
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+.limit_text{ 
+  display: inline-block;
+  max-width: 400px; /* Độ rộng tối đa của phần tử */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Hiển thị dấu ... khi vượt quá độ rộng */
+  white-space: nowrap; /* Ngăn chặn xuống dòng */
+}
+
+@media screen and (max-width: 1024px) {
+  .limit_text{ 
+    max-width: 300px; /* Độ rộng tối đa của phần tử */
+  }
+  
+}
+
+@media screen and (max-width: 414px) {
+  .select_location {
+    width: 60%
+  }
+}

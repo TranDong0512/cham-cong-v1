@@ -349,6 +349,90 @@ class CallApi {
             response = error.response;
         }
     }
+
+    // Danh sách vị trí
+    static async getListLocations(data, token) {
+        let response = "";
+        try {
+            const call = await axios.post(
+                process.env.NEXT_PUBLIC_BASE_URL_QLC + "/api/qlc/location/list",
+                data,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            response = call;
+        } catch (error) {
+            response = error.response.data.error;
+        }
+        return response;
+    }
+
+
+
+
+    // Thêm mới vị trí
+    static async addNewLocation(data, token) {
+        let response = "";
+        try {
+            const call = await axios.post(
+                process.env.NEXT_PUBLIC_API + "/api/qlc/location/add",
+                data,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            response = call;
+        } catch (error) {
+            response = error.response.data.error;
+        }
+        return response;
+    }
+
+    // Cập nhật vị trí
+    static async updateLocation(data, token) {
+        let response = "";
+        console.log(data);
+        try {
+            const call = await axios.post(
+                process.env.NEXT_PUBLIC_API + "/api/qlc/location/update",
+                data,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            response = call;
+        } catch (error) {
+            response = error.response.data.error;
+        }
+        return response;
+    }
+
+    // Xóa vị trí
+    static async deleteLocation(data, token) {
+        let response = "";
+        try {
+            const call = await axios.post(
+                process.env.NEXT_PUBLIC_API + "/api/qlc/location/delete",
+                data,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            response = call;
+        } catch (error) {
+            response = error.response.data.error;
+        }
+        return response;
+    }
 }
 
 export default CallApi;

@@ -1,0 +1,191 @@
+.content_modal {
+  font-size: 16px;
+   padding: 10px 20px 5px 20px;
+}
+
+.content_modal .title {
+  margin-bottom: 30px;
+}
+
+.content_modal .title h2 {
+  font-size: 24px;
+  text-align: center;
+}
+
+.content_modal .title .description {
+  font-size: 14px;
+  text-align: center;
+  color: rgb(87, 85, 85);
+}
+
+.form_input {
+  margin: 0 0 5px 10px;
+}
+
+.form_input .input_address .input{
+  width: 30%;
+  margin-right: 5px
+}
+
+.mapContainer {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+.container_content {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.container_content .list_address{
+    margin-left: 10px;
+    flex: 3;
+  }
+ .limit_text{ 
+    font-size: 14px;
+    text-align: center;
+    display: inline-block;
+    max-width: 200px; /* Độ rộng tối đa của phần tử */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Hiển thị dấu ... khi vượt quá độ rộng */
+    white-space: nowrap; /* Ngăn chặn xuống dòng */
+  }
+  .container_content .map {
+    flex: 7;
+  }
+
+  .actions span {
+    padding: 0 2px;
+    cursor: pointer;
+  }
+  
+  .info_location {
+    text-align: center;
+    flex: 3;
+    margin:0 0 10px 20px;
+  }
+
+  .info_location .info {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .info_location .info .add_radius{
+    display: flex;
+    text-align: center;
+  }
+
+  .info_location .info .add_radius input{
+    margin: 0 5px 0 5px;
+    border: 1px solid #ACACAC;
+    border-radius: 5px;
+    width: 70px;
+    height: 25px;
+    text-align: center;
+  }
+
+  .button_modified,
+  .button_add {
+    text-align: center;
+    color: #4c5bd4;
+    border: 1px solid #4c5bd4
+  }
+
+  .button_delete {
+    text-align: center;
+    color: #ff0000;
+    border: 1px solid #ff0000;
+    margin-left: 5px;
+  }
+.button_back {
+  text-align: center;
+  margin: 0 20px 20px 0;
+  font-weight: 500;
+}
+
+.confirmBody {
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .alertText {
+    margin-top: 15px;
+  }
+
+  .btnGroup {
+    margin-top: 20px;
+
+    .abortBtn,
+    .confirmBtn {
+      width: 110px;
+      padding: 0px 30px;
+    }
+
+    .confirmBtn {
+      background-color: #4c5bd4;
+      .text {
+        color: #fff !important;
+      }
+    }
+
+    .abortBtn {
+      margin-right: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  
+  .form_input .input_address .input{
+    width: 40%;
+  }
+
+  .info_location {
+    flex: 4;
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+
+  .form_input .input_address .input{
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  
+  .form_input .input_address .input{
+    width: 60%;
+    margin-right: 5px;
+    margin-bottom: 10px;
+  }
+  .container_content {
+    text-align: center;
+    display: block;
+}
+
+.info_location {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+}
+
+@media screen and (max-width: 414px) {
+
+  .container_content .info_location {
+  margin-top: 10px;
+  width: 90%;
+}
+
+
+.form_input .input_address .input{
+  width: 70%;
+  margin-right: 5px
+}
+}
