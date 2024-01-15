@@ -80,12 +80,38 @@ export default function SetupQR() {
     },
     {
       title: "Trạng thái",
-      dataIndex: "QRstatus",
+      dataIndex: "",
       align: "center",
 
       render: (data) => {
         return (
-          <div>{data === 1 ? <span>Đang hoạt động</span> : <>Đã tắt</>}</div>
+          <div>
+            {data?.QRstatus === 1 ? (
+              <div
+                style={{
+                  color: "#1677ff",
+                  cursor: "pointer",
+                  marginBottom: '10px'
+                }}
+                onClick={() => handleStop(data?.id)}
+              >
+                <Tag style={{ fontSize: '14px' }} color="warning">Tắt hoạt động</Tag>
+              </div>
+            ) : (
+              <div
+                style={{
+                  color: "#1677ff",
+                  cursor: "pointer",
+                  marginBottom: '10px'
+                }}
+                onClick={() => {
+                  handleStart(data?.id);
+                }}
+              >
+                <Tag style={{ fontSize: '14px' }} color="success">Hoạt động</Tag>
+              </div>
+            )}
+          </div>
         );
       },
     },
@@ -100,34 +126,6 @@ export default function SetupQR() {
               textAlign: "center",
             }}
           >
-            <div>
-              {data?.QRstatus === 1 ? (
-                <div
-                  style={{
-                    color: "#1677ff",
-                    cursor: "pointer",
-                    marginBottom: '10px'
-                  }}
-                  onClick={() => handleStop(data?.id)}
-                >
-                  <Tag  style={{fontSize: '14px'}} color="warning">Tắt hoạt động</Tag>
-                </div>
-              ) : (
-                <div
-                  style={{
-                    color: "#1677ff",
-                    cursor: "pointer",
-                    marginBottom: '10px'
-                  }}
-                  onClick={() => {
-                    handleStart(data?.id);
-                  }}
-                >
-                  <Tag style={{fontSize: '14px'}} color="success">Hoạt động</Tag>
-                </div>
-              )}
-            </div>
-
             <div
               style={{
                 color: "#1677ff",
@@ -140,7 +138,7 @@ export default function SetupQR() {
                 setInitName(data?.QRCodeName);
               }}
             >
-              <Tag style={{fontSize: '14px'}} color="processing">Chỉnh sửa</Tag>
+              <Tag style={{ fontSize: '14px' }} color="processing">Chỉnh sửa</Tag>
             </div>
             <div
               style={{
@@ -153,7 +151,7 @@ export default function SetupQR() {
                 handleDelete(data?.id);
               }}
             >
-              <Tag style={{fontSize: '14px'}} color="error">Xóa</Tag>
+              <Tag style={{ fontSize: '14px' }} color="error">Xóa</Tag>
             </div>
           </div>
         );
