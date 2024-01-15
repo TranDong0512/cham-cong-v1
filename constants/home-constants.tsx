@@ -318,6 +318,11 @@ export const LIST_ACTIONS_EMP = [
     title: "Tính lương",
     steps: [
       {
+        title: "Xuất công",
+        icon: "",
+        url: "quan-ly/xuat-cong",
+      },
+      {
         title: "Xem bảng công",
         icon: "",
         url: "quan-ly/nhan-vien",

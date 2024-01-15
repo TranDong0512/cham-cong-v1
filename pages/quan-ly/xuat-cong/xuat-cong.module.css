@@ -1,0 +1,87 @@
+.text {
+  font-size: 16px;
+  color: #474747;
+}
+
+.button {
+  background-color: #4c5bd4;
+  height: auto;
+  width: 100%;
+
+  .txt {
+    color: #fff !important;
+  }
+}
+
+.button_excel {
+  background-color: #34b171;
+  height: auto;
+  width: 100%;
+
+  .excel {
+    color: #fff !important;
+  }
+}
+
+.After {
+  display: none;
+}
+
+.input {
+  margin-bottom: 0;
+}
+
+.headText {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 1920px) {
+  .row2 {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .Pre {
+    display: none;
+  }
+
+  .After {
+    display: block;
+  }
+
+  .button {
+    margin-top: 10px;
+  }
+
+  .button_excel {
+    margin-top: 10px;
+  }
+
+  .row2 {
+    margin-top: 0px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .button {
+    margin-top: 0;
+  }
+
+  .button_excel {
+    margin-top: 0;
+  }
+
+  .After {
+    margin-bottom: 10px;
+  }
+
+  .main {
+    padding: 4px 0;
+  }
+
+  .headText {
+    font-size: 18px;
+  }
+}
