@@ -11,20 +11,26 @@ import CauHinh from "@/components/cham-cong/bao-mat/cam-xuc";
 import ChiTiet from "@/components/cham-cong/bao-mat/chi-tiet/chitiet";
 import SetupQR from "@/components/setupQr";
 import ChamCongQR from "@/components/cham-cong-bang-QR/index";
+import Notification from "@/components/cham-cong/bao-mat/notification";
+import Vitri from '@/components/cham-cong/bao-mat/vi-tri/vitri'
+
 import LoaiHinhChamCong from "@/components/cham-cong/bao-mat/loai-hinh-cham-cong";
 
-import Notification from "@/components/cham-cong/bao-mat/notification";
 export default function InstallSecurityPage({ listWifi, listIps, listEmps }) {
   // const { setHasBanner } = useContext(HasBannerContext)
   // setHasBanner(true)
-  const [keyChildren, setKeyChildren] = useState("1");
-
+  const router = useRouter();
+  const [wifiList, setWifiList] = useState(listWifi);
+  const [ipList, setIpList] = useState(listIps);
+  const [keyChildren, setKeyChildren] = useState('1')
   const tabItems = [
+
     {
       key: "8",
       label: "Loại hình chấm công",
       children: <LoaiHinhChamCong />,
     },
+
     {
       key: "1",
       label: "Wifi",
@@ -38,7 +44,7 @@ export default function InstallSecurityPage({ listWifi, listIps, listEmps }) {
     {
       key: "3",
       label: "Vị trí",
-      children: <div></div>,
+      children: <Vitri />,
     },
     // {
     //   key: '3',
@@ -77,8 +83,8 @@ export default function InstallSecurityPage({ listWifi, listIps, listEmps }) {
   );
 
   const onChange = (key: string) => {
-    setKeyChildren(key);
-    return true;
+    setKeyChildren(key)
+    return true
   };
 
   return (
