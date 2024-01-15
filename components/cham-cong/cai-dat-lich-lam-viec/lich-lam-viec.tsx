@@ -153,7 +153,7 @@ const ModalLichLamViec = (
         </div>
       </Card>
     </Col>
-// <<<<<<< hieu_fix
+    // <<<<<<< hieu_fix
   )
 }
 export default function CaiDatLichLamViec(listCalendar: any, setDataTotal: Function) {
@@ -168,22 +168,7 @@ export default function CaiDatLichLamViec(listCalendar: any, setDataTotal: Funct
   const [listEmp, setListEmp]: any = useState([])
   const [listEmpInCy, setListEmpInCy]: any = useState([])
   const [selectedCy, setSelectedCy] = useState<any>()
-// =======
-//   );
-// };
-// export default function CaiDatLichLamViec(listCalendar: any) {
-//   const [modalThemNV, setModalThemNV] = useState(false);
-//   const [modalUpload, setModalUpload] = useState(false);
-//   const [modalDanhSach, setModalDanhSach] = useState(false);
-//   const [modalSaoChep, setModalSaoChep] = useState(false);
-//   const [modalXoaLich, setModalXoaLich] = useState(false);
-//   const [modelChinhSua, setModalChinhSua] = useState(false);
-//   const [openTabBar, setOpenTabBar] = useState("");
-//   const [cySelected, setCySelected]: any = useState({});
-//   const [listEmp, setListEmp]: any = useState([]);
-//   const [listEmpInCy, setListEmpInCy]: any = useState([]);
-//   const [selectedCy, setSelectedCy] = useState<any>();
-// >>>>>>> master
+
   useEffect(() => {
     let com_id = null;
     com_id = getCompIdCS();
@@ -237,12 +222,12 @@ export default function CaiDatLichLamViec(listCalendar: any, setDataTotal: Funct
     key === "1"
       ? (setModalThemNV(true), setOpenTabBar("noopen"), setCySelected(newVal))
       : key === "2"
-      ? (setModalDanhSach(true), setOpenTabBar("noopen"), setCySelected(newVal))
-      : key === "3"
-      ? (setModalChinhSua(true), setOpenTabBar("noopen"), setCySelected(newVal))
-      : key === "4"
-      ? (setModalSaoChep(true), setOpenTabBar("noopen"), setCySelected(newVal))
-      : (setModalXoaLich(true), setOpenTabBar("noopen"), setCySelected(newVal));
+        ? (setModalDanhSach(true), setOpenTabBar("noopen"), setCySelected(newVal))
+        : key === "3"
+          ? (setModalChinhSua(true), setOpenTabBar("noopen"), setCySelected(newVal))
+          : key === "4"
+            ? (setModalSaoChep(true), setOpenTabBar("noopen"), setCySelected(newVal))
+            : (setModalXoaLich(true), setOpenTabBar("noopen"), setCySelected(newVal));
   };
   const Content = ({ value }: { value: any }) => {
     return (
@@ -341,17 +326,17 @@ export default function CaiDatLichLamViec(listCalendar: any, setDataTotal: Funct
       {XoaLich(
         modalXoaLich,
         setModalXoaLich,
-//<<<<<<< hieu_fix
+        //<<<<<<< hieu_fix
         'Bạn chắc chắn muốn xóa lịch làm việc này?',
         cySelected,
         null,
         null,
         null,
         setDataTotal
-// <!-- =======
-//         "Bạn chắc chắn muốn xóa lịch làm việc này?",
-//         cySelected
-// >>>>>>> master -->
+        // <!-- =======
+        //         "Bạn chắc chắn muốn xóa lịch làm việc này?",
+        //         cySelected
+        // >>>>>>> master -->
       )}
       {ModalChinhSua(
         modelChinhSua,

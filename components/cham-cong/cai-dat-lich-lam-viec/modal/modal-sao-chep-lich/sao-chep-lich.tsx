@@ -41,6 +41,7 @@ export function SaoChepLich(
   )
   const [applyMonth, setApplyMonth]: any = useState('')
   const [applyYear, setApplyYear]: any = useState('')
+  const [cycleName, setCycleName]: any = useState('')
   const router = useRouter()
 
   useEffect(() => {
@@ -52,33 +53,40 @@ export function SaoChepLich(
       setListCyInMonth([])
     }
   }, [data])
-  console.log(applyMonth)
   const handleSubmit = async () => {
     if (listKeyCheck.length > 0) {
       if (applyMonth !== '') {
-        console.log(listKeyCheck)
-        POST('api/qlc/cycle/copyList', {
-          listIds: listKeyCheck.toString(),
-          month: applyMonth,
-        }).then((res) => {
-          if (res?.result === true) {
-            setDataTotal()
-          }
-        })
-        window.alert("Thành công")
-        //  Promise.all
-        setOpen(false)
-        // router.reload()
+        if (cycleName) {
+          POST('api/qlc/cycle/copy_cycle', {
+            cy_id_old: listKeyCheck[0],
+            apply_month_new: applyMonth + '-01',
+            cy_name_new: cycleName
+          }).then((res) => {
+            if (res?.result === true) {
+              setDataTotal()
+            }
+          })
+          window.alert("Thành công")
+          //  Promise.all
+          setOpen(false)
+          router.reload()
+        }
+        else {
+          window.alert('Thiếu tên lịch làm việc mới')
+        }
       } else {
-        window.alert('Thieu ngay ap dung')
+        window.alert('Thiếu thông tin tháng áp dụng')
       }
+    }
+    else {
+      window.alert('Thiếu thông tin lịch làm việc sao chép')
     }
   }
 
   const onChange = (key: any) => {
     listKeyCheck.includes(key) === true
       ? setListKeyCheck(listKeyCheck.filter((data: any) => data !== key))
-      : setListKeyCheck([...listKeyCheck, key])
+      : setListKeyCheck([key])
   }
   const onChangeAll = () => {
     listKeyCheck.length === listCyInMonth.length
@@ -106,13 +114,16 @@ export function SaoChepLich(
     </>
   )
 
+
+
   return (
     <Modal
       open={open}
-      onCancel={() =>{
+      onCancel={() => {
         setApplyMonth()
         setListKeyCheck([])
-        setOpen(false)}}
+        setOpen(false)
+      }}
       width={600}
       closable={false}
       cancelButtonProps={{ style: { display: 'none' } }}
@@ -128,7 +139,8 @@ export function SaoChepLich(
           onClick={() => {
             setApplyMonth()
             setListKeyCheck([])
-            setOpen(false)}
+            setOpen(false)
+          }
           }
         />
       </div>
@@ -143,6 +155,17 @@ export function SaoChepLich(
             style={{ width: '100%' }}
             placeholder='Chọn tháng'></Input>
         </div>
+        <div className={styles.bodyItem}>
+          Tên lịch làm việc mới
+          <span style={{ color: 'red' }}>*</span>
+          <Input
+            onChange={(e) => setCycleName(e.target.value)}
+            value={cycleName}
+            type='text'
+            style={{ width: '100%' }}
+            placeholder='Tên lịch làm việc'>
+          </Input>
+        </div>
         <div className={`${styles.bodyItem} ${styles.scrollbar}`}>
           <div className={styles.sticky}>
             <div>
@@ -150,14 +173,6 @@ export function SaoChepLich(
                 Lịch làm việc tháng {dateFilter?.substring(5)}/
                 {dateFilter?.substring(0, 4)}
               </p>
-            </div>
-            <div style={{ display: 'flex' }}>
-              <p style={{ color: '#fff' }}>Chọn tất cả </p>
-              <Checkbox
-                key={'All'}
-                checked={checkedAll()}
-                onChange={onChangeAll}
-                style={{ marginLeft: '10px' }}></Checkbox>
             </div>
           </div>
           <div className={styles.checkbox_list}>{List(listCyInMonth)}</div>

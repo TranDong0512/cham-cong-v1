@@ -64,6 +64,7 @@ export function xuatCong(
         />
       ),
       width: data?.length ? "200px" : "150px",
+
     },
     {
       title: <p style={{ color: "#fff" }}>Họ tên (ID)</p>,
@@ -213,7 +214,8 @@ export function xuatCong(
           dataSource={listData}
           sticky={true}
           scroll={{ x: data.length === 0 ? 0 : "max-content" }}
-          // scroll={{ x: 5000 }}
+          // scroll={{ x: 2500 }}
+          // scroll={{ x: "max-content" }}
           pagination={{
             position: ["bottomCenter"],
             defaultPageSize: 10,
