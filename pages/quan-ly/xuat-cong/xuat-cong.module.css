@@ -44,8 +44,9 @@
 
 @media screen and (max-width: 1200px) {
   .Pre {
-    display: none;
+    margin-bottom: 10px;
   }
+
 
   .After {
     display: block;

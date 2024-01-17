@@ -31,6 +31,8 @@ export default function LichSuChamCong() {
   const [listPb, setListPb] = useState([]);
   const [reload, setReload] = useState(false);
   const [listDataExcel, setListDataExcel] = useState([]);
+  const [note, setNote] = useState("")
+  const [note1, setNote1] = useState("abc")
   const [nameCty, setNameCty] = useState<any>();
   const URL = process.env.NEXT_PUBLIC_BASE_URL + "/timviec365";
   const [param, setParam] = useState<any>({
@@ -94,7 +96,7 @@ export default function LichSuChamCong() {
       };
 
       getList();
-    } catch (error) {}
+    } catch (error) { }
   }, []);
 
   useEffect(() => {
@@ -107,12 +109,16 @@ export default function LichSuChamCong() {
         if (res?.result) {
           setList(res?.data);
           setCount(res?.total);
+          setListDataExcel(res?.data);
+          setLoadExcel(false);
           setLoading(false);
+
+
         }
       };
 
       getList();
-    } catch (error) {}
+    } catch (error) { }
   }, [param, reload]);
 
   const onFinish = (value) => {
@@ -140,7 +146,7 @@ export default function LichSuChamCong() {
       };
 
       getListca();
-    } catch (error) {}
+    } catch (error) { }
   }, []);
 
   const [selectedCa, setSelectedCa] = useState();
@@ -195,8 +201,93 @@ export default function LichSuChamCong() {
       align: "center",
     },
     {
+      title: "Ghi chú",
+      render: (record, index) => (
+        <div style={{ display: "flex", justifyContent: "flex-start" }}>
+          <p>{record?.note}</p>
+          <Popover
+            key={index}
+            trigger={["click"]}
+            // visible={record?.note}
+            // onVisibleChange={(e) => {
+            //   console.log("check voafffffffffffffffffffffffffff")
+            // }}
+            content={
+              <div
+                style={{
+                  padding: "20px",
+                  width: "300px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                }}
+              >
+                <p
+                  style={{
+                    color: "#000",
+                    fontWeight: "bold",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Ghi chú
+                </p>
+                <Input
+
+                  placeholder="Nhập nội dung"
+                  defaultValue={record?.note}
+                  onChange={(e) => setNote(e?.target?.value)}
+
+
+                />
+                <Button
+                  size="large"
+                  style={{ marginTop: "10px" }}
+                  type="primary"
+                  onClick={async () => {
+                    // handle update
+                    const res = await POST("api/qlc/timekeeping/updateNote", {
+                      sheet_id: record?.sheet_id,
+                      note: note,
+                    });
+                    console.log("res", res)
+                    if (res?.result) {
+                      Toastify({
+                        text: `${res?.message || "Cập nhật thành công"}`,
+                        className: "info",
+                        style: {
+                          background:
+                            "linear-gradient(to right, #00b09b, #96c93d)",
+                          padding: " 0 20px",
+                        },
+                      }).showToast();
+
+                      setReload(!reload);
+                    } else {
+                      Toastify({
+                        text: `${res?.message || "Cập nhật thất bại"}`,
+                        className: "info",
+                        style: {
+                          background: "red",
+                          padding: " 0 20px",
+                        },
+                      }).showToast();
+                    }
+                  }}
+                >
+                  <p>Cập nhật</p>
+                </Button>
+              </div>
+            }
+          >
+            <EditOutlined />
+          </Popover>
+        </div>
+      ),
+    },
+    {
       title: "Chỉnh sửa",
       render: (record, index) => (
+
         <Popover
           key={index}
           trigger={["click"]}
@@ -358,17 +449,19 @@ export default function LichSuChamCong() {
                 { header: "Thời gian điểm danh", key: "col3", width: 30 },
                 { header: "Địa điểm", key: "col4", width: 15 },
                 { header: "Thiết bị", key: "col7", width: 15 },
+                { header: "Ghi chú", key: "col7", width: 30 },
               ]}
               data={
                 listDataExcel
                   ? listDataExcel?.map((item) => [
-                      item?.ep_id,
-                      item?.userName,
-                      item?.shift_name,
-                      moment(item?.at_time).format("DD-MM-YYYY HH:mm:ss"),
-                      item?.ts_location_name,
-                      item?.device,
-                    ])
+                    item?.ep_id,
+                    item?.userName,
+                    item?.shift_name,
+                    moment(item?.at_time).format("DD-MM-YYYY HH:mm:ss"),
+                    item?.ts_location_name,
+                    item?.device,
+                    item?.note,
+                  ])
                   : []
               }
               name={nameCty?.data.userName}

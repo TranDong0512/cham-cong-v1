@@ -38,51 +38,37 @@ export default function QuanLyNhanVien({ title }) {
 
         <Form form={form} >
           <div style={{ margin: "20px 0px 20px 0px" }}>
-            <Col xl={9} sm={24} xs={24}>
-              <Row gutter={20}>
-                <Col xl={12} lg={12} className={styles.Pre}>
-                  <Row gutter={20}>
-                    <Col
-                      span={5}
-                      className={styles.text}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
 
-                    >
-                      <p> Từ</p>
-                    </Col>
-                    <Col span={19}>
-                      <Form.Item name="from" className={styles.input}>
-                        <DatePicker size="large" format={"DD-MM-YYYY"} placeholder="Chọn ngày" />
-                      </Form.Item>
-                    </Col>
-                  </Row>
-                </Col>
-                <Col xl={12} lg={12} className={styles.Pre}>
-                  <Row gutter={20}>
-                    <Col
-                      span={5}
-                      className={styles.text}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <p>Đến</p>
-                    </Col>
-                    <Col span={19}>
-                      <Form.Item name="to" className={styles.input}>
-                        <DatePicker size="large" format={"DD-MM-YYYY"} placeholder="Chọn ngày" />
-                      </Form.Item>
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-            </Col>
+            <Row>
+              <Col xl={15} sm={12} xs={24}></Col>
+              <Col xl={9} sm={12} xs={24}>
+                <Row gutter={20}>
+                  <Col xl={12} sm={12} lg={12} className={styles.Pre}>
+                    <Row gutter={20}>
+                      <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <p style={{ marginRight: '16.6px' }}>{"Từ" + " "}</p>
+                        <Form.Item name="from" className={styles.input} style={{ flex: 1 }}>
+                          <DatePicker size="large" format="DD-MM-YYYY" placeholder="Chọn ngày" />
+                        </Form.Item>
+                      </div>
+
+                    </Row>
+                  </Col>
+                  <Col xl={12} sm={12} lg={12} className={styles.Pre}>
+                    <Row gutter={20}>
+                      <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <p style={{ marginRight: '8px' }}>Đến</p>
+                        <Form.Item name="from" className={styles.input} style={{ flex: 1 }}>
+                          <DatePicker size="large" format="DD-MM-YYYY" placeholder="Chọn ngày" />
+                        </Form.Item>
+                      </div>
+                    </Row>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+
+
             {/* <Row
               gutter={[20, 10]}
               justify={{ ["sm"]: "end" }}
