@@ -109,11 +109,29 @@ export default function LichSuChamCong() {
         if (res?.result) {
           setList(res?.data);
           setCount(res?.total);
+          setLoading(false);
+        }
+      };
+
+      getList();
+    } catch (error) { }
+  }, [param, reload]);
+
+  // xuất excel luôn lấy tất
+
+  useEffect(() => {
+    try {
+      setNameCty(jwtDecode(Cookies.get("token_base365")));
+      const getList = async () => {
+        setLoading(true);
+        const res = await POST("api/qlc/timekeeping/getHistoryCheckin", {
+          ...param,
+          pageSize: 100000000
+        });
+
+        if (res?.result) {
           setListDataExcel(res?.data);
           setLoadExcel(false);
-          setLoading(false);
-
-
         }
       };
 
@@ -447,7 +465,7 @@ export default function LichSuChamCong() {
                 { header: "Tên nhân viên", key: "col1", width: 35 },
                 { header: "Ca làm việc", key: "col2", width: 35 },
                 { header: "Thời gian điểm danh", key: "col3", width: 30 },
-                { header: "Địa điểm", key: "col4", width: 15 },
+                { header: "Địa điểm", key: "col4", width: 50 },
                 { header: "Thiết bị", key: "col7", width: 15 },
                 { header: "Ghi chú", key: "col7", width: 30 },
               ]}

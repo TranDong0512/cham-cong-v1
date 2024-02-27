@@ -56,7 +56,7 @@ export const EditChiTietModal = ({
       ...selectedRow?.detail,
       start_time: dayjs(selectedRow?.detail?.start_time),
       end_time: dayjs(selectedRow?.detail?.end_time),
-      list_shifts:selectedRow?.detail.list_shifts?.length == 0 ? 'Tất cả lịch làm việc' :  selectedRow?.detail?.list_shifts?.map(
+      list_shifts: selectedRow?.detail.list_shifts?.length == 0 ? 'Tất cả ca làm việc' : selectedRow?.detail?.list_shifts?.map(
         (item) => `${item?.id}-${item?.type_shift}`
       ),
       list_emps:
@@ -67,31 +67,31 @@ export const EditChiTietModal = ({
         selectedRow?.detail?.list_pos?.length == 0
           ? 'Tất cả chức vụ'
           : selectedRow?.list_pos?.map((item, index) => ({
-              label: item?.positionName,
-              value: item?.id,
-            })),
+            label: item?.positionName,
+            value: item?.id,
+          })),
       list_wifi:
         selectedRow?.detail?.list_wifi.length != 0
           ? selectedRow?.detail?.list_wifi?.map((item, index) => (item))
           : selectedRow?.detail?.type_wifi == 2
-          ? 'Tất cả wifi đã được lưu'
-          : selectedRow?.detail?.type_wifi == 3
-          ? "Tất cả wifi"
-          : null,
+            ? 'Tất cả wifi đã được lưu'
+            : selectedRow?.detail?.type_wifi == 3
+              ? "Tất cả wifi"
+              : null,
 
       list_loc:
         selectedRow?.detail?.list_loc?.length != 0
           ? selectedRow?.list_loc?.map((item, index) => (item.cor_id))
           : selectedRow?.detail?.type_loc == 2
-          ? "Tất cả vị trí đã được lưu"
-          : selectedRow?.detail?.type_loc == 3
-          ? "Tất cả vị trí"
-          : null,
+            ? "Tất cả vị trí đã được lưu"
+            : selectedRow?.detail?.type_loc == 3
+              ? "Tất cả vị trí"
+              : null,
 
-        list_device: selectedRow?.detail?.list_device?.length != 0 ? 
-            selectedRow?.detail.list_device?.map((item) => item)
-            : 'Tất cả thiết bị',
-        
+      list_device: selectedRow?.detail?.list_device?.length != 0 ?
+        selectedRow?.detail.list_device?.map((item) => item)
+        : 'Tất cả thiết bị',
+
     });
   }, [selectedRow]);
 
@@ -179,10 +179,12 @@ export const EditChiTietModal = ({
     );
   };
   const onFinish = async (value) => {
+    console.log("value", value)
+    console.log("value?.list_shifts?.length", value?.list_shifts?.length)
     const data = {
       setting_id: selectedRow?.detail?.setting_id,
       ...value,
-      
+
       list_emps: value?.list_emps?.includes('all') ? [] : value?.list_emps,
 
       list_pos: value?.list_pos?.includes('all') ? [] : value?.list_pos,
@@ -193,13 +195,13 @@ export const EditChiTietModal = ({
       end_time: value?.end_time
         ? dayjs(value?.end_time)?.format("YYYY-MM-DD")
         : undefined,
-      list_shifts : value.list_shifts?.map(shift => {
+      list_shifts: !Array.isArray(value?.list_shifts?.length) ? [] : value?.list_shifts?.includes("all") ? [] : value?.list_shifts?.map(shift => {
         const [id, type_shift] = shift.split('-');
         return {
-            id: parseInt(id),
-            type_shift: parseInt(type_shift)
+          id: parseInt(id),
+          type_shift: parseInt(type_shift)
         };
-  })
+      })
     };
     console.log("data", data);
     const res = await POST("api/qlc/settingTimesheet/edit", data);
@@ -232,7 +234,7 @@ export const EditChiTietModal = ({
                 </p>
               }
               labelCol={{ span: 24 }}
-              // initialValue={selectedRow.detail.listDevices}
+            // initialValue={selectedRow.detail.listDevices}
             >
               <Input
                 style={{
@@ -312,11 +314,10 @@ export const EditChiTietModal = ({
             name={"list_shifts"}
             placeholder={"Tìm theo ca làm việc"}
             list={[
-              { label: "Tất cả các ca", value: "all" },
+              { label: "Tất cả ca làm việc", value: "all" },
               ...listShifts?.map((item) => ({
-                label: `${item?.shift_name} - ${
-                  item?.type === 1 ? "CA VAO" : "CA RA"
-                }`,
+                label: `${item?.shift_name} - ${item?.type === 1 ? "CA VAO" : "CA RA"
+                  }`,
                 value: `${item?.shift_id}-${item?.type}`,
               })),
             ]}
