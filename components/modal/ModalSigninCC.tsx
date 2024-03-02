@@ -86,6 +86,7 @@ export const ModalSignInHome = ({
 
     if (res?.result) {
       Cookies.set(COOKIE_KEY, res?.data?.access_token)
+      Cookies.set('refresh_token', res?.data?.refresh_token, { expires: 30 })
       Cookies.set('rf_token', res?.data?.refresh_token)
       Cookies.set('role', res?.data?.type)
 

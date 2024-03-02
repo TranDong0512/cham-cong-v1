@@ -12,7 +12,8 @@ import Cookies from "js-cookie";
 import { ModalSignInHome } from "@/components/modal/ModalSigninCC";
 import ModalLogin from "@/components/modal/ModalLogin";
 import BlogIndexPage from "@/components/bodyFrameNs/blog";
-
+import axios from "axios";
+import jwtDecode from 'jwt-decode'
 const ConfirmModal = ({
   open,
   setOpen,
@@ -56,23 +57,73 @@ export default function HomeQLNS() {
   const [key, setKey] = useState();
   const [showBlog, setShowBlog] = useState(false);
   // set to localStorage
+  const [success, setSuccess] = useState(false)
+
+  // const check_token = async () => {
+  //   try {
+  //     const token = Cookies.get("token_base365")
+  //     const refresh_token = Cookies.get("refresh_token");
+  //     if (!token) {
+  //       const resp = await axios.post(
+  //         `${process.env.NEXT_PUBLIC_API}/api/qlc/employee/getNewToken`,
+  //         { rf_token: refresh_token }
+  //       )
+  //       if (resp?.status === 200) {
+  //         const token_new = resp?.data?.data?.token
+  //         if (token_new) {
+  //           let data: any = jwtDecode(token_new)
+  //           if (data) {
+  //             console.log("data", data)
+  //             data = data?.data
+  //             Cookies.set('rf_token', data?.refreshToken)
+  //             Cookies.set('token_base365', token_new)
+  //             Cookies.set('role', data?.type)
+  //             Cookies.set('userID', data?.idQLC)
+  //             Cookies.set('userName', data?.userName)
+  //             Cookies.set('phone', data?.phoneTK)
+  //             Cookies.set('com_id', data?.com_id)
+  //           }
+  //         }
+  //       }
+  //     }
+  //     setSuccess(true)
+  //   } catch (error) {
+  //     console.log("errorerror", error)
+  //   }
+  // }
+  // useEffect(() => {
+  //   const call = async () => {
+  //     await check_token()
+  //   }
+  //   call()
+  // }, [])
   useEffect(() => {
-    const value = localStorage.getItem("selectedBtnIndex") || "0";
-    const role = Cookies.get("role") || "1";
-    const length =
-      role === "1" ? LIST_BUTTONS_COMP.length - 1 : LIST_BUTTONS_EMP.length - 1;
+    if (1) {
+      console.log("bắt đầu chạy")
+      console.log("Cookiess", Cookies.get("token_base365"))
+      const call = async () => {
 
-    if (value === "1") {
-      setShowBlog(true);
+        const value = localStorage.getItem("selectedBtnIndex") || "0";
+        const role = Cookies.get("role") || "1";
+        const length =
+          role === "1" ? LIST_BUTTONS_COMP.length - 1 : LIST_BUTTONS_EMP.length - 1;
+
+        if (value === "1") {
+          setShowBlog(true);
+        }
+
+        if (Number(value) > length) {
+          setSelectedBtn(0);
+        } else if (value === "3" && checkLogin()) {
+          setSelectedBtn(0);
+        } else {
+          setSelectedBtn(value);
+        }
+      }
+
+      call()
     }
 
-    if (Number(value) > length) {
-      setSelectedBtn(0);
-    } else if (value === "3" && checkLogin()) {
-      setSelectedBtn(0);
-    } else {
-      setSelectedBtn(value);
-    }
   }, []);
 
   const LIST_BUTTONS_COMP = [

@@ -52,6 +52,7 @@ export const EditChiTietModal = ({
   const [listLoc, setListLoc] = useState([]);
   const [listWifi, setListWifi] = useState([]);
   useEffect(() => {
+    console.log("selectedRow", selectedRow)
     form.setFieldsValue({
       ...selectedRow?.detail,
       start_time: dayjs(selectedRow?.detail?.start_time),
@@ -180,7 +181,7 @@ export const EditChiTietModal = ({
   };
   const onFinish = async (value) => {
     console.log("value", value)
-    console.log("value?.list_shifts?.length", value?.list_shifts?.length)
+    console.log("value?.list_shifts", value?.list_shifts)
     const data = {
       setting_id: selectedRow?.detail?.setting_id,
       ...value,
@@ -195,7 +196,7 @@ export const EditChiTietModal = ({
       end_time: value?.end_time
         ? dayjs(value?.end_time)?.format("YYYY-MM-DD")
         : undefined,
-      list_shifts: !Array.isArray(value?.list_shifts?.length) ? [] : value?.list_shifts?.includes("all") ? [] : value?.list_shifts?.map(shift => {
+      list_shifts: !Array.isArray(value?.list_shifts) ? [] : value?.list_shifts?.includes("all") ? [] : value?.list_shifts?.map(shift => {
         const [id, type_shift] = shift.split('-');
         return {
           id: parseInt(id),
@@ -251,10 +252,13 @@ export const EditChiTietModal = ({
             label={"Phòng ban"}
             name={"list_org"}
             placeholder={"Tìm theo phòng ban"}
-            list={listOrg?.map((item) => ({
-              label: item?.organizeDetailName,
-              value: item?.id,
-            }))}
+            list={[
+              { label: "Tất cả tổ chức", value: "all" },
+              ...listOrg?.map((item) => ({
+                label: item?.organizeDetailName,
+                value: item?.id,
+              }))
+            ]}
             onChange={(val) => {
               const selected = listOrg?.find((item) => item?.id === val);
               setParam({ ...param, orgId: selected?.listOrganizeDetailId });

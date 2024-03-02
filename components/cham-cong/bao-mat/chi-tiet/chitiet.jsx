@@ -167,9 +167,9 @@ const ChiTiet = ({ listIPs, listWifis, listEmps }) => {
         list_shifts: value?.list_shifts?.includes("all")
           ? []
           : value?.list_shifts?.map((item) => ({
-              id: Number(item?.split("-")?.[0]),
-              type_shift: Number(item?.split("-")?.[1]),
-            })),
+            id: Number(item?.split("-")?.[0]),
+            type_shift: Number(item?.split("-")?.[1]),
+          })),
         list_pos: value?.list_pos?.includes("all") ? [] : value?.list_pos,
         list_emps: value?.list_emps?.includes("all") ? [] : value?.list_emps,
         start_time: value?.start_time
@@ -183,14 +183,14 @@ const ChiTiet = ({ listIPs, listWifis, listEmps }) => {
           : value?.list_device,
         list_wifi:
           value.list_wifi?.includes("Save") ||
-          value.list_wifi?.includes("allSave")
+            value.list_wifi?.includes("allSave")
             ? null
             : value.list_wifi,
         type_wifi: value.list_wifi?.includes("Save")
           ? 3
           : value.list_wifi?.includes("allSave")
-          ? 2
-          : null,
+            ? 2
+            : null,
         list_loc:
           value.list_loc.includes("Save") || value.list_loc.includes("allSave")
             ? null
@@ -198,8 +198,8 @@ const ChiTiet = ({ listIPs, listWifis, listEmps }) => {
         type_loc: value.list_loc.includes("Save")
           ? 3
           : value.list_loc.includes("allSave")
-          ? 2
-          : null,
+            ? 2
+            : null,
       };
 
       const res = await POST("api/qlc/settingTimesheet/add", data);
@@ -257,10 +257,13 @@ const ChiTiet = ({ listIPs, listWifis, listEmps }) => {
               label={"Phòng ban"}
               name={"list_org"}
               placeholder={"Tìm theo phòng ban"}
-              list={listOrg?.map((item) => ({
-                label: item?.organizeDetailName,
-                value: item?.id,
-              }))}
+              list={[
+                { label: "Tất cả tổ chức", value: "all" },
+                ...listOrg?.map((item) => ({
+                  label: item?.organizeDetailName,
+                  value: item?.id,
+                }))
+              ]}
               // list = {[
               //   { label: "Tất cả phòng ban", value: "all" },
               //   ...listOrg?.map((item) => ({
@@ -331,9 +334,8 @@ const ChiTiet = ({ listIPs, listWifis, listEmps }) => {
               list={[
                 { label: "Tất cả các ca", value: "all" },
                 ...listShifts?.map((item) => ({
-                  label: `${item?.shift_name} - ${
-                    item?.type === 1 ? "CA VAO" : "CA RA"
-                  }`,
+                  label: `${item?.shift_name} - ${item?.type === 1 ? "CA VAO" : "CA RA"
+                    }`,
                   value: `${item?.shift_id}-${item?.type}`,
                 })),
               ]}
@@ -484,9 +486,8 @@ const ChiTiet = ({ listIPs, listWifis, listEmps }) => {
                         content={
                           <div style={{ padding: "10px" }}>
                             {item?.list_shifts?.map((p) => (
-                              <p>{`${p?.shift_name} - ${
-                                p?.type_shift === 1 ? "CA VÀO" : "CA RA"
-                              }`}</p>
+                              <p>{`${p?.shift_name} - ${p?.type_shift === 1 ? "CA VÀO" : "CA RA"
+                                }`}</p>
                             ))}
                           </div>
                         }
@@ -526,8 +527,8 @@ const ChiTiet = ({ listIPs, listWifis, listEmps }) => {
                         {item?.list_loc?.length > 0
                           ? " Xem thêm"
                           : item?.detail.type_loc == 2
-                          ? "Tất cả vị trí được lưu"
-                          : "Tất cả"}
+                            ? "Tất cả vị trí được lưu"
+                            : "Tất cả"}
                       </Popover>
                     </td>
                     <td>
@@ -562,8 +563,8 @@ const ChiTiet = ({ listIPs, listWifis, listEmps }) => {
                         {item?.list_wifi?.length > 0
                           ? " Xem thêm"
                           : item?.detail.type_wifi == 2
-                          ? "Tất cả vị trí được lưu"
-                          : "Tất cả"}
+                            ? "Tất cả vị trí được lưu"
+                            : "Tất cả"}
                       </Popover>
                     </td>
 
